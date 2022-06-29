@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserPagesController;
 
 /*
 TODO
@@ -20,24 +21,24 @@ search by category (done di navbar)
 search by game name/ dev / tag/ genre (done)
 
 click game detail:
-1 all game data
-2 select * from review
-3. select * from donation
-4. button tambah donasi
+1 all game data (done)
+2 select * from review (done, langsung dari laravel)
+3. select * from donation (done, langsung dari laravel)
+4. my review + my donation pisahin (harus udah ada di library)
+5. button tambah donasi + button tambah review (harus udah ada di library)
 
 add wishlist
 delete from wishlist
-check all wishlist
+check all wishlist (done)
 
 buy / checkout game
 payment
 
 profile:
 show / edit profile
-add payment method
 
 library
-1. select * from library
+1. select * from library (done)
 2. download game
 
 -dev-
@@ -57,12 +58,13 @@ game detail:
 admin:
 - approve game
 */
+Route::get('/products', function () {
+    return view('/templet_ori/product-details');
+});
 
 Route::get('/', [Controller::class, 'dashboard']);
 Route::get('/search', [Controller::class, 'searchPage']);
-Route::get('/products', function () {
-    return view('/frontend/product-details');
-});
+Route::get('/game/{id}', [Controller::class, 'gameDetail']);
 
 
 Route::middleware(['guest'])->group(function () {
@@ -72,17 +74,21 @@ Route::middleware(['guest'])->group(function () {
 
 Route::get('/logout', [UserController::class, 'logout']);
 
-//member
+//member only
 Route::middleware(['user'])->group(function () {
+    Route::get('/wishlist', [UserPagesController::class, 'wishlistPage']);
+    Route::get('/myLibrary', [UserPagesController::class, 'libraryPage']);
+
+    //testing
     Route::get('/user', function(){return dump(Auth::user());});
 });
 
-//dev
+//dev only
 Route::middleware(['dev'])->prefix('dev')->group(function () {
     Route::get('/', function(){return dump(Auth::user());});
 });
 
-//admin
+//admin only
 Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('/', function(){return dump(Auth::user());});
 });

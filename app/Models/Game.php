@@ -13,6 +13,7 @@ use App\Models\GamePayment;
 use App\Models\GameDonation;
 use App\Models\GameVersionLog;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -96,6 +97,15 @@ class Game extends Model
             ->orWhere('game_genres.genre_name', $query)
             ->orWhere('game_tags.tag_name', $query)
             ->orderBy('games.id', 'desc')
+            ->get();
+    }
+
+    public static function getUserLibrary(){
+        return DB::table('game_libraries')
+            ->join('users', 'users.id', '=', 'game_libraries.user_id')
+            ->join('games', 'games.id', '=', 'game_libraries.game_id')
+            ->where('game_libraries.user_id', Auth::user()->id)
+            ->orderBy('games_libraries.created_at', 'desc')
             ->get();
     }
 }

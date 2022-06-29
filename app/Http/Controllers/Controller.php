@@ -41,4 +41,11 @@ class Controller extends BaseController
             'search_result' => Game::getGamebySearch($request->search),
         ]);
     }
+
+    public function gameDetail(Request $request){
+        return view('frontend.gameDetail', [
+            'category_nav' => GameGenre::get(),
+            'game' => Game::find($request->id) //Belum di fix N+1 problem , kasih with(['table_name'])
+        ]);
+    }
 }
