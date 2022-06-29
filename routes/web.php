@@ -11,13 +11,13 @@ TODO
 login - done
 register
 
-discover game : 
-1. select * from new tag
-2. select * from promotion tag
-3. select * from sale tag
+dashboard : 
+1. select * from new tag (done)
+2. select * from promotion tag (done)
+3. select * from sale tag (done)
 
-search by category
-search by game name / dev name
+search by category (done di navbar)
+search by game name/ dev / tag/ genre (done)
 
 click game detail:
 1 all game data
@@ -58,27 +58,31 @@ admin:
 - approve game
 */
 
-Route::get('/', function () {
-    return view('/frontend/index');
-});
-
+Route::get('/', [Controller::class, 'dashboard']);
+Route::get('/search', [Controller::class, 'searchPage']);
 Route::get('/products', function () {
     return view('/frontend/product-details');
 });
 
 
-Route::get('/login', [Controller::class, 'loginPage'])->name('login');
-Route::get('/test', function(){return dump(Auth::user());});
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [Controller::class, 'loginPage'])->name('login');
+    Route::post('/login/auth', [UserController::class, 'loginAuth']);
+});
 
 Route::get('/logout', [UserController::class, 'logout']);
-Route::post('/login/auth', [UserController::class, 'loginAuth']);
 
 //member
 Route::middleware(['user'])->group(function () {
-    Route::get('/users', function(){return dump(Auth::user());});
+    Route::get('/user', function(){return dump(Auth::user());});
 });
 
 //dev
 Route::middleware(['dev'])->prefix('dev')->group(function () {
-    Route::get('/devs', function(){return dump(Auth::user());});
+    Route::get('/', function(){return dump(Auth::user());});
+});
+
+//admin
+Route::middleware(['admin'])->prefix('admin')->group(function () {
+    Route::get('/', function(){return dump(Auth::user());});
 });

@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Models\Game;
+use App\Models\GameTag;
+use App\Models\GameGenre;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
@@ -13,5 +18,27 @@ class Controller extends BaseController
 
     public function loginPage(){
         return view('login', []);
+    }
+
+    public function dashboard(){
+        //discover games
+        $new_game =Game::getGamebyTag('#new');
+        $promo_game = Game::getGamebyTag('#promo');
+        $sale_game = Game::getGamebyTag('#sale');
+
+
+        return view('frontend.dashboard', [
+            'category_nav' => GameGenre::get(),
+            'new_game' => $new_game,
+            'promo_game' => $promo_game,
+            'sale_game' => $sale_game,
+        ]);
+    }
+
+    public function searchPage(Request $request){
+        return view('frontend.search', [
+            'category_nav' => GameGenre::get(),
+            'search_result' => Game::getGamebySearch($request->search),
+        ]);
     }
 }
