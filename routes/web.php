@@ -37,6 +37,9 @@ payment
 profile:
 show / edit profile
 
+donation:
+show list donasi
+
 library
 1. select * from library (done)
 2. download game
@@ -56,7 +59,7 @@ game detail:
 5. archive game
 
 admin:
-- approve game
+- approve game (GAADA GAME STATUS COY DI MIGRATION)
 */
 Route::get('/products', function () {
     return view('/templet_ori/product-details');
