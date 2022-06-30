@@ -20,6 +20,7 @@ class CreateGameVersionLogsTable extends Migration
             $table->text('description');
             $table->float('app_size');
             $table->json('promotional'); // type(img, video), placeholder, url, desc
+            $table->enum('status', ['pending', 'reviewed', 'published', 'denied'])->default('pending');
             $table->timestamps();
 
             $table->foreign('game_id')->references('id')->on('games');

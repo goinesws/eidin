@@ -136,6 +136,7 @@ class DatabaseSeeder extends Seeder
                 'requirement_memory' => $faker->randomElement(['2', '4', '8', '16', '32']).'GB',
                 'requirement_graphic' => $faker->randomElement(['GeForce GTX', 'GeForce RTX', 'Nvidia Titan', 'Radeon HD', 'Radeon RX']),
                 'requirement_storage' => strval($faker->randomFloat(1, 1, 100)).'GB',
+                'status' => 'published'
             ]);
         }
 
@@ -151,6 +152,7 @@ class DatabaseSeeder extends Seeder
                     'url' => $faker->url,
                     'desc' => $faker->text,
                 ]),
+                'status' => 'published'
             ]);
 
             TagDetail::create([

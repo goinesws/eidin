@@ -59,7 +59,7 @@ class Controller extends BaseController
         return view('frontend.gameDetail', [
             'category_nav' => GameGenre::get(),
             'active' => '',
-            'game' => Game::find($request->id), //Belum di fix N+1 problem , kasih with(['table_name'])
+            'game' => Game::where('status','published')->find($request->id), //Belum di fix N+1 problem , kasih with(['table_name'])
         ]);
     }
 
@@ -67,7 +67,7 @@ class Controller extends BaseController
         return view('frontend.gameCategory', [
             'category_nav' => GameGenre::get(),
             'active' => '',
-            'games' => Game::where('genre_id', $request->id)->get()
+            'games' => Game::where('genre_id', $request->id)->where('status','published')->get()
         ]);
     }
 }

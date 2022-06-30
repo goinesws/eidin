@@ -80,6 +80,7 @@ class Game extends Model
             ->join('tag_details', 'tag_details.game_id', '=', 'games.id')
             ->join('game_tags', 'game_tags.id', '=', 'tag_details.tag_id')
             ->where('tag_name', '=', $tag)
+            ->where('status','published') //cuma tampilin yang di publish doang
             ->get();
     }
 
@@ -96,6 +97,7 @@ class Game extends Model
             ->orWhere('developers.company_name', 'like', '%' . $query . '%')
             ->orWhere('game_genres.genre_name', $query)
             ->orWhere('game_tags.tag_name', $query)
+            ->where('games.status','published')
             ->orderBy('games.id', 'desc')
             ->get();
     }
@@ -105,6 +107,7 @@ class Game extends Model
             ->join('users', 'users.id', '=', 'game_libraries.user_id')
             ->join('games', 'games.id', '=', 'game_libraries.game_id')
             ->where('game_libraries.user_id', Auth::user()->id)
+            ->where('games.status','published')
             ->orderBy('game_libraries.created_at', 'desc')
             ->get();
     }
