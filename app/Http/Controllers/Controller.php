@@ -46,6 +46,14 @@ class Controller extends BaseController
         ]);
     }
 
+    public function allGame(){
+        return view('frontend.allGames', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'All Games',
+            'games' => Game::all()
+        ]);
+    }
+
     public function gameDetail(Request $request){
         return view('frontend.gameDetail', [
             'category_nav' => GameGenre::get(),

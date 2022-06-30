@@ -9,7 +9,7 @@ use App\Http\Controllers\UserPagesController;
 /*
 TODO
 
-login - done
+login - done ( + design)
 register
 
 dashboard : 
@@ -68,6 +68,7 @@ Route::get('/products', function () {
 Route::get('/', [Controller::class, 'dashboard']);
 Route::get('/search', [Controller::class, 'searchPage']);
 Route::get('/game/{id}', [Controller::class, 'gameDetail']);
+Route::get('/all-games', [Controller::class, 'allGame']);
 
 
 Route::middleware(['guest'])->group(function () {

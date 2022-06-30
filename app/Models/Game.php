@@ -105,7 +105,7 @@ class Game extends Model
             ->join('users', 'users.id', '=', 'game_libraries.user_id')
             ->join('games', 'games.id', '=', 'game_libraries.game_id')
             ->where('game_libraries.user_id', Auth::user()->id)
-            ->orderBy('games_libraries.created_at', 'desc')
+            ->orderBy('game_libraries.created_at', 'desc')
             ->get();
     }
 }

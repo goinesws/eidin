@@ -32,70 +32,6 @@
 
     <!-- Start Header Area -->
     <header class="header navbar-area shadow-sm">
-        <!-- Start Topbar -->
-        {{-- <div class="topbar">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-4 col-12">
-                        <div class="top-left">
-                            <ul class="menu-top-link">
-                                <li>
-                                    <div class="select-position">
-                                        <select id="select4">
-                                            <option value="0" selected>$ USD</option>
-                                            <option value="1">€ EURO</option>
-                                            <option value="2">$ CAD</option>
-                                            <option value="3">₹ INR</option>
-                                            <option value="4">¥ CNY</option>
-                                            <option value="5">৳ BDT</option>
-                                        </select>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="select-position">
-                                        <select id="select5">
-                                            <option value="0" selected>English</option>
-                                            <option value="1">Español</option>
-                                            <option value="2">Filipino</option>
-                                            <option value="3">Français</option>
-                                            <option value="4">العربية</option>
-                                            <option value="5">हिन्दी</option>
-                                            <option value="6">বাংলা</option>
-                                        </select>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-12">
-                        <div class="top-middle">
-                            <ul class="useful-links">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-12">
-                        <div class="top-end">
-                            <div class="user">
-                                <i class="lni lni-user"></i>
-                                Hello
-                            </div>
-                            <ul class="user-login">
-                                <li>
-                                    <a href="login.html">Sign In</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        <!-- End Topbar -->
         <!-- Start Header Middle -->
         <div class="header-middle">
             <div class="container">
@@ -167,18 +103,26 @@
                                         <a href="/" class="{{ $active == 'Home' ? 'active' : '' }}" aria-label="Toggle navigation">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/" class="{{ $active == 'All Games' ? 'active' : '' }}" aria-label="Toggle navigation">All Games</a>
+                                        <a href="/all-games" class="{{ $active == 'All Games' ? 'active' : '' }}" aria-label="Toggle navigation">All Games</a>
                                     </li>
 
                                     @if (Auth::check() && Auth::user()->role == 'user')
                                         <li class="nav-item">
-                                            <a href="/" class="{{ $active == 'Libraries' ? 'active' : '' }}" aria-label="Toggle navigation">Libraries</a>
+                                            <a href="/myLibrary" class="{{ $active == 'Libraries' ? 'active' : '' }}" aria-label="Toggle navigation">Libraries</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/" class="{{ $active == 'Wishlist' ? 'active' : '' }}" aria-label="Toggle navigation">Wishlist</a>
+                                            <a href="/wishlist" class="{{ $active == 'Wishlist' ? 'active' : '' }}" aria-label="Toggle navigation">Wishlist</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/" class="{{ $active == 'Profile' ? 'active' : '' }}" aria-label="Toggle navigation">Profile</a>
+                                            <a class="dd-menu collapsed {{ $active == 'Developer' ? 'active' : '' }}" href="javascript:void(0)"
+                                                data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
+                                                aria-controls="navbarSupportedContent" aria-expanded="false"
+                                                aria-label="Toggle navigation">Profile</a>
+                                            <ul class="sub-menu collapse" id="submenu-1-2">
+                                                <li class="nav-item"><a href="about-us.html" class="">My Profile</a></li>
+                                                <li class="nav-item"><a href="faq.html">Donation History</a></li>
+                                                <li class="nav-item"><a href="login.html">Review History</a></li>
+                                            </ul>
                                         </li>
                                     @endif
 
