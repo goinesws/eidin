@@ -31,7 +31,7 @@
     <!-- /End Preloader -->
 
     <!-- Start Header Area -->
-    <header class="header navbar-area">
+    <header class="header navbar-area shadow-sm">
         <!-- Start Topbar -->
         {{-- <div class="topbar">
             <div class="container">
@@ -130,7 +130,7 @@
                             <div class="nav-hotline">
                                 {{-- JANGAN DIHAPUS --}}
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -164,34 +164,34 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="/" class="active" aria-label="Toggle navigation">Home</a>
+                                        <a href="/" class="{{ $active == 'Home' ? 'active' : '' }}" aria-label="Toggle navigation">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/" aria-label="Toggle navigation">All Games</a>
+                                        <a href="/" class="{{ $active == 'All Games' ? 'active' : '' }}" aria-label="Toggle navigation">All Games</a>
                                     </li>
 
                                     @if (Auth::check() && Auth::user()->role == 'user')
                                         <li class="nav-item">
-                                            <a href="/" aria-label="Toggle navigation">Libraries</a>
+                                            <a href="/" class="{{ $active == 'Libraries' ? 'active' : '' }}" aria-label="Toggle navigation">Libraries</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/" aria-label="Toggle navigation">Wishlist</a>
+                                            <a href="/" class="{{ $active == 'Wishlist' ? 'active' : '' }}" aria-label="Toggle navigation">Wishlist</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/" aria-label="Toggle navigation">Profile</a>
+                                            <a href="/" class="{{ $active == 'Profile' ? 'active' : '' }}" aria-label="Toggle navigation">Profile</a>
                                         </li>
                                     @endif
 
                                     @if (Auth::check() && Auth::user()->developer == null && Auth::user()->role == 'user')
                                         <li class="nav-item">
                                             {{-- khusus buat yg belum registrasi dev --}}
-                                            <a href="/login" aria-label="Toggle navigation">Developer Registration</a>
+                                            <a href="/login" class="{{ $active == 'Developer Registration' ? 'active' : '' }}" aria-label="Toggle navigation">Developer Registration</a>
                                         </li>
                                     @endif
 
                                     @if(Auth::check() && Auth::user()->developer != null)
                                         <li class="nav-item">
-                                            <a class="dd-menu collapsed" href="javascript:void(0)"
+                                            <a class="dd-menu collapsed {{ $active == 'Developer' ? 'active' : '' }}" href="javascript:void(0)"
                                                 data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
                                                 aria-controls="navbarSupportedContent" aria-expanded="false"
                                                 aria-label="Toggle navigation">Developer</a>
@@ -203,10 +203,10 @@
                                             </ul>
                                         </li>
                                     @endif
-                                    
+
                                     @if(Auth::check() && Auth::user()->role == 'admin')
                                         <li class="nav-item">
-                                            <a class="dd-menu collapsed" href="javascript:void(0)"
+                                            <a class="dd-menu collapsed {{ $active == 'Admin' ? 'active' : '' }}" href="javascript:void(0)"
                                                 data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
                                                 aria-controls="navbarSupportedContent" aria-expanded="false"
                                                 aria-label="Toggle navigation">Admin</a>
@@ -218,10 +218,10 @@
                                             </ul>
                                         </li>
                                     @endif
-                                    
+
                                     @if (!Auth::check())
                                         <li class="nav-item">
-                                            <a href="/login" aria-label="Toggle navigation">Login</a>
+                                            <a href="/login" class="{{ $active == 'Login' ? 'active' : '' }}" aria-label="Toggle navigation">Login</a>
                                         </li>
                                     @else
                                         <li class="nav-item">
@@ -239,7 +239,7 @@
         <!-- End Header Bottom -->
     </header>
     <!-- End Header Area -->
-    
+
     <div>
         @yield('content')
     </div>
@@ -402,7 +402,7 @@
     <script src="frontend/js/glightbox.min.js"></script>
     <script src="frontend/js/main.js"></script>
     <script type="text/javascript">
-        //========= Hero Slider 
+        //========= Hero Slider
         tns({
             container: '.hero-slider',
             slideBy: 'page',

@@ -17,7 +17,10 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function loginPage(){
-        return view('login', []);
+        return view('login', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'Login',
+        ]);
     }
 
     public function dashboard(){
@@ -32,6 +35,7 @@ class Controller extends BaseController
             'new_game' => $new_game,
             'promo_game' => $promo_game,
             'sale_game' => $sale_game,
+            'active' => 'Home',
         ]);
     }
 
