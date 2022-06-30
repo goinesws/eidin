@@ -167,45 +167,67 @@
                                         <a href="/" class="active" aria-label="Toggle navigation">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/" aria-label="Toggle navigation">Libraries</a>
+                                        <a href="/" aria-label="Toggle navigation">All Games</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="/" aria-label="Toggle navigation">Wishlist</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        {{-- khusus buat yg belum registrasi dev --}}
-                                        <a href="/login" aria-label="Toggle navigation">Developer</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="Toggle navigation">Developer</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-2">
-                                            <li class="nav-item"><a href="about-us.html" class="">Company Profile</a></li>
-                                            <li class="nav-item"><a href="faq.html">Uploaded Games</a></li>
-                                            <li class="nav-item"><a href="login.html">Reviews</a></li>
-                                            <li class="nav-item"><a href="register.html">Donations</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="Toggle navigation">Admin</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-2">
-                                            <li class="nav-item"><a href="about-us.html" class="">Pending Game</a></li>
-                                            <li class="nav-item"><a href="faq.html">Pending Update</a></li>
-                                            {{-- <li class="nav-item"><a href="login.html">Reviews</a></li>
-                                            <li class="nav-item"><a href="register.html">Donations</a></li> --}}
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/" aria-label="Toggle navigation">Profile</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/login" aria-label="Toggle navigation">Login</a>
-                                    </li>
+
+                                    @if (Auth::check() && Auth::user()->role == 'user')
+                                        <li class="nav-item">
+                                            <a href="/" aria-label="Toggle navigation">Libraries</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/" aria-label="Toggle navigation">Wishlist</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/" aria-label="Toggle navigation">Profile</a>
+                                        </li>
+                                    @endif
+
+                                    @if (Auth::check() && Auth::user()->developer == null && Auth::user()->role == 'user')
+                                        <li class="nav-item">
+                                            {{-- khusus buat yg belum registrasi dev --}}
+                                            <a href="/login" aria-label="Toggle navigation">Developer Registration</a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->developer != null)
+                                        <li class="nav-item">
+                                            <a class="dd-menu collapsed" href="javascript:void(0)"
+                                                data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
+                                                aria-controls="navbarSupportedContent" aria-expanded="false"
+                                                aria-label="Toggle navigation">Developer</a>
+                                            <ul class="sub-menu collapse" id="submenu-1-2">
+                                                <li class="nav-item"><a href="about-us.html" class="">Company Profile</a></li>
+                                                <li class="nav-item"><a href="faq.html">Uploaded Games</a></li>
+                                                <li class="nav-item"><a href="login.html">Reviews</a></li>
+                                                <li class="nav-item"><a href="register.html">Donations</a></li>
+                                            </ul>
+                                        </li>
+                                    @endif
+                                    
+                                    @if(Auth::check() && Auth::user()->role == 'admin')
+                                        <li class="nav-item">
+                                            <a class="dd-menu collapsed" href="javascript:void(0)"
+                                                data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
+                                                aria-controls="navbarSupportedContent" aria-expanded="false"
+                                                aria-label="Toggle navigation">Admin</a>
+                                            <ul class="sub-menu collapse" id="submenu-1-2">
+                                                <li class="nav-item"><a href="about-us.html" class="">Pending Game</a></li>
+                                                <li class="nav-item"><a href="faq.html">Pending Update</a></li>
+                                                {{-- <li class="nav-item"><a href="login.html">Reviews</a></li>
+                                                <li class="nav-item"><a href="register.html">Donations</a></li> --}}
+                                            </ul>
+                                        </li>
+                                    @endif
+                                    
+                                    @if (!Auth::check())
+                                        <li class="nav-item">
+                                            <a href="/login" aria-label="Toggle navigation">Login</a>
+                                        </li>
+                                    @else
+                                        <li class="nav-item">
+                                            <a href="/logout" aria-label="Toggle navigation" class="text-danger">Logout</a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div> <!-- navbar collapse -->
                         </nav>
@@ -213,16 +235,12 @@
                     </div>
                 </div>
             </div>
-
-            
         </div>
         <!-- End Header Bottom -->
-        
     </header>
     <!-- End Header Area -->
     
     <div>
-        
         @yield('content')
     </div>
 

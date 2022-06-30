@@ -23,7 +23,7 @@ class UserController extends Controller
             //     //lupain
             //     Cookie::queue(Cookie::forget('LoginCookie'));
             // }
-            return redirect('/test');
+            return redirect('/');
         }else{
             return redirect()->back()->withErrors(['msg' => 'Invalid Account']);
         }
