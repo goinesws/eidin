@@ -68,6 +68,7 @@ Route::get('/products', function () {
 Route::get('/', [Controller::class, 'dashboard']);
 Route::get('/search', [Controller::class, 'searchPage']);
 Route::get('/game/{id}', [Controller::class, 'gameDetail']);
+Route::get('/category/{id}', [Controller::class, 'gameCategory']);
 Route::get('/all-games', [Controller::class, 'allGame']);
 
 
@@ -82,6 +83,9 @@ Route::get('/logout', [UserController::class, 'logout']);
 Route::middleware(['user'])->group(function () {
     Route::get('/wishlist', [UserPagesController::class, 'wishlistPage']);
     Route::get('/myLibrary', [UserPagesController::class, 'libraryPage']);
+    Route::get('/myProfile', [UserPagesController::class, 'userProfilePage']);
+    Route::get('/myDonation', [UserPagesController::class, 'userDonationPage']);
+
 
     //testing
     Route::get('/user', function(){return dump(Auth::user());});

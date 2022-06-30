@@ -18,8 +18,8 @@ class Controller extends BaseController
 
     public function loginPage(){
         return view('login', [
-            'category_nav' => GameGenre::get(),
             'active' => 'Login',
+            'category_nav' => GameGenre::get(),
         ]);
     }
 
@@ -32,16 +32,17 @@ class Controller extends BaseController
 
         return view('frontend.dashboard', [
             'category_nav' => GameGenre::get(),
+            'active' => 'Home',
             'new_game' => $new_game,
             'promo_game' => $promo_game,
             'sale_game' => $sale_game,
-            'active' => 'Home',
         ]);
     }
 
     public function searchPage(Request $request){
         return view('frontend.search', [
             'category_nav' => GameGenre::get(),
+            'active' => '',
             'search_result' => Game::getGamebySearch($request->search),
         ]);
     }
@@ -57,7 +58,16 @@ class Controller extends BaseController
     public function gameDetail(Request $request){
         return view('frontend.gameDetail', [
             'category_nav' => GameGenre::get(),
-            'game' => Game::find($request->id) //Belum di fix N+1 problem , kasih with(['table_name'])
+            'active' => '',
+            'game' => Game::find($request->id), //Belum di fix N+1 problem , kasih with(['table_name'])
+        ]);
+    }
+
+    public function gameCategory(Request $request){
+        return view('frontend.gameCategory', [
+            'category_nav' => GameGenre::get(),
+            'active' => '',
+            'games' => Game::where('genre_id', $request->id)->get()
         ]);
     }
 }

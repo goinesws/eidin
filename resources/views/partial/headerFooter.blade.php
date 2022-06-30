@@ -7,14 +7,14 @@
     <title>Eidin</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="img/icon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/img/icon.ico" />
 
     <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="frontend/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="frontend/css/LineIcons.3.0.css" />
-    <link rel="stylesheet" href="frontend/css/tiny-slider.css" />
-    <link rel="stylesheet" href="frontend/css/glightbox.min.css" />
-    <link rel="stylesheet" href="frontend/css/main.css" />
+    <link rel="stylesheet" href="/frontend/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/frontend/css/LineIcons.3.0.css" />
+    <link rel="stylesheet" href="/frontend/css/tiny-slider.css" />
+    <link rel="stylesheet" href="/frontend/css/glightbox.min.css" />
+    <link rel="stylesheet" href="/frontend/css/main.css" />
 
 </head>
 
@@ -39,7 +39,7 @@
                     <div class="col-lg-3 col-md-3 col-7">
                         <!-- Start Header Logo -->
                         <a class="navbar-brand" href="/">
-                            <img src="img/logo.png" alt="Logo">
+                            <img src="/img/logo.png" alt="Logo">
                         </a>
                         <!-- End Header Logo -->
                     </div>
@@ -83,7 +83,7 @@
                             <span class="cat-button"><i class="lni lni-menu"></i>Game Categories</span>
                             <ul class="sub-category">
                                 @foreach ($category_nav as $item)
-                                    <li><a href="#">{{ $item->genre_name }}</a></li>
+                                    <li><a href="/category/{{$item->id}}">{{ $item->genre_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -119,9 +119,8 @@
                                                 aria-controls="navbarSupportedContent" aria-expanded="false"
                                                 aria-label="Toggle navigation">Profile</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="about-us.html" class="">My Profile</a></li>
-                                                <li class="nav-item"><a href="faq.html">Donation History</a></li>
-                                                <li class="nav-item"><a href="login.html">Review History</a></li>
+                                                <li class="nav-item"><a href="/myProfile" class="">My Profile</a></li>
+                                                <li class="nav-item"><a href="/myDonation">Donation History</a></li>
                                             </ul>
                                         </li>
                                     @endif
@@ -143,7 +142,7 @@
                                                 <li class="nav-item"><a href="about-us.html" class="">Company Profile</a></li>
                                                 <li class="nav-item"><a href="faq.html">Uploaded Games</a></li>
                                                 <li class="nav-item"><a href="login.html">Reviews</a></li>
-                                                <li class="nav-item"><a href="register.html">Donations</a></li>
+                                                <li class="nav-item"><a href="register.html">Purchases & Donations</a></li>
                                             </ul>
                                         </li>
                                     @endif
@@ -198,7 +197,7 @@
                         <div class="col-lg-3 col-md-4 col-12">
                             <div class="footer-logo">
                                 <a href="index.html">
-                                    <img src="frontend/images/logo/white-logo.svg" alt="#">
+                                    <img src="/frontend/images/logo/white-logo.svg" alt="#">
                                 </a>
                             </div>
                         </div>
@@ -307,7 +306,7 @@
                         <div class="col-lg-4 col-12">
                             <div class="payment-gateway">
                                 <span>We Accept:</span>
-                                <img src="frontend/images/footer/credit-cards-footer.png" alt="#">
+                                <img src="/frontend/images/footer/credit-cards-footer.png" alt="#">
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
@@ -341,10 +340,10 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-    <script src="frontend/js/bootstrap.min.js"></script>
-    <script src="frontend/js/tiny-slider.js"></script>
-    <script src="frontend/js/glightbox.min.js"></script>
-    <script src="frontend/js/main.js"></script>
+    <script src="/frontend/js/bootstrap.min.js"></script>
+    <script src="/frontend/js/tiny-slider.js"></script>
+    <script src="/frontend/js/glightbox.min.js"></script>
+    <script src="/frontend/js/main.js"></script>
     <script type="text/javascript">
         //========= Hero Slider
         tns({
