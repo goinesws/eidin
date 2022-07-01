@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\GameTag;
 use App\Models\Wishlist;
 use App\Models\Developer;
 use App\Models\GameGenre;
@@ -23,12 +22,12 @@ class Game extends Model
 
     public function gameGenre()
     {
-        return $this->belongsTo(GameGenre::class);
+        return $this->belongsTo(GameGenre::class, 'genre_id', 'id');
     }
 
     public function developer()
     {
-        return $this->belongsTo(Developer::class);
+        return $this->belongsTo(Developer::class, 'dev_id', 'id');
     }
 
     public function gameVersionLogs()
@@ -36,19 +35,19 @@ class Game extends Model
         return $this->hasMany(GameVersionLog::class);
     }
 
-    public function gameTags()
-    {
-        return $this->belongsToMany(GameTag::class);
-    }
+    // public function gameTags()
+    // {
+    //     return $this->belongsTo(GameTag::class);
+    // }
 
     public function wishlists()
     {
-        return $this->belongsToMany(Wishlist::class);
+        return $this->hasMany(Wishlist::class);
     }
 
     public function gameLibrarys()
     {
-        return $this->belongsToMany(GameLibrary::class);
+        return $this->hasMany(GameLibrary::class);
     }
 
     public function gameReviews()

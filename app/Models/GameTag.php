@@ -12,7 +12,7 @@ class GameTag extends Model
     use HasFactory;
 
     public function games () {
-        return $this->belongsToMany(Game::class);
+        return $this->hasMany(Game::class);
     }
 
     public function tagDetail () {

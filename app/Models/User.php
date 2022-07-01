@@ -52,12 +52,12 @@ class User extends Authenticatable
         return $this->hasOne(Developer::class);
     }
 
-    public function wishlist () {
-        return $this->hasOne(Wishlist::class);
+    public function wishlists () {
+        return $this->hasMany(Wishlist::class);
     }
 
-    public function gameLibrary () {
-        return $this->hasOne(GameLibrary::class);
+    public function gameLibraries () {
+        return $this->hasMany(GameLibrary::class);
     }
 
     public function gameReviews () {

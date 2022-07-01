@@ -18,40 +18,38 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function loginPage(){
+    private function calculateRating($game_id)
+    {
+        return DB::table('game_reviews')
+            ->where('game_id', $game_id)
+            ->avg('rating');
+    }
+
+    public function loginPage()
+    {
         return view('login', [
             'active' => 'Login',
             'category_nav' => GameGenre::get(),
         ]);
     }
 
-    public function registerPage(){
+    public function registerPage()
+    {
         return view('register', [
             'active' => '',
             'category_nav' => GameGenre::get(),
         ]);
     }
 
-    private function calculateRating($game_id){
-        $rating = DB::table('game_reviews')
-            ->where('game_id', $game_id)
-            ->avg('rating');
-        return $rating;
-    }
-
-    public function dashboard(){
+    public function dashboard()
+    {
         //discover games
-        $new_game =Game::getGamebyTag('#new');
+        $new_game = Game::getGamebyTag('#new');
         $promo_game = Game::getGamebyTag('#promotion');
         $sale_game = Game::getGamebyTag('#sale');
         $genres = GameGenre::all();
         $games = Game::all();
         $ratings = array();
-
-        // $userWishlist = null;
-        // if(Auth::check() && Auth::user()->role == 'user'){
-        //     $userWishlist = Db::table('wishlists')->where('user_id', Auth::user()->id)->get();
-        // }
 
         foreach ($games as $game) {
             $ratings[$game->id] = $this->calculateRating($game->id);
@@ -68,7 +66,8 @@ class Controller extends BaseController
         ]);
     }
 
-    public function searchPage(Request $request){
+    public function searchPage(Request $request)
+    {
         return view('frontend.search', [
             'category_nav' => GameGenre::get(),
             'active' => '',
@@ -95,19 +94,21 @@ class Controller extends BaseController
         ]);
     }
 
-    public function gameDetail(Request $request){
+    public function gameDetail(Request $request)
+    {
         return view('frontend.gameDetail', [
             'category_nav' => GameGenre::get(),
             'active' => '',
-            'game' => Game::where('status','published')->find($request->id), //Belum di fix N+1 problem , kasih with(['table_name'])
+            'game' => Game::where('status', 'published')->find($request->id), //Belum di fix N+1 problem , kasih with(['table_name'])
         ]);
     }
 
-    public function gameCategory(Request $request){
+    public function gameCategory(Request $request)
+    {
         return view('frontend.gameCategory', [
             'category_nav' => GameGenre::get(),
             'active' => '',
-            'games' => Game::where('genre_id', $request->id)->where('status','published')->get()
+            'games' => Game::where('genre_id', $request->id)->where('status', 'published')->get()
         ]);
     }
 }

@@ -33,7 +33,7 @@
                                         ?>
                                         <div class="pt-3 pb-1">{{ $promotional->desc }}</div>
                                         <div>{{ $promotional->url }}</div>
-                                        <h3><span>Now Only</span> Rp{{ $pgame->price }}</h3>
+                                        <h3><span>Now Only</span> Rp {{ number_format($pgame->price,2,',','.') }}</h3>
                                         <div class="button">
                                             <a href="/" class="btn">Buy Now</a>
                                         </div>
@@ -61,7 +61,7 @@
                                         <span>New line required</span>
                                         {{ $new_game[0]->game_name }}
                                     </h2>
-                                    <h3>Rp{{ $new_game[0]->price }}</h3>
+                                    <h3>Rp{{ number_format($new_game[0]->price,2,',','.')  }}</h3>
 
                                 </div>
                             </div>
@@ -100,6 +100,7 @@
             </div>
             <div class="row">
                 @foreach ($new_game as $ngame)
+                    {{-- @dump($ngame) --}}
                     <div class="col-lg-6 col-md-6 col-12 mb-4">
                         <div class="single-banner position-relative"
                             style="background-image:url('frontend/images/banner/banner-1-bg.jpg'); height:300px">
@@ -108,7 +109,7 @@
                                 <h2>{{ $ngame->game_name }}</h2>
                                 <p>{{ $ngame->short_desc }}</p>
                                 <div class="button">
-                                    <a href="/game/{{ $ngame->id }}" class="btn">View Details</a>
+                                    <a href="/game/{{ $ngame->game_id }}" class="btn">View Details</a>
                                 </div>
                                 <?php
                                 $promotional = json_decode($ngame->promotional);
@@ -162,15 +163,15 @@
                             <div class="product-info">
                                 <span class="category">{{ $genres[$sgame->genre_id - 1]->genre_name }}</span>
                                 <h4 class="title">
-                                    <a href="/game/{{ $sgame->id }}">{{ $sgame->game_name }}</a>
+                                    <a href="/game/{{ $sgame->game_id }}">{{ $sgame->game_name }}</a>
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>
                                     <li><span>{{ $ratings[$sgame->game_id] }} Ratings</span></li>
                                 </ul>
                                 <div class="price">
-                                    <span>Rp{{ $sgame->price }}</span>
-                                    <span class="discount-price">Rp{{ $sgame->price * 2 }}</span>
+                                    <span>Rp{{number_format( $sgame->price,2,',','.') }}</span>
+                                    <span class="discount-price">Rp{{ number_format( $sgame->price*2,2,',','.') }}</span>
                                 </div>
                             </div>
                         </div>
