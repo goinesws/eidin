@@ -28,7 +28,7 @@
                 <div class="col-lg-6 col-md-12 col-12">
                     <div class="product-info">
                         <h2 class="title">{{ $game->game_name }}</h2>
-                        <p class="category"><i class="lni lni-tag"></i> Category:<a href="javascript:void(0)">@dump($game->wishlists)</a></p>
+                        <p class="category"><i class="lni lni-tag"></i> Category:<a href="javascript:void(0)">{{$game->gameGenre->genre_name}}</a></p>
                         <h3 class="price">Rp {{ number_format($game->price,2,',','.') }}</h3>
                         <p class="info-text">Rating: {{ $game->content_rating }}</p>
                         <p class="info-text">{{ $game->short_desc }}</p>

@@ -24,7 +24,7 @@
                 <div style="width: 80%">
                     <h5>: {{ $profile->email }}</h5> <br>
                     <h5>: {{ $profile->country }}</h5> <br>
-                    <h5>: {{ Auth::user()->developer ? 'developer' : $profile->role }}</h5>
+                    <h5>: {{ucwords(Auth::user()->role)}} {{(Auth::user()->developer != null) ? " And Developer": ""}}</h5>
                 </div>
             </div>
             <div class="mt-5 mb-3 border border-3 border-primary"></div>
