@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/frontend/css/tiny-slider.css" />
     <link rel="stylesheet" href="/frontend/css/glightbox.min.css" />
     <link rel="stylesheet" href="/frontend/css/main.css" />
-
+    @include('sweetalert::alert')
 </head>
 
 <body>

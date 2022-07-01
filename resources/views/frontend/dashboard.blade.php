@@ -7,8 +7,8 @@
     <!-- Start Hero Area -->
     <div class="container" style="margin-top:20px">
         @auth
-            <h3>[debug]Hello, {{Auth::user()->name}}</h3>
-            <h6>Role: {{Auth::user()->role}}, <?= (Auth::user()->developer != null)? "Also dev": "Member only" ?></h6>
+            <h3>[debug]Hello, {{ Auth::user()->name }}</h3>
+            <h6>Role: {{ Auth::user()->role }}, <?= Auth::user()->developer != null ? 'Also dev' : 'Member only' ?></h6>
         @endauth
     </div>
     <section class="hero-area">
@@ -20,7 +20,8 @@
                         <div class="hero-slider">
                             @foreach ($promo_game as $pgame)
                                 <!-- Start Single Slider -->
-                                <div class="single-slider" style="background-image: url(frontend/images/hero/slider-bg2.jpg);">
+                                <div class="single-slider"
+                                    style="background-image: url(frontend/images/hero/slider-bg2.jpg);">
                                     <div class="content" style="padding-right:52%">
                                         <h2><span>Limited Promotion! (only 30 days)</span>
                                             {{ $pgame->game_name }}
@@ -29,10 +30,11 @@
                                         <div>{{ $promotion[$pgame->game_id]->url }}</div>
                                         <h3><span>Now Only</span> Rp{{ $pgame->price }}</h3>
                                         <div class="button">
-                                            <a href="product-grids.html" class="btn">Buy Now</a>
+                                            <a href="/" class="btn">Buy Now</a>
                                         </div>
                                     </div>
-                                    <img src="{{ $promotion[$pgame->game_id]->placeholder }}" alt="" style="width: 48%; height:60%; position:absolute; right:0; top:20%">
+                                    <img src="{{ $promotion[$pgame->game_id]->placeholder }}" alt=""
+                                        style="width: 48%; height:60%; position:absolute; right:0; top:20%">
                                 </div>
                                 <!-- End Single Slider -->
                             @endforeach
@@ -91,15 +93,17 @@
             <div class="row">
                 @foreach ($new_game as $ngame)
                     <div class="col-lg-6 col-md-6 col-12 mb-4">
-                        <div class="single-banner position-relative" style="background-image:url('frontend/images/banner/banner-1-bg.jpg'); height:300px">
-                            <span class="position-absolute text-light bg-danger pt-2 pb-2 ps-4 pe-4" >New</span>
+                        <div class="single-banner position-relative"
+                            style="background-image:url('frontend/images/banner/banner-1-bg.jpg'); height:300px">
+                            <span class="position-absolute text-light bg-danger pt-2 pb-2 ps-4 pe-4">New</span>
                             <div class="content" style="padding-right:55%">
                                 <h2>{{ $ngame->game_name }}</h2>
                                 <p>{{ $ngame->short_desc }}</p>
                                 <div class="button">
-                                    <a href="" class="btn">View Details</a>
+                                    <a href="/game/{{$ngame->id}}" class="btn">View Details</a>
                                 </div>
-                                <img src="{{ $promotion[$ngame->game_id]->placeholder }}" alt="" class="position-absolute top-0 end-0" style="width: 45%; height:100%;">
+                                <img src="{{ $promotion[$ngame->game_id]->placeholder }}" alt=""
+                                    class="position-absolute top-0 end-0" style="width: 45%; height:100%;">
                             </div>
                         </div>
                     </div>
@@ -122,6 +126,7 @@
                 </div>
             </div>
             <div class="row">
+                
                 @foreach ($sale_game as $sgame)
                     <div class="col-lg-3 col-md-6 col-12">
                         <!-- Start Single Product -->
@@ -129,14 +134,21 @@
                             <div class="product-image">
                                 <img src="{{ $promotion[$sgame->game_id]->placeholder }}" alt="#">
                                 <span class="sale-tag">-50%</span>
-                                <div class="button">
-                                    <a href="/wishlist" class="btn"><i class="lni lni-heart-filled"></i> Add to Wishlist</a>
-                                </div>
+                                {{-- @if (Auth::check() && Auth::user()->role == 'user')
+                                    <div class="button">
+                                        <form action="/wishlist/add" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$sgame->id}}">
+                                            <button type="submit" class="btn"><i class="lni lni-heart-filled"></i> Add
+                                                to Wishlist</button>
+                                        </form>
+                                    </div>
+                                @endif --}}
                             </div>
                             <div class="product-info">
-                                <span class="category">{{ $genres[$sgame->genre_id-1]->genre_name }}</span>
+                                <span class="category">{{ $genres[$sgame->genre_id - 1]->genre_name }}</span>
                                 <h4 class="title">
-                                    <a href="product-grids.html">{{ $sgame->game_name }}</a>
+                                    <a href="/game/{{$sgame->id}}">{{ $sgame->game_name }}</a>
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>
@@ -144,7 +156,7 @@
                                 </ul>
                                 <div class="price">
                                     <span>Rp{{ $sgame->price }}</span>
-                                    <span class="discount-price">Rp{{ $sgame->price*2 }}</span>
+                                    <span class="discount-price">Rp{{ $sgame->price * 2 }}</span>
                                 </div>
                             </div>
                         </div>

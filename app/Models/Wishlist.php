@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Wishlist extends Model
 {
     use HasFactory;
+    protected $fillable = ['game_id', 'user_id'];
 
     public function games () {
         return $this->hasMany(Game::class);
@@ -18,4 +19,6 @@ class Wishlist extends Model
     public function user () {
         return $this->belongsTo(User::class);
     }
+
+    //
 }

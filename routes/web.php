@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPagesController;
+use App\Http\Controllers\WishlistController;
+use App\Models\Wishlist;
 
 /*
 TODO
@@ -90,9 +92,7 @@ Route::middleware(['user'])->group(function () {
     Route::get('/myProfile', [UserPagesController::class, 'userProfilePage']);
     Route::get('/myDonation', [UserPagesController::class, 'userDonationPage']);
 
-
-    //testing
-    Route::get('/user', function(){return dump(Auth::user());});
+    Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
 });
 
 //dev only

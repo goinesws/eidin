@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\GameTag;
 use App\Models\GameGenre;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
 {
@@ -47,6 +49,11 @@ class Controller extends BaseController
         $promotion = array();
         $ratings = array();
 
+        $userWishlist = null;
+        if(Auth::check() && Auth::user()->role == 'user'){
+            $userWishlist = Db::table('wishlists')->where('user_id', Auth::user()->id)->get();
+        }
+
         foreach ($games as $game) {
             $promotion[$game->id] = json_decode($game->promotional);
             $ratings[$game->id] = $this->calculateRating($game->id);
@@ -61,6 +68,7 @@ class Controller extends BaseController
             'promotion' => $promotion,
             'genres' => $genres,
             'ratings' => $ratings,
+            'userWishlist' => $userWishlist
         ]);
     }
 
