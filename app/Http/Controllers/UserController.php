@@ -16,13 +16,15 @@ class UserController extends Controller
         ]);
 
         if(Auth::attempt($cred)){
-            // if($request->input('remember')){
-            //     Cookie::queue('LoginCookie', $request->input('email'), 5);
-            // }
-            // else{
-            //     //lupain
-            //     Cookie::queue(Cookie::forget('LoginCookie'));
-            // }
+            if($request->input('remember')){
+                Cookie::queue('LoginEmail', $request->input('email'), 5);
+                Cookie::queue('LoginPassword', $request->input('password'), 5);
+            }
+            else{
+                //lupain
+                Cookie::queue(Cookie::forget('LoginEmail'));
+                Cookie::queue(Cookie::forget('LoginPassword'));
+            }
             return redirect('/');
         }else{
             return redirect()->back()->withErrors(['msg' => 'Invalid Account']);
