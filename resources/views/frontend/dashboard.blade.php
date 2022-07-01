@@ -24,16 +24,21 @@
                                     style="background-image: url(frontend/images/hero/slider-bg2.jpg);">
                                     <div class="content" style="padding-right:52%">
                                         <h2><span>Limited Promotion! (only 30 days)</span>
-                                            {{ $pgame->game_name }}
+                                            <a href="/game/{{ $pgame->id }}">
+                                                {{ $pgame->game_name }}
+                                            </a>
                                         </h2>
-                                        <div class="pt-3 pb-1">{{ $promotion[$pgame->game_id]->desc }}</div>
-                                        <div>{{ $promotion[$pgame->game_id]->url }}</div>
+                                        <?php
+                                        $promotional = json_decode($pgame->promotional);
+                                        ?>
+                                        <div class="pt-3 pb-1">{{ $promotional->desc }}</div>
+                                        <div>{{ $promotional->url }}</div>
                                         <h3><span>Now Only</span> Rp{{ $pgame->price }}</h3>
                                         <div class="button">
                                             <a href="/" class="btn">Buy Now</a>
                                         </div>
                                     </div>
-                                    <img src="{{ $promotion[$pgame->game_id]->placeholder }}" alt=""
+                                    <img src="{{ $promotional->placeholder }}" alt=""
                                         style="width: 48%; height:60%; position:absolute; right:0; top:20%">
                                 </div>
                                 <!-- End Single Slider -->
@@ -46,8 +51,11 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
                             <!-- Start Small Banner -->
+                            <?php
+                            $promotional = json_decode($new_game[0]->promotional);
+                            ?>
                             <div class="hero-small-banner"
-                                style="background-image: url({{ $promotion[$new_game[0]->game_id]->placeholder }});">
+                                style="background-image: url({{ $promotional->placeholder }});">
                                 <div class="content" style="background-color: rgba(255, 255, 255, 0.8)">
                                     <h2>
                                         <span>New line required</span>
@@ -100,9 +108,12 @@
                                 <h2>{{ $ngame->game_name }}</h2>
                                 <p>{{ $ngame->short_desc }}</p>
                                 <div class="button">
-                                    <a href="/game/{{$ngame->id}}" class="btn">View Details</a>
+                                    <a href="/game/{{ $ngame->id }}" class="btn">View Details</a>
                                 </div>
-                                <img src="{{ $promotion[$ngame->game_id]->placeholder }}" alt=""
+                                <?php
+                                $promotional = json_decode($ngame->promotional);
+                                ?>
+                                <img src="{{ $promotional->placeholder }}" alt=""
                                     class="position-absolute top-0 end-0" style="width: 45%; height:100%;">
                             </div>
                         </div>
@@ -126,13 +137,16 @@
                 </div>
             </div>
             <div class="row">
-                
+
                 @foreach ($sale_game as $sgame)
+                    <?php
+                    $promotional = json_decode($sgame->promotional);
+                    ?>
                     <div class="col-lg-3 col-md-6 col-12">
                         <!-- Start Single Product -->
                         <div class="single-product">
                             <div class="product-image">
-                                <img src="{{ $promotion[$sgame->game_id]->placeholder }}" alt="#">
+                                <img src="{{ $promotional->placeholder }}" alt="#">
                                 <span class="sale-tag">-50%</span>
                                 {{-- @if (Auth::check() && Auth::user()->role == 'user')
                                     <div class="button">
@@ -148,7 +162,7 @@
                             <div class="product-info">
                                 <span class="category">{{ $genres[$sgame->genre_id - 1]->genre_name }}</span>
                                 <h4 class="title">
-                                    <a href="/game/{{$sgame->id}}">{{ $sgame->game_name }}</a>
+                                    <a href="/game/{{ $sgame->id }}">{{ $sgame->game_name }}</a>
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>

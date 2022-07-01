@@ -46,16 +46,14 @@ class Controller extends BaseController
         $sale_game = Game::getGamebyTag('#sale');
         $genres = GameGenre::all();
         $games = Game::all();
-        $promotion = array();
         $ratings = array();
 
-        $userWishlist = null;
-        if(Auth::check() && Auth::user()->role == 'user'){
-            $userWishlist = Db::table('wishlists')->where('user_id', Auth::user()->id)->get();
-        }
+        // $userWishlist = null;
+        // if(Auth::check() && Auth::user()->role == 'user'){
+        //     $userWishlist = Db::table('wishlists')->where('user_id', Auth::user()->id)->get();
+        // }
 
         foreach ($games as $game) {
-            $promotion[$game->id] = json_decode($game->promotional);
             $ratings[$game->id] = $this->calculateRating($game->id);
         }
 
@@ -65,10 +63,8 @@ class Controller extends BaseController
             'new_game' => $new_game,
             'promo_game' => $promo_game,
             'sale_game' => $sale_game,
-            'promotion' => $promotion,
             'genres' => $genres,
             'ratings' => $ratings,
-            'userWishlist' => $userWishlist
         ]);
     }
 
