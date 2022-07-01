@@ -114,7 +114,7 @@
                                             <a href="/wishlist" class="{{ $active == 'Wishlist' ? 'active' : '' }}" aria-label="Toggle navigation">Wishlist</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="dd-menu collapsed {{ $active == 'Developer' ? 'active' : '' }}" href="javascript:void(0)"
+                                            <a class="dd-menu collapsed {{ $active == 'Profile' ? 'active' : '' }}" href="javascript:void(0)"
                                                 data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
                                                 aria-controls="navbarSupportedContent" aria-expanded="false"
                                                 aria-label="Toggle navigation">Profile</a>
