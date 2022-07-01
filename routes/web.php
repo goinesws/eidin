@@ -59,7 +59,7 @@ game detail:
 5. archive game
 
 admin:
-- approve game
+- approve game (game status udh dibikin di tabel game + game update log)
 */
 Route::get('/products', function () {
     return view('/templet_ori/product-details');
