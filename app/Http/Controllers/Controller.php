@@ -77,10 +77,21 @@ class Controller extends BaseController
     }
 
     public function allGame(){
+        $ratings = array();
+        $games = Game::all();
+        $sale_game = Game::getGamebyTag('#sale');
+
+        foreach ($games as $game) {
+            $ratings[$game->id] = $this->calculateRating($game->id);
+        }
+
         return view('frontend.allGames', [
             'category_nav' => GameGenre::get(),
             'active' => 'All Games',
-            'games' => Game::all()
+            'games' => Game::all(),
+            'genres' => GameGenre::all(),
+            'ratings' => $ratings,
+            'sale_game' => $sale_game
         ]);
     }
 
