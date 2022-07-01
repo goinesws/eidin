@@ -43,149 +43,70 @@
                         </a>
                         <!-- End Header Logo -->
                     </div>
-                    <div class="col-lg-5 col-md-7 d-xs-none">
-                        <!-- Start Main Menu Search -->
-                        <div class="main-menu-search">
-                            <!-- navbar search start -->
-                            <form action="/search" method="get">
-                                <div class="navbar-search search-style-5">
-                                    <div class="search-input">
-                                        <input type="text" placeholder="Discover Games.." name="search" class="form-control">
-                                    </div>
-                                    <div class="search-btn">
-                                        <button type="submit" class="btn"><i class="lni lni-search-alt"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- navbar search Ends -->
-                        </div>
-                        <!-- End Main Menu Search -->
-                    </div>
-                    <div class="col-lg-4 col-md-2 col-5">
-                        <div class="middle-right-area">
-                            <div class="nav-hotline">
-                                {{-- JANGAN DIHAPUS --}}
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
         <!-- End Header Middle -->
-        <!-- Start Header Bottom -->
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12 col-md-12 col-12">
-                    <div class="nav-inner">
-                        <!-- Start Mega Category Menu -->
-                        <div class="mega-category-menu">
-                            <span class="cat-button"><i class="lni lni-menu"></i>Game Categories</span>
-                            <ul class="sub-category">
-                                @foreach ($category_nav as $item)
-                                    <li><a href="/category/{{$item->id}}">{{ $item->genre_name }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <!-- End Mega Category Menu -->
-                        <!-- Start Navbar -->
-                        <nav class="navbar navbar-expand-lg">
-                            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                <ul id="nav" class="navbar-nav ms-auto">
-                                    <li class="nav-item">
-                                        <a href="/" class="{{ $active == 'Home' ? 'active' : '' }}" aria-label="Toggle navigation">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/all-games" class="{{ $active == 'All Games' ? 'active' : '' }}" aria-label="Toggle navigation">All Games</a>
-                                    </li>
-
-                                    @if (Auth::check() && Auth::user()->role == 'user')
-                                        <li class="nav-item">
-                                            <a href="/myLibrary" class="{{ $active == 'Libraries' ? 'active' : '' }}" aria-label="Toggle navigation">Libraries</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/wishlist" class="{{ $active == 'Wishlist' ? 'active' : '' }}" aria-label="Toggle navigation">Wishlist</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="dd-menu collapsed {{ $active == 'Profile' ? 'active' : '' }}" href="javascript:void(0)"
-                                                data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
-                                                aria-controls="navbarSupportedContent" aria-expanded="false"
-                                                aria-label="Toggle navigation">Profile</a>
-                                            <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="/myProfile" class="">My Profile</a></li>
-                                                <li class="nav-item"><a href="/myDonation">Donation History</a></li>
-                                            </ul>
-                                        </li>
-                                    @endif
-
-                                    @if (Auth::check() && Auth::user()->developer == null && Auth::user()->role == 'user')
-                                        <li class="nav-item">
-                                            {{-- khusus buat yg belum registrasi dev --}}
-                                            <a href="/login" class="{{ $active == 'Developer Registration' ? 'active' : '' }}" aria-label="Toggle navigation">Developer Registration</a>
-                                        </li>
-                                    @endif
-
-                                    @if(Auth::check() && Auth::user()->developer != null)
-                                        <li class="nav-item">
-                                            <a class="dd-menu collapsed {{ $active == 'Developer' ? 'active' : '' }}" href="javascript:void(0)"
-                                                data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
-                                                aria-controls="navbarSupportedContent" aria-expanded="false"
-                                                aria-label="Toggle navigation">Developer</a>
-                                            <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="about-us.html" class="">Company Profile</a></li>
-                                                <li class="nav-item"><a href="faq.html">Uploaded Games</a></li>
-                                                <li class="nav-item"><a href="login.html">Reviews</a></li>
-                                                <li class="nav-item"><a href="register.html">Purchases & Donations</a></li>
-                                            </ul>
-                                        </li>
-                                    @endif
-
-                                    @if(Auth::check() && Auth::user()->role == 'admin')
-                                        <li class="nav-item">
-                                            <a class="dd-menu collapsed {{ $active == 'Admin' ? 'active' : '' }}" href="javascript:void(0)"
-                                                data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
-                                                aria-controls="navbarSupportedContent" aria-expanded="false"
-                                                aria-label="Toggle navigation">Admin</a>
-                                            <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="about-us.html" class="">Pending Game</a></li>
-                                                <li class="nav-item"><a href="faq.html">Pending Update</a></li>
-                                                {{-- <li class="nav-item"><a href="login.html">Reviews</a></li>
-                                                <li class="nav-item"><a href="register.html">Donations</a></li> --}}
-                                            </ul>
-                                        </li>
-                                    @endif
-
-                                    @if (!Auth::check())
-                                        <li class="nav-item">
-                                            <a href="/login" class="{{ $active == 'Login' ? 'active' : '' }}" aria-label="Toggle navigation">Login</a>
-                                        </li>
-                                    @else
-                                        <li class="nav-item">
-                                            <a href="/logout" aria-label="Toggle navigation" class="text-danger">Logout</a>
-                                        </li>
-                                    @endif
-                                </ul>
-                            </div> <!-- navbar collapse -->
-                        </nav>
-                        <!-- End Navbar -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Header Bottom -->
     </header>
     <!-- End Header Area -->
 
-    <div>
-        @yield('content')
+    <div class="pt-5 pb-5" style="background-color: #f9f9f9;">
+        <div class="m-auto p-5 border shadow" style="width: 50%; border-radius:20px; background-color: #ffffff;">
+            <h4>Registration</h4> <br>
+            <form action="/register/auth" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <label for="exampleInputText" class="form-label">Country</label>
+                    <input type="text" class="form-control @error('country') is-invalid @enderror" id="exampleInputText" name="country">
+                    @error('country')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputText" class="form-label">Full Name</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputText" name="name">
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputText1" class="form-label">Username</label>
+                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="exampleInputText1" name="username">
+                    @error('username')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" name="email">
+                    @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1" name="password">
+                    @error('password')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1" name="password_confirmation">
+                    @error('password')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                @if ($errors->any())
+                    <div class="text-center text-danger mb-2">{{ $errors->first() }}</div>
+                @endif
+                <button type="submit" class="btn btn-primary" style="width: 100%">Register</button>
+                <div class="text-center mt-3">Already have an account? <a href="{{ route('login') }}">Login here</a></div>
+            </form>
+        </div>
     </div>
+
 
     <!-- Start Footer Area -->
     <footer class="footer">

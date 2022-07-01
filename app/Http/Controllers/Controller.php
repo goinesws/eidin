@@ -23,12 +23,34 @@ class Controller extends BaseController
         ]);
     }
 
+    public function registerPage(){
+        return view('register', [
+            'active' => '',
+            'category_nav' => GameGenre::get(),
+        ]);
+    }
+
+    private function calculateRating($game_id){
+        $rating = DB::table('game_reviews')
+            ->where('game_id', $game_id)
+            ->avg('rating');
+        return $rating;
+    }
+
     public function dashboard(){
         //discover games
         $new_game =Game::getGamebyTag('#new');
-        $promo_game = Game::getGamebyTag('#promo');
+        $promo_game = Game::getGamebyTag('#promotion');
         $sale_game = Game::getGamebyTag('#sale');
+        $genres = GameGenre::all();
+        $games = Game::all();
+        $promotion = array();
+        $ratings = array();
 
+        foreach ($games as $game) {
+            $promotion[$game->id] = json_decode($game->promotional);
+            $ratings[$game->id] = $this->calculateRating($game->id);
+        }
 
         return view('frontend.dashboard', [
             'category_nav' => GameGenre::get(),
@@ -36,6 +58,9 @@ class Controller extends BaseController
             'new_game' => $new_game,
             'promo_game' => $promo_game,
             'sale_game' => $sale_game,
+            'promotion' => $promotion,
+            'genres' => $genres,
+            'ratings' => $ratings,
         ]);
     }
 
