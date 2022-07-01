@@ -27,7 +27,7 @@
             <div class="text-center text-danger mb-2">{{ $errors->first() }}</div>
           @endif
           <button type="submit" class="btn btn-primary" style="width: 100%">Login</button>
-          <div class="text-center mt-3">Don't have an account? <a href="">Register here</a></div>
+          <div class="text-center mt-3">Don't have an account? <a href={{ route('register') }}>Register here</a></div>
         </form>
     </div>
 </div>

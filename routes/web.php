@@ -12,7 +12,7 @@ TODO
 login - done ( + design)
 register
 
-dashboard : 
+dashboard :
 1. select * from new tag (done)
 2. select * from promotion tag (done)
 3. select * from sale tag (done)
@@ -75,6 +75,10 @@ Route::get('/all-games', [Controller::class, 'allGame']);
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [Controller::class, 'loginPage'])->name('login');
     Route::post('/login/auth', [UserController::class, 'loginAuth']);
+
+    //register
+    Route::get('/register', [Controller::class, 'registerPage'])->name('register');
+    Route::post('/register/auth', [UserController::class, 'register']);
 });
 
 Route::get('/logout', [UserController::class, 'logout']);

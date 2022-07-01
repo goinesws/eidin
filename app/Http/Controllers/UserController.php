@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -33,6 +36,27 @@ class UserController extends Controller
 
     public function logout(){
         Auth::logout();
+        return redirect()->route('login');
+    }
+
+    public function register(Request $request){
+        $request->validate([
+            'country' => 'required|max:50',
+            'name' => 'required|max:255',
+            'username' => 'required|unique:users,username|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $user = new User();
+        $user->country = $request->country;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->role = 'user';
+        $user->save();
+
         return redirect()->route('login');
     }
 }

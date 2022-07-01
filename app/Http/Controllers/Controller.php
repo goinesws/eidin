@@ -23,6 +23,13 @@ class Controller extends BaseController
         ]);
     }
 
+    public function registerPage(){
+        return view('register', [
+            'active' => '',
+            'category_nav' => GameGenre::get(),
+        ]);
+    }
+
     private function calculateRating($game_id){
         $rating = DB::table('game_reviews')
             ->where('game_id', $game_id)
