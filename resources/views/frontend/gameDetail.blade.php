@@ -14,7 +14,10 @@
                     <div class="product-images">
                         <main id="gallery">
                             <div class="main-img">
-                                <img src="frontend/images/product-details/01.jpg" id="current" alt="#">
+                                <?php
+                                    $promotional = json_decode($game->promotional)
+                                ?>
+                                <img src="{{$promotional->placeholder}}" id="current" alt="#">
                             </div>
                             <div class="images">
                                 {{--  --}}
@@ -25,8 +28,8 @@
                 <div class="col-lg-6 col-md-12 col-12">
                     <div class="product-info">
                         <h2 class="title">{{ $game->game_name }}</h2>
-                        <p class="category"><i class="lni lni-tag"></i> Category:<a href="javascript:void(0)">{{ $game->genre_name }}</a></p>
-                        <h3 class="price">Rp {{ $game->price }}</h3>
+                        <p class="category"><i class="lni lni-tag"></i> Category:<a href="javascript:void(0)">@dump($game->gameGenre->genre_name)</a></p>
+                        <h3 class="price">Rp {{ number_format($game->price,2,',','.') }}</h3>
                         <p class="info-text">Rating: {{ $game->content_rating }}</p>
                         <p class="info-text">{{ $game->short_desc }}</p>
                         <div class="bottom-content">
