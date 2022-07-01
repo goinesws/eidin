@@ -45,9 +45,9 @@ class DatabaseSeeder extends Seeder
 
         $tags = [
             'new',
-            'hot',
-            'sale',
             'promotion',
+            'sale',
+            'hot',
             'comeback',
             'hunt',
             'race',
@@ -128,7 +128,7 @@ class DatabaseSeeder extends Seeder
                 ]),
                 'game_data_path' => $faker->url,
                 'date_published' => $faker->dateTimeThisYear,
-                'short_desc' => $faker->text,
+                'short_desc' => $faker->text(50),
                 'content_rating' => $faker->randomElement(['a', 'b', 'not_specified']),
                 'about_game' => $faker->text,
                 'requirement_processor' => $faker->randomElement(['Intel Core i9-12900K', 'AMD Ryzen 9 5900X', 'Intel Core i5-12600K', 'AMD Ryzen 7 5800X3D', 'AMD Ryzen 3 3100']),
@@ -156,7 +156,7 @@ class DatabaseSeeder extends Seeder
             ]);
 
             TagDetail::create([
-                'tag_id' => $faker->numberBetween(1, 10),
+                'tag_id' => $faker->numberBetween(1, 3), //ini diganti tadinya 1-10
                 'game_id' => $i,
             ]);
 
