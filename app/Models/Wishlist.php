@@ -13,7 +13,7 @@ class Wishlist extends Model
     protected $fillable = ['game_id', 'user_id'];
 
     public function games () {
-        return $this->hasMany(Game::class);
+        return $this->belongsTo(Game::class);
     }
 
     public function user () {
