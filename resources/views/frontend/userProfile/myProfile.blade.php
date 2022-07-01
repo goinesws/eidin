@@ -30,7 +30,7 @@
             <div class="mt-5 mb-3 border border-3 border-primary"></div>
             <div class="d-flex">
                 <div class="text-center" style="width: 25%">
-                    Game(s) Developed
+                    Game(s) Uploaded
                     <h2>{{ $games_developed }}</h2>
                 </div>
                 <div class="text-center" style="width: 25%">

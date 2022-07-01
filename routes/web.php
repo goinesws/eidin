@@ -10,9 +10,9 @@ use App\Http\Controllers\UserPagesController;
 TODO
 
 login - done ( + design)
-register
+register - done ( + design)
 
-dashboard :
+dashboard : (design done)
 1. select * from new tag (done)
 2. select * from promotion tag (done)
 3. select * from sale tag (done)
@@ -35,7 +35,7 @@ buy / checkout game
 payment
 
 profile:
-show profile (done)
+show profile (done + design)
 
 donation:
 show list donasi(done)
@@ -59,7 +59,7 @@ game detail:
 5. archive game
 
 admin:
-- approve game
+- approve game (game status udh dibikin di tabel game + game update log)
 */
 Route::get('/products', function () {
     return view('/templet_ori/product-details');
