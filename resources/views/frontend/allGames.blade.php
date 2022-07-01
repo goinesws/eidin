@@ -30,9 +30,9 @@
                                     <li><span>{{ $ratings[$game->id] }} Ratings</span></li>
                                 </ul>
                                 <div class="price">
-                                    <span>Rp{{ $game->price }}</span>
+                                    <span>Rp{{number_format( $game->price,2,',','.') }}</span>
                                     @if ($sale_game->where('game_id', $game->id)->count() > 0)
-                                        <span class="discount-price">Rp{{ $game->price * 2 }}</span>
+                                        <span class="discount-price">Rp{{number_format( $game->price,2,',','.') }}</span>
                                     @endif
                                 </div>
                             </div>
