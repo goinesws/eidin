@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DevPagesController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GameDonationsController;
 use App\Http\Controllers\GamePaymentController;
@@ -96,6 +97,9 @@ Route::middleware(['user'])->group(function () {
     Route::get('/myLibrary', [UserPagesController::class, 'libraryPage']);
     Route::get('/myProfile', [UserPagesController::class, 'userProfilePage']);
     Route::get('/myDonation', [UserPagesController::class, 'userDonationPage']);
+
+    //dev registration
+    Route::get('/dev-registration', [DevPagesController::class, 'devRegistPage']);
 
     Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
     Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist']);

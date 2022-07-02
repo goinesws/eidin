@@ -23,16 +23,15 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <h2 class="title">{{ $game->game_name }}</h2>
+                            <h2 class="title" style="font-size:40px;margin-bottom:0">{{ $game->game_name }}</h2>
+                            <span class="text-primary">
+                                <a href="#">{{$game->developer->company_name}}</a>
+                            </span>
                             <p class="category">
                                 <i class="lni lni-tag"></i>
-                                Category:
                                 <a class="text-primary" href="/category/{{ $game->genre_id }}">
                                     {{ $game->gameGenre->genre_name }}
                                 </a>
-                            </p>
-                            <p class="category">
-                                #Tags :
                                 @foreach ($game->tagDetail as $item)
                                     <a class="text-primary" href="/tag/{{ $game->genre_id }}">
                                         {{ $item->tag->tag_name }}
@@ -46,51 +45,53 @@
                                 @if (!Auth::check())
                                     <p class="text-danger">* Please login first to add the game to the wishlist</p>
                                 @else
-                                    <div class="row align-items-end">
-                                        @if (!$isBought)
-                                            <div class="col-lg-4 col-md-4 col-12">
-                                                <div class="button cart-button">
-                                                    <button class="btn" style="width: 100%;" data-toggle="modal"
-                                                        data-target="#exampleModal">Buy Game</button>
-                                                </div>
-                                            </div>
-                                            @if (!$isOnWishlist)
+                                    @if (Auth::user()->role == 'user')
+                                        <div class="row align-items-end">
+                                            @if (!$isBought)
                                                 <div class="col-lg-4 col-md-4 col-12">
-                                                    <div class="wish-button">
-                                                        <form action="/wishlist/add" method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="id"
-                                                                value="{{ $game->id }}">
-                                                            <button class="btn" type="submit"><i
-                                                                    class="lni lni-heart"></i>
-                                                                Add To
-                                                                Wishlist</button>
-                                                        </form>
+                                                    <div class="button cart-button">
+                                                        <button class="btn" style="width: 100%;" data-toggle="modal"
+                                                            data-target="#exampleModal">Buy Game</button>
                                                     </div>
                                                 </div>
+                                                @if (!$isOnWishlist)
+                                                    <div class="col-lg-4 col-md-4 col-12">
+                                                        <div class="wish-button">
+                                                            <form action="/wishlist/add" method="post">
+                                                                @csrf
+                                                                <input type="hidden" name="id"
+                                                                    value="{{ $game->id }}">
+                                                                <button class="btn" type="submit"><i
+                                                                        class="lni lni-heart"></i>
+                                                                    Add To
+                                                                    Wishlist</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="col-lg-4 col-md-4 col-12">
+                                                        <div class="wish-button">
+                                                            <form action="/wishlist/remove" method="post">
+                                                                @csrf
+                                                                <input type="hidden" name="id"
+                                                                    value="{{ $game->id }}">
+                                                                <button class="btn" type="submit"><i
+                                                                        class="lni lni-heart"></i>
+                                                                    Remove
+                                                                    Wishlist</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             @else
                                                 <div class="col-lg-4 col-md-4 col-12">
-                                                    <div class="wish-button">
-                                                        <form action="/wishlist/remove" method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="id"
-                                                                value="{{ $game->id }}">
-                                                            <button class="btn" type="submit"><i
-                                                                    class="lni lni-heart"></i>
-                                                                Remove
-                                                                Wishlist</button>
-                                                        </form>
+                                                    <div class="button cart-button">
+                                                        <button class="btn" style="width: 100%;">Download Game</button>
                                                     </div>
                                                 </div>
                                             @endif
-                                        @else
-                                            <div class="col-lg-4 col-md-4 col-12">
-                                                <div class="button cart-button">
-                                                    <button class="btn" style="width: 100%;">Download Game</button>
-                                                </div>
-                                            </div>
-                                        @endif
-                                    </div>
+                                        </div>
+                                    @endif
                                 @endif
                             </div>
                         </div>

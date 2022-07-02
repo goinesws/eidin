@@ -129,7 +129,7 @@
                                     @if (Auth::check() && Auth::user()->developer == null && Auth::user()->role == 'user')
                                         <li class="nav-item">
                                             {{-- khusus buat yg belum registrasi dev --}}
-                                            <a href="/login" class="{{ $active == 'Developer Registration' ? 'active' : '' }}" aria-label="Toggle navigation">Developer Registration</a>
+                                            <a href="/dev-registration" class="{{ $active == 'Developer Registration' ? 'active' : '' }}" aria-label="Toggle navigation">Developer Registration</a>
                                         </li>
                                     @endif
 
