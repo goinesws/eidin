@@ -14,7 +14,6 @@ use App\Models\GameLibrary;
 use App\Models\GamePayment;
 use App\Models\GameReview;
 use App\Models\TagDetail;
-use App\Models\GameVersionLog;
 use App\Models\Wishlist;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -141,19 +140,19 @@ class DatabaseSeeder extends Seeder
         }
 
         for ($i=1; $i <= 10; $i++) {
-            GameVersionLog::create([
-                'game_id' => $faker->numberBetween(1, 10),
-                'version' => strval($faker->randomFloat(1, 1, 10)),
-                'description' => $faker->text,
-                'app_size' => $faker->randomFloat(3, 10000, 1000000),
-                'promotional' => json_encode([
-                    'type' => $faker->randomElement(['img', 'video']),
-                    'placeholder' => $faker->imageUrl,
-                    'url' => $faker->url,
-                    'desc' => $faker->text,
-                ]),
-                'status' => 'published'
-            ]);
+            // GameVersionLog::create([
+            //     'game_id' => $faker->numberBetween(1, 10),
+            //     'version' => strval($faker->randomFloat(1, 1, 10)),
+            //     'description' => $faker->text,
+            //     'app_size' => $faker->randomFloat(3, 10000, 1000000),
+            //     'promotional' => json_encode([
+            //         'type' => $faker->randomElement(['img', 'video']),
+            //         'placeholder' => $faker->imageUrl,
+            //         'url' => $faker->url,
+            //         'desc' => $faker->text,
+            //     ]),
+            //     'status' => 'published'
+            // ]);
 
             TagDetail::create([
                 'tag_id' => $faker->numberBetween(1, 3), //ini diganti tadinya 1-10
