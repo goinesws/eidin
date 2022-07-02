@@ -24,18 +24,16 @@
                                     style="background-image: url(frontend/images/hero/slider-bg2.jpg);">
                                     <div class="content" style="padding-right:52%">
                                         <h2><span>Limited Promotion! (only 30 days)</span>
-                                            <a href="/game/{{ $pgame->id }}">
-                                                {{ $pgame->game_name }}
-                                            </a>
+                                            {{ $pgame->game_name }}
                                         </h2>
                                         <?php
                                         $promotional = json_decode($pgame->promotional);
                                         ?>
                                         <div class="pt-3 pb-1">{{ $promotional->desc }}</div>
                                         <div>{{ $promotional->url }}</div>
-                                        <h3><span>Now Only</span> Rp {{ number_format($pgame->price,2,',','.') }}</h3>
+                                        <h3><span>Now Only</span> Rp{{ number_format($pgame->price,2,',','.') }}</h3>
                                         <div class="button">
-                                            <a href="/" class="btn">Buy Now</a>
+                                            <a href="/game/{{ $pgame->game_id }}" class="btn">Buy Now</a>
                                         </div>
                                     </div>
                                     <img src="{{ $promotional->placeholder }}" alt=""
@@ -56,14 +54,13 @@
                             ?>
                             <div class="hero-small-banner"
                                 style="background-image: url({{ $promotional->placeholder }});">
-                                <div class="content" style="background-color: rgba(255, 255, 255, 0.8)">
+                                <a href="/game/{{ $new_game[0]->game_id }}" class="content" style="background-color: rgba(255, 255, 255, 0.8)">
                                     <h2>
                                         <span>New line required</span>
                                         {{ $new_game[0]->game_name }}
                                     </h2>
                                     <h3>Rp{{ number_format($new_game[0]->price,2,',','.')  }}</h3>
-
-                                </div>
+                                </a>
                             </div>
                             <!-- End Small Banner -->
                         </div>
@@ -71,7 +68,7 @@
                             <!-- Start Small Banner -->
                             <div class="hero-small-banner style2">
                                 <div class="content">
-                                    <h2>Weekly Sale!</h2>
+                                    <h2>Seasonal Sale!</h2>
                                     <p>Saving up to 50% off all online store items this week.</p>
                                     <div class="button">
                                         <a class="btn" href="#onsale">Shop Now</a>
@@ -132,8 +129,7 @@
                 <div class="col-12">
                     <div class="section-title">
                         <h2>ON SALE!!!</h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form.</p>
+                        <p>Want to play cool games but not have enough money? check this season sale and go play your dream game</p>
                     </div>
                 </div>
             </div>
@@ -145,8 +141,8 @@
                     ?>
                     <div class="col-lg-3 col-md-6 col-12">
                         <!-- Start Single Product -->
-                        <div class="single-product">
-                            <div class="product-image">
+                        <div class="single-product"  style="height: 400px">
+                            <a href="/game/{{ $sgame->game_id }}" class="product-image">
                                 <img src="{{ $promotional->placeholder }}" alt="#">
                                 <span class="sale-tag">-50%</span>
                                 {{-- @if (Auth::check() && Auth::user()->role == 'user')
@@ -159,9 +155,11 @@
                                         </form>
                                     </div>
                                 @endif --}}
-                            </div>
+                            </a>
                             <div class="product-info">
-                                <span class="category">{{ $genres[$sgame->genre_id - 1]->genre_name }}</span>
+                                <span class="category">
+                                    <a href="/category/{{ $sgame->genre_id }}" class="text-dark">{{ $genres[$sgame->genre_id - 1]->genre_name }}</a>
+                                </span>
                                 <h4 class="title">
                                     <a href="/game/{{ $sgame->game_id }}">{{ $sgame->game_name }}</a>
                                 </h4>

@@ -2,9 +2,15 @@
 
 @section('content')
 <div class="container" style="margin-top: 20px;margin-bottom:20px">
-    <h3>All Games</h3>
     <section class="pt-3" style="margin-top: 12px;" id="onsale">
         <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>All Games</h2>
+                    </div>
+                </div>
+            </div>
             <div class="row">
 
                 @foreach ($games as $game)
@@ -13,15 +19,17 @@
                     ?>
                     <div class="col-lg-3 col-md-6 col-12">
                         <!-- Start Single Product -->
-                        <div class="single-product">
-                            <div class="product-image">
+                        <div class="single-product" style="height: 400px">
+                            <a href="/game/{{ $game->id }}" class="product-image">
                                 <img src="{{ $promotional->placeholder }}" alt="#">
                                 @if ($sale_game->where('game_id', $game->id)->count() > 0)
                                     <span class="sale-tag">-50%</span>
                                 @endif
-                            </div>
+                            </a>
                             <div class="product-info">
-                                <span class="category">{{ $genres[$game->genre_id - 1]->genre_name }}</span>
+                                <span class="category">
+                                    <a href="/category/{{ $game->genre_id }}" class="text-dark">{{ $genres[$game->genre_id - 1]->genre_name }}</a>
+                                </span>
                                 <h4 class="title">
                                     <a href="/game/{{ $game->id }}">{{ $game->game_name }}</a>
                                 </h4>
