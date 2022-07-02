@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\GameDonationsController;
+use App\Http\Controllers\GameReviewController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPagesController;
 use App\Http\Controllers\WishlistController;
+use App\Models\GameDonation;
 use App\Models\Wishlist;
 
 /*
@@ -94,6 +97,8 @@ Route::middleware(['user'])->group(function () {
 
     Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
     Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist']);
+    Route::post('/review/add', [GameReviewController::class, 'addReview']);
+    Route::post('/donation/add', [GameDonationsController::class, 'addDonation']);
 });
 
 //dev only

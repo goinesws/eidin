@@ -3,9 +3,6 @@
 @section('content')
     <!-- Start Item Details -->
     <section class="item-details section" style="padding-top:30px">
-        {{-- <div class="container" style="margin-bottom:30px">
-            <h3>Game Detail</h3>
-        </div> --}}
         <div class="container">
             <div class="top-area">
                 <div class="row align-items-center">
@@ -28,7 +25,7 @@
                         <div class="product-info">
                             <h2 class="title">{{ $game->game_name }}</h2>
                             <p class="category">
-                                <i class="lni lni-tag"></i> 
+                                <i class="lni lni-tag"></i>
                                 Category:
                                 <a class="text-primary" href="/category/{{ $game->genre_id }}">
                                     {{ $game->gameGenre->genre_name }}
@@ -53,9 +50,39 @@
                                         @if (!$isBought)
                                             <div class="col-lg-4 col-md-4 col-12">
                                                 <div class="button cart-button">
-                                                    <button class="btn" style="width: 100%;">Buy Game</button>
+                                                    <button class="btn" style="width: 100%;" data-toggle="modal"
+                                                        data-target="#exampleModal">Buy Game</button>
                                                 </div>
                                             </div>
+                                            @if (!$isOnWishlist)
+                                                <div class="col-lg-4 col-md-4 col-12">
+                                                    <div class="wish-button">
+                                                        <form action="/wishlist/add" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="id"
+                                                                value="{{ $game->id }}">
+                                                            <button class="btn" type="submit"><i
+                                                                    class="lni lni-heart"></i>
+                                                                Add To
+                                                                Wishlist</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div class="col-lg-4 col-md-4 col-12">
+                                                    <div class="wish-button">
+                                                        <form action="/wishlist/remove" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="id"
+                                                                value="{{ $game->id }}">
+                                                            <button class="btn" type="submit"><i
+                                                                    class="lni lni-heart"></i>
+                                                                Remove
+                                                                Wishlist</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         @else
                                             <div class="col-lg-4 col-md-4 col-12">
                                                 <div class="button cart-button">
@@ -63,33 +90,6 @@
                                                 </div>
                                             </div>
                                         @endif
-
-                                        @if (!$isOnWishlist)
-                                            <div class="col-lg-4 col-md-4 col-12">
-                                                <div class="wish-button">
-                                                    <form action="/wishlist/add" method="post">
-                                                        @csrf
-                                                        <input type="hidden" name="id" value="{{ $game->id }}">
-                                                        <button class="btn" type="submit"><i class="lni lni-heart"></i>
-                                                            Add To
-                                                            Wishlist</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        @else
-                                            <div class="col-lg-4 col-md-4 col-12">
-                                                <div class="wish-button">
-                                                    <form action="/wishlist/remove" method="post">
-                                                        @csrf
-                                                        <input type="hidden" name="id" value="{{ $game->id }}">
-                                                        <button class="btn" type="submit"><i class="lni lni-heart"></i>
-                                                            Remove
-                                                            Wishlist</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        @endif
-
                                     </div>
                                 @endif
                             </div>
@@ -104,14 +104,6 @@
                             <div class="info-body custom-responsive-margin">
                                 <h4>Details</h4>
                                 <p>{{ $game->about_game }}</p>
-                                {{-- <h4>Features</h4>
-                            <ul class="features">
-                                <li>Capture 4K30 Video and 12MP Photos</li>
-                                <li>Game-Style Controller with Touchscreen</li>
-                                <li>View Live Camera Feed</li>
-                                <li>Full Control of HERO6 Black</li>
-                                <li>Use App for Dedicated Camera Operation</li>
-                            </ul> --}}
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">
@@ -124,13 +116,6 @@
                                     <li><span>Memory:</span> {{ $game->requirement_memory }}</li>
                                     <li><span>Storage:</span> {{ $game->requirement_storage }}</li>
                                 </ul>
-                                {{-- <h4>Shipping Options:</h4>
-                            <ul class="normal-list">
-                                <li><span>Courier:</span> 2 - 4 days, $22.50</li>
-                                <li><span>Local Shipping:</span> up to one week, $10.00</li>
-                                <li><span>UPS Ground Shipping:</span> 4 - 6 days, $18.00</li>
-                                <li><span>Unishop Global Export:</span> 3 - 4 days, $25.00</li>
-                            </ul> --}}
                             </div>
                         </div>
                     </div>
@@ -142,84 +127,101 @@
                     <div class="product-details-info">
                         <div class="single-block">
                             <div class="info-body custom-responsive-margin">
-                                <h4>Reviews</h4>
+                                <h4>Reviews (Average Rating - Total Rating)</h4>
+                                {{-- @dump($myReview) --}}
                                 <hr>
 
-                                <div class="container-fluid"
-                                    style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(81, 81, 206);border-radius:15px;padding:20px;color:white">
-                                    <div style="color: white;">
-                                        <span style="font-size: 20px">My Reviews:</span>
-                                    </div>
-                                    <div style="margin-top:-5px;margin-left:0px" class="d-flex align-items-center">
-                                        <em class="lni lni-star" style="width: 20px"></em>
-                                        <em class="lni lni-star" style="width: 20px"></em>
-                                        <em class="lni lni-star" style="width: 20px"></em>
-                                        <em class="lni lni-star" style="width: 20px"></em>
-                                        <em class="lni lni-star" style="width: 20px"></em>
-                                        <p>2022/20/20</p>
-                                    </div>
-                                    <div class="div" style="margin-top:-35px">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, tempore! Eos maxime
-                                            dolorum doloribus magni quis, provident deserunt odio laudantium repellendus
-                                            ipsa tempora ipsam inventore nemo consectetur expedita nobis. Cupiditate!</p>
-                                    </div>
-                                </div>
-
-                                <div class="container-fluid"
-                                    style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(56, 146, 53);border-radius:15px;padding:20px;color:white">
-                                    <div style="color: white;">
-                                        <span style="font-size: 20px">How was your experience?</span>
-                                    </div>
-                                    <form action="/review/add" method="POST" style="margin-top:20px">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <select name="rating" id="" class="form-control">
-                                                <option value="-">Select Star...</option>
-                                                <option value="1">1 Star</option>
-                                                <option value="2">2 Star</option>
-                                                <option value="3">3 Star</option>
-                                                <option value="4">4 Star</option>
-                                                <option value="5">5 Star</option>
-                                            </select>
-                                            @error('star')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                @if ($isBought)
+                                    @if ($myReview == null)
+                                        <div class="container-fluid"
+                                            style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(56, 146, 53);border-radius:15px;padding:20px;color:white">
+                                            <div style="color: white;">
+                                                <span style="font-size: 20px">How was your experience?</span>
+                                            </div>
+                                            <form action="/review/add" method="POST" style="margin-top:20px">
+                                                @csrf
+                                                <input type="hidden" name="game_id" value="{{ $game->id }}">
+                                                <div class="mb-3">
+                                                    <select name="rating"
+                                                        class="form-control @error('rating') is-invalid @enderror" required>
+                                                        <option selected disabled>Select Star...</option>
+                                                        <option value="5" @if (old('rating') == '5') selected @endif>5 Star</option>
+                                                        <option value="4" @if (old('rating') == '4') selected @endif>4 Star</option>
+                                                        <option value="3" @if (old('rating') == '3') selected @endif>3 Star</option>
+                                                        <option value="2" @if (old('rating') == '2') selected @endif>2 Star</option>
+                                                        <option value="1" @if (old('rating') == '1') selected @endif>1 Star</option>
+                                                    </select>
+                                                    @error('rating')
+                                                        <div class="invalid-feedback" style="color: white">{{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input placeholder="Write Your Review..." type="text"
+                                                        class="form-control @error('comment') is-invalid @enderror"
+                                                        id="exampleInputText" name="comment" value="{{old('comment')}}">
+                                                    @error('comment')
+                                                        <div class="invalid-feedback" style="color: white">{{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
                                         </div>
-                                        <div class="mb-3">
-                                            <input placeholder="Write Your Review..." type="text"
-                                                class="form-control @error('review') is-invalid @enderror"
-                                                id="exampleInputText" name="review">
-                                            @error('review')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                    @else
+                                        <?php
+                                        $user = $myReview->user;
+                                        ?>
+                                        <div class="container-fluid"
+                                            style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(81, 81, 206);border-radius:15px;padding:20px;color:white">
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{ $user->profile_url }}" alt=""
+                                                    class="rounded-circle" style="height: 40px; width:40px">
+                                                <strong style="margin-left:15px">{{ $user->name }}</strong>
+                                            </div>
+                                            <div style="margin-top:-5px;margin-left:0px"
+                                                class="d-flex align-items-center">
+                                                @for ($i = 0; $i < floor($myReview->rating); $i++)
+                                                    <em class="lni lni-star" style="width: 20px"></em>
+                                                @endfor
+                                                <p>- {{ $myReview->created_at->format('d/m/Y') }}</p>
+                                            </div>
+                                            <div class="div" style="margin-top:-35px">
+                                                <p>{{ $myReview->comment }}</p>
+                                            </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
+                                    @endif
+                                @endif
 
+                                @foreach ($game->gameReviews->sortBy(['created_at', 'desc']) as $item)
+                                    @if ($myReview != null && $item->id != $myReview->id)
+                                        <?php
+                                        $user = $item->user;
+                                        ?>
+                                        <div class="container-fluid"
+                                            style="margin-top:10px;margin-bottom:25px;padding-left:0px;">
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{ $user->profile_url }}" alt=""
+                                                    class="rounded-circle" style="height: 40px; width:40px">
+                                                <strong style="margin-left:15px">{{ $user->name }}</strong>
+                                            </div>
+                                            <div style="margin-top:-5px;margin-left:0px"
+                                                class="d-flex align-items-center">
+                                                @for ($i = 0; $i < floor($item->rating); $i++)
+                                                    <em class="lni lni-star" style="width: 20px"></em>
+                                                @endfor
+                                                <p>- {{ $item->created_at->format('d/m/Y') }}</p>
+                                            </div>
+                                            <div class="div" style="margin-top:-35px">
+                                                <p>{{ $item->comment }}</p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
 
-                                <div class="container-fluid" style="margin-top:10px;margin-bottom:25px;padding-left:0px;">
-                                    <div class="d-flex align-items-center">
-                                        <img src="{{ Auth::user()->profile_url }}" alt="" class="rounded-circle"
-                                            style="height: 40px; width:40px">
-                                        <strong style="margin-left:15px">{{ Auth::user()->name }}</strong>
-                                    </div>
-                                    <div style="margin-top:-5px;margin-left:0px" class="d-flex align-items-center">
-                                        <em class="lni lni-star" style="width: 20px"></em>
-                                        <em class="lni lni-star" style="width: 20px"></em>
-                                        <em class="lni lni-star" style="width: 20px"></em>
-                                        <em class="lni lni-star" style="width: 20px"></em>
-                                        <em class="lni lni-star" style="width: 20px"></em>
-                                        <p>2022/20/20</p>
-                                    </div>
-                                    <div class="div" style="margin-top:-35px">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, tempore! Eos maxime
-                                            dolorum doloribus magni quis, provident deserunt odio laudantium repellendus
-                                            ipsa tempora ipsam inventore nemo consectetur expedita nobis. Cupiditate!</p>
-                                    </div>
-                                </div>
-
-
+                                @if ($game->gameReviews == null)
+                                    <h4>Review Empty...</h4>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -232,79 +234,71 @@
                                 <h4>Donation List</h4>
                                 <hr>
 
-                                <div class="container-fluid"
-                                    style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(56, 146, 53);border-radius:15px;padding:20px;color:white">
-                                    <div style="color: white;">
-                                        <span style="font-size: 20px">Support this Game!</span>
+                                @if ($isBought)
+                                    <div class="container-fluid"
+                                        style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(56, 146, 53);border-radius:15px;padding:20px;color:white">
+                                        <div style="color: white;">
+                                            <span style="font-size: 20px">Support this Game!</span>
+                                        </div>
+                                        <form action="/donation/add" method="POST" style="margin-top:20px">
+                                            @csrf
+                                            <input type="hidden" name="game_id" value="{{$game->id}}">
+                                            <div class="mb-3">
+                                                <select name="payment" id="" class="form-control  @error('payment') is-invalid @enderror">
+                                                    <option selected disabled>Select Payment Method...</option>
+                                                    <option value="credit_card" @if (old('payment') == 'credit_card') selected @endif>Credit Card</option>
+                                                    <option value="bank_transfer" @if (old('payment') == 'bank_transfer') selected @endif>Bank Transfer</option>
+                                                    <option value="paypal" @if (old('payment') == 'paypal') selected @endif>Paypal</option>
+                                                </select>
+                                                @error('payment')
+                                                    <div class="invalid-feedback" style="color: white">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3">
+                                                <input placeholder="Drop your donation..." type="number"
+                                                    class="form-control @error('amount') is-invalid @enderror"
+                                                    id="exampleInputText" name="amount" value="{{ old('amount') }}">
+                                                @error('amount')
+                                                    <div class="invalid-feedback" style="color: white">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3">
+                                                <input placeholder="Write a message..." type="text"
+                                                    class="form-control @error('message') is-invalid @enderror"
+                                                    id="exampleInputText" name="message" value={{old('message')}}>
+                                                @error('message')
+                                                    <div class="invalid-feedback" style="color: white">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
                                     </div>
-                                    <form action="/donation/add" method="POST" style="margin-top:20px">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <select name="rating" id="" class="form-control">
-                                                <option value="-">Select Payment Method...</option>
-                                                <option value="credit_card">Credit Card</option>
-                                                <option value="bank_transfer">Bank Transfer</option>
-                                                <option value="paypal">Paypal</option>
-                                            </select>
-                                            @error('star')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="mb-3">
-                                            <input placeholder="Drop your donation..." type="number"
-                                                class="form-control @error('amount') is-invalid @enderror"
-                                                id="exampleInputText" name="amount">
-                                            @error('amount')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="mb-3">
-                                            <input placeholder="Write a message..." type="text"
-                                                class="form-control @error('comment') is-invalid @enderror"
-                                                id="exampleInputText" name="comment">
-                                            @error('comment')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
+                                @endif
 
-                                {{-- loop --}}
-                                <div class="container-fluid"
-                                    style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(246, 39, 39);border-radius:5px;padding:20px;color:white">
-                                    <div class="d-flex align-items-center">
-                                        <img src="{{ Auth::user()->profile_url }}" alt="" class="rounded-circle"
-                                            style="height: 50px; width:50px">
-                                        <div class="d-flex flex-column">
-                                            <strong style="margin-left:15px">{{ Auth::user()->name }}</strong>
-                                            <strong style="margin-left:15px;font-size:20px">Rp:150k++</strong>
+                                @foreach ($donations as $item)
+                                    <?php $user = $item->user; ?>
+                                    <div class="container-fluid"
+                                        style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:{{ $item->amount < 150000 ? 'rgb(37, 43, 202)' : 'rgb(246, 39, 39)' }};border-radius:5px;padding:20px;color:white">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ $user->profile_url }}" alt="" class="rounded-circle"
+                                                style="height: 50px; width:50px">
+                                            <div class="d-flex flex-column">
+                                                <strong style="margin-left:15px">{{ $user->name }} - <span
+                                                        style="font-size:11px">{{ $item->created_at->format('d/m/Y') }}</span>
+                                                </strong>
+                                                <strong style="margin-left:15px;font-size:20px">Rp:
+                                                    {{ number_format($item->amount, 2, ',', '.') }}</strong>
+                                            </div>
+                                        </div>
+                                        <div class="div" style="margin-top:10px">
+                                            <span>{{ $item->message }}</span>
                                         </div>
                                     </div>
-                                    <div class="div" style="margin-top:10px">
-                                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, tempore! Eos
-                                            maxime dolorum doloribus magni quis, provident deserunt odio laudantium
-                                            repellendus ipsa tempora ipsam inventore nemo consectetur expedita nobis.
-                                            Cupiditate!</span>
-                                    </div>
-                                </div>
-                                <div class="container-fluid"
-                                    style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(37, 43, 202);border-radius:5px;padding:20px;color:white">
-                                    <div class="d-flex align-items-center">
-                                        <img src="{{ Auth::user()->profile_url }}" alt="" class="rounded-circle"
-                                            style="height: 50px; width:50px">
-                                        <div class="d-flex flex-column">
-                                            <strong style="margin-left:15px">{{ Auth::user()->name }}</strong>
-                                            <strong style="margin-left:15px;font-size:20px">Rp:10k-150k</strong>
-                                        </div>
-                                    </div>
-                                    <div class="div" style="margin-top:10px">
-                                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, tempore! Eos
-                                            maxime dolorum doloribus magni quis, provident deserunt odio laudantium
-                                            repellendus ipsa tempora ipsam inventore nemo consectetur expedita nobis.
-                                            Cupiditate!</span>
-                                    </div>
-                                </div>
+                                @endforeach
+
+                                @if($game->gameDonations == null)
+                                <h4>No Donations Yet..</h4>
+                                @endif
                             </div>
                         </div>
                     </div>

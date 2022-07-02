@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class GameDonation extends Model
 {
     use HasFactory;
+    protected $fillable = ['game_id', 'user_id', 'payment_method', 'amount', 'message'];
 
     public function game () {
         return $this->belongsTo(Game::class);

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\GameDonation;
 use App\Models\GameTag;
 use App\Models\GameGenre;
 use App\Models\GameLibrary;
+use App\Models\GameReview;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -100,10 +102,12 @@ class Controller extends BaseController
     {
         $isOnWishlist = false;
         $isBought = false;
+        $myReview = null;
 
         if(Auth::check() && Auth::user()->role != 'admin'){
             $isOnWishlist = Wishlist::where('game_id', $request->id)->where('user_id', Auth::user()->id)->first();
             $isBought = GameLibrary::where('game_id', $request->id)->where('user_id', Auth::user()->id)->first();
+            $myReview = GameReview::where('game_id', $request->id)->where('user_id', Auth::user()->id)->first();
         }
 
         return view('frontend.gameDetail', [
@@ -111,6 +115,8 @@ class Controller extends BaseController
             'active' => '',
             'isBought' => $isBought,
             'isOnWishlist' => $isOnWishlist,
+            'myReview' => $myReview,
+            'donations' => GameDonation::where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),
             'game' => Game::where('status', 'published')->find($request->id), //Belum di fix N+1 problem , kasih with(['table_name'])
         ]);
     }
