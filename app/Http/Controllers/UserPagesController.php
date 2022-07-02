@@ -52,7 +52,7 @@ class UserPagesController extends Controller
     public function userDonationPage(){
         return view('frontend.userProfile.donationHistory', [
             'category_nav' => GameGenre::get(),
-            'active' => '',
+            'active' => 'Profile',
             'donations' => GameDonation::where('user_id', Auth::user()->id)->get()
         ]);
     }

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" style="margin-top: 20px;margin-bottom:20px">
     <!-- Start Banner Area -->
-    <section class="banner section pb-5 pt-5">
+    <section class="banner section pb-5 pt-3">
         <div class="container">
             <div class="row">
                 <div class="col-12">
