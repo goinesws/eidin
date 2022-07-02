@@ -145,11 +145,21 @@
                                                     <select name="rating"
                                                         class="form-control @error('rating') is-invalid @enderror" required>
                                                         <option selected disabled>Select Star...</option>
-                                                        <option value="5" @if (old('rating') == '5') selected @endif>5 Star</option>
-                                                        <option value="4" @if (old('rating') == '4') selected @endif>4 Star</option>
-                                                        <option value="3" @if (old('rating') == '3') selected @endif>3 Star</option>
-                                                        <option value="2" @if (old('rating') == '2') selected @endif>2 Star</option>
-                                                        <option value="1" @if (old('rating') == '1') selected @endif>1 Star</option>
+                                                        <option value="5"
+                                                            @if (old('rating') == '5') selected @endif>5 Star
+                                                        </option>
+                                                        <option value="4"
+                                                            @if (old('rating') == '4') selected @endif>4 Star
+                                                        </option>
+                                                        <option value="3"
+                                                            @if (old('rating') == '3') selected @endif>3 Star
+                                                        </option>
+                                                        <option value="2"
+                                                            @if (old('rating') == '2') selected @endif>2 Star
+                                                        </option>
+                                                        <option value="1"
+                                                            @if (old('rating') == '1') selected @endif>1 Star
+                                                        </option>
                                                     </select>
                                                     @error('rating')
                                                         <div class="invalid-feedback" style="color: white">{{ $message }}
@@ -157,9 +167,8 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3">
-                                                    <input placeholder="Write Your Review..." type="text"
-                                                        class="form-control @error('comment') is-invalid @enderror"
-                                                        id="exampleInputText" name="comment" value="{{old('comment')}}">
+                                                    <textarea placeholder="Write your review here.." class="form-control" id="review-message" rows="8"
+                                                        @error('comment') is-invalid @enderror" id="exampleInputText" name="comment" value={{ old('comment') }}></textarea>
                                                     @error('comment')
                                                         <div class="invalid-feedback" style="color: white">{{ $message }}
                                                         </div>
@@ -174,6 +183,10 @@
                                         ?>
                                         <div class="container-fluid"
                                             style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(81, 81, 206);border-radius:15px;padding:20px;color:white">
+                                            <div style="margin-bottom:20px">
+                                                <button class="btn btn-sm btn-secondary"><em class="lni lni-pencil"
+                                                        style="margin-right:5px"></em> Edit Review</button>
+                                            </div>
                                             <div class="d-flex align-items-center">
                                                 <img src="{{ $user->profile_url }}" alt=""
                                                     class="rounded-circle" style="height: 40px; width:40px">
@@ -193,8 +206,8 @@
                                     @endif
                                 @endif
 
-                                @foreach ($game->gameReviews->sortBy(['created_at', 'desc']) as $item)
-                                    @if ($myReview != null && $item->id != $myReview->id)
+                                @foreach ($reviews as $item)
+                                    @if ($myReview == null || $item->id != $myReview->id)
                                         <?php
                                         $user = $item->user;
                                         ?>
@@ -219,7 +232,7 @@
                                     @endif
                                 @endforeach
 
-                                @if ($game->gameReviews == null)
+                                @if (!count($reviews))
                                     <h4>Review Empty...</h4>
                                 @endif
                             </div>
@@ -242,16 +255,23 @@
                                         </div>
                                         <form action="/donation/add" method="POST" style="margin-top:20px">
                                             @csrf
-                                            <input type="hidden" name="game_id" value="{{$game->id}}">
+                                            <input type="hidden" name="game_id" value="{{ $game->id }}">
                                             <div class="mb-3">
-                                                <select name="payment" id="" class="form-control  @error('payment') is-invalid @enderror">
+                                                <select name="payment" id=""
+                                                    class="form-control  @error('payment') is-invalid @enderror">
                                                     <option selected disabled>Select Payment Method...</option>
-                                                    <option value="credit_card" @if (old('payment') == 'credit_card') selected @endif>Credit Card</option>
-                                                    <option value="bank_transfer" @if (old('payment') == 'bank_transfer') selected @endif>Bank Transfer</option>
-                                                    <option value="paypal" @if (old('payment') == 'paypal') selected @endif>Paypal</option>
+                                                    <option value="credit_card"
+                                                        @if (old('payment') == 'credit_card') selected @endif>Credit Card
+                                                    </option>
+                                                    <option value="bank_transfer"
+                                                        @if (old('payment') == 'bank_transfer') selected @endif>Bank Transfer
+                                                    </option>
+                                                    <option value="paypal"
+                                                        @if (old('payment') == 'paypal') selected @endif>Paypal</option>
                                                 </select>
                                                 @error('payment')
-                                                    <div class="invalid-feedback" style="color: white">{{ $message }}</div>
+                                                    <div class="invalid-feedback" style="color: white">{{ $message }}
+                                                    </div>
                                                 @enderror
                                             </div>
                                             <div class="mb-3">
@@ -259,15 +279,16 @@
                                                     class="form-control @error('amount') is-invalid @enderror"
                                                     id="exampleInputText" name="amount" value="{{ old('amount') }}">
                                                 @error('amount')
-                                                    <div class="invalid-feedback" style="color: white">{{ $message }}</div>
+                                                    <div class="invalid-feedback" style="color: white">{{ $message }}
+                                                    </div>
                                                 @enderror
                                             </div>
                                             <div class="mb-3">
-                                                <input placeholder="Write a message..." type="text"
-                                                    class="form-control @error('message') is-invalid @enderror"
-                                                    id="exampleInputText" name="message" value={{old('message')}}>
+                                                <textarea placeholder="Write your message here.." class="form-control" id="review-message" rows="8"
+                                                    @error('message') is-invalid @enderror" id="exampleInputText" name="message" value={{ old('message') }}></textarea>
                                                 @error('message')
-                                                    <div class="invalid-feedback" style="color: white">{{ $message }}</div>
+                                                    <div class="invalid-feedback" style="color: white">{{ $message }}
+                                                    </div>
                                                 @enderror
                                             </div>
                                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -295,9 +316,8 @@
                                         </div>
                                     </div>
                                 @endforeach
-
-                                @if($game->gameDonations == null)
-                                <h4>No Donations Yet..</h4>
+                                @if (!count($donations))
+                                    <h4>No Donations Yet..</h4>
                                 @endif
                             </div>
                         </div>
@@ -313,52 +333,37 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Leave a Review</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Buy Game : "{{ $game->game_name }}"</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review-name">Your Name</label>
-                                <input class="form-control" type="text" id="review-name" required>
-                            </div>
+                <form action="/game/buy" method="POST">
+                    <div class="modal-body">
+                        @csrf
+                        <input type="hidden" name="game_id" value="{{ $game->id }}">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="price"
+                                value="Rp {{ number_format($game->price, 2, ',', '.') }}" disabled>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review-email">Your Email</label>
-                                <input class="form-control" type="email" id="review-email" required>
-                            </div>
+                        <div class="mb-3">
+                            <select name="payment" id=""
+                                class="form-control  @error('payment') is-invalid @enderror">
+                                <option selected disabled>Select Payment Method...</option>
+                                <option value="credit_card" @if (old('payment') == 'credit_card') selected @endif>Credit Card
+                                </option>
+                                <option value="bank_transfer" @if (old('payment') == 'bank_transfer') selected @endif>Bank
+                                    Transfer</option>
+                                <option value="paypal" @if (old('payment') == 'paypal') selected @endif>Paypal</option>
+                            </select>
+                            @error('payment')
+                                <div class="invalid-feedback" style="color: white">{{ $message }}</div>
+                            @enderror
                         </div>
+                        {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review-subject">Subject</label>
-                                <input class="form-control" type="text" id="review-subject" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review-rating">Rating</label>
-                                <select class="form-control" id="review-rating">
-                                    <option>5 Stars</option>
-                                    <option>4 Stars</option>
-                                    <option>3 Stars</option>
-                                    <option>2 Stars</option>
-                                    <option>1 Star</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="modal-footer button">
+                        <button class="btn" type="submit">Buy Game!</button>
                     </div>
-                    <div class="form-group">
-                        <label for="review-message">Review</label>
-                        <textarea class="form-control" id="review-message" rows="8" required></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer button">
-                    <button type="button" class="btn">Submit Review</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
