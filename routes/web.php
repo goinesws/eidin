@@ -93,6 +93,7 @@ Route::middleware(['user'])->group(function () {
     Route::get('/myDonation', [UserPagesController::class, 'userDonationPage']);
 
     Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
+    Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist']);
 });
 
 //dev only

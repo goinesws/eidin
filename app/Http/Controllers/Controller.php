@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\GameTag;
 use App\Models\GameGenre;
+use App\Models\GameLibrary;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
+use PharIo\Manifest\Library;
 
 class Controller extends BaseController
 {
@@ -96,9 +98,19 @@ class Controller extends BaseController
 
     public function gameDetail(Request $request)
     {
+        $isOnWishlist = false;
+        $isBought = false;
+
+        if(Auth::check() && Auth::user()->role != 'admin'){
+            $isOnWishlist = Wishlist::where('game_id', $request->id)->where('user_id', Auth::user()->id)->first();
+            $isBought = GameLibrary::where('game_id', $request->id)->where('user_id', Auth::user()->id)->first();
+        }
+
         return view('frontend.gameDetail', [
             'category_nav' => GameGenre::get(),
             'active' => '',
+            'isBought' => $isBought,
+            'isOnWishlist' => $isOnWishlist,
             'game' => Game::where('status', 'published')->find($request->id), //Belum di fix N+1 problem , kasih with(['table_name'])
         ]);
     }

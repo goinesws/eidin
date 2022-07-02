@@ -17,4 +17,9 @@ class WishlistController extends Controller
 
         return redirect()->back()->with('success', 'Success!');
     }
+
+    public function removeFromWishlist(Request $request){
+        Wishlist::where('game_id' , $request->id)->where('user_id' , Auth::user()->id)->delete();
+        return redirect()->back()->with('success', 'Success!');
+    }
 }
