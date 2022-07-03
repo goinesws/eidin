@@ -75,6 +75,7 @@ class Controller extends BaseController
     public function searchPage(Request $request)
     {
         return view('frontend.search', [
+            'request' => $request->search,
             'category_nav' => GameGenre::get(),
             'active' => '',
             'search_result' => Game::getGamebySearch($request->search),
