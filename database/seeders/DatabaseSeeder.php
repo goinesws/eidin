@@ -345,12 +345,12 @@ class DatabaseSeeder extends Seeder
             'Cuphead is a classic run and gun action game heavily focused on boss battles.',
             'Dig, Fight, Explore, Build: The very world is at your fingertips as you fight for survival, fortune, and glory.',
             'A rogue-lite hack and slash dungeon crawler.',
-            'The Binding of Isaac: Rebirth is a top down, procedurally-generated roguelike game, remade based on the original game The Binding of Isaac.',
+            'The Binding of Isaac: Rebirth is a top down, procedurally-generated roguelike game.',
             'Welcome to UNDERTALE. In this RPG, you control a human who falls underground into the world of monsters.',
             'Help Madeline survive her inner demons.',
             'A physics based medieval battle simulator which lets you pit wacky waving armies against each other.',
             'Dead Cells is a rogue-lite, metroidvania inspired, action-platformer.',
-            'A 2D metroidvania with an emphasis on close combat and exploration in which the player enters the once-prosperous now-bleak insect kingdom of Hallownest.'
+            'A 2D metroidvania with an emphasis on close combat and exploration.'
         ];
 
         $game_content_rating = [
@@ -473,8 +473,71 @@ class DatabaseSeeder extends Seeder
         }
 
         // Array buat game review
+        $game_rating = [
+            5,
+            4,
+            5,
+            5,
+            4,
+            4,
+            4,
+            4,
+            5,
+            5
+        ];
+
+        $game_comment = [
+            'Stardew valley is a really amazing game, it is very fun and the graphics are so good, I love it!. The gameplay isn\'t boring and the gameplay is very intuitive, hence making it a really easy and great gasme to play. I recommend this game to all of you who want to play this game.',
+            'Cuphead is an amazing game, but there are some things that doesn\'t feel right to me. Personally, I like games that are very retro and pixelated, so Cuphead\'s visuals ain\'t my cup of tea. Nevertheless, it is still a great game, you guys should give this game a try.',
+            'Terraria is an amazing game!!! I had lots of fun and amazing memories with this game. Terraria is really fun when you play it with friends, the game itself isn\' very grindy and the death in this game isn\'t very taxing, making it a really beginner-friendly game. I would recommend this game to you guys that are searching for a new game to play with your friends.',
+            'Oh boy, what can I say more man, the awards speak for itself. The game of the year, amazing graphics, gameplay, and soundtracks, man what more can u ask from a game. I really like the theme of this game and the gameplay is just mesmerizing to top it off, the graphics are just \'wow\'. You guys should definitely download this game ASAP, the price is so-so-so worth it man.',
+            'The binding of isaac is a really amazing game, but the graphics are too eerie for me as it gross me out frequently. Other than the graphics there are no real downside to buying this game, the gameplay is fun and the story is rich but beware this game causes real trouble for you if you play it alone.',
+            'Undertale is an amazing game, but there are times where I feel like I want to quit because how frustrating it is. I feel like I hit the deadend so many times in this game, but I prevailed and I am able to finish this game. This is one of the classics of gaming, and I would really recommend this game to all of you that are in for a challenge',
+            'Celeste is an okay game, it is fun at first, but the longer you play the fun get reduced and the storyline is very taxing mentally for casuals. I would recommend this game to you guys that are hardcore gamers to the core.',
+            'TABS is a really fun game but the graphics are really taxing to my GPU card. I had too much fun in simulating battles that are too much for my GPU to handle, but there are still a lot of game breaking bugs that exists. I would recommend this game to you guys that loves to have fun and laugh on absurd things.',
+            'Dead cells is really fund to play, I had a blast and I would recommend this game to all of you reading this comment. At first  I was skeptical, but I decided to download this game nonetheless and it turned out to be one of the best decisions that I have ever made.',
+            'Hollow knight is a really fun game, the game itself is visually pleasing and rich in story, making it one of my favorite games right away. Personally, I like the design and backstory of the main character and its depth, making him a really intriguing but confusing character. The twist and the turns of the story is just perfect, no over dramatization or over-the-top stuff.',
+        ];
 
         // Array buat game donos
+        $dono_payment_method = [
+            'Bank Transfer',
+            'Paypal',
+            'Paypal',
+            'Paypal',
+            'Credit Card',
+            'Bank Transfer',
+            'Credit Card',
+            'Bank Transfer',
+            'Paypal',
+            'Credit Card',
+        ];
+
+        $dono_amount = [
+            2000000,
+            650000,
+            440000,
+            6666000,
+            690000,
+            442000,
+            142000,
+            50000,
+            90000,
+            654321
+        ];
+
+        $dono_msg = [
+            'Very nice game, I really like it',
+            'I had fun thank you!',
+            'U DA GOAT MY G',
+            'GOTY GOTY GOTY GOTY',
+            'Nice work, keep it up!',
+            'MEGALOVANIAMEGALOVANIAMEGALOVANIA',
+            'WHYYYYYYYYYYYYYYYYYYYYY',
+            'HAHAHAHAHA ULOL ULOL ULOL',
+            'VERY NICE GAME MAKE MORE PLS',
+            'BING CHILLING',
+        ];
 
         for ($i = 1; $i <= 10; $i++) {
             TagDetail::create([
@@ -494,9 +557,9 @@ class DatabaseSeeder extends Seeder
 
             GameReview::create([
                 'game_id' => $i,
-                'user_id' => $faker->numberBetween(1, 10),
-                'rating' => $faker->numberBetween(1, 5),
-                'comment' => $faker->text,
+                'user_id' => $i,
+                'rating' => $game_rating[$i - 1],
+                'comment' => $game_comment[$i - 1],
             ]);
 
             GamePayment::create([
@@ -507,11 +570,11 @@ class DatabaseSeeder extends Seeder
             ]);
 
             GameDonation::create([
-                'game_id' => $faker->numberBetween(1, 10),
-                'user_id' => $faker->numberBetween(1, 10),
-                'payment_method' => $faker->randomElement(['paypal', 'credit_card', 'bank_transfer']),
-                'amount' => $faker->numberBetween(10000, 1000000),
-                'message' => $faker->text,
+                'game_id' => $i,
+                'user_id' => $i,
+                'payment_method' => $dono_payment_method[$i - 1],
+                'amount' => $dono_amount[$i - 1],
+                'message' => $dono_msg[$i - 1]
             ]);
         }
     }

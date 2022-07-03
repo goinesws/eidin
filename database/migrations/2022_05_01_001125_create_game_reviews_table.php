@@ -18,7 +18,7 @@ class CreateGameReviewsTable extends Migration
             $table->unsignedBigInteger('game_id');
             $table->unsignedBigInteger('user_id');
             $table->float('rating');
-            $table->string('comment');
+            $table->text('comment');
             $table->timestamps();
 
             $table->foreign('game_id')->references('id')->on('games');
