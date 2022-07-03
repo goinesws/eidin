@@ -145,16 +145,6 @@ class Controller extends BaseController
         ]);
     }
 
-    public function gamebyDev(Request $request)
-    {
-        return view('frontend.gamebyDev', [
-            'category_nav' => GameGenre::get(),
-            'active' => '',
-            'dev' => Developer::find($request->id),
-            'games' => Game::where('dev_id', $request->id)->where('status', 'published')->get()
-        ]);
-    }
-
     public function companyDetail (Request $request) {
         $ratings = array();
         $games = Game::all();
