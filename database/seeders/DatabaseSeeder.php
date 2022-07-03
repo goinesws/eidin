@@ -30,29 +30,29 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $genres = [
-            'action',
-            'adventure',
-            'casual',
-            'strategy',
-            'rpg',
-            'simulation',
-            'sports',
-            'racing',
-            'battle royale',
-            'other'
+            'Action',
+            'Adventure',
+            'Casual',
+            'Strategy',
+            'RPG',
+            'Simulation',
+            'Sports',
+            'Racing',
+            'Battle Royale',
+            'Other'
         ];
 
         $tags = [
-            'new',
-            'promotion',
-            'sale',
-            'hot',
-            'comeback',
-            'hunt',
-            'race',
-            'killorgetkilled',
-            'survival',
-            'other'
+            'New',
+            'Promotion',
+            'Sale',
+            'Hot',
+            'Comeback',
+            'Hunt',
+            'Race',
+            'Killorgetkilled',
+            'Survival',
+            'Other'
         ];
 
         $faker = Factory::create();
@@ -231,33 +231,250 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        // Array game
+        $game_genre_id = [
+            6,
+            2,
+            2,
+            1,
+            2,
+            2,
+            2,
+            6,
+            2,
+            2
+        ];
+
+        $game_name = [
+            'Stardew Valley',
+            'Cuphead',
+            'Terraria',
+            'Hades',
+            'The Binding of Isaac : Rebirth',
+            'Undertale',
+            'Celeste',
+            'Totally Accurate Battle Simulator',
+            'Dead Cells',
+            'Hollow Knight'
+        ];
+
+        $game_price = [
+            0,
+            95199,
+            44999,
+            71999,
+            47999,
+            89999,
+            33999,
+            37059,
+            74999,
+            57999
+        ];
+
+        $game_logo_url = [
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/xrpmydnu9rpxvxfjkiu7.png',
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/co49fq.png',
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/co1rbo.png',
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/co39vc.png',
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/co1lbm.png',
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/co2855.png',
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/co3byy.png',
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/co1veb.png',
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/co1rgj.png',
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/co1rgi.png'
+        ];
+
+        $game_trailer_url = [
+            'https://www.youtube.com/embed/ot7uXNQskhs',
+            'https://www.youtube.com/embed/e5iGwE0XJ1s',
+            'https://www.youtube.com/embed/w7uOhFTrrq0',
+            'https://www.youtube.com/embed/Bz8l935Bv0Y',
+            'https://www.youtube.com/embed/Z6_C2ppkdVc',
+            'https://www.youtube.com/embed/1Hojv0m3TqA',
+            'https://www.youtube.com/embed/37njFGz8efs',
+            'https://www.youtube.com/embed/ah6OVetEmFQ',
+            'https://www.youtube.com/embed/Q1ZGq1mk1KM',
+            'https://www.youtube.com/embed/0GXyV9EvB_g'
+        ];
+
+        $game_pic_url = [
+            // stardew
+            'https://images.igdb.com/igdb/image/upload/t_original/ar5l8.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/rhxs1x9w5hf5kde2osf5.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/iwswpvxa9ytrpk8yjcyx.jpg',
+            // cup head
+            'https://images.igdb.com/igdb/image/upload/t_original/ar6yk.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/sqho6e7tv9verg6j1tvv.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/r9zt66wdgqohmhuukiir.jpg',
+            // terraria
+            'https://images.igdb.com/igdb/image/upload/t_original/ar5kn.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/gsqomyqfsqqq31yhw0tt.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/cdg8nmyqbjogspa5wzvf.jpg',
+            // hades
+            'https://images.igdb.com/igdb/image/upload/t_original/ar10j0.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/sc8lik.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/sc8lim.jpg',
+            // the binding of isaac
+            'https://images.igdb.com/igdb/image/upload/t_original/arr0u.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/jbcoaccyn342cqg1i3ic.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/efirqoealy261qz830cv.jpg',
+            // undertale
+            'https://images.igdb.com/igdb/image/upload/t_original/ar4vc.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/ze8i79ycm3gyymrjvxf0.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/dp7ytj3ouesyoq7ddrrx.jpg',
+            // celeste
+            'https://images.igdb.com/igdb/image/upload/t_original/ar7u5.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/wjw3vnaclj29fqtziwsr.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/e9lk3alqutkrciksfque.jpg',
+            // totally accurate battle simulator
+            'https://images.igdb.com/igdb/image/upload/t_original/ar6i5.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/ns1yco3iwezeav9h6jee.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/zrmbxwlptiyrxw7z9p3x.jpg',
+            // dead cells
+            'https://images.igdb.com/igdb/image/upload/t_original/ar6il.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/bt9qwbyek1dmffukq44d.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/ikkm7a4sokicgfw7fmz5.jpg',
+            // hollow knight
+            'https://images.igdb.com/igdb/image/upload/t_original/tvfbpcmuonwiugjcbc45.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/p3svrq6ewzxnn7p1a3v9.jpg',
+            'https://images.igdb.com/igdb/image/upload/t_original/ityinxmtkakwbokpcwws.jpg'
+        ];
+
+        $game_short_desc = [
+            'Stardew Valley is an open-ended country-life RPG!',
+            'Cuphead is a classic run and gun action game heavily focused on boss battles.',
+            'Dig, Fight, Explore, Build: The very world is at your fingertips as you fight for survival, fortune, and glory.',
+            'A rogue-lite hack and slash dungeon crawler.',
+            'The Binding of Isaac: Rebirth is a top down, procedurally-generated roguelike game, remade based on the original game The Binding of Isaac.',
+            'Welcome to UNDERTALE. In this RPG, you control a human who falls underground into the world of monsters.',
+            'Help Madeline survive her inner demons.',
+            'A physics based medieval battle simulator which lets you pit wacky waving armies against each other.',
+            'Dead Cells is a rogue-lite, metroidvania inspired, action-platformer.',
+            'A 2D metroidvania with an emphasis on close combat and exploration in which the player enters the once-prosperous now-bleak insect kingdom of Hallownest.'
+        ];
+
+        $game_content_rating = [
+            'PEGI 12',
+            'PEGI 7',
+            'PEGI 12',
+            'PEGI 12',
+            'ESRB MATURE 17+',
+            'ESRB EVERYONE 10+',
+            'ESRB EVERYONE 10+',
+            'PEGI 7',
+            'TEEN',
+            'PEGI 7'
+        ];
+
+        $game_about = [
+            'Stardew Valley is an open-ended country-life RPG! You\'ve inherited your grandfather\'s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home? It won\'t be easy. Ever since Joja Corporation came to town, the old ways of life have all but disappeared. The community center, once the town\'s most vibrant hub of activity, now lies in shambles. But the valley seems full of opportunity. With a little dedication, you might just be the one to restore Stardew Valley to greatness!',
+            'Cuphead is a classic run and gun action game heavily focused on boss battles. Inspired by cartoons of the 1930s, the visuals and audio are painstakingly created with the same techniques of the era, i.e. traditional cel animation (hand drawn & hand inked!), watercolor backgrounds, and original jazz recordings. Play as Cuphead or Mugman (in single player or co-op) as you traverse strange worlds, acquire new weapons, learn powerful super moves, and discover hidden secrets. Cuphead is all action, all the time.',
+            'Dig, Fight, Explore, Build: The very world is at your fingertips as you fight for survival, fortune, and glory. Will you delve deep into cavernous expanses in search of treasure and raw materials with which to craft ever-evolving gear, machinery, and aesthetics? Perhaps you will choose instead to seek out ever-greater foes to test your mettle in combat? Maybe you will decide to construct your own city to house the host of mysterious allies you may encounter along your travels?',
+            'A rogue-lite hack and slash dungeon crawler in which Zagreus, son of Hades the Greek god of the dead, attempts to escape his home and his oppressive father by fighting the souls of the dead through the various layers of the ever-shifting underworld, while getting to know and forging relationships with its inhabitants.',
+            'The Binding of Isaac: Rebirth is a top down, procedurally-generated roguelike game, remade based on the original game The Binding of Isaac. You play as Isaac, a little boy who is chased to the basement by his mother who intends to kill Isaac for her savior. You explore different levels, collect items and try to defeat your mother.. and whatever other evil awaits you. If you die, you restart with none of your items you collected, and you must explore the basement and beyond again.',
+            'A small child falls into the Underground, where monsters have long been banished by humans and are hunting every human that they find. The player controls the child as they try to make it back to the Surface through hostile environments, all the while engaging with a turn-based combat system with puzzle-solving and bullet hell elements, as well as other unconventional game mechanics.',
+            'Help Madeline survive her inner demons on her journey to the top of Celeste Mountain, in this super-tight, hand-crafted platformer from the creators of multiplayer classic TowerFall.',
+            'A physics based medieval battle simulator which lets you pit wacky waving armies against each other. In Totally Accurate Battle Simulator you pit waving arm men against each other and watch them fight it out.',
+            'Dead Cells is a rogue-lite, metroidvania inspired, action-platformer. You\'ll explore a sprawling, ever-changing castle... assuming you\'re able to fight your way past its keepers in 2D souls-lite combat. No checkpoints. Kill, die, learn, repeat.',
+            'A 2D metroidvania with an emphasis on close combat and exploration in which the player enters the once-prosperous now-bleak insect kingdom of Hallownest, travels through its various districts, meets friendly inhabitants, fights hostile ones and uncovers the kingdom\'s history while improving their combat abilities and movement arsenal by fighting bosses and accessing out-of-the-way areas.'
+        ];
+
+        $game_processor = [
+            '2 Ghz',
+            'Intel Core2 Duo E8400, 3.0GHz or AMD Athlon 64 X2 6000+, 3.0GHz or higher',
+            '2.0 Ghz',
+            'Dual Core 2.4 GHz',
+            '2.4 GHz Quad Core 2.0 (or higher)',
+            '2 GHz',
+            'Intel Core i3 M380',
+            'Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent',
+            'Intel i5+',
+            'Intel Core 2 Duo E5200'
+        ];
+
+        $game_os = [
+            'Windows Vista or greater, Mac OSX 10.10 or higher, Ubuntu 12.04 LTS or higher',
+            'Windows 7 or greater, Mac OS X 10.11.x or higher',
+            'Windows Xp, Vista, 7, 8/8.1, 10',
+            'Windows 7 SP1, MAC OSX 10.13.6+',
+            'Windows 8 / 7 / Vista / XP, MAC OSX 10.9 or higher',
+            'Windows XP, Vista, 7, 8, or 10, Mac OS X, Ubuntu 14+',
+            'Windows 7 or newer, Lion 10.7.5, 32/64-bit, glibc 2.17+, 32/64-bit',
+            'Windows 7, macOS Mojave',
+            'Windows 7+, Mavericks 10.9 or later',
+            'Windows 7 (64bit), Mac OS 10.13 (64bit), Ubuntu 16.04 LTS (64bit)'
+        ];
+
+        $game_memory = [
+            '2 GB RAM',
+            '4 GB RAM',
+            '2.5 GB RAM',
+            '4 GB RAM',
+            '8 GB RAM',
+            '2 GB RAM',
+            '2 GB RAM',
+            '8 GB RAM',
+            '2 GB RAM',
+            '4 GB RAM'
+        ];
+
+        $game_graphics = [
+            '256 MB Video Memory',
+            'Intel HD Graphics 4000 or higher (requires Metal)',
+            '128 MB Video Memory, capable of Shader Model 2.0+',
+            'Intel HD 5000 (must support Metal API)',
+            'Intel HD Graphics 4000 and higher, ATI Radeon HD-Series 4650 and higher, Nvidia GeForce 2xx-Series and up',
+            '128MB',
+            'Intel HD 4000',
+            'NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)',
+            'Nvidia 450 GTS / Radeon HD 5750 or better',
+            'GeForce 9800GTX+ (1GB)'
+        ];
+
+        $game_storage = [
+            '500 MB',
+            '4 GB',
+            '200 MB',
+            '15 GB',
+            '449 MB',
+            '200 MB',
+            '1200 MB',
+            '4 GB',
+            '500 MB',
+            '9 GB'
+        ];
+
         for ($i = 1; $i <= 10; $i++) {
             Game::create([
-                'genre_id' => $faker->numberBetween(1, 10),
+                'genre_id' => $game_genre_id[$i - 1],
                 'dev_id' => $i,
-                'game_name' => $faker->word,
+                'game_name' => $game_name[$i - 1],
                 'game_version' => '1.0',
-                'price' => $faker->numberBetween(10000, 1000000),
+                'price' => $game_price[$i - 1],
                 'promotional' => json_encode([
-                    'logo' => $faker->imageUrl,
-                    'trailer' => 'https://www.youtube.com/embed/5jKZ9KGtee0', //video url
+                    'logo' => $game_logo_url[$i - 1],
+                    'trailer' => $game_trailer_url[$i - 1], //video url
                     'img' => [
-                        $faker->imageUrl, $faker->imageUrl, $faker->imageUrl,
+                        $game_pic_url[3 * ($i - 1)], $game_pic_url[3 * ($i - 1) + 1], $game_pic_url[3 * ($i - 1)  + 2],
                     ]
                 ]),
                 'game_data_path' => $faker->url,
                 'date_published' => $faker->dateTimeThisYear,
-                'short_desc' => $faker->text(50),
-                'content_rating' => $faker->randomElement(['a', 'b', 'not_specified']),
-                'about_game' => $faker->text,
-                'requirement_processor' => $faker->randomElement(['Intel Core i9-12900K', 'AMD Ryzen 9 5900X', 'Intel Core i5-12600K', 'AMD Ryzen 7 5800X3D', 'AMD Ryzen 3 3100']),
-                'requirement_os' => $faker->randomElement(['Windows', 'Linux', 'Mac OS']),
-                'requirement_memory' => $faker->randomElement(['2', '4', '8', '16', '32']) . 'GB',
-                'requirement_graphic' => $faker->randomElement(['GeForce GTX', 'GeForce RTX', 'Nvidia Titan', 'Radeon HD', 'Radeon RX']),
-                'requirement_storage' => strval($faker->randomFloat(1, 1, 100)) . 'GB',
+                'short_desc' => $game_short_desc[$i - 1],
+                'content_rating' => $game_content_rating[$i - 1],
+                'about_game' => $game_about[$i - 1],
+                'requirement_processor' => $game_processor[$i - 1],
+                'requirement_os' => $game_os[$i - 1],
+                'requirement_memory' => $game_memory[$i - 1],
+                'requirement_graphic' => $game_graphics[$i - 1],
+                'requirement_storage' => $game_storage[$i - 1],
                 'status' => 'published'
             ]);
         }
+
+        // Array buat game review
+
+        // Array buat game donos
 
         for ($i = 1; $i <= 10; $i++) {
             TagDetail::create([
