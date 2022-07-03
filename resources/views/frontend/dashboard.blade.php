@@ -27,16 +27,16 @@
                                             {{ $pgame->game_name }}
                                         </h2>
                                         <?php
-                                        $promotional = json_decode($pgame->promotional);
+                                            $promotional = json_decode($pgame->promotional);
                                         ?>
-                                        <div class="pt-3 pb-1">{{ $promotional->desc }}</div>
-                                        <div>{{ $promotional->url }}</div>
+                                        <div class="pt-3 pb-1">{{ $pgame->short_desc }}</div>
+                                        {{-- <div>{{ $promotional->img[0] }}</div> --}}
                                         <h3><span>Now Only</span> Rp{{ number_format($pgame->price,2,',','.') }}</h3>
                                         <div class="button">
                                             <a href="/game/{{ $pgame->game_id }}" class="btn">Buy Now</a>
                                         </div>
                                     </div>
-                                    <img src="{{ $promotional->placeholder }}" alt=""
+                                    <img src="{{ $promotional->img[0] }}" alt=""
                                         style="width: 48%; height:60%; position:absolute; right:0; top:20%">
                                 </div>
                                 <!-- End Single Slider -->
@@ -53,7 +53,7 @@
                             $promotional = json_decode($new_game[0]->promotional);
                             ?>
                             <div class="hero-small-banner"
-                                style="background-image: url({{ $promotional->placeholder }});">
+                                style="background-image: url({{ $promotional->img[0] }});">
                                 <a href="/game/{{ $new_game[0]->game_id }}" class="content" style="background-color: rgba(255, 255, 255, 0.8)">
                                     <h2>
                                         <span>New line required</span>
@@ -111,7 +111,7 @@
                                 <?php
                                 $promotional = json_decode($ngame->promotional);
                                 ?>
-                                <img src="{{ $promotional->placeholder }}" alt=""
+                                <img src="{{ $promotional->img[0] }}" alt=""
                                     class="position-absolute top-0 end-0" style="width: 45%; height:100%;">
                             </div>
                         </div>
@@ -143,7 +143,7 @@
                         <!-- Start Single Product -->
                         <div class="single-product"  style="height: 400px">
                             <a href="/game/{{ $sgame->game_id }}" class="product-image">
-                                <img src="{{ $promotional->placeholder }}" alt="#">
+                                <img src="{{ $promotional->img[0] }}" alt="#">
                                 <span class="sale-tag">-50%</span>
                                 {{-- @if (Auth::check() && Auth::user()->role == 'user')
                                     <div class="button">

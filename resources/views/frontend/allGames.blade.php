@@ -21,7 +21,7 @@
                         <!-- Start Single Product -->
                         <div class="single-product" style="height: 400px">
                             <a href="/game/{{ $game->id }}" class="product-image">
-                                <img src="{{ $promotional->placeholder }}" alt="#">
+                                <img src="{{ $promotional->img[0] }}" alt="#">
                                 @if ($sale_game->where('game_id', $game->id)->count() > 0)
                                     <span class="sale-tag">-50%</span>
                                 @endif

@@ -13,7 +13,7 @@
                                     <?php
                                     $promotional = json_decode($game->promotional);
                                     ?>
-                                    <img src="{{ $promotional->placeholder }}" id="current" alt="#">
+                                    <img src="{{ $promotional->img[0] }}" id="current" alt="#">
                                 </div>
                                 <div class="images">
                                     {{--  --}}
