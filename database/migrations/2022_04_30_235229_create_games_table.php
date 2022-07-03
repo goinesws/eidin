@@ -24,7 +24,7 @@ class CreateGamesTable extends Migration
             $table->string('game_data_path');
             $table->dateTime('date_published');
             $table->string('short_desc');
-            $table->enum('content_rating', ['a', 'b', 'not_specified'])->default('not_specified');
+            $table->string('content_rating')->default('PEGI 7');
             $table->text('about_game');
             $table->string('requirement_processor');
             $table->string('requirement_os');
@@ -37,7 +37,6 @@ class CreateGamesTable extends Migration
 
             $table->foreign('genre_id')->references('id')->on('game_genres');
             $table->foreign('dev_id')->references('id')->on('developers');
-
         });
     }
 
