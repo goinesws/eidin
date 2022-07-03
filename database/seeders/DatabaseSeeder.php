@@ -155,6 +155,7 @@ class DatabaseSeeder extends Seeder
                 'genre_id' => $faker->numberBetween(1, 10),
                 'dev_id' => $faker->numberBetween(1, 5),
                 'game_name' => $faker->word,
+                'game_version' => '1.0',
                 'price' => $faker->numberBetween(10000, 1000000),
                 'promotional' => json_encode([
                     'logo' => $faker->imageUrl,

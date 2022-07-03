@@ -18,6 +18,7 @@ class CreateGamesTable extends Migration
             $table->unsignedBigInteger('genre_id');
             $table->unsignedBigInteger('dev_id');
             $table->string('game_name');
+            $table->string('game_version');
             $table->integer('price');
             $table->json('promotional'); // type(img, video), placeholder, url, desc
             $table->string('game_data_path');
