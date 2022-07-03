@@ -261,7 +261,7 @@
                                             </div>
                                             <div style="margin-top:-5px;margin-left:0px"
                                                 class="d-flex align-items-center">
-                                                @for ($i = 0; $i < 5; $i++)
+                                                @for ($i = 1; $i <= 5; $i++)
                                                     <em class="lni lni-star{{ floor($item->rating) < $i ? ' ' : '-filled' }} text-warning"
                                                         style="width: 20px"></em>
                                                 @endfor
