@@ -240,7 +240,7 @@ class DatabaseSeeder extends Seeder
                 'price' => $faker->numberBetween(10000, 1000000),
                 'promotional' => json_encode([
                     'logo' => $faker->imageUrl,
-                    'trailer' => 'https://www.youtube.com/watch?v=5jKZ9KGtee0', //video url
+                    'trailer' => 'https://www.youtube.com/embed/5jKZ9KGtee0', //video url
                     'img' => [
                         $faker->imageUrl, $faker->imageUrl, $faker->imageUrl,
                     ]

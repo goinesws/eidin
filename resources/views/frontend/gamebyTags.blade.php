@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>{{ $genre->genre_name }} Games</h2>
+                        <h2>{{ $tag->tag_name }} Games</h2>
                     </div>
                 </div>
             </div>
@@ -18,11 +18,12 @@
                         <div class="single-banner position-relative"
                             style="background-image:url({{ asset('frontend/images/banner/banner-1-bg.jpg') }}); height:300px">
                             <span class="position-absolute text-light bg-danger pt-2 pb-2 ps-4 pe-4">
-                                @foreach ($item->tagDetail as $i)
+                                {{-- @foreach ($item->tagDetail as $i)
                                     <span style="margin-right:5px">
                                         {{$i->tag->tag_name}}
                                     </span>
-                                @endforeach
+                                @endforeach --}}
+                                #masih error
                             </span>
                             <div class="content" style="padding-right:55%">
                                 <h2>{{ $item->game_name }}</h2>

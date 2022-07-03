@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>{{ $genre->genre_name }} Games</h2>
+                        <h2>Games From <span class="text-success">{{ $dev->company_name }}</span></h2>
                     </div>
                 </div>
             </div>

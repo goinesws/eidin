@@ -83,6 +83,16 @@ class Game extends Model
             ->get();
     }
 
+    public static function getGamebyTagID($tag)
+    {
+        return DB::table('games')
+            ->join('tag_details', 'tag_details.game_id', '=', 'games.id')
+            ->join('game_tags', 'game_tags.id', '=', 'tag_details.tag_id')
+            ->where('game_tags.id', '=', $tag)
+            ->where('status','published') //cuma tampilin yang di publish doang
+            ->get();
+    }
+
     public static function getGamebySearch($query)
     {
         //game name, game developer, game genre, game tag

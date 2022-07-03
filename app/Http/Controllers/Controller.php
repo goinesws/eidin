@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Developer;
 use App\Models\Game;
 use App\Models\GameDonation;
 use App\Models\GameTag;
@@ -129,7 +130,28 @@ class Controller extends BaseController
         return view('frontend.gameCategory', [
             'category_nav' => GameGenre::get(),
             'active' => '',
+            'genre' => GameGenre::find($request->id),
             'games' => Game::where('genre_id', $request->id)->where('status', 'published')->get()
+        ]);
+    }
+
+    public function gamebyTag(Request $request)
+    {
+        return view('frontend.gamebyTags', [
+            'category_nav' => GameGenre::get(),
+            'active' => '',
+            'tag' => GameTag::find($request->id),
+            'games' => Game::getGamebyTagID($request->id)
+        ]);
+    }
+
+    public function gamebyDev(Request $request)
+    {
+        return view('frontend.gamebyDev', [
+            'category_nav' => GameGenre::get(),
+            'active' => '',
+            'dev' => Developer::find($request->id),
+            'games' => Game::where('dev_id', $request->id)->where('status', 'published')->get()
         ]);
     }
 }
