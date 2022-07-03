@@ -22,7 +22,7 @@
                                 <!-- Start Single Slider -->
                                 <div class="single-slider"
                                     style="background-image: url(frontend/images/hero/slider-bg2.jpg);">
-                                    <div class="content" style="padding-right:52%">
+                                    <div class="content" style="padding-right:50%">
                                         <h2><span>Sponsored by Eidin</span>
                                             {{ $pgame->game_name }}
                                         </h2>
@@ -37,7 +37,7 @@
                                         </div>
                                     </div>
                                     <img src="{{ $promotional->img[0] }}" alt=""
-                                        style="width: 48%; height:60%; position:absolute; right:0; top:20%">
+                                        style="width: 50%; height:54%; position:absolute; right:0; top:20%">
                                 </div>
                                 <!-- End Single Slider -->
                             @endforeach
@@ -141,9 +141,9 @@
                     ?>
                     <div class="col-lg-3 col-md-6 col-12">
                         <!-- Start Single Product -->
-                        <div class="single-product"  style="height: 400px">
+                        <div class="single-product"  style="height: 370px">
                             <a href="/game/{{ $sgame->game_id }}" class="product-image">
-                                <img src="{{ $promotional->img[0] }}" alt="#">
+                                <img src="{{ $promotional->img[0] }}" alt="#" style="height: 170px;width:288px">
                                 <span class="sale-tag">-50%</span>
                                 {{-- @if (Auth::check() && Auth::user()->role == 'user')
                                     <div class="button">

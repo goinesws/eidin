@@ -1,7 +1,7 @@
 @extends('partial.headerFooter')
 
 @section('content')
-<div class="container pt-3" style="margin-top: 20px;margin-bottom:20px">
+<div class="container pt-3" style="margin-top: 20px;margin-bottom:20px; background-color: #f9f9f9">
     <div class="row">
         <div class="col-12">
             <div class="section-title">
@@ -16,9 +16,9 @@
             ?>
             <div class="col-lg-3 col-md-6 col-12">
                 <!-- Start Single Product -->
-                <div class="single-product" style="height: 360px">
+                <div class="single-product" style="height: 370px">
                     <a href="/game/{{ $item->game_id }}" class="product-image">
-                        <img src="{{ $promotional->img[0] }}" alt="#" style="height: 170px">
+                        <img src="{{ $promotional->img[0] }}" alt="#" style="height: 170px;width:288px">
                         @if ($sale_game->where('game_id', $item->game_id)->count() > 0)
                             <span class="sale-tag">-50%</span>
                         @endif
@@ -37,12 +37,14 @@
                             @endif
                         </div>
                         <div class="pt-3 d-flex justify-content-between">
-                            <form action="/wishlist/add" method="POST" style="width: 45%">
+                            <form action="/wishlist/remove" method="POST" style="width: 45%">
                                 @csrf
+                                <input type="hidden" name="id" value="{{ $item->game_id }}">
                                 <button type="submit" class="btn btn-danger" style="font-size: 13px;">Remove</button>
                             </form>
                             <form action="/game/buy" method="POST" style="width: 45%">
                                 @csrf
+                                <input type="hidden" name="game_id" value="{{ $item->game_id }}">
                                 <button type="submit" class="btn btn-primary" style="font-size: 13px;">Purchase</button>
                             </form>
                         </div>
