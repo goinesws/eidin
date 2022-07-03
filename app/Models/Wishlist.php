@@ -12,7 +12,7 @@ class Wishlist extends Model
     use HasFactory;
     protected $fillable = ['game_id', 'user_id'];
 
-    public function games () {
+    public function game () {
         return $this->belongsTo(Game::class);
     }
 

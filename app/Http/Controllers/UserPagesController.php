@@ -17,10 +17,14 @@ use Illuminate\Support\Facades\Auth;
 class UserPagesController extends Controller
 {
     public function wishlistPage(){
+        $sale_game = Game::getGamebyTag('#sale');
+
         return view('frontend.wishlist', [
             'category_nav' => GameGenre::get(),
             'active' => 'Wishlist',
-            'wishlists' => Wishlist::where('user_id', Auth::user()->id),
+            'wishlists' => Wishlist::where('user_id', Auth::user()->id)->get(),
+            'sale_game' => $sale_game,
+            'genres' => GameGenre::all(),
         ]);
     }
 
