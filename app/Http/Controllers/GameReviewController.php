@@ -6,6 +6,7 @@ use App\Models\GameReview;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GameReviewController extends Controller
 {
@@ -23,6 +24,7 @@ class GameReviewController extends Controller
             'comment' => $request['comment']
         ]);
 
+        Alert::success('Review Posted!', 'Thank you for your review!');
         return redirect()->back()->with('success', 'Success!');
     }
 }

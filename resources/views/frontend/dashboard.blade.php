@@ -23,7 +23,7 @@
                                 <div class="single-slider"
                                     style="background-image: url(frontend/images/hero/slider-bg2.jpg);">
                                     <div class="content" style="padding-right:52%">
-                                        <h2><span>Limited Promotion! (only 30 days)</span>
+                                        <h2><span>Sponsored by Eidin</span>
                                             {{ $pgame->game_name }}
                                         </h2>
                                         <?php

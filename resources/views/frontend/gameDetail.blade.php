@@ -1,6 +1,9 @@
 @extends('partial.headerFooter')
 
 @section('content')
+    <?php
+    $promotional = json_decode($game->promotional);
+    ?>
     <!-- Start Item Details -->
     <section class="item-details section" style="padding-top:30px">
         <div class="container">
@@ -10,9 +13,6 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <?php
-                                    $promotional = json_decode($game->promotional);
-                                    ?>
                                     <img src="{{ $promotional->img[0] }}" id="current" alt="#" data-id='0'>
                                 </div>
                                 <div class="images">
@@ -29,10 +29,11 @@
                             <div class="d-flex align-items-center">
                                 <div style="margin-right:20px">
                                     <img src="{{ $promotional->logo }}" alt=""
-                                        style="height: 90px; width:90px;border-radius:10px">
+                                        style="height: 100px; width:100px;border-radius:10px">
                                 </div>
                                 <div>
-                                    <h2 class="title" style="font-size:40px;margin-bottom:0">{{ $game->game_name }}</h2>
+                                    <h2 class="title" style="font-size:40px;margin-bottom:5px">{{ $game->game_name }}
+                                    </h2>
                                     <span class="text-primary">
                                         <a href="#">{{ $game->developer->company_name }}</a>
                                     </span>
@@ -49,16 +50,29 @@
                                     </p>
                                 </div>
                             </div>
-                            <h3 class="price">
-                                @if ($game->price == 0)
-                                    Rp: 0,00 (Free)
-                                @else
-                                Rp: {{ number_format($game->price, 2, ',', '.') }}
-                                @endif
-                            </h3>
-                            <p class="info-text">Rating: {{ $game->content_rating }}</p>
+                            
+                            <p class="info-text text-success">
+                                Downloaded by {{$total_download}} user(s) <br>
+                                <span class="text-warning">
+                                    @for ($i = 1; $i <=5; $i++)
+                                        <em class="lni lni-star{{ floor($reviews->avg('rating')) < $i ? ' ' : '-filled' }}"
+                                            style="width: 20px"></em>
+                                    @endfor
+                                </span> 
+                                <span class="text-secondary"> ({{$reviews->avg('rating')}}/5), reviewed by {{$reviews->count()}} user(s)</span>
+                                <br>
+                                Content Rating: {{ $game->content_rating }}
+                            </p>
+                            
                             <p class="info-text">{{ $game->short_desc }}</p>
                             <div class="bottom-content">
+                                <h3 class="price">
+                                    @if ($game->price == 0)
+                                        Rp: 0,00 (Free)
+                                    @else
+                                        Rp: {{ number_format($game->price, 2, ',', '.') }}
+                                    @endif
+                                </h3>
                                 @if (!Auth::check())
                                     <p class="text-danger">* Please login first to add the game to the wishlist</p>
                                 @else
@@ -123,10 +137,7 @@
                                 <h4>Details</h4>
                                 <p>Version: {{ $game->game_version }}</p>
                                 <p>{{ $game->about_game }}</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-12">
-                            <div class="info-body">
+                                <hr>
                                 <h4>Minimum Specifications</h4>
                                 <ul class="normal-list">
                                     <li><span>Processor:</span> {{ $game->requirement_processor }}</li>
@@ -135,6 +146,14 @@
                                     <li><span>Memory:</span> {{ $game->requirement_memory }}</li>
                                     <li><span>Storage:</span> {{ $game->requirement_storage }}</li>
                                 </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="info-body">
+                                <h4>Trailer Videos</h4>
+                                <iframe width="100%" height="300" src="{{$promotional->trailer}}">
+                                </iframe>
+                                
                             </div>
                         </div>
                     </div>
@@ -146,7 +165,7 @@
                     <div class="product-details-info">
                         <div class="single-block">
                             <div class="info-body custom-responsive-margin">
-                                <h4>Reviews (Average Rating - Total Rating)</h4>
+                                <h4>Reviews</h4>
                                 {{-- @dump($myReview) --}}
                                 <hr>
 
@@ -215,8 +234,9 @@
                                             </div>
                                             <div style="margin-top:-5px;margin-left:0px"
                                                 class="d-flex align-items-center">
-                                                @for ($i = 0; $i < floor($myReview->rating); $i++)
-                                                    <em class="lni lni-star" style="width: 20px"></em>
+                                                @for ($i = 0; $i < 5; $i++)
+                                                    <em class="lni lni-star{{ floor($myReview->rating) < $i ? ' ' : '-filled' }} text-warning"
+                                                        style="width: 20px"></em>
                                                 @endfor
                                                 <p>- {{ $myReview->created_at->format('d/m/Y') }}</p>
                                             </div>
@@ -242,7 +262,7 @@
                                             <div style="margin-top:-5px;margin-left:0px"
                                                 class="d-flex align-items-center">
                                                 @for ($i = 0; $i < 5; $i++)
-                                                    <em class="lni lni-star{{ floor($item->rating) < $i ? ' ' : '-filled' }}"
+                                                    <em class="lni lni-star{{ floor($item->rating) < $i ? ' ' : '-filled' }} text-warning"
                                                         style="width: 20px"></em>
                                                 @endfor
                                                 <p>- {{ $item->created_at->format('d/m/Y') }}</p>
