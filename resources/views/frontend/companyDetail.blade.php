@@ -2,7 +2,6 @@
 
 @section('content')
 <?php
-    $bank = json_decode($company->bank_account);
     $social_media = json_decode($company->social_media);
 ?>
 <div style="margin-top: 50px;margin-bottom:50px">
@@ -24,12 +23,12 @@
                 <div style="width: 30%">
                     <h5 class="text-secondary">Website</h5> <br>
                     <h5 class="text-secondary">Partner since</h5> <br>
-                    <h5 class="text-secondary">Bank acc</h5>
+                    <h5 class="text-secondary">Game uploaded</h5>
                 </div>
                 <div style="width: 70%">
                     <h5>: {{ $company->company_website }}</h5> <br>
                     <h5>: {{ $company->approval_date }}</h5> <br>
-                    <h5>: {{ $bank->bank_name }}, {{ $bank->bank_account_number }}</h5>
+                    <h5>: {{ $games->count() }}</h5>
                 </div>
             </div>
             <div class="mt-5 mb-3 border border-3 border-primary"></div>

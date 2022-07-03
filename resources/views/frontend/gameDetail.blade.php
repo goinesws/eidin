@@ -35,7 +35,7 @@
                                     <h2 class="title" style="font-size:40px;margin-bottom:5px">{{ $game->game_name }}
                                     </h2>
                                     <span class="text-primary">
-                                        <a href="#">{{ $game->developer->company_name }}</a>
+                                        <a href="/developer/{{ $game->developer->id }}">{{ $game->developer->company_name }}</a>
                                     </span>
                                     <p class="category">
                                         <i class="lni lni-tag"></i>
@@ -50,7 +50,7 @@
                                     </p>
                                 </div>
                             </div>
-                            
+
                             <p class="info-text text-success">
                                 Downloaded by {{$total_download}} user(s) <br>
                                 <span class="text-warning">
@@ -58,12 +58,12 @@
                                         <em class="lni lni-star{{ floor($reviews->avg('rating')) < $i ? ' ' : '-filled' }}"
                                             style="width: 20px"></em>
                                     @endfor
-                                </span> 
+                                </span>
                                 <span class="text-secondary"> ({{$reviews->avg('rating')}}/5), reviewed by {{$reviews->count()}} user(s)</span>
                                 <br>
                                 Content Rating: {{ $game->content_rating }}
                             </p>
-                            
+
                             <p class="info-text">{{ $game->short_desc }}</p>
                             <div class="bottom-content">
                                 <h3 class="price">
@@ -153,7 +153,7 @@
                                 <h4>Trailer Videos</h4>
                                 <iframe width="100%" height="300" src="{{$promotional->trailer}}">
                                 </iframe>
-                                
+
                             </div>
                         </div>
                     </div>
