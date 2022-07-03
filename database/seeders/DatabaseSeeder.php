@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
 
         $faker = Factory::create();
 
-        for ($i=1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             User::create([
                 'country' => $faker->country,
                 'name' => $faker->name,
@@ -79,26 +79,63 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin'),
         ]);
 
-        for ($i=1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             GameGenre::create([
-                'genre_name' => $genres[$i-1],
+                'genre_name' => $genres[$i - 1],
             ]);
 
             GameTag::create([
-                'tag_name' => '#'.$tags[$i-1],
+                'tag_name' => '#' . $tags[$i - 1],
             ]);
         }
 
-        for($i=1;$i<=5;$i++){
+        // Array buat devs
+        $dev_country = [
+            'USA',
+        ];
+
+        $dev_company_name = [
+            'Concerned Ape',
+        ];
+
+        $dev_company_pic_url = [
+            'https://avatars.cloudflare.steamstatic.com/eaff8e24ad01c6d6a80064c8a5a46b81210492e3_full.jpg',
+        ];
+
+        $dev_company_address = [
+            'Seattle, WA',
+        ];
+
+        $dev_company_website = [
+            'https://www.stardewvalley.net/',
+        ];
+
+        $dev_facebook = [
+            null,
+        ];
+
+        $dev_twt = [
+            'https://twitter.com/ConcernedApe'
+        ];
+
+        $dev_ig = [
+            null,
+        ];
+
+        $dev_company_description = [
+            'ConcernedApe is the moniker of Eric Barone, a solo game developer based in Seattle, WA.'
+        ];
+
+        for ($i = 1; $i <= 10; $i++) {
             Developer::create([
-                'user_id' => $faker->numberBetween(1, 10),
-                'country' => $faker->country,
+                'user_id' => $i,
+                'country' => $dev_country[$i - 1],
                 'company_name' => $faker->company,
                 'registration_date' => $faker->dateTimeThisYear,
                 'approval_date' => $faker->dateTimeThisYear,
                 'bank_account' => json_encode([
                     'type' => $faker->word,
-                    'bank_name' => $faker->word.' bank',
+                    'bank_name' => $faker->word . ' bank',
                     'bank_account_number' => $faker->bankAccountNumber,
                 ]),
                 'company_pic_url' => $faker->imageUrl,
@@ -113,7 +150,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i=1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             Game::create([
                 'genre_id' => $faker->numberBetween(1, 10),
                 'dev_id' => $faker->numberBetween(1, 5),
@@ -132,14 +169,14 @@ class DatabaseSeeder extends Seeder
                 'about_game' => $faker->text,
                 'requirement_processor' => $faker->randomElement(['Intel Core i9-12900K', 'AMD Ryzen 9 5900X', 'Intel Core i5-12600K', 'AMD Ryzen 7 5800X3D', 'AMD Ryzen 3 3100']),
                 'requirement_os' => $faker->randomElement(['Windows', 'Linux', 'Mac OS']),
-                'requirement_memory' => $faker->randomElement(['2', '4', '8', '16', '32']).'GB',
+                'requirement_memory' => $faker->randomElement(['2', '4', '8', '16', '32']) . 'GB',
                 'requirement_graphic' => $faker->randomElement(['GeForce GTX', 'GeForce RTX', 'Nvidia Titan', 'Radeon HD', 'Radeon RX']),
-                'requirement_storage' => strval($faker->randomFloat(1, 1, 100)).'GB',
+                'requirement_storage' => strval($faker->randomFloat(1, 1, 100)) . 'GB',
                 'status' => 'published'
             ]);
         }
 
-        for ($i=1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             // GameVersionLog::create([
             //     'game_id' => $faker->numberBetween(1, 10),
             //     'version' => strval($faker->randomFloat(1, 1, 10)),
