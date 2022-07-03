@@ -13,32 +13,49 @@
                                     <?php
                                     $promotional = json_decode($game->promotional);
                                     ?>
-                                    <img src="{{ $promotional->img[0] }}" id="current" alt="#">
+                                    <img src="{{ $promotional->img[0] }}" id="current" alt="#" data-id='0'>
                                 </div>
                                 <div class="images">
-                                    {{--  --}}
+                                    @for ($i = 1; $i < count($promotional->img); $i++)
+                                        <img class="images-list" src="{{ $promotional->img[$i] }}" alt="#"
+                                            data-id='{{ $i }}'>
+                                    @endfor
                                 </div>
                             </main>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <h2 class="title" style="font-size:40px;margin-bottom:0">{{ $game->game_name }}</h2>
-                            <span class="text-primary">
-                                <a href="#">{{$game->developer->company_name}}</a>
-                            </span>
-                            <p class="category">
-                                <i class="lni lni-tag"></i>
-                                <a class="text-primary" href="/category/{{ $game->genre_id }}">
-                                    {{ $game->gameGenre->genre_name }}
-                                </a>
-                                @foreach ($game->tagDetail as $item)
-                                    <a class="text-primary" href="/tag/{{ $game->genre_id }}">
-                                        {{ $item->tag->tag_name }}
-                                    </a>
-                                @endforeach
-                            </p>
-                            <h3 class="price">Rp {{ number_format($game->price, 2, ',', '.') }}</h3>
+                            <div class="d-flex align-items-center">
+                                <div style="margin-right:20px">
+                                    <img src="{{ $promotional->logo }}" alt=""
+                                        style="height: 90px; width:90px;border-radius:10px">
+                                </div>
+                                <div>
+                                    <h2 class="title" style="font-size:40px;margin-bottom:0">{{ $game->game_name }}</h2>
+                                    <span class="text-primary">
+                                        <a href="#">{{ $game->developer->company_name }}</a>
+                                    </span>
+                                    <p class="category">
+                                        <i class="lni lni-tag"></i>
+                                        <a class="text-primary" href="/category/{{ $game->genre_id }}">
+                                            {{ $game->gameGenre->genre_name }}
+                                        </a>
+                                        @foreach ($game->tagDetail as $item)
+                                            <a class="text-primary" href="/tag/{{ $game->genre_id }}">
+                                                {{ $item->tag->tag_name }}
+                                            </a>
+                                        @endforeach
+                                    </p>
+                                </div>
+                            </div>
+                            <h3 class="price">
+                                @if ($game->price == 0)
+                                    Rp: 0,00 (Free)
+                                @else
+                                Rp: {{ number_format($game->price, 2, ',', '.') }}
+                                @endif
+                            </h3>
                             <p class="info-text">Rating: {{ $game->content_rating }}</p>
                             <p class="info-text">{{ $game->short_desc }}</p>
                             <div class="bottom-content">
@@ -104,6 +121,7 @@
                         <div class="col-lg-6 col-12">
                             <div class="info-body custom-responsive-margin">
                                 <h4>Details</h4>
+                                <p>Version: {{ $game->game_version }}</p>
                                 <p>{{ $game->about_game }}</p>
                             </div>
                         </div>
@@ -163,7 +181,8 @@
                                                         </option>
                                                     </select>
                                                     @error('rating')
-                                                        <div class="invalid-feedback" style="color: white">{{ $message }}
+                                                        <div class="invalid-feedback" style="color: white">
+                                                            {{ $message }}
                                                         </div>
                                                     @enderror
                                                 </div>
@@ -171,7 +190,8 @@
                                                     <textarea placeholder="Write your review here.." class="form-control" id="review-message" rows="8"
                                                         @error('comment') is-invalid @enderror" id="exampleInputText" name="comment" value={{ old('comment') }}></textarea>
                                                     @error('comment')
-                                                        <div class="invalid-feedback" style="color: white">{{ $message }}
+                                                        <div class="invalid-feedback" style="color: white">
+                                                            {{ $message }}
                                                         </div>
                                                     @enderror
                                                 </div>
@@ -221,8 +241,9 @@
                                             </div>
                                             <div style="margin-top:-5px;margin-left:0px"
                                                 class="d-flex align-items-center">
-                                                @for ($i = 0; $i < floor($item->rating); $i++)
-                                                    <em class="lni lni-star" style="width: 20px"></em>
+                                                @for ($i = 0; $i < 5; $i++)
+                                                    <em class="lni lni-star{{ floor($item->rating) < $i ? ' ' : '-filled' }}"
+                                                        style="width: 20px"></em>
                                                 @endfor
                                                 <p>- {{ $item->created_at->format('d/m/Y') }}</p>
                                             </div>

@@ -38,5 +38,21 @@ Author: GrayGrids
         navbarToggler.classList.toggle("active");
     });
 
+    $('.images-list').on('click', function(){
+        let id = $(this).data('id');
+        let current = $('#current').data('id');
+        // console.log(id);
+        // console.log(current);
+        let src_click = $(this).attr('src')
+        let src_curr = $('#current').attr('src')
 
+        $(this).attr('src', src_curr)
+        $('#current').attr('src', src_click)
+        $(this).data('id', current);
+        $('#current').data('id', id);
+
+        // Array.from(images).forEach(element => {
+        //     console.log(element)
+        // });
+    })
 })();
