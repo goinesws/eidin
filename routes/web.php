@@ -80,6 +80,7 @@ Route::get('/category/{id}', [Controller::class, 'gameCategory']);
 Route::get('/tags/{id}', [Controller::class, 'gamebyTag']);
 Route::get('/devGames/{id}', [Controller::class, 'gamebyDev']);
 Route::get('/all-games', [Controller::class, 'allGame']);
+Route::get('/developer/{id}', [Controller::class, 'companyDetail']);
 
 
 Route::middleware(['guest'])->group(function () {

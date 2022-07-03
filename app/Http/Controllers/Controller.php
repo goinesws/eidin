@@ -154,4 +154,24 @@ class Controller extends BaseController
             'games' => Game::where('dev_id', $request->id)->where('status', 'published')->get()
         ]);
     }
+
+    public function companyDetail (Request $request) {
+        $ratings = array();
+        $games = Game::all();
+        $sale_game = Game::getGamebyTag('#sale');
+
+        foreach ($games as $game) {
+            $ratings[$game->id] = $this->calculateRating($game->id);
+        }
+
+        return view('frontend.companyDetail', [
+            'category_nav' => GameGenre::get(),
+            'active' => '',
+            'company' => Developer::find($request->id),
+            'games' => Game::where('dev_id', $request->id)->where('status', 'published')->get(),
+            'ratings' => $ratings,
+            'sale_game' => $sale_game,
+            'genres' => GameGenre::all(),
+        ]);
+    }
 }

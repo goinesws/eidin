@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/frontend/css/tiny-slider.css" />
     <link rel="stylesheet" href="/frontend/css/glightbox.min.css" />
     <link rel="stylesheet" href="/frontend/css/main.css" />
-    
+
 </head>
 
 <body>
@@ -140,7 +140,7 @@
                                                 aria-controls="navbarSupportedContent" aria-expanded="false"
                                                 aria-label="Toggle navigation">Developer</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="about-us.html" class="">Company Profile</a></li>
+                                                <li class="nav-item"><a href="/developer/{{ Auth::user()->developer->id }}" class="">Company Profile</a></li>
                                                 <li class="nav-item"><a href="faq.html">Uploaded Games</a></li>
                                                 <li class="nav-item"><a href="login.html">Reviews</a></li>
                                                 <li class="nav-item"><a href="register.html">Purchases & Donations</a></li>
