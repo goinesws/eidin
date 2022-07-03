@@ -35,7 +35,7 @@
                                     <h2 class="title" style="font-size:40px;margin-bottom:5px">{{ $game->game_name }}
                                     </h2>
                                     <span class="text-primary">
-                                        <a href="#">{{ $game->developer->company_name }}</a>
+                                        <a href="/devGames/{{$game->developer->id}}">{{ $game->developer->company_name }}</a>
                                     </span>
                                     <p class="category">
                                         <i class="lni lni-tag"></i>
