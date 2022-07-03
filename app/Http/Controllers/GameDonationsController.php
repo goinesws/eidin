@@ -6,6 +6,7 @@ use App\Models\GameDonation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GameDonationsController extends Controller
 {
@@ -25,6 +26,7 @@ class GameDonationsController extends Controller
             'message' => $request['message']
         ]);
 
+        Alert::success('Donation sent!', 'Thanks for supporting this game!');
         return redirect()->back()->with('success', 'Success!');
     }
 }

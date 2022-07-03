@@ -7,6 +7,7 @@ use App\Models\GameDonation;
 use App\Models\GameTag;
 use App\Models\GameGenre;
 use App\Models\GameLibrary;
+use App\Models\GamePayment;
 use App\Models\GameReview;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
@@ -113,6 +114,7 @@ class Controller extends BaseController
         return view('frontend.gameDetail', [
             'category_nav' => GameGenre::get(),
             'active' => '',
+            'total_download' => GamePayment::where('game_id', $request->id)->count(),
             'isBought' => $isBought,
             'isOnWishlist' => $isOnWishlist,
             'myReview' => $myReview,
