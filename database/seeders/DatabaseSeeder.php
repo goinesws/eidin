@@ -157,10 +157,11 @@ class DatabaseSeeder extends Seeder
                 'game_name' => $faker->word,
                 'price' => $faker->numberBetween(10000, 1000000),
                 'promotional' => json_encode([
-                    'type' => $faker->randomElement(['img', 'video']),
-                    'placeholder' => $faker->imageUrl,
-                    'url' => $faker->url,
-                    'desc' => $faker->text,
+                    'logo' => $faker->imageUrl,
+                    'trailer' => 'https://www.youtube.com/watch?v=5jKZ9KGtee0', //video url
+                    'img' => [
+                        $faker->imageUrl, $faker->imageUrl, $faker->imageUrl,
+                    ]
                 ]),
                 'game_data_path' => $faker->url,
                 'date_published' => $faker->dateTimeThisYear,
@@ -177,20 +178,6 @@ class DatabaseSeeder extends Seeder
         }
 
         for ($i = 1; $i <= 10; $i++) {
-            // GameVersionLog::create([
-            //     'game_id' => $faker->numberBetween(1, 10),
-            //     'version' => strval($faker->randomFloat(1, 1, 10)),
-            //     'description' => $faker->text,
-            //     'app_size' => $faker->randomFloat(3, 10000, 1000000),
-            //     'promotional' => json_encode([
-            //         'type' => $faker->randomElement(['img', 'video']),
-            //         'placeholder' => $faker->imageUrl,
-            //         'url' => $faker->url,
-            //         'desc' => $faker->text,
-            //     ]),
-            //     'status' => 'published'
-            // ]);
-
             TagDetail::create([
                 'tag_id' => $faker->numberBetween(1, 3), //ini diganti tadinya 1-10
                 'game_id' => $i,
@@ -209,7 +196,7 @@ class DatabaseSeeder extends Seeder
             GameReview::create([
                 'game_id' => $i,
                 'user_id' => $faker->numberBetween(1, 10),
-                'rating' => $faker->randomFloat(1, 1, 5),
+                'rating' => $faker->numberBetween(1, 5),
                 'comment' => $faker->text,
             ]);
 

@@ -27,7 +27,7 @@
                                 <?php
                                     $promotional = json_decode($item->promotional)
                                 ?>
-                                <img src="{{ $promotional->placeholder }}" alt=""
+                                <img src="{{ $promotional->img[0] }}" alt=""
                                     class="position-absolute top-0 end-0" style="width: 45%; height:100%;">
                             </div>
                         </div>
