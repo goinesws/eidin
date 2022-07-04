@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>All Games</h2>
+                        <h2>@lang('allGames.title')</h2>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>
-                                    <li><span>{{ $game->gameReviews->avg('rating') }}/5 Ratings</span></li>
+                                    <li><span>{{ $game->gameReviews->avg('rating') }}/5 @lang('allGames.game.rating')</span></li>
                                 </ul>
                                 <div class="price">
                                     <span>Rp{{number_format( $game->price,2,',','.') }}</span>

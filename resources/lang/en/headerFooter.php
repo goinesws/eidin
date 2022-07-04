@@ -1,8 +1,9 @@
-<?php 
+<?php
     return[
         'header' => [
             'discover_game' => 'Discover Game',
-            'category' => 'Game Category',
+            'language' => 'Language',
+            'category' => 'Game Categories',
             'home' => 'Home',
             'all_games' => 'All Games',
             'login' => 'Login',
@@ -11,16 +12,22 @@
             'profile' => 'Profile',
             'my_profile' => 'My Profile',
             'donation_history' => 'Donation History',
+            'developer_registration' => 'Developer Registration',
+            'developer' => 'Developer',
+            'company_profile' => 'Company Profile',
             'uploaded_games' => 'Uploaded Games',
             'reviews' => 'Reviews',
             'purchases&donations' => 'Purchases & Donations',
+            'admin' => 'Admin',
             'pending_games' => 'Pending Games',
             'pending_update' => 'Pending Update',
+            'logout' => 'Logout',
         ],
         'footer' => [
             'footer_top' => [
                 '1' => 'Subscribe to our newsletter',
                 '2' => 'Get all the latest information, Sales and Offers.',
+                '3' => 'Email address here',
                 'btn' => 'Subscribe',
             ],
             'footer_middle' => [
@@ -34,7 +41,8 @@
                 '8' => 'App Store',
                 '9' => 'Download on the',
                 '10' => 'Google Play',
-                'information' => 'Information', [
+                '11' => 'Information',
+                'information' => [
                     '1' => 'About Us',
                     '2' => 'Contact Us',
                     '3' => 'Downloads',

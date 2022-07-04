@@ -51,7 +51,7 @@
                             <form action="/search" method="get">
                                 <div class="navbar-search search-style-5">
                                     <div class="search-input">
-                                        <input type="text" placeholder="Discover Games.." name="search" class="form-control">
+                                        <input type="text" placeholder="@lang('headerFooter.header.discover_game')..." name="search" class="form-control">
                                     </div>
                                     <div class="search-btn">
                                         <button type="submit" class="btn"><i class="lni lni-search-alt"></i></button>
@@ -69,7 +69,7 @@
                                 <form action="/changeLang" method="get">
                                     <div class="navbar-search search-style-5">
                                         <div class="search-input d-flex align-items-center">
-                                            Language: 
+                                            @lang('headerFooter.header.language'):
                                             <select name="lang" class="form-control" style="margin-left:5px">
                                                 <option value="English">English</option>
                                                 <option value="Indonesia">Indonesia</option>
@@ -93,7 +93,7 @@
                     <div class="nav-inner">
                         <!-- Start Mega Category Menu -->
                         <div class="mega-category-menu">
-                            <span class="cat-button"><i class="lni lni-menu"></i>Game Categories</span>
+                            <span class="cat-button"><i class="lni lni-menu"></i>@lang('headerFooter.header.category')</span>
                             <ul class="sub-category">
                                 @foreach ($category_nav as $item)
                                     <li><a href="/category/{{$item->id}}">{{ $item->genre_name }}</a></li>
@@ -113,27 +113,27 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="/" class="{{ $active == 'Home' ? 'active' : '' }}" aria-label="Toggle navigation">Home</a>
+                                        <a href="/" class="{{ $active == 'Home' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.home')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/all-games" class="{{ $active == 'All Games' ? 'active' : '' }}" aria-label="Toggle navigation">All Games</a>
+                                        <a href="/all-games" class="{{ $active == 'All Games' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.all_games')</a>
                                     </li>
 
                                     @if (Auth::check() && Auth::user()->role == 'user')
                                         <li class="nav-item">
-                                            <a href="/myLibrary" class="{{ $active == 'Libraries' ? 'active' : '' }}" aria-label="Toggle navigation">Library</a>
+                                            <a href="/myLibrary" class="{{ $active == 'Libraries' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.library')</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/wishlist" class="{{ $active == 'Wishlist' ? 'active' : '' }}" aria-label="Toggle navigation">Wishlist</a>
+                                            <a href="/wishlist" class="{{ $active == 'Wishlist' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.wishlist')</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="dd-menu collapsed {{ $active == 'Profile' ? 'active' : '' }}" href="javascript:void(0)"
                                                 data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
                                                 aria-controls="navbarSupportedContent" aria-expanded="false"
-                                                aria-label="Toggle navigation">Profile</a>
+                                                aria-label="Toggle navigation">@lang('headerFooter.header.profile')</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="/myProfile" class="">My Profile</a></li>
-                                                <li class="nav-item"><a href="/myDonation">Donation History</a></li>
+                                                <li class="nav-item"><a href="/myProfile" class="">@lang('headerFooter.header.my_profile')</a></li>
+                                                <li class="nav-item"><a href="/myDonation">@lang('headerFooter.header.donation_history')</a></li>
                                             </ul>
                                         </li>
                                     @endif
@@ -141,7 +141,7 @@
                                     @if (Auth::check() && Auth::user()->developer == null && Auth::user()->role == 'user')
                                         <li class="nav-item">
                                             {{-- khusus buat yg belum registrasi dev --}}
-                                            <a href="/dev-registration" class="{{ $active == 'Developer Registration' ? 'active' : '' }}" aria-label="Toggle navigation">Developer Registration</a>
+                                            <a href="/dev-registration" class="{{ $active == 'Developer Registration' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.developer_registration')</a>
                                         </li>
                                     @endif
 
@@ -150,10 +150,10 @@
                                             <a class="dd-menu collapsed {{ $active == 'Developer' ? 'active' : '' }}" href="javascript:void(0)"
                                                 data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
                                                 aria-controls="navbarSupportedContent" aria-expanded="false"
-                                                aria-label="Toggle navigation">Developer</a>
+                                                aria-label="Toggle navigation">@lang('headerFooter.header.developer')</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="/developer/{{ Auth::user()->developer->id }}" class="">Company Profile</a></li>
-                                                <li class="nav-item"><a href="/dev/purchase-donation/{{ Auth::user()->developer->id }}">Purchases & Donations</a></li>
+                                                <li class="nav-item"><a href="/developer/{{ Auth::user()->developer->id }}" class="">@lang('headerFooter.header.company_profile')</a></li>
+                                                <li class="nav-item"><a href="/dev/purchase-donation/{{ Auth::user()->developer->id }}">@lang('headerFooter.header.purchases&donations')</a></li>
                                             </ul>
                                         </li>
                                     @endif
@@ -163,10 +163,10 @@
                                             <a class="dd-menu collapsed {{ $active == 'Admin' ? 'active' : '' }}" href="javascript:void(0)"
                                                 data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
                                                 aria-controls="navbarSupportedContent" aria-expanded="false"
-                                                aria-label="Toggle navigation">Admin</a>
+                                                aria-label="Toggle navigation">@lang('headerFooter.header.admin')</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="about-us.html" class="">Pending Game</a></li>
-                                                <li class="nav-item"><a href="faq.html">Pending Update</a></li>
+                                                <li class="nav-item"><a href="about-us.html" class="">@lang('headerFooter.header.pending_games')</a></li>
+                                                <li class="nav-item"><a href="faq.html">@lang('headerFooter.header.pending_update')</a></li>
                                                 {{-- <li class="nav-item"><a href="login.html">Reviews</a></li>
                                                 <li class="nav-item"><a href="register.html">Donations</a></li> --}}
                                             </ul>
@@ -175,11 +175,11 @@
 
                                     @if (!Auth::check())
                                         <li class="nav-item">
-                                            <a href="/login" class="{{ $active == 'Login' ? 'active' : '' }}" aria-label="Toggle navigation">Login</a>
+                                            <a href="/login" class="{{ $active == 'Login' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.login')</a>
                                         </li>
                                     @else
                                         <li class="nav-item">
-                                            <a href="/logout" aria-label="Toggle navigation" class="text-danger">Logout</a>
+                                            <a href="/logout" aria-label="Toggle navigation" class="text-danger">@lang('headerFooter.header.logout')</a>
                                         </li>
                                     @endif
                                 </ul>
@@ -215,14 +215,14 @@
                         <div class="col-lg-9 col-md-8 col-12">
                             <div class="footer-newsletter">
                                 <h4 class="title">
-                                    Subscribe to our Newsletter
-                                    <span>Get all the latest information, Sales and Offers.</span>
+                                    @lang('headerFooter.footer.footer_top.1')
+                                    <span>@lang('headerFooter.footer.footer_top.2')</span>
                                 </h4>
                                 <div class="newsletter-form-head">
                                     <form action="#" method="get" target="_blank" class="newsletter-form">
-                                        <input name="EMAIL" placeholder="Email address here..." type="email">
+                                        <input name="EMAIL" placeholder="@lang('headerFooter.footer.footer_top.3')..." type="email">
                                         <div class="button">
-                                            <button class="btn">Subscribe<span class="dir-part"></span></button>
+                                            <button class="btn">@lang('headerFooter.footer.footer_top.btn')<span class="dir-part"></span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -241,14 +241,14 @@
                         <div class="col-lg-3 col-md-6 col-12">
                             <!-- Single Widget -->
                             <div class="single-footer f-contact">
-                                <h3>Get In Touch With Us</h3>
-                                <p class="phone">Phone: +1 (900) 33 169 7720</p>
+                                <h3>@lang('headerFooter.footer.footer_middle.1')</h3>
+                                <p class="phone">@lang('headerFooter.footer.footer_middle.2')</p>
                                 <ul>
-                                    <li><span>Monday-Friday: </span> 9.00 am - 8.00 pm</li>
-                                    <li><span>Saturday: </span> 10.00 am - 6.00 pm</li>
+                                    <li><span>@lang('headerFooter.footer.footer_middle.3') </span> 9.00 am - 8.00 pm</li>
+                                    <li><span>@lang('headerFooter.footer.footer_middle.4') </span> 10.00 am - 6.00 pm</li>
                                 </ul>
                                 <p class="mail">
-                                    <a href="mailto:support@shopgrids.com">support@shopgrids.com</a>
+                                    <a href="mailto:support@shopgrids.com">@lang('headerFooter.footer.footer_middle.5')</a>
                                 </p>
                             </div>
                             <!-- End Single Widget -->
@@ -256,20 +256,20 @@
                         <div class="col-lg-3 col-md-6 col-12">
                             <!-- Single Widget -->
                             <div class="single-footer our-app">
-                                <h3>Our Mobile App</h3>
+                                <h3>@lang('headerFooter.footer.footer_middle.6')</h3>
                                 <ul class="app-btn">
                                     <li>
                                         <a href="javascript:void(0)">
                                             <i class="lni lni-apple"></i>
-                                            <span class="small-title">Download on the</span>
-                                            <span class="big-title">App Store</span>
+                                            <span class="small-title">@lang('headerFooter.footer.footer_middle.7')</span>
+                                            <span class="big-title">@lang('headerFooter.footer.footer_middle.8')</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="javascript:void(0)">
                                             <i class="lni lni-play-store"></i>
-                                            <span class="small-title">Download on the</span>
-                                            <span class="big-title">Google Play</span>
+                                            <span class="small-title">@lang('headerFooter.footer.footer_middle.9')</span>
+                                            <span class="big-title">@lang('headerFooter.footer.footer_middle.10')</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -279,13 +279,13 @@
                         <div class="col-lg-3 col-md-6 col-12">
                             <!-- Single Widget -->
                             <div class="single-footer f-link">
-                                <h3>Information</h3>
+                                <h3>@lang('headerFooter.footer.footer_middle.11')</h3>
                                 <ul>
-                                    <li><a href="javascript:void(0)">About Us</a></li>
-                                    <li><a href="javascript:void(0)">Contact Us</a></li>
-                                    <li><a href="javascript:void(0)">Downloads</a></li>
-                                    <li><a href="javascript:void(0)">Sitemap</a></li>
-                                    <li><a href="javascript:void(0)">FAQs Page</a></li>
+                                    <li><a href="javascript:void(0)">@lang('headerFooter.footer.footer_middle.information.1')</a></li>
+                                    <li><a href="javascript:void(0)">@lang('headerFooter.footer.footer_middle.information.2')</a></li>
+                                    <li><a href="javascript:void(0)">@lang('headerFooter.footer.footer_middle.information.3')</a></li>
+                                    <li><a href="javascript:void(0)">@lang('headerFooter.footer.footer_middle.information.4')</a></li>
+                                    <li><a href="javascript:void(0)">@lang('headerFooter.footer.footer_middle.information.5')</a></li>
                                 </ul>
                             </div>
                             <!-- End Single Widget -->
@@ -302,20 +302,20 @@
                     <div class="row align-items-center">
                         <div class="col-lg-4 col-12">
                             <div class="payment-gateway">
-                                <span>We Accept:</span>
+                                <span>@lang('headerFooter.footer.footer_bottom.1')</span>
                                 <img src="/frontend/images/footer/credit-cards-footer.png" alt="#">
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
                             <div class="copyright">
-                                <p>Designed and Developed by<a href="https://graygrids.com/" rel="nofollow"
-                                        target="_blank">GrayGrids</a></p>
+                                <p>@lang('headerFooter.footer.footer_bottom.2')<a href="https://graygrids.com/" rel="nofollow"
+                                        target="_blank">@lang('headerFooter.footer.footer_bottom.3')</a></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
                             <ul class="socila">
                                 <li>
-                                    <span>Follow Us On:</span>
+                                    <span>@lang('headerFooter.footer.footer_bottom.4')</span>
                                 </li>
                                 <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
                                 <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
