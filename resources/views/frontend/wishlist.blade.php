@@ -6,6 +6,13 @@
         <div class="col-12">
             <div class="section-title">
                 <h2>Wishlists</h2>
+                @empty($wishlists[0])
+                    <p>You have no wish? Really?<br>Take a look at our fantastic games and start wishing now!</p>
+                    <div style="width: 300px; opacity: .3; margin:auto">
+                        <img src="{{ asset('/img/icon.png') }}" alt="" class="pt-5 mt-3">
+                        <img src="{{ asset('/img/logo.png') }}" alt="" style="height: 135px; width:300px;object-fit: cover; object-position: 100% 0;">
+                    </div>
+                @endempty
             </div>
         </div>
     </div>

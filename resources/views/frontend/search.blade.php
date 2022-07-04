@@ -8,6 +8,13 @@
                 <div class="col-12">
                     <div class="section-title">
                         <h2>Search Results for "{{ $request }}"</h2>
+                        @empty($search_result[0])
+                            <p>Sorry we can't find what you are looking for :(<br>Do you mind to enter different keyword(s)?</p>
+                            <div style="width: 300px; opacity: .3; margin:auto">
+                                <img src="{{ asset('/img/icon.png') }}" alt="" class="pt-5 mt-3">
+                                <img src="{{ asset('/img/logo.png') }}" alt="" style="height: 135px; width:300px;object-fit: cover; object-position: 100% 0;">
+                            </div>
+                        @endempty
                     </div>
                 </div>
             </div>

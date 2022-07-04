@@ -6,6 +6,13 @@
             <div class="col-12">
                 <div class="section-title">
                     <h2>My Donations</h2>
+                    @empty($donations[0])
+                        <p>Love to play the games?<br>Start to support the developers for more games by giving them some donations.</p>
+                        <div style="width: 300px; opacity: .3; margin:auto">
+                            <img src="{{ asset('/img/icon.png') }}" alt="" class="pt-5 mt-3">
+                            <img src="{{ asset('/img/logo.png') }}" alt="" style="height: 135px; width:300px;object-fit: cover; object-position: 100% 0;">
+                        </div>
+                    @endempty
                 </div>
             </div>
         </div>
@@ -17,13 +24,13 @@
                         <?php
                             $promotional = json_decode($donation->game->promotional);
                         ?>
-                        <a href="/game/{{ $donation->game->id }}"><img src="{{ $promotional->placeholder }}" alt="" class="rounded-circle"
+                        <a href="/game/{{ $donation->game->id }}"><img src="{{ $promotional->logo }}" alt="" class="rounded-circle"
                             style="height: 50px; width:50px"></a>
                         <div class="d-flex flex-column">
                             <strong style="margin-left:15px;font-size:18px">
                                 <a href="/game/{{ $donation->game->id }}" class="text-light">{{ $donation->game->game_name }}</a>
                             </strong>
-                            <strong style="margin-left:15px;font-size:20px">Rp{{ number_format($donation->amount, 2, ',', '.') }} ({{ $donation->payment_method }})</strong>
+                            <strong style="margin-left:15px;font-size:20px">Rp{{ number_format($donation->amount, 2, ',', '.') }} ({{ str_replace('_', ' ',$donation->payment_method) }})</strong>
                         </div>
                     </div>
                     <div class="div" style="margin-top:10px">

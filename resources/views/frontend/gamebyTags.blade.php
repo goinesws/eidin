@@ -9,6 +9,13 @@
                 <div class="col-12">
                     <div class="section-title">
                         <h2>{{ $tag->tag_name }} Games</h2>
+                        @empty($games[0])
+                            <p>Oops, it seems that there are no games equipped with this tag<br>Check the other tags for more games!</p>
+                            <div style="width: 300px; opacity: .3; margin:auto">
+                                <img src="{{ asset('/img/icon.png') }}" alt="" class="pt-5 mt-3">
+                                <img src="{{ asset('/img/logo.png') }}" alt="" style="height: 135px; width:300px;object-fit: cover; object-position: 100% 0;">
+                            </div>
+                        @endempty
                     </div>
                 </div>
             </div>

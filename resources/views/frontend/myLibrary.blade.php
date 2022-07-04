@@ -10,6 +10,13 @@
                 <div class="col-12">
                     <div class="section-title">
                         <h2>Library</h2>
+                        @empty($myGames[0])
+                            <p>Oh no your game shelf is empty and dusty!<br>Let's clean it and fill it with many fantastic games to play!</p>
+                            <div style="width: 300px; opacity: .3; margin:auto">
+                                <img src="{{ asset('/img/icon.png') }}" alt="" class="pt-5 mt-3">
+                                <img src="{{ asset('/img/logo.png') }}" alt="" style="height: 135px; width:300px;object-fit: cover; object-position: 100% 0;">
+                            </div>
+                        @endempty
                     </div>
                 </div>
             </div>
@@ -28,7 +35,7 @@
                             <div class="product-info" style="display:flex; justify-content:center; align-items:center; text-align:center">
                                 <h4 class="title">
                                     <a href="/game/{{ $item->id }}">{{ $item->game_name }}</a>
-                                </h4>                                
+                                </h4>
                             </div>
                         </div>
                         <!-- End Single Product -->
