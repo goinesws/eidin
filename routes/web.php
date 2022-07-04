@@ -112,7 +112,7 @@ Route::middleware(['user'])->group(function () {
 
 //dev only
 Route::middleware(['dev'])->prefix('dev')->group(function () {
-    Route::get('/', function(){return dump(Auth::user());});
+    Route::get('/purchase-donation', [DevPagesController::class, 'purchaseDonation']);
 });
 
 //admin only

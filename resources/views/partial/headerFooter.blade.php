@@ -153,9 +153,7 @@
                                                 aria-label="Toggle navigation">Developer</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
                                                 <li class="nav-item"><a href="/developer/{{ Auth::user()->developer->id }}" class="">Company Profile</a></li>
-                                                <li class="nav-item"><a href="faq.html">Uploaded Games</a></li>
-                                                <li class="nav-item"><a href="login.html">Reviews</a></li>
-                                                <li class="nav-item"><a href="register.html">Purchases & Donations</a></li>
+                                                <li class="nav-item"><a href="/dev/purchase-donation/{{ Auth::user()->developer->id }}">Purchases & Donations</a></li>
                                             </ul>
                                         </li>
                                     @endif
