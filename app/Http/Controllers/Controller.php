@@ -25,6 +25,12 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    private function setLang(){
+        if(request()->session()->get('locale') != null){
+            App::setLocale(request()->session()->get('locale'));
+        }
+    }
+
     private function calculateRating($game_id)
     {
         return DB::table('game_reviews')
@@ -34,6 +40,7 @@ class Controller extends BaseController
 
     public function loginPage()
     {
+        $this->setLang();
         return view('login', [
             'active' => 'Login',
             'category_nav' => GameGenre::get(),
@@ -42,6 +49,7 @@ class Controller extends BaseController
 
     public function registerPage()
     {
+        $this->setLang();
         return view('register', [
             'active' => '',
             'category_nav' => GameGenre::get(),
@@ -49,7 +57,8 @@ class Controller extends BaseController
     }
 
     public function dashboard()
-    {
+    {  
+        $this->setLang();
         //discover games
         $new_game = Game::getGamebyTag('#new');
         $promo_game = Game::getGamebyTag('#promotion');
@@ -75,6 +84,7 @@ class Controller extends BaseController
 
     public function searchPage(Request $request)
     {
+        $this->setLang();
         return view('frontend.search', [
             'request' => $request->search,
             'category_nav' => GameGenre::get(),
@@ -84,6 +94,7 @@ class Controller extends BaseController
     }
 
     public function allGame(){
+        $this->setLang();
         $games = Game::where('status', 'published')->get();
         $sale_game = Game::getGamebyTag('#sale');
 
@@ -97,6 +108,7 @@ class Controller extends BaseController
 
     public function gameDetail(Request $request)
     {
+        $this->setLang();
         $isOnWishlist = false;
         $isBought = false;
         $myReview = null;
@@ -122,6 +134,7 @@ class Controller extends BaseController
 
     public function gameCategory(Request $request)
     {
+        $this->setLang();
         $games = Game::where('status', 'published')->get();
         $sale_game = Game::getGamebyTag('#sale');
 
@@ -136,6 +149,7 @@ class Controller extends BaseController
 
     public function gamebyTag(Request $request)
     {
+        $this->setLang();
         $sale_game = Game::getGamebyTag('#sale');
         return view('frontend.gamebyTags', [
             'category_nav' => GameGenre::get(),
@@ -147,6 +161,7 @@ class Controller extends BaseController
     }
 
     public function companyDetail (Request $request) {
+        $this->setLang();
         $ratings = array();
         $games = Game::all();
         $sale_game = Game::getGamebyTag('#sale');

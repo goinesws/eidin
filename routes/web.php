@@ -77,17 +77,8 @@ Route::get('/products', function () {
 });
 
 Route::get('/lang/{locale}', function ($locale) {
-    App::setLocale($locale);
-
-    if (App::isLocale('en')) {
-        echo "enggres";
-    }
-
-    if (App::isLocale('id')) {
-        echo "indo";
-    }
-
-    // return back();
+    session()->put('locale', $locale);
+    return back();
 });
 
 Route::get('/', [Controller::class, 'dashboard']);

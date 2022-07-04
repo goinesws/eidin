@@ -71,15 +71,18 @@
                                         <div class="search-input d-flex align-items-center">
                                             @lang('headerFooter.header.language'):
                                             <select name="lang" id="lang" class="form-control" style="margin-left:5px">
-                                                <option value="/lang/en">English</option>
-                                                <option value="/lang/id">Indonesia</option>
+                                                <?php
+                                                    $lang = request()->session()->get('locale');
+                                                ?>
+                                                <option value="/lang/en" {{$lang!=null && $lang=='en' ? 'selected' : ''}} >English</option>
+                                                <option value="/lang/id" {{$lang!=null && $lang=='id' ? 'selected' : ''}} >Indonesia</option>
                                             </select>
                                         </div>
                                     </div>
                                 </form>
                                 <!-- navbar search Ends -->
                             </div>
-
+                            {{-- @dump(request()->session()->get('locale')) --}}
                         </div>
                     </div>
                 </div>
