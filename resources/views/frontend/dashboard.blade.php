@@ -23,7 +23,7 @@
                                 <div class="single-slider"
                                     style="background-image: url(frontend/images/hero/slider-bg2.jpg);">
                                     <div class="content" style="padding-right:50%">
-                                        <h2><span>Sponsored by Eidin</span>
+                                        <h2><span>@lang('dashboard.sponsored')</span>
                                             {{ $pgame->game_name }}
                                         </h2>
                                         <?php
@@ -31,9 +31,9 @@
                                         ?>
                                         <div class="pt-3 pb-1">{{ $pgame->short_desc }}</div>
                                         {{-- <div>{{ $promotional->img[0] }}</div> --}}
-                                        <h3><span>Now Only</span> Rp{{ number_format($pgame->price,2,',','.') }}</h3>
+                                        <h3><span>@lang('dashboard.now_only')</span> Rp{{ number_format($pgame->price,2,',','.') }}</h3>
                                         <div class="button">
-                                            <a href="/game/{{ $pgame->game_id }}" class="btn">Buy Now</a>
+                                            <a href="/game/{{ $pgame->game_id }}" class="btn">@lang('dashboard.buy_btn')</a>
                                         </div>
                                     </div>
                                     <img src="{{ $promotional->img[0] }}" alt=""
@@ -56,7 +56,7 @@
                                 style="background-image: url({{ $promotional->img[0] }});">
                                 <a href="/game/{{ $new_game[0]->game_id }}" class="content" style="background-color: rgba(255, 255, 255, 0.8)">
                                     <h2>
-                                        <span>New line required</span>
+                                        <span>@lang('dashboard.free_games')</span>
                                         {{ $new_game[0]->game_name }}
                                     </h2>
                                     <h3>Rp{{ number_format($new_game[0]->price,2,',','.')  }}</h3>
@@ -68,10 +68,10 @@
                             <!-- Start Small Banner -->
                             <div class="hero-small-banner style2">
                                 <div class="content">
-                                    <h2>Seasonal Sale!</h2>
-                                    <p>Saving up to 50% off all online store items this week.</p>
+                                    <h2>@lang('dashboard.seasonal_sale')</h2>
+                                    <p>@lang('dashboard.seasonal_text')</p>
                                     <div class="button">
-                                        <a class="btn" href="#onsale">Shop Now</a>
+                                        <a class="btn" href="#onsale">@lang('dashboard.sale_btn')</a>
                                     </div>
                                 </div>
                             </div>
@@ -90,8 +90,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>NEW GAME</h2>
-                        <p>Check those newest games and follow the trends by playing those games. Get it quick!! </p>
+                        <h2>@lang('dashboard.new_game')</h2>
+                        <p>@lang('dashboard.new_game_text')</p>
                     </div>
                 </div>
             </div>
@@ -101,12 +101,12 @@
                     <div class="col-lg-6 col-md-6 col-12 mb-4">
                         <div class="single-banner position-relative"
                             style="background-image:url('frontend/images/banner/banner-1-bg.jpg'); height:300px">
-                            <span class="position-absolute text-light bg-danger pt-2 pb-2 ps-4 pe-4">New</span>
+                            <span class="position-absolute text-light bg-danger pt-2 pb-2 ps-4 pe-4">@lang('dashboard.new')</span>
                             <div class="content pt-5" style="padding-right:55%">
                                 <h2 class="d-flex align-items-center" style="height: 50px">{{ $ngame->game_name }}</h2>
                                 <p style="height: 70px;overflow:hidden">{{ $ngame->short_desc }}</p>
                                 <div class="button">
-                                    <a href="/game/{{ $ngame->game_id }}" class="btn">View Details</a>
+                                    <a href="/game/{{ $ngame->game_id }}" class="btn">@lang('dashboard.view_details')</a>
                                 </div>
                                 <?php
                                 $promotional = json_decode($ngame->promotional);
@@ -128,8 +128,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>ON SALE!!!</h2>
-                        <p>Want to play cool games but not have enough money? check this season sale and go play your dream game</p>
+                        <h2>@lang('dashboard.on_sale')</h2>
+                        <p>@lang('dashboard.on_sale_text')</p>
                     </div>
                 </div>
             </div>
@@ -165,7 +165,7 @@
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>
-                                    <li><span>{{ $ratings[$sgame->game_id] }} Ratings</span></li>
+                                    <li><span>{{ $ratings[$sgame->game_id] }} @lang('dashboard.ratings')</span></li>
                                 </ul>
                                 <div class="price">
                                     <span>Rp{{number_format( $sgame->price,2,',','.') }}</span>

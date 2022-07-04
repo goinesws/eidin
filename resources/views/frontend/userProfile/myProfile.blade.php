@@ -12,14 +12,14 @@
                     <h1>{{ $profile->username }}</h1>
                     <h3>{{ $profile->name }}</h3>
                 </div>
-                <a href="" class="btn btn-warning fs-5 m-auto" style="height: 45px"><i class="lni lni-pencil-alt"></i> Update</a>
+                <a href="" class="btn btn-warning fs-5 m-auto" style="height: 45px"><i class="lni lni-pencil-alt"></i> @lang('myProfile.update')</a>
             </div>
             <div class="mt-3 mb-5 border border-3 border-primary"></div>
             <div class="d-flex">
                 <div style="width: 20%">
-                    <h5 class="text-secondary">Email</h5> <br>
-                    <h5 class="text-secondary">Country</h5> <br>
-                    <h5 class="text-secondary">Role</h5>
+                    <h5 class="text-secondary">@lang('myProfile.email')</h5> <br>
+                    <h5 class="text-secondary">@lang('myProfile.country')</h5> <br>
+                    <h5 class="text-secondary">@lang('myProfile.role')</h5>
                 </div>
                 <div style="width: 80%">
                     <h5>: {{ $profile->email }}</h5> <br>
@@ -30,19 +30,19 @@
             <div class="mt-5 mb-3 border border-3 border-primary"></div>
             <div class="d-flex">
                 <div class="text-center" style="width: 25%">
-                    Game(s) Uploaded
+                    @lang('myProfile.games_uploaded')
                     <h2>{{ $games_developed }}</h2>
                 </div>
                 <div class="text-center" style="width: 25%">
-                    Game(s) Owned
+                    @lang('myProfile.games_owned')
                     <h2>{{ $games }}</h2>
                 </div>
                 <div class="text-center" style="width: 25%">
-                    Review(s) Written
+                    @lang('myProfile.reviews_written')
                     <h2>{{ $reviews }}</h2>
                 </div>
                 <div class="text-center" style="width: 25%">
-                    Donation(s) Given
+                    @lang('myProfile.donations_given')
                     <h2>{{ $donations }}</h2>
                 </div>
             </div>
