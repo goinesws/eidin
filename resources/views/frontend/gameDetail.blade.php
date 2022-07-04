@@ -52,29 +52,29 @@
                             </div>
 
                             <p class="info-text text-success">
-                                Downloaded by {{$total_download}} user(s) <br>
+                                @lang('gameDetail.downloaded') {{$total_download}} @lang('gameDetail.users') <br>
                                 <span class="text-warning">
                                     @for ($i = 1; $i <=5; $i++)
                                         <em class="lni lni-star{{ floor($reviews->avg('rating')) < $i ? ' ' : '-filled' }}"
                                             style="width: 20px"></em>
                                     @endfor
                                 </span>
-                                <span class="text-secondary"> ({{$reviews->avg('rating')}}/5), reviewed by {{$reviews->count()}} user(s)</span>
+                                <span class="text-secondary"> ({{$reviews->avg('rating')}}/5), @lang('gameDetail.reviewed') {{$reviews->count()}} @lang('gameDetail.users')</span>
                                 <br>
-                                Content Rating: {{ $game->content_rating }}
+                                @lang('gameDetail.content_rating') {{ $game->content_rating }}
                             </p>
 
                             <p class="info-text">{{ $game->short_desc }}</p>
                             <div class="bottom-content">
                                 <h3 class="price">
                                     @if ($game->price == 0)
-                                        Rp: 0,00 (Free)
+                                        Rp: 0,00 @lang('gameDetail.free')
                                     @else
                                         Rp: {{ number_format($game->price, 2, ',', '.') }}
                                     @endif
                                 </h3>
                                 @if (!Auth::check())
-                                    <p class="text-danger">* Please login first to add the game to the wishlist</p>
+                                    <p class="text-danger">* @lang('gameDetail.login')</p>
                                 @else
                                     @if (Auth::user()->role == 'user')
                                         <div class="row align-items-end">
@@ -82,7 +82,7 @@
                                                 <div class="col-lg-4 col-md-4 col-12">
                                                     <div class="button cart-button">
                                                         <button class="btn" style="width: 100%;" data-toggle="modal"
-                                                            data-target="#exampleModal">Buy Game</button>
+                                                            data-target="#exampleModal">@lang('gameDetail.buy_btn')</button>
                                                     </div>
                                                 </div>
                                                 @if (!$isOnWishlist)
@@ -94,8 +94,7 @@
                                                                     value="{{ $game->id }}">
                                                                 <button class="btn" type="submit"><i
                                                                         class="lni lni-heart"></i>
-                                                                    Add To
-                                                                    Wishlist</button>
+                                                                        @lang('gameDetail.add_wishlist')</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -108,8 +107,7 @@
                                                                     value="{{ $game->id }}">
                                                                 <button class="btn" type="submit"><i
                                                                         class="lni lni-heart"></i>
-                                                                    Remove
-                                                                    Wishlist</button>
+                                                                        @lang('gameDetail.remove_wishlist')</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -117,7 +115,7 @@
                                             @else
                                                 <div class="col-lg-4 col-md-4 col-12">
                                                     <div class="button cart-button">
-                                                        <button class="btn" style="width: 100%;">Download Game</button>
+                                                        <button class="btn" style="width: 100%;">@lang('gameDetail.download')</button>
                                                     </div>
                                                 </div>
                                             @endif
@@ -134,23 +132,23 @@
                     <div class="row">
                         <div class="col-lg-6 col-12">
                             <div class="info-body custom-responsive-margin">
-                                <h4>Details</h4>
-                                <p>Version: {{ $game->game_version }}</p>
+                                <h4>@lang('gameDetail.details')</h4>
+                                <p>@lang('gameDetail.version') {{ $game->game_version }}</p>
                                 <p>{{ $game->about_game }}</p>
                                 <hr>
-                                <h4>Minimum Specifications</h4>
+                                <h4>@lang('gameDetail.specification')</h4>
                                 <ul class="normal-list">
-                                    <li><span>Processor:</span> {{ $game->requirement_processor }}</li>
-                                    <li><span>Operating System:</span> {{ $game->requirement_os }}</li>
-                                    <li><span>Graphic:</span> {{ $game->requirement_graphic }}</li>
-                                    <li><span>Memory:</span> {{ $game->requirement_memory }}</li>
-                                    <li><span>Storage:</span> {{ $game->requirement_storage }}</li>
+                                    <li><span>@lang('gameDetail.specification.processor')</span> {{ $game->requirement_processor }}</li>
+                                    <li><span>@lang('gameDetail.specification.os')</span> {{ $game->requirement_os }}</li>
+                                    <li><span>@lang('gameDetail.specification.graphic')</span> {{ $game->requirement_graphic }}</li>
+                                    <li><span>@lang('gameDetail.specification.memory')</span> {{ $game->requirement_memory }}</li>
+                                    <li><span>@lang('gameDetail.specification.storage')</span> {{ $game->requirement_storage }}</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">
                             <div class="info-body">
-                                <h4>Trailer Videos</h4>
+                                <h4>@lang('gameDetail.trailer')</h4>
                                 <iframe width="100%" height="300" src="{{$promotional->trailer}}">
                                 </iframe>
 
@@ -165,7 +163,7 @@
                     <div class="product-details-info">
                         <div class="single-block">
                             <div class="info-body custom-responsive-margin">
-                                <h4>Reviews</h4>
+                                <h4>@lang('gameDetail.review')</h4>
                                 {{-- @dump($myReview) --}}
                                 <hr>
 
@@ -174,7 +172,7 @@
                                         <div class="container-fluid"
                                             style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(56, 146, 53);border-radius:15px;padding:20px;color:white">
                                             <div style="color: white;">
-                                                <span style="font-size: 20px">How was your experience?</span>
+                                                <span style="font-size: 20px">@lang('gameDetail.review.1')</span>
                                             </div>
                                             <form action="/review/add" method="POST" style="margin-top:20px">
                                                 @csrf
@@ -182,21 +180,21 @@
                                                 <div class="mb-3">
                                                     <select name="rating"
                                                         class="form-control @error('rating') is-invalid @enderror" required>
-                                                        <option selected disabled>Select Star...</option>
+                                                        <option selected disabled>@lang('gameDetail.review.2')</option>
                                                         <option value="5"
-                                                            @if (old('rating') == '5') selected @endif>5 Star
+                                                            @if (old('rating') == '5') selected @endif>@lang('gameDetail.review.3')
                                                         </option>
                                                         <option value="4"
-                                                            @if (old('rating') == '4') selected @endif>4 Star
+                                                            @if (old('rating') == '4') selected @endif>@lang('gameDetail.review.4')
                                                         </option>
                                                         <option value="3"
-                                                            @if (old('rating') == '3') selected @endif>3 Star
+                                                            @if (old('rating') == '3') selected @endif>@lang('gameDetail.review.5')
                                                         </option>
                                                         <option value="2"
-                                                            @if (old('rating') == '2') selected @endif>2 Star
+                                                            @if (old('rating') == '2') selected @endif>@lang('gameDetail.review.6')
                                                         </option>
                                                         <option value="1"
-                                                            @if (old('rating') == '1') selected @endif>1 Star
+                                                            @if (old('rating') == '1') selected @endif>@lang('gameDetail.review.7')
                                                         </option>
                                                     </select>
                                                     @error('rating')
@@ -214,7 +212,7 @@
                                                         </div>
                                                     @enderror
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary">@lang('gameDetail.submit')</button>
                                             </form>
                                         </div>
                                     @else
@@ -225,7 +223,7 @@
                                             style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(81, 81, 206);border-radius:15px;padding:20px;color:white">
                                             <div style="margin-bottom:20px">
                                                 <button class="btn btn-sm btn-secondary"><em class="lni lni-pencil"
-                                                        style="margin-right:5px"></em> Edit Review</button>
+                                                        style="margin-right:5px"></em> @lang('gameDetail.edit_review')</button>
                                             </div>
                                             <div class="d-flex align-items-center">
                                                 <img src="{{ $user->profile_url }}" alt=""
@@ -275,7 +273,7 @@
                                 @endforeach
 
                                 @if (!count($reviews))
-                                    <h4>Review Empty...</h4>
+                                    <h4>@lang('gameDetail.review_empty')</h4>
                                 @endif
                             </div>
                         </div>
@@ -286,14 +284,14 @@
                     <div class="product-details-info">
                         <div class="single-block">
                             <div class="info-body custom-responsive-margin">
-                                <h4>Donation List</h4>
+                                <h4>@lang('gameDetail.donation')</h4>
                                 <hr>
 
                                 @if ($isBought)
                                     <div class="container-fluid"
                                         style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(56, 146, 53);border-radius:15px;padding:20px;color:white">
                                         <div style="color: white;">
-                                            <span style="font-size: 20px">Support this Game!</span>
+                                            <span style="font-size: 20px">@lang('gameDetail.support')</span>
                                         </div>
                                         <form action="/donation/add" method="POST" style="margin-top:20px">
                                             @csrf
@@ -301,15 +299,15 @@
                                             <div class="mb-3">
                                                 <select name="payment" id=""
                                                     class="form-control  @error('payment') is-invalid @enderror">
-                                                    <option selected disabled>Select Payment Method...</option>
+                                                    <option selected disabled>@lang('gameDetail.payment_method')</option>
                                                     <option value="credit_card"
-                                                        @if (old('payment') == 'credit_card') selected @endif>Credit Card
+                                                        @if (old('payment') == 'credit_card') selected @endif>@lang('gameDetail.payment_method.1')
                                                     </option>
                                                     <option value="bank_transfer"
-                                                        @if (old('payment') == 'bank_transfer') selected @endif>Bank Transfer
+                                                        @if (old('payment') == 'bank_transfer') selected @endif>@lang('gameDetail.payment_method.2')
                                                     </option>
                                                     <option value="paypal"
-                                                        @if (old('payment') == 'paypal') selected @endif>Paypal</option>
+                                                        @if (old('payment') == 'paypal') selected @endif>@lang('gameDetail.payment_method.3')</option>
                                                 </select>
                                                 @error('payment')
                                                     <div class="invalid-feedback" style="color: white">{{ $message }}
@@ -333,7 +331,7 @@
                                                     </div>
                                                 @enderror
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">@lang('gameDetail.submit')</button>
                                         </form>
                                     </div>
                                 @endif
@@ -359,7 +357,7 @@
                                     </div>
                                 @endforeach
                                 @if (!count($donations))
-                                    <h4>No Donations Yet..</h4>
+                                    <h4>@lang('gameDetail.no_donation')</h4>
                                 @endif
                             </div>
                         </div>
@@ -375,7 +373,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Buy Game : "{{ $game->game_name }}"</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">@lang('gameDetail.buy_game') "{{ $game->game_name }}"</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/game/buy" method="POST">
@@ -389,12 +387,11 @@
                         <div class="mb-3">
                             <select name="payment" id=""
                                 class="form-control  @error('payment') is-invalid @enderror">
-                                <option selected disabled>Select Payment Method...</option>
-                                <option value="credit_card" @if (old('payment') == 'credit_card') selected @endif>Credit Card
+                                <option selected disabled>@lang('gameDetail.payment_method')</option>
+                                <option value="credit_card" @if (old('payment') == 'credit_card') selected @endif>@lang('gameDetail.payment_method.1')
                                 </option>
-                                <option value="bank_transfer" @if (old('payment') == 'bank_transfer') selected @endif>Bank
-                                    Transfer</option>
-                                <option value="paypal" @if (old('payment') == 'paypal') selected @endif>Paypal</option>
+                                <option value="bank_transfer" @if (old('payment') == 'bank_transfer') selected @endif>@lang('gameDetail.payment_method.2')</option>
+                                <option value="paypal" @if (old('payment') == 'paypal') selected @endif>@lang('gameDetail.payment_method.3')</option>
                             </select>
                             @error('payment')
                                 <div class="invalid-feedback" style="color: white">{{ $message }}</div>
@@ -403,7 +400,7 @@
                         {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
                     </div>
                     <div class="modal-footer button">
-                        <button class="btn" type="submit">Buy Game!</button>
+                        <button class="btn" type="submit">@lang('gameDetail.buy_btn')</button>
                     </div>
                 </form>
             </div>
