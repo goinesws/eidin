@@ -15,7 +15,10 @@
                     <h1>{{ $company->company_name }}</h1>
                     <h4>{{ $company->company_address }}, {{ $company->country }}</h4>
                 </div>
+                @if (Auth::check() && Auth::user()->developer != null && Auth::user()->developer->id == request()->id)
+                    
                 <a href="" class="btn btn-warning fs-5 m-auto" style="height: 45px"><i class="lni lni-pencil-alt"></i> Update</a>
+                @endif
             </div>
             <p>{{ $company->company_description }}</p>
             <div class="mt-3 mb-5 border border-3 border-primary"></div>
@@ -26,7 +29,7 @@
                     <h5 class="text-secondary">Game uploaded</h5>
                 </div>
                 <div style="width: 70%">
-                    <h5>: {{ $company->company_website }}</h5> <br>
+                    <h5>: <a class="text-primary" href="{{ $company->company_website }}">{{ $company->company_website }}</a></h5> <br>
                     <h5>: {{ $company->approval_date }}</h5> <br>
                     <h5>: {{ $games->count() }}</h5>
                 </div>

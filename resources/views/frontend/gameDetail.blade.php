@@ -43,7 +43,7 @@
                                             {{ $game->gameGenre->genre_name }}
                                         </a>
                                         @foreach ($game->tagDetail as $item)
-                                            <a class="text-primary" href="/tag/{{ $game->genre_id }}">
+                                            <a class="text-primary" href="/tag/{{ $item->tag->id }}">
                                                 {{ $item->tag->tag_name }}
                                             </a>
                                         @endforeach

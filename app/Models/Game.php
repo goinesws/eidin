@@ -78,6 +78,7 @@ class Game extends Model
         return DB::table('games')
             ->join('tag_details', 'tag_details.game_id', '=', 'games.id')
             ->join('game_tags', 'game_tags.id', '=', 'tag_details.tag_id')
+            ->join('game_genres', 'game_genres.id', '=', 'games.genre_id')
             ->where('tag_name', '=', $tag)
             ->where('status','published') //cuma tampilin yang di publish doang
             ->get();
@@ -88,6 +89,7 @@ class Game extends Model
         return DB::table('games')
             ->join('tag_details', 'tag_details.game_id', '=', 'games.id')
             ->join('game_tags', 'game_tags.id', '=', 'tag_details.tag_id')
+            ->join('game_genres', 'game_genres.id', '=', 'games.genre_id')
             ->where('game_tags.id', '=', $tag)
             ->where('status','published') //cuma tampilin yang di publish doang
             ->get();

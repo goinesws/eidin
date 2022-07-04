@@ -83,20 +83,13 @@ class Controller extends BaseController
     }
 
     public function allGame(){
-        $ratings = array();
-        $games = Game::all();
+        $games = Game::where('status', 'published')->get();
         $sale_game = Game::getGamebyTag('#sale');
-
-        foreach ($games as $game) {
-            $ratings[$game->id] = $this->calculateRating($game->id);
-        }
 
         return view('frontend.allGames', [
             'category_nav' => GameGenre::get(),
             'active' => 'All Games',
-            'games' => Game::all(),
-            'genres' => GameGenre::all(),
-            'ratings' => $ratings,
+            'games' => $games,
             'sale_game' => $sale_game
         ]);
     }
@@ -128,19 +121,25 @@ class Controller extends BaseController
 
     public function gameCategory(Request $request)
     {
+        $games = Game::where('status', 'published')->get();
+        $sale_game = Game::getGamebyTag('#sale');
+
         return view('frontend.gameCategory', [
             'category_nav' => GameGenre::get(),
             'active' => '',
             'genre' => GameGenre::find($request->id),
-            'games' => Game::where('genre_id', $request->id)->where('status', 'published')->get()
+            'games' => $games,
+            'sale_game' => $sale_game
         ]);
     }
 
     public function gamebyTag(Request $request)
     {
+        $sale_game = Game::getGamebyTag('#sale');
         return view('frontend.gamebyTags', [
             'category_nav' => GameGenre::get(),
             'active' => '',
+            'sale_game' => $sale_game,
             'tag' => GameTag::find($request->id),
             'games' => Game::getGamebyTagID($request->id)
         ]);

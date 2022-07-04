@@ -28,14 +28,14 @@
                             </a>
                             <div class="product-info">
                                 <span class="category">
-                                    <a href="/category/{{ $game->genre_id }}" class="text-dark">{{ $genres[$game->genre_id - 1]->genre_name }}</a>
+                                    <a href="/category/{{ $game->genre_id }}" class="text-dark">{{ $game->gameGenre->genre_name }}</a>
                                 </span>
                                 <h4 class="title">
                                     <a href="/game/{{ $game->id }}">{{ $game->game_name }}</a>
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>
-                                    <li><span>{{ $ratings[$game->id] }} Ratings</span></li>
+                                    <li><span>{{ $game->gameReviews->avg('rating') }}/5 Ratings</span></li>
                                 </ul>
                                 <div class="price">
                                     <span>Rp{{number_format( $game->price,2,',','.') }}</span>
