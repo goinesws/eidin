@@ -10,7 +10,7 @@
                     <div class="section-title">
                         <h2>{{ $tag->tag_name }} Games</h2>
                         @empty($games[0])
-                            <p>Oops, it seems that there are no games equipped with this tag<br>Check the other tags for more games!</p>
+                            <p>@lang('gamebyTags.error2')<br>@lang('gamebyTags.error2')</p>
                             <div style="width: 300px; opacity: .3; margin:auto">
                                 <img src="{{ asset('/img/icon.png') }}" alt="" class="pt-5 mt-3">
                                 <img src="{{ asset('/img/logo.png') }}" alt="" style="height: 135px; width:300px;object-fit: cover; object-position: 100% 0;">
@@ -56,7 +56,7 @@
                     </div>
                 @endforeach
                 @if(count($games) == 0)
-                    <h4 class="text-center">No Games Found :(</h4>
+                    <h4 class="text-center">@lang('gamebyTags.error3')</h4>
                 @endif
             </div>
         </div>
