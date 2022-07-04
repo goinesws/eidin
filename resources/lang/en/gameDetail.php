@@ -12,7 +12,8 @@
         'download' => 'Download Game',
         'details' => 'Details',
         'version' => 'Version:',
-        'specification' => 'Minimum Specifications',[
+        'specification' => 'Minimum Specifications',
+        'spek' => [
             'processor' => 'Processor:',
             'os' => 'Operating System:',
             'graphic' => 'Graphics:',
@@ -20,7 +21,8 @@
             'storage' => 'Storage:',
         ],
         'trailer' => 'Trailer Videos',
-        'review' => 'Reviews', [
+        'review' => 'Reviews', 
+        'review1' =>[
             '1' => 'How was your experience?',
             '2' => 'Select Star...',
             '3' => '5 Star',
@@ -34,7 +36,8 @@
         'review_empty' => 'Review Empty...',
         'donation' => 'Donation List',
         'support' => 'Support this Game!',
-        'payment_method' => 'Select Payment Method...',[
+        'payment_method' => 'Select Payment Method...',
+        'pay' => [
             '1' => 'Credit Card',
             '2' => 'Bank Transfer',
             '3' => 'Paypal',
