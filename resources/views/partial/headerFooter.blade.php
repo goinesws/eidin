@@ -64,8 +64,20 @@
                     </div>
                     <div class="col-lg-4 col-md-2 col-5">
                         <div class="middle-right-area">
-                            <div class="nav-hotline">
-                                {{-- JANGAN DIHAPUS --}}
+                            <div class="main-menu-search">
+                                <!-- navbar search start -->
+                                <form action="/changeLang" method="get">
+                                    <div class="navbar-search search-style-5">
+                                        <div class="search-input d-flex align-items-center">
+                                            Language: 
+                                            <select name="lang" class="form-control" style="margin-left:5px">
+                                                <option value="English">English</option>
+                                                <option value="Indonesia">Indonesia</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- navbar search Ends -->
                             </div>
 
                         </div>
