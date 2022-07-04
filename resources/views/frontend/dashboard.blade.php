@@ -37,7 +37,7 @@
                                         </div>
                                     </div>
                                     <img src="{{ $promotional->img[0] }}" alt=""
-                                        style="width: 50%; height:54%; position:absolute; right:0; top:20%">
+                                        style="width: 50%; height:60%; position:absolute; right:0; top:20%">
                                 </div>
                                 <!-- End Single Slider -->
                             @endforeach
@@ -102,9 +102,9 @@
                         <div class="single-banner position-relative"
                             style="background-image:url('frontend/images/banner/banner-1-bg.jpg'); height:300px">
                             <span class="position-absolute text-light bg-danger pt-2 pb-2 ps-4 pe-4">New</span>
-                            <div class="content" style="padding-right:55%">
-                                <h2>{{ $ngame->game_name }}</h2>
-                                <p>{{ $ngame->short_desc }}</p>
+                            <div class="content pt-5" style="padding-right:55%">
+                                <h2 class="d-flex align-items-center" style="height: 50px">{{ $ngame->game_name }}</h2>
+                                <p style="height: 70px;overflow:hidden">{{ $ngame->short_desc }}</p>
                                 <div class="button">
                                     <a href="/game/{{ $ngame->game_id }}" class="btn">View Details</a>
                                 </div>
