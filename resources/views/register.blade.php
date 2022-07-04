@@ -52,46 +52,46 @@
 
     <div class="pt-5 pb-5" style="background-color: #f9f9f9;">
         <div class="m-auto p-5 border shadow" style="width: 50%; border-radius:20px; background-color: #ffffff;">
-            <h4>Registration</h4> <br>
+            <h4>@lang('register.registration')</h4> <br>
             <form action="/register/auth" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="exampleInputText" class="form-label">Country</label>
+                    <label for="exampleInputText" class="form-label">@lang('register.country')</label>
                     <input type="text" class="form-control @error('country') is-invalid @enderror" id="exampleInputText" name="country">
                     @error('country')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputText" class="form-label">Full Name</label>
+                    <label for="exampleInputText" class="form-label">@lang('register.full_name')</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputText" name="name">
                     @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputText1" class="form-label">Username</label>
+                    <label for="exampleInputText1" class="form-label">@lang('register.username')</label>
                     <input type="text" class="form-control @error('username') is-invalid @enderror" id="exampleInputText1" name="username">
                     @error('username')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <label for="exampleInputEmail1" class="form-label">@lang('register.email')</label>
                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" name="email">
                     @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <label for="exampleInputPassword1" class="form-label">@lang('register.password')</label>
                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1" name="password">
                     @error('password')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                    <label for="exampleInputPassword1" class="form-label">@lang('register.confirm_password')</label>
                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1" name="password_confirmation">
                     @error('password')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -101,8 +101,8 @@
                 @if ($errors->any())
                     <div class="text-center text-danger mb-2">{{ $errors->first() }}</div>
                 @endif
-                <button type="submit" class="btn btn-primary" style="width: 100%">Register</button>
-                <div class="text-center mt-3">Already have an account? <a href="{{ route('login') }}">Login here</a></div>
+                <button type="submit" class="btn btn-primary" style="width: 100%">@lang('register.register')</button>
+                <div class="text-center mt-3">@lang('register.account') <a href="{{ route('login') }}">@lang('register.login')</a></div>
             </form>
         </div>
     </div>
