@@ -17,16 +17,16 @@
                 </div>
                 @if (Auth::check() && Auth::user()->developer != null && Auth::user()->developer->id == request()->id)
                     
-                <a href="" class="btn btn-warning fs-5 m-auto" style="height: 45px"><i class="lni lni-pencil-alt"></i> Update</a>
+                <a href="" class="btn btn-warning fs-5 m-auto" style="height: 45px"><i class="lni lni-pencil-alt"></i> @lang('companyDetail.update')</a>
                 @endif
             </div>
             <p>{{ $company->company_description }}</p>
             <div class="mt-3 mb-5 border border-3 border-primary"></div>
             <div class="d-flex">
                 <div style="width: 30%">
-                    <h5 class="text-secondary">Website</h5> <br>
-                    <h5 class="text-secondary">Partner since</h5> <br>
-                    <h5 class="text-secondary">Game uploaded</h5>
+                    <h5 class="text-secondary">@lang('companyDetail.website')</h5> <br>
+                    <h5 class="text-secondary">@lang('companyDetail.partner')</h5> <br>
+                    <h5 class="text-secondary">@lang('companyDetail.game_uploaded')</h5>
                 </div>
                 <div style="width: 70%">
                     <h5>: <a class="text-primary" href="{{ $company->company_website }}">{{ $company->company_website }}</a></h5> <br>
@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title mb-3">
-                        <h2>All Games</h2>
+                        <h2>@lang('companyDetail.all_games')</h2>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>
-                                    <li><span>{{ $ratings[$game->id] }} Ratings</span></li>
+                                    <li><span>{{ $ratings[$game->id] }} @lang('companyDetail.ratings')</span></li>
                                 </ul>
                                 <div class="price">
                                     <span>Rp{{number_format( $game->price,2,',','.') }}</span>
