@@ -5,9 +5,9 @@
         <div class="row pt-3">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>My Donations</h2>
+                    <h2>@lang('donationHistory.my_donations')</h2>
                     @empty($donations[0])
-                        <p>Love to play the games?<br>Start to support the developers for more games by giving them some donations.</p>
+                        <p>@lang('donationHistory.empty1')<br>@lang('donationHistory.empty2')</p>
                         <div style="width: 300px; opacity: .3; margin:auto">
                             <img src="{{ asset('/img/icon.png') }}" alt="" class="pt-5 mt-3">
                             <img src="{{ asset('/img/logo.png') }}" alt="" style="height: 135px; width:300px;object-fit: cover; object-position: 100% 0;">
