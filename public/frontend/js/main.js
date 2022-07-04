@@ -56,3 +56,8 @@ Author: GrayGrids
         // });
     })
 })();
+
+
+$('#lang').on('change', function(){
+    window.location = $(this).val();
+ });

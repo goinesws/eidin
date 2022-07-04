@@ -1,18 +1,20 @@
 <?php
 
+use App\Models\Wishlist;
+use App\Models\GameDonation;
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\DevPagesController;
-use App\Http\Controllers\GameController;
-use App\Http\Controllers\GameDonationsController;
-use App\Http\Controllers\GamePaymentController;
-use App\Http\Controllers\GameReviewController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserPagesController;
+use App\Http\Controllers\DevPagesController;
 use App\Http\Controllers\WishlistController;
-use App\Models\GameDonation;
-use App\Models\Wishlist;
+use App\Http\Controllers\UserPagesController;
+use App\Http\Controllers\GameReviewController;
+use App\Http\Controllers\GamePaymentController;
+use App\Http\Controllers\GameDonationsController;
 
 /*
 TODO
@@ -69,8 +71,23 @@ game detail:
 admin:
 - approve game (game status udh dibikin di tabel game + game update log)
 */
+
 Route::get('/products', function () {
     return view('/templet_ori/product-details');
+});
+
+Route::get('/lang/{locale}', function ($locale) {
+    App::setLocale($locale);
+
+    if (App::isLocale('en')) {
+        echo "enggres";
+    }
+
+    if (App::isLocale('id')) {
+        echo "indo";
+    }
+
+    // return back();
 });
 
 Route::get('/', [Controller::class, 'dashboard']);
@@ -117,5 +134,7 @@ Route::middleware(['dev'])->prefix('dev')->group(function () {
 
 //admin only
 Route::middleware(['admin'])->prefix('admin')->group(function () {
-    Route::get('/', function(){return dump(Auth::user());});
+    Route::get('/', function () {
+        return dump(Auth::user());
+    });
 });
