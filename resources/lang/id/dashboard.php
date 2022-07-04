@@ -5,7 +5,7 @@ return [
     'buy_btn' => 'Beli Sekarang',
     'free_games' => 'Games Gratis!',
     'seasonal_sale' => 'Diskon Musiman!',
-    'seasonal_text' => 'Di minggu ini, Anda bisa hemat hingga 50% dari semua barang!',
+    'seasonal_text' => 'Di minggu ini, Anda bisa hemat hingga 50 % dengan membeli game sekarang!',
     'sale_btn' => 'Belanja Sekarang!',
     'new_game' => 'GAME BARU',
     'new_game_text' => 'Lihat game terbaru dan ikuti trendnya dengan bermain game tersebut. Cepat jangan sampai ketinggalan!',

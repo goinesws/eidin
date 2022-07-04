@@ -51,10 +51,12 @@
                             <form action="/search" method="get">
                                 <div class="navbar-search search-style-5">
                                     <div class="search-input">
-                                        <input type="text" placeholder="@lang('headerFooter.header.discover_game')..." name="search" class="form-control">
+                                        <input type="text" placeholder="@lang('headerFooter.header.discover_game')..." name="search"
+                                            class="form-control">
                                     </div>
                                     <div class="search-btn">
-                                        <button type="submit" class="btn"><i class="lni lni-search-alt"></i></button>
+                                        <button type="submit" class="btn"><i
+                                                class="lni lni-search-alt"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -70,12 +72,19 @@
                                     <div class="navbar-search search-style-5">
                                         <div class="search-input d-flex align-items-center">
                                             @lang('headerFooter.header.language'):
-                                            <select name="lang" id="lang" class="form-control" style="margin-left:5px">
+                                            <select name="lang" id="lang" class="form-select"
+                                                style="margin-left:5px">
                                                 <?php
-                                                    $lang = request()->session()->get('locale');
+                                                $lang = request()
+                                                    ->session()
+                                                    ->get('locale');
                                                 ?>
-                                                <option value="/lang/en" {{$lang!=null && $lang=='en' ? 'selected' : ''}} >English</option>
-                                                <option value="/lang/id" {{$lang!=null && $lang=='id' ? 'selected' : ''}} >Indonesia</option>
+                                                <option value="/lang/en"
+                                                    {{ $lang != null && $lang == 'en' ? 'selected' : '' }}>English
+                                                </option>
+                                                <option value="/lang/id"
+                                                    {{ $lang != null && $lang == 'id' ? 'selected' : '' }}>Indonesia
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -99,7 +108,7 @@
                             <span class="cat-button"><i class="lni lni-menu"></i>@lang('headerFooter.header.category')</span>
                             <ul class="sub-category">
                                 @foreach ($category_nav as $item)
-                                    <li><a href="/category/{{$item->id}}">{{ $item->genre_name }}</a></li>
+                                    <li><a href="/category/{{ $item->id }}">{{ $item->genre_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -116,26 +125,32 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="/" class="{{ $active == 'Home' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.home')</a>
+                                        <a href="/" class="{{ $active == 'Home' ? 'active' : '' }}"
+                                            aria-label="Toggle navigation">@lang('headerFooter.header.home')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/all-games" class="{{ $active == 'All Games' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.all_games')</a>
+                                        <a href="/all-games" class="{{ $active == 'All Games' ? 'active' : '' }}"
+                                            aria-label="Toggle navigation">@lang('headerFooter.header.all_games')</a>
                                     </li>
 
                                     @if (Auth::check() && Auth::user()->role == 'user')
                                         <li class="nav-item">
-                                            <a href="/myLibrary" class="{{ $active == 'Libraries' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.library')</a>
+                                            <a href="/myLibrary" class="{{ $active == 'Libraries' ? 'active' : '' }}"
+                                                aria-label="Toggle navigation">@lang('headerFooter.header.library')</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/wishlist" class="{{ $active == 'Wishlist' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.wishlist')</a>
+                                            <a href="/wishlist" class="{{ $active == 'Wishlist' ? 'active' : '' }}"
+                                                aria-label="Toggle navigation">@lang('headerFooter.header.wishlist')</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="dd-menu collapsed {{ $active == 'Profile' ? 'active' : '' }}" href="javascript:void(0)"
-                                                data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
-                                                aria-controls="navbarSupportedContent" aria-expanded="false"
+                                            <a class="dd-menu collapsed {{ $active == 'Profile' ? 'active' : '' }}"
+                                                href="javascript:void(0)" data-bs-toggle="collapse"
+                                                data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent"
+                                                aria-expanded="false"
                                                 aria-label="Toggle navigation">@lang('headerFooter.header.profile')</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="/myProfile" class="">@lang('headerFooter.header.my_profile')</a></li>
+                                                <li class="nav-item"><a href="/myProfile"
+                                                        class="">@lang('headerFooter.header.my_profile')</a></li>
                                                 <li class="nav-item"><a href="/myDonation">@lang('headerFooter.header.donation_history')</a></li>
                                             </ul>
                                         </li>
@@ -144,31 +159,40 @@
                                     @if (Auth::check() && Auth::user()->developer == null && Auth::user()->role == 'user')
                                         <li class="nav-item">
                                             {{-- khusus buat yg belum registrasi dev --}}
-                                            <a href="/dev-registration" class="{{ $active == 'Developer Registration' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.developer_registration')</a>
+                                            <a href="/dev-registration"
+                                                class="{{ $active == 'Developer Registration' ? 'active' : '' }}"
+                                                aria-label="Toggle navigation">@lang('headerFooter.header.developer_registration')</a>
                                         </li>
                                     @endif
 
-                                    @if(Auth::check() && Auth::user()->developer != null)
+                                    @if (Auth::check() && Auth::user()->developer != null)
                                         <li class="nav-item">
-                                            <a class="dd-menu collapsed {{ $active == 'Developer' ? 'active' : '' }}" href="javascript:void(0)"
-                                                data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
-                                                aria-controls="navbarSupportedContent" aria-expanded="false"
+                                            <a class="dd-menu collapsed {{ $active == 'Developer' ? 'active' : '' }}"
+                                                href="javascript:void(0)" data-bs-toggle="collapse"
+                                                data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent"
+                                                aria-expanded="false"
                                                 aria-label="Toggle navigation">@lang('headerFooter.header.developer')</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="/developer/{{ Auth::user()->developer->id }}" class="">@lang('headerFooter.header.company_profile')</a></li>
-                                                <li class="nav-item"><a href="/dev/purchase-donation/{{ Auth::user()->developer->id }}">@lang('headerFooter.header.purchases&donations')</a></li>
+                                                <li class="nav-item"><a
+                                                        href="/developer/{{ Auth::user()->developer->id }}"
+                                                        class="">@lang('headerFooter.header.company_profile')</a></li>
+                                                <li class="nav-item"><a
+                                                        href="/dev/purchase-donation/{{ Auth::user()->developer->id }}">@lang('headerFooter.header.purchases&donations')</a>
+                                                </li>
                                             </ul>
                                         </li>
                                     @endif
 
-                                    @if(Auth::check() && Auth::user()->role == 'admin')
+                                    @if (Auth::check() && Auth::user()->role == 'admin')
                                         <li class="nav-item">
-                                            <a class="dd-menu collapsed {{ $active == 'Admin' ? 'active' : '' }}" href="javascript:void(0)"
-                                                data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
-                                                aria-controls="navbarSupportedContent" aria-expanded="false"
+                                            <a class="dd-menu collapsed {{ $active == 'Admin' ? 'active' : '' }}"
+                                                href="javascript:void(0)" data-bs-toggle="collapse"
+                                                data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent"
+                                                aria-expanded="false"
                                                 aria-label="Toggle navigation">@lang('headerFooter.header.admin')</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="about-us.html" class="">@lang('headerFooter.header.pending_games')</a></li>
+                                                <li class="nav-item"><a href="about-us.html"
+                                                        class="">@lang('headerFooter.header.pending_games')</a></li>
                                                 <li class="nav-item"><a href="faq.html">@lang('headerFooter.header.pending_update')</a></li>
                                                 {{-- <li class="nav-item"><a href="login.html">Reviews</a></li>
                                                 <li class="nav-item"><a href="register.html">Donations</a></li> --}}
@@ -178,11 +202,13 @@
 
                                     @if (!Auth::check())
                                         <li class="nav-item">
-                                            <a href="/login" class="{{ $active == 'Login' ? 'active' : '' }}" aria-label="Toggle navigation">@lang('headerFooter.header.login')</a>
+                                            <a href="/login" class="{{ $active == 'Login' ? 'active' : '' }}"
+                                                aria-label="Toggle navigation">@lang('headerFooter.header.login')</a>
                                         </li>
                                     @else
                                         <li class="nav-item">
-                                            <a href="/logout" aria-label="Toggle navigation" class="text-danger">@lang('headerFooter.header.logout')</a>
+                                            <a href="/logout" aria-label="Toggle navigation"
+                                                class="text-danger">@lang('headerFooter.header.logout')</a>
                                         </li>
                                     @endif
                                 </ul>
@@ -225,7 +251,8 @@
                                     <form action="#" method="get" target="_blank" class="newsletter-form">
                                         <input name="EMAIL" placeholder="@lang('headerFooter.footer.footer_top.3')..." type="email">
                                         <div class="button">
-                                            <button class="btn">@lang('headerFooter.footer.footer_top.btn')<span class="dir-part"></span></button>
+                                            <button class="btn">@lang('headerFooter.footer.footer_top.btn')<span
+                                                    class="dir-part"></span></button>
                                         </div>
                                     </form>
                                 </div>
