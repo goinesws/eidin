@@ -2,23 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Developer;
 use App\Models\Game;
-use App\Models\GameDonation;
 use App\Models\GameTag;
+use App\Models\Wishlist;
+use App\Models\Developer;
 use App\Models\GameGenre;
+use App\Models\GameReview;
 use App\Models\GameLibrary;
 use App\Models\GamePayment;
-use App\Models\GameReview;
-use App\Models\Wishlist;
+use App\Models\GameDonation;
 use Illuminate\Http\Request;
+use PharIo\Manifest\Library;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\Auth;
-use PharIo\Manifest\Library;
 
 class Controller extends BaseController
 {
