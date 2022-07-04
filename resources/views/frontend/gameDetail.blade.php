@@ -138,11 +138,11 @@
                                 <hr>
                                 <h4>@lang('gameDetail.specification')</h4>
                                 <ul class="normal-list">
-                                    <li><span>@lang('gameDetail.specification.processor')</span> {{ $game->requirement_processor }}</li>
-                                    <li><span>@lang('gameDetail.specification.os')</span> {{ $game->requirement_os }}</li>
-                                    <li><span>@lang('gameDetail.specification.graphic')</span> {{ $game->requirement_graphic }}</li>
-                                    <li><span>@lang('gameDetail.specification.memory')</span> {{ $game->requirement_memory }}</li>
-                                    <li><span>@lang('gameDetail.specification.storage')</span> {{ $game->requirement_storage }}</li>
+                                    <li><span>@lang('gameDetail.spek.processor')</span> {{ $game->requirement_processor }}</li>
+                                    <li><span>@lang('gameDetail.spek.os')</span> {{ $game->requirement_os }}</li>
+                                    <li><span>@lang('gameDetail.spek.graphic')</span> {{ $game->requirement_graphic }}</li>
+                                    <li><span>@lang('gameDetail.spek.memory')</span> {{ $game->requirement_memory }}</li>
+                                    <li><span>@lang('gameDetail.spek.storage')</span> {{ $game->requirement_storage }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
                                         <div class="container-fluid"
                                             style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:rgb(56, 146, 53);border-radius:15px;padding:20px;color:white">
                                             <div style="color: white;">
-                                                <span style="font-size: 20px">@lang('gameDetail.review.1')</span>
+                                                <span style="font-size: 20px">@lang('gameDetail.review1.1')</span>
                                             </div>
                                             <form action="/review/add" method="POST" style="margin-top:20px">
                                                 @csrf
@@ -180,21 +180,21 @@
                                                 <div class="mb-3">
                                                     <select name="rating"
                                                         class="form-control @error('rating') is-invalid @enderror" required>
-                                                        <option selected disabled>@lang('gameDetail.review.2')</option>
+                                                        <option selected disabled>@lang('gameDetail.review1.2')</option>
                                                         <option value="5"
-                                                            @if (old('rating') == '5') selected @endif>@lang('gameDetail.review.3')
+                                                            @if (old('rating') == '5') selected @endif>@lang('gameDetail.review1.3')
                                                         </option>
                                                         <option value="4"
-                                                            @if (old('rating') == '4') selected @endif>@lang('gameDetail.review.4')
+                                                            @if (old('rating') == '4') selected @endif>@lang('gameDetail.review1.4')
                                                         </option>
                                                         <option value="3"
-                                                            @if (old('rating') == '3') selected @endif>@lang('gameDetail.review.5')
+                                                            @if (old('rating') == '3') selected @endif>@lang('gameDetail.review1.5')
                                                         </option>
                                                         <option value="2"
-                                                            @if (old('rating') == '2') selected @endif>@lang('gameDetail.review.6')
+                                                            @if (old('rating') == '2') selected @endif>@lang('gameDetail.review1.6')
                                                         </option>
                                                         <option value="1"
-                                                            @if (old('rating') == '1') selected @endif>@lang('gameDetail.review.7')
+                                                            @if (old('rating') == '1') selected @endif>@lang('gameDetail.review1.7')
                                                         </option>
                                                     </select>
                                                     @error('rating')
@@ -301,13 +301,13 @@
                                                     class="form-control  @error('payment') is-invalid @enderror">
                                                     <option selected disabled>@lang('gameDetail.payment_method')</option>
                                                     <option value="credit_card"
-                                                        @if (old('payment') == 'credit_card') selected @endif>@lang('gameDetail.payment_method.1')
+                                                        @if (old('payment') == 'credit_card') selected @endif>@lang('gameDetail.pay.1')
                                                     </option>
                                                     <option value="bank_transfer"
-                                                        @if (old('payment') == 'bank_transfer') selected @endif>@lang('gameDetail.payment_method.2')
+                                                        @if (old('payment') == 'bank_transfer') selected @endif>@lang('gameDetail.pay.2')
                                                     </option>
                                                     <option value="paypal"
-                                                        @if (old('payment') == 'paypal') selected @endif>@lang('gameDetail.payment_method.3')</option>
+                                                        @if (old('payment') == 'paypal') selected @endif>@lang('gameDetail.pay.3')</option>
                                                 </select>
                                                 @error('payment')
                                                     <div class="invalid-feedback" style="color: white">{{ $message }}
@@ -388,10 +388,10 @@
                             <select name="payment" id=""
                                 class="form-control  @error('payment') is-invalid @enderror">
                                 <option selected disabled>@lang('gameDetail.payment_method')</option>
-                                <option value="credit_card" @if (old('payment') == 'credit_card') selected @endif>@lang('gameDetail.payment_method.1')
+                                <option value="credit_card" @if (old('payment') == 'credit_card') selected @endif>@lang('gameDetail.pay.1')
                                 </option>
-                                <option value="bank_transfer" @if (old('payment') == 'bank_transfer') selected @endif>@lang('gameDetail.payment_method.2')</option>
-                                <option value="paypal" @if (old('payment') == 'paypal') selected @endif>@lang('gameDetail.payment_method.3')</option>
+                                <option value="bank_transfer" @if (old('payment') == 'bank_transfer') selected @endif>@lang('gameDetail.pay.2')</option>
+                                <option value="paypal" @if (old('payment') == 'paypal') selected @endif>@lang('gameDetail.pay.3')</option>
                             </select>
                             @error('payment')
                                 <div class="invalid-feedback" style="color: white">{{ $message }}</div>

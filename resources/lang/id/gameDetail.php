@@ -12,7 +12,8 @@
         'download' => 'Unduh Game',
         'details' => 'Detil',
         'version' => 'Versi:',
-        'specification' => 'Spesifikasi Minimum',[
+        'specification' => 'Spesifikasi Minimum',
+        'spek' => [
             'processor' => 'Prosessor:',
             'os' => 'Sistem Operasi:',
             'graphic' => 'Grafik:',
@@ -20,7 +21,8 @@
             'storage' => 'Penyimpanan:',
         ],
         'trailer' => 'Video Cuplikan',
-        'review' => 'Ulasan', [
+        'review' => 'Ulasan', 
+        'review1' => [
             '1' => 'Bagaimana pengalaman anda?',
             '2' => 'Pilih Bintang...',
             '3' => '5 Bintang',
@@ -34,7 +36,8 @@
         'review_empty' => 'Ulasan Kosong...',
         'donation' => 'Daftar Donasi',
         'support' => 'Dukung Game Ini!',
-        'payment_method' => 'Pilih Metode Pembayaran...',[
+        'payment_method' => 'Pilih Metode Pembayaran...',
+        'pay' => [
             '1' => 'Kartu Kredit',
             '2' => 'Transfer Bank',
             '3' => 'Paypal',
