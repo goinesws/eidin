@@ -12,11 +12,19 @@ use App\Models\GameDonation;
 use App\Models\GameLibrary;
 use App\Models\GameReview;
 use App\Models\User;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class UserPagesController extends Controller
 {
+    private function setLang(){
+        if(request()->session()->get('locale') != null){
+            App::setLocale(request()->session()->get('locale'));
+        }
+    }
+
     public function wishlistPage(){
+        $this->setLang();
         $sale_game = Game::getGamebyTag('#sale');
 
         return view('frontend.wishlist', [
@@ -29,6 +37,7 @@ class UserPagesController extends Controller
     }
 
     public function libraryPage(){
+        $this->setLang();
         return view('frontend.myLibrary', [
             'category_nav' => GameGenre::get(),
             'active' => 'Libraries',
@@ -37,6 +46,7 @@ class UserPagesController extends Controller
     }
 
     public function userProfilePage(){
+        $this->setLang();
         $games_developed = 0;
         if (Auth::user()->developer) {
             $dev_id = Developer::where('user_id', Auth::user()->id)->first()->id;
@@ -54,6 +64,7 @@ class UserPagesController extends Controller
     }
 
     public function userDonationPage(){
+        $this->setLang();
         return view('frontend.userProfile.donationHistory', [
             'category_nav' => GameGenre::get(),
             'active' => 'Profile',
