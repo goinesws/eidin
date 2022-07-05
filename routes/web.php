@@ -112,6 +112,7 @@ Route::middleware(['user'])->group(function () {
 
     //dev registration
     Route::get('/dev-registration', [DevPagesController::class, 'devRegistPage']);
+    Route::post('/dev-registration/auth', [DevPagesController::class, 'devRegist']);
 
     Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
     Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist']);
