@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
 
         $faker = Factory::create();
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 11; $i++) {
             User::create([
                 'country' => $faker->country,
                 'name' => $faker->name,
