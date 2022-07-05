@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserPagesController extends Controller
@@ -113,5 +114,37 @@ class UserPagesController extends Controller
 
         Alert::success('HOORAY!', 'User profile updated successfully!');
         return redirect('/myProfile')->with('success', 'Success!');
+    }
+
+    public function changePasswordPage()
+    {
+        $this->setLang();
+
+        return view('frontend.userProfile.changePassword', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'Profile',
+            'User' => Auth::user(),
+        ]);
+    }
+
+    public function changePassword(Request $Request)
+    {
+        $this->setLang();
+
+        $Request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ]);
+
+        $user = User::find(Auth::user()->id);
+        if (Hash::check($Request->current_password, $user->password)) {
+            $user->password = Hash::make($Request->new_password);
+            $user->save();
+            Alert::success('HOORAY!', 'You have successfully changed your password!');
+            return redirect('/myProfile');
+        } else {
+            Alert::error('OOPS!', 'Your current password is incorrect!');
+            return redirect('/changePassword');
+        }
     }
 }

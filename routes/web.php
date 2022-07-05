@@ -120,6 +120,7 @@ Route::middleware(['user'])->group(function () {
     Route::post('/donation/add', [GameDonationsController::class, 'addDonation']);
     Route::post('/game/buy', [GamePaymentController::class, 'buyGame']);
     Route::post('/editMyProfile/edit', [UserPagesController::class, 'editUserProfile']);
+    Route::post('/changePassword/edit', [UserPagesController::class, 'changePassword']);
 });
 
 //dev only
