@@ -11,7 +11,7 @@
     </div>
     <div class="d-flex align-items-center justify-content-center mb-5">
         <div style="margin-right:20px">
-            <img src="{{ $developer->company_pic_url }}" alt=""
+            <img src="{{ url($developer->company_pic_url) }}" alt=""
                 style="height: 100px; width:100px;border-radius:50%">
         </div>
         <div>
