@@ -68,7 +68,7 @@
                             <div class="bottom-content">
                                 <h3 class="price">
                                     @if ($game->price == 0)
-                                        Rp: 0,00 @lang('gameDetail.free')
+                                        Rp: 0,00 (@lang('gameDetail.free'))
                                     @else
                                         Rp: {{ number_format($game->price, 2, ',', '.') }}
                                     @endif

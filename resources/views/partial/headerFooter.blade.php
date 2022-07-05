@@ -85,6 +85,9 @@
                                                 <option value="/lang/id"
                                                     {{ $lang != null && $lang == 'id' ? 'selected' : '' }}>Indonesia
                                                 </option>
+                                                <option value="/lang/snd"
+                                                    {{ $lang != null && $lang == 'snd' ? 'selected' : '' }}>Basa Sunda
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
