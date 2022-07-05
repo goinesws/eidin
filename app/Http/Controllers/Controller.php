@@ -64,12 +64,6 @@ class Controller extends BaseController
         $promo_game = Game::getGamebyTag('#promotion');
         $sale_game = Game::getGamebyTag('#sale');
         $genres = GameGenre::all();
-        $games = Game::all();
-        $ratings = array();
-
-        foreach ($games as $game) {
-            $ratings[$game->id] = $this->calculateRating($game->id);
-        }
 
         return view('frontend.dashboard', [
             'category_nav' => GameGenre::get(),
@@ -78,7 +72,6 @@ class Controller extends BaseController
             'promo_game' => $promo_game,
             'sale_game' => $sale_game,
             'genres' => $genres,
-            'ratings' => $ratings,
         ]);
     }
 
@@ -95,7 +88,7 @@ class Controller extends BaseController
 
     public function allGame(){
         $this->setLang();
-        $games = Game::where('status', 'published')->get();
+        $games = Game::with(['gameGenre', 'gameReviews'])->where('status', 'published')->get();
         $sale_game = Game::getGamebyTag('#sale');
 
         return view('frontend.allGames', [
@@ -126,7 +119,7 @@ class Controller extends BaseController
             'isBought' => $isBought,
             'isOnWishlist' => $isOnWishlist,
             'myReview' => $myReview,
-            'donations' => GameDonation::where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),
+            'donations' => GameDonation::with('user')->where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),
             'reviews' => GameReview::where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),
             'game' => Game::where('status', 'published')->find($request->id), //Belum di fix N+1 problem , kasih with(['table_name'])
         ]);
@@ -135,7 +128,7 @@ class Controller extends BaseController
     public function gameCategory(Request $request)
     {
         $this->setLang();
-        $games = Game::where('status', 'published')->where('genre_id', $request->id)->get();
+        $games = Game::with(['gameGenre', 'gameReviews'])->where('status', 'published')->where('genre_id', $request->id)->get();
         $sale_game = Game::getGamebyTag('#sale');
 
         return view('frontend.gameCategory', [
@@ -158,24 +151,19 @@ class Controller extends BaseController
             'tag' => GameTag::find($request->id),
             'games' => Game::getGamebyTagID($request->id)
         ]);
+
+        // dump(Game::getGamebyTagID($request->id));
     }
 
     public function companyDetail (Request $request) {
         $this->setLang();
-        $ratings = array();
-        $games = Game::all();
         $sale_game = Game::getGamebyTag('#sale');
-
-        foreach ($games as $game) {
-            $ratings[$game->id] = $this->calculateRating($game->id);
-        }
-
+        // dump($sale_game);
         return view('frontend.companyDetail', [
             'category_nav' => GameGenre::get(),
             'active' => '',
             'company' => Developer::find($request->id),
             'games' => Game::where('dev_id', $request->id)->where('status', 'published')->get(),
-            'ratings' => $ratings,
             'sale_game' => $sale_game,
             'genres' => GameGenre::all(),
         ]);

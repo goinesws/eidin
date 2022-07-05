@@ -17,7 +17,6 @@ class DevPagesController extends Controller
             App::setLocale(request()->session()->get('locale'));
         }
     }
-
     
     public function devRegistPage(){
         $this->setLang();
@@ -33,7 +32,7 @@ class DevPagesController extends Controller
             'category_nav' => GameGenre::get(),
             'active' => 'Developer',
             'developer' => Developer::find(Auth::user()->developer->id),
-            'games' => Game::where('dev_id', Auth::user()->developer->id)->get(),
+            'games' => Game::with('gamePayments', 'gameDonations')->where('dev_id', Auth::user()->developer->id)->get(),
         ]);
     }
 }

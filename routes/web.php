@@ -115,6 +115,7 @@ Route::middleware(['user'])->group(function () {
     Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
     Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist']);
     Route::post('/review/add', [GameReviewController::class, 'addReview']);
+    Route::post('/review/edit', [GameReviewController::class, 'editReview']);
     Route::post('/donation/add', [GameDonationsController::class, 'addDonation']);
     Route::post('/game/buy', [GamePaymentController::class, 'buyGame']);
     Route::post('/editMyProfile/edit', [UserPagesController::class, 'editUserProfile']);

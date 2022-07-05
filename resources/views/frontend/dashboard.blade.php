@@ -157,11 +157,11 @@
                                     <a href="/category/{{ $sgame->genre_id }}" class="text-dark">{{ $genres[$sgame->genre_id - 1]->genre_name }}</a>
                                 </span>
                                 <h4 class="title">
-                                    <a href="/game/{{ $sgame->game_id }}">{{ $sgame->game_name }}</a>
+                                    <a href="/game/{{ $sgame->id }}">{{ $sgame->game_name }}</a>
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>
-                                    <li><span>{{ $ratings[$sgame->game_id] }} @lang('dashboard.ratings')</span></li>
+                                    <li><span>{{ $sgame->gameReviews->avg('rating') }} @lang('dashboard.ratings')</span></li>
                                 </ul>
                                 <div class="price">
                                     <span>Rp{{number_format( $sgame->price,2,',','.') }}</span>

@@ -25,6 +25,24 @@ class GameReviewController extends Controller
         ]);
 
         Alert::success('Review Posted!', 'Thank you for your review!');
+       
+        return redirect()->back()->with('success', 'Success!');
+    }
+
+    public function editReview(Request $request){
+        $review_id = $request['review_id'];
+        $request = $request->validate([
+            'rating' => 'required|max:50',
+            'comment' => 'max:255',
+        ]);
+
+        GameReview::where('id', $review_id)->update([
+            'rating' => $request['rating'],
+            'comment' => $request['comment']
+        ]);
+
+        Alert::success('Review Edited!', 'Thank you for your review!');
+       
         return redirect()->back()->with('success', 'Success!');
     }
 }
