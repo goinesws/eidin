@@ -38,6 +38,9 @@
         <div class="row pt-4 pb-5">
             <div class="col-6">
                 <h3 class="text-center pb-3">Purchases</h3>
+                @empty($game->gamePayments[0])
+                    <h5 class="text-center pb-4 pt-2">No Data!</h5>
+                @endempty
                 @foreach ($game->gamePayments as $payment)
                     <div class="container-fluid"
                         style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color: rgb(37, 43, 202);border-radius:5px;padding:20px;color:white;">
@@ -48,7 +51,7 @@
                             <img src="{{ $user->profile_url }}" alt="" class="rounded-circle"
                                 style="height: 50px; width:50px">
                             <div class="d-flex flex-column">
-                                <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->name }}</strong>
+                                <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->username }}</strong>
                                 <strong style="margin-left:15px;font-size:20px">Rp{{ number_format($payment->amount, 2, ',', '.') }} ({{ str_replace('_', ' ',$payment->payment_method) }})</strong>
                             </div>
                         </div>
@@ -57,6 +60,9 @@
             </div>
             <div class="col-6">
                 <h3 class="text-center pb-3">Donations</h3>
+                @empty($game->gameDonations[0])
+                    <h5 class="text-center pb-4 pt-2">No Data!</h5>
+                @endempty
                 @foreach ($game->gameDonations as $donation)
                     <div class="container-fluid"
                         style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:{{ $donation->amount > 150000 ? 'rgb(246, 39, 39)' : 'rgb(37, 43, 202)' }};border-radius:5px;padding:20px;color:white;">
@@ -67,7 +73,7 @@
                             <img src="{{ $user->profile_url }}" alt="" class="rounded-circle"
                                 style="height: 50px; width:50px">
                             <div class="d-flex flex-column">
-                                <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->name }}</strong>
+                                <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->username }}</strong>
                                 <strong style="margin-left:15px;font-size:20px">Rp{{ number_format($donation->amount, 2, ',', '.') }} ({{ str_replace('_', ' ',$donation->payment_method) }})</strong>
                             </div>
                         </div>

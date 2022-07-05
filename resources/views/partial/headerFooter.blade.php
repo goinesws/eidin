@@ -177,7 +177,7 @@
                                                         href="/developer/{{ Auth::user()->developer->id }}"
                                                         class="">@lang('headerFooter.header.company_profile')</a></li>
                                                 <li class="nav-item"><a
-                                                        href="/dev/purchase-donation/{{ Auth::user()->developer->id }}">@lang('headerFooter.header.purchases&donations')</a>
+                                                        href="/dev/purchase-donation">@lang('headerFooter.header.purchases&donations')</a>
                                                 </li>
                                             </ul>
                                         </li>
