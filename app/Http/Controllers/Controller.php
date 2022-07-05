@@ -64,12 +64,6 @@ class Controller extends BaseController
         $promo_game = Game::getGamebyTag('#promotion');
         $sale_game = Game::getGamebyTag('#sale');
         $genres = GameGenre::all();
-        $games = Game::all();
-        $ratings = array();
-
-        foreach ($games as $game) {
-            $ratings[$game->id] = $this->calculateRating($game->id);
-        }
 
         return view('frontend.dashboard', [
             'category_nav' => GameGenre::get(),
@@ -78,7 +72,6 @@ class Controller extends BaseController
             'promo_game' => $promo_game,
             'sale_game' => $sale_game,
             'genres' => $genres,
-            'ratings' => $ratings,
         ]);
     }
 
@@ -158,12 +151,14 @@ class Controller extends BaseController
             'tag' => GameTag::find($request->id),
             'games' => Game::getGamebyTagID($request->id)
         ]);
+
+        // dump(Game::getGamebyTagID($request->id));
     }
 
     public function companyDetail (Request $request) {
         $this->setLang();
         $sale_game = Game::getGamebyTag('#sale');
-
+        // dump($sale_game);
         return view('frontend.companyDetail', [
             'category_nav' => GameGenre::get(),
             'active' => '',

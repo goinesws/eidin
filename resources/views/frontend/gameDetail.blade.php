@@ -425,6 +425,8 @@
     </div>
     <!-- End Buy Game Modal -->
 
+    @if ($myReview != null)
+        
     <!-- Review Modal -->
     <div class="modal fade review-modal" id="editReview" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -481,5 +483,6 @@
         </div>
     </div>
     <!-- End Review Modal -->
+    @endif
 
 @endsection

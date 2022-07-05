@@ -75,24 +75,32 @@ class Game extends Model
 
     public static function getGamebyTag($tag)
     {
-        return DB::table('games')
-            ->join('tag_details', 'tag_details.game_id', '=', 'games.id')
-            ->join('game_tags', 'game_tags.id', '=', 'tag_details.tag_id')
-            ->join('game_genres', 'game_genres.id', '=', 'games.genre_id')
-            ->where('tag_name', '=', $tag)
-            ->where('status','published') //cuma tampilin yang di publish doang
-            ->get();
+        // return DB::table('games')
+        //     ->join('tag_details', 'tag_details.game_id', '=', 'games.id')
+        //     ->join('game_tags', 'game_tags.id', '=', 'tag_details.tag_id')
+        //     ->join('game_genres', 'game_genres.id', '=', 'games.genre_id')
+        //     ->where('tag_name', '=', $tag)
+        //     ->where('status','published') //cuma tampilin yang di publish doang
+        //     ->get();
+
+        global $queryTag;
+        $queryTag = $tag;
+        return Game::with(['gameGenre', 'gameReviews'])->whereHas('tagDetail', function($query){
+            $query->whereHas('tag', function($query){
+                global $queryTag;
+                $query->where('tag_name', $queryTag);
+            });
+        })->get();
     }
 
     public static function getGamebyTagID($tag)
     {
-        return DB::table('games')
-            ->join('tag_details', 'tag_details.game_id', '=', 'games.id')
-            ->join('game_tags', 'game_tags.id', '=', 'tag_details.tag_id')
-            ->join('game_genres', 'game_genres.id', '=', 'games.genre_id')
-            ->where('game_tags.id', '=', $tag)
-            ->where('status','published') //cuma tampilin yang di publish doang
-            ->get();
+        global $queryTag;
+        $queryTag = $tag;
+        return Game::with(['gameGenre', 'gameReviews'])->whereHas('tagDetail', function($query){
+            global $queryTag;
+            $query->where('tag_id', $queryTag);
+        })->get();
     }
 
     public static function getGamebySearch($query)
