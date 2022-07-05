@@ -3,7 +3,7 @@
 @section('content')
     <div class="pt-5 pb-5" style="background-color: #f9f9f9;">
         <div class="m-auto p-5 border shadow" style="width: 50%; border-radius:20px; background-color: #ffffff;">
-            <button type="button" class="btn btn-outline-dark mb-3">
+            <a href="/myProfile" type="button" class="btn btn-outline-dark mb-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -11,7 +11,7 @@
                 </svg>
                 &nbsp;
                 Go Back
-            </button>
+            </a>
             <div class="d-flex flex-row mb-3 me-4">
                 <h4 class="pt-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"

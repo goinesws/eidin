@@ -112,6 +112,6 @@ class UserPagesController extends Controller
         $user->update();
 
         Alert::success('HOORAY!', 'User profile updated successfully!');
-        return redirect()->back()->with('success', 'Success!');
+        return redirect('/myProfile')->with('success', 'Success!');
     }
 }
