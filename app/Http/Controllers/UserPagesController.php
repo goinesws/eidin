@@ -78,7 +78,7 @@ class UserPagesController extends Controller
         ]);
     }
 
-    public function viewEditUserProfile()
+    public function editProfilePage()
     {
         $this->setLang();
 

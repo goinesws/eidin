@@ -107,7 +107,8 @@ Route::middleware(['user'])->group(function () {
     Route::get('/myLibrary', [UserPagesController::class, 'libraryPage']);
     Route::get('/myProfile', [UserPagesController::class, 'userProfilePage']);
     Route::get('/myDonation', [UserPagesController::class, 'userDonationPage']);
-    Route::get('/editMyProfile', [UserPagesController::class, 'viewEditUserProfile']);
+    Route::get('/editMyProfile', [UserPagesController::class, 'editProfilePage']);
+    Route::get('/changePassword', [UserPagesController::class, 'changePasswordPage']);
 
     //dev registration
     Route::get('/dev-registration', [DevPagesController::class, 'devRegistPage']);
