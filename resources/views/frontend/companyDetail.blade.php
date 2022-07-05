@@ -2,12 +2,16 @@
 
 @section('content')
 <?php
+    //dd($company->social_media);
     $social_media = json_decode($company->social_media);
+    //dump($social_media);
 ?>
 <div style="margin-top: 50px;margin-bottom:50px">
     <div class="container d-flex justify-content-between">
         <div class="col-5 d-flex flex-column align-items-center justify-content-center">
             <img src="{{ url($company->company_pic_url) }}" alt="" class="rounded-circle" style="height: 350px; width:350px">
+            <a href="{{ route('changePhotoDev') }}" class="btn btn-warning d-flex align-items-center" style="margin-top:10px"><i class="lni lni-camera" style="margin-right:5px"></i><span>Edit Photo</span></a>
+
         </div>
         <div class="col-6">
             <div class="d-flex justify-content-between pb-3">

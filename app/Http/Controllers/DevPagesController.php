@@ -78,4 +78,34 @@ class DevPagesController extends Controller
             'games' => Game::with('gamePayments', 'gameDonations')->where('dev_id', Auth::user()->developer->id)->get(),
         ]);
     }
+
+    public function changePhotoDevPage(){
+        $this->setLang();
+        return view('frontend.changePhotoDev', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'Developer',
+        ]);
+    }
+
+    public function updateDevPhoto(Request $request){
+        $this->validate($request, [
+			'photo' => 'required',
+		]);
+        $file = $request->file('photo');
+        $path = 'img/companyPic/';
+        $file->move($path,$file->getClientOriginalName());
+
+        $path = $path.$file->getClientOriginalName();
+        //update
+        Developer::where('user_id', Auth::user()->id)->update([
+            'company_pic_url' => $path
+        ]);
+
+        $devId = Developer::where('user_id', Auth::user()->id)->first()->id;
+
+        Alert::success('Success!', 'Company Picture Changed!');
+
+        //redirect to dev page id devid
+        return redirect('/developer/'.$devId);
+    }
 }

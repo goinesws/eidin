@@ -129,6 +129,8 @@ Route::middleware(['user'])->group(function () {
 //dev only
 Route::middleware(['dev'])->prefix('dev')->group(function () {
     Route::get('/purchase-donation', [DevPagesController::class, 'purchaseDonation']);
+    Route::get('/changePhoto-developer', [DevPagesController::class, 'changePhotoDevPage'])->name('changePhotoDev');
+    Route::post('/updatePhoto-developer', [DevPagesController::class, 'updateDevPhoto'])->name('photoDevUpdate');
 });
 
 //admin only
