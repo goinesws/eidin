@@ -29,7 +29,7 @@
                                         {{-- <div>{{ $promotional->img[0] }}</div> --}}
                                         <h3><span>@lang('dashboard.now_only')</span> Rp{{ number_format($pgame->price,2,',','.') }}</h3>
                                         <div class="button">
-                                            <a href="/game/{{ $pgame->game_id }}" class="btn">@lang('dashboard.buy_btn')</a>
+                                            <a href="/game/{{ $pgame->id }}" class="btn">@lang('dashboard.buy_btn')</a>
                                         </div>
                                     </div>
                                     <img src="{{ $promotional->img[0] }}" alt=""
