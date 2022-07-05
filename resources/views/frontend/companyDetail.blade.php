@@ -88,7 +88,7 @@
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>
-                                    <li><span>{{ $ratings[$game->id] }} @lang('companyDetail.ratings')</span></li>
+                                    <li><span>{{ $game->gameReviews->avg('rating') }} @lang('companyDetail.ratings')</span></li>
                                 </ul>
                                 <div class="price">
                                     <span>Rp{{number_format( $game->price,2,',','.') }}</span>
