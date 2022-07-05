@@ -109,6 +109,7 @@ Route::middleware(['user'])->group(function () {
     Route::get('/myDonation', [UserPagesController::class, 'userDonationPage']);
     Route::get('/editMyProfile', [UserPagesController::class, 'editProfilePage']);
     Route::get('/changePassword', [UserPagesController::class, 'changePasswordPage']);
+    Route::get('/myProfile/changePhoto', [UserPagesController::class, 'changePhotoPage']);
 
     //dev registration
     Route::get('/dev-registration', [DevPagesController::class, 'devRegistPage']);
@@ -119,8 +120,9 @@ Route::middleware(['user'])->group(function () {
     Route::post('/review/edit', [GameReviewController::class, 'editReview']);
     Route::post('/donation/add', [GameDonationsController::class, 'addDonation']);
     Route::post('/game/buy', [GamePaymentController::class, 'buyGame']);
-    Route::post('/editMyProfile/edit', [UserPagesController::class, 'editUserProfile']);
-    Route::post('/changePassword/edit', [UserPagesController::class, 'changePassword']);
+    Route::post('/editMyProfile/edit', [UserController::class, 'editUserProfile']);
+    Route::post('/changePassword/edit', [UserController::class, 'changePassword']);
+    Route::post('/profile/update-photo', [UserController::class, 'updateUserPhoto']);
 });
 
 //dev only

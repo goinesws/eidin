@@ -79,6 +79,14 @@ class UserPagesController extends Controller
         ]);
     }
 
+    public function changePhotoPage(){
+        $this->setLang();
+        return view('frontend.userProfile.changePhoto', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'Profile',
+        ]);
+    }
+
     public function editProfilePage()
     {
         $this->setLang();
@@ -97,25 +105,6 @@ class UserPagesController extends Controller
         ]);
     }
 
-    public function editUserProfile(Request $Request)
-    {
-        $this->setLang();
-        $Request->validate([
-            'name' => 'required|max:255',
-            'username' => 'required|max:255|unique:users,username,' . Auth::user()->id,
-            'country' => 'required|max:50',
-        ]);
-
-        $user = User::find(Auth::user()->id);
-        $user->name = $Request->name;
-        $user->username = $Request->username;
-        $user->country = $Request->country;
-        $user->update();
-
-        Alert::success('HOORAY!', 'User profile updated successfully!');
-        return redirect('/myProfile')->with('success', 'Success!');
-    }
-
     public function changePasswordPage()
     {
         $this->setLang();
@@ -125,26 +114,5 @@ class UserPagesController extends Controller
             'active' => 'Profile',
             'User' => Auth::user(),
         ]);
-    }
-
-    public function changePassword(Request $Request)
-    {
-        $this->setLang();
-
-        $Request->validate([
-            'current_password' => 'required',
-            'new_password' => 'required|min:8|confirmed',
-        ]);
-
-        $user = User::find(Auth::user()->id);
-        if (Hash::check($Request->current_password, $user->password)) {
-            $user->password = Hash::make($Request->new_password);
-            $user->save();
-            Alert::success('HOORAY!', 'You have successfully changed your password!');
-            return redirect('/myProfile');
-        } else {
-            Alert::error('OOPS!', 'Your current password is incorrect!');
-            return redirect('/changePassword');
-        }
     }
 }
