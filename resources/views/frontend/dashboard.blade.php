@@ -50,7 +50,7 @@
                             ?>
                             <div class="hero-small-banner"
                                 style="background-image: url({{ $promotional->img[0] }});">
-                                <a href="/game/{{ $new_game[0]->game_id }}" class="content" style="background-color: rgba(255, 255, 255, 0.8)">
+                                <a href="/game/{{ $new_game[0]->id}}" class="content" style="background-color: rgba(255, 255, 255, 0.8)">
                                     <h2>
                                         <span>@lang('dashboard.free_games')</span>
                                         {{ $new_game[0]->game_name }}
@@ -102,7 +102,7 @@
                                 <h2 class="d-flex align-items-center" style="height: 50px">{{ $ngame->game_name }}</h2>
                                 <p style="height: 70px;overflow:hidden">{{ $ngame->short_desc }}</p>
                                 <div class="button">
-                                    <a href="/game/{{ $ngame->game_id }}" class="btn">@lang('dashboard.view_details')</a>
+                                    <a href="/game/{{ $ngame->id }}" class="btn">@lang('dashboard.view_details')</a>
                                 </div>
                                 <?php
                                 $promotional = json_decode($ngame->promotional);
@@ -138,7 +138,7 @@
                     <div class="col-lg-3 col-md-6 col-12">
                         <!-- Start Single Product -->
                         <div class="single-product"  style="height: 370px">
-                            <a href="/game/{{ $sgame->game_id }}" class="product-image">
+                            <a href="/game/{{ $sgame->id }}" class="product-image">
                                 <img src="{{ $promotional->img[0] }}" alt="#" style="height: 170px;width:288px">
                                 <span class="sale-tag">-50%</span>
                                 {{-- @if (Auth::check() && Auth::user()->role == 'user')
