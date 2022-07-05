@@ -29,7 +29,7 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="disabled form-label">@lang('register.email')</label>
                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="disabledInput"
-                        name="email" placeholder="{{ $User->email }}" disabled>
+                        name="email" placeholder="Email" value="{{ $User->email }}" disabled>
                     @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -37,7 +37,7 @@
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">@lang('editUserProfile.full_name')</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputText"
-                        name="name" placeholder="{{ $User->name }}" value="{{ $User->name }}">
+                        name="name" placeholder="Name" value="{{ $User->name }}">
                     @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -45,7 +45,7 @@
                 <div class="mb-3">
                     <label for="exampleInputText1" class="form-label">@lang('editUserProfile.username')</label>
                     <input type="text" class="form-control @error('username') is-invalid @enderror"
-                        id="exampleInputText1" name="username" placeholder="{{ $User->username }}"
+                        id="exampleInputText1" name="username" placeholder="Username" value="{{ $User->username }}"
                         value="{{ $User->username }}">
                     @error('username')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -54,7 +54,7 @@
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">@lang('editUserProfile.country')</label>
                     <input type="text" class="form-control @error('country') is-invalid @enderror" id="exampleInputText"
-                        name="country" placeholder="{{ $User->country }}" value="{{ $User->country }}">
+                        name="country" placeholder="Country" value="{{ $User->country }}">
                     @error('country')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
