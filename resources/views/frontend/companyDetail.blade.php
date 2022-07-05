@@ -7,7 +7,7 @@
 <div style="margin-top: 50px;margin-bottom:50px">
     <div class="container d-flex justify-content-between">
         <div class="col-5 d-flex flex-column align-items-center justify-content-center">
-            <img src="{{ $company->company_pic_url }}" alt="" class="rounded-circle" style="height: 350px; width:350px">
+            <img src="{{ url($company->company_pic_url) }}" alt="" class="rounded-circle" style="height: 350px; width:350px">
         </div>
         <div class="col-6">
             <div class="d-flex justify-content-between pb-3">
@@ -25,12 +25,16 @@
             <div class="d-flex">
                 <div style="width: 30%">
                     <h5 class="text-secondary">@lang('companyDetail.website')</h5> <br>
-                    <h5 class="text-secondary">@lang('companyDetail.partner')</h5> <br>
+                    @if($company->approval_date != null)
+                        <h5 class="text-secondary">@lang('companyDetail.partner')</h5> <br>
+                    @endif
                     <h5 class="text-secondary">@lang('companyDetail.game_uploaded')</h5>
                 </div>
                 <div style="width: 70%">
                     <h5>: <a class="text-primary" href="{{ $company->company_website }}">{{ $company->company_website }}</a></h5> <br>
-                    <h5>: {{ $company->approval_date }}</h5> <br>
+                    @if($company->approval_date != null)
+                        <h5>: {{ $company->approval_date }}</h5> <br>
+                    @endif
                     <h5>: {{ $games->count() }}</h5>
                 </div>
             </div>

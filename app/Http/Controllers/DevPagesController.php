@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DevPagesController extends Controller
 {
@@ -29,6 +30,7 @@ class DevPagesController extends Controller
 
     //devRegist
     public function devRegist(Request $request){
+
         $this->setLang();
         $this->validate($request, [
             'country' => 'required|max:255',
@@ -54,8 +56,16 @@ class DevPagesController extends Controller
             'instagram' => $request->ig,
         ]);
         $dev->company_description = $request->company_description;
+
+        $file = $request->file('photo');
+        $path = 'img/companyPic/';
+        $file->move($path,$file->getClientOriginalName());
+
+        $path = $path.$file->getClientOriginalName();
+        $dev->company_pic_url = $path;
         $dev->save();
 
+        Alert::success('Success!', 'You Applied To Be A Developer!');
         return redirect('/');
     }
 

@@ -11,4 +11,5 @@ return [
     'bank-name' => 'Nama Bank',
     'bank-number' => 'Nomor Rekening Bank',
     'sns' => 'Media Sosial (Opsional)',
+    'photo' => 'Logo Perusahaan (Opsional)',
 ];
