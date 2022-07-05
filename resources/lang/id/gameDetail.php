@@ -1,16 +1,16 @@
-<?php 
+<?php
     return[
         'downloaded' => 'Diunduh oleh',
         'users' => 'pengguna',
         'reviewed' => 'diulas oleh',
         'content_rating' => 'Penilaian Konten:',
         'free' => 'Gratis',
-        'login' => 'Mohon untuk login terlebih dahulu untuk menambahkan game ke daftar keinginan',
+        'login' => 'Mohon untuk login terlebih dahulu untuk menambahkan game ke wishlist',
         'buy_btn' => 'Beli Game',
-        'add_wishlist' => 'Tambahkan ke daftar keinginan',
-        'remove_wishlist' => 'Hapus dari daftar keinginan',
+        'add_wishlist' => 'Tambahkan ke wishlist',
+        'remove_wishlist' => 'Hapus dari wishlist',
         'download' => 'Unduh Game',
-        'details' => 'Detil',
+        'details' => 'Perincian',
         'version' => 'Versi:',
         'specification' => 'Spesifikasi Minimum',
         'spek' => [
@@ -21,7 +21,7 @@
             'storage' => 'Penyimpanan:',
         ],
         'trailer' => 'Video Cuplikan',
-        'review' => 'Ulasan', 
+        'review' => 'Ulasan',
         'review1' => [
             '1' => 'Bagaimana pengalaman anda?',
             '2' => 'Pilih Bintang...',
@@ -33,6 +33,7 @@
         ],
         'submit' => 'Kirim',
         'edit_review' => 'Ubah Ulasan',
+        'review_textarea' => 'Tulis ulasan anda di sini',
         'review_empty' => 'Ulasan Kosong...',
         'donation' => 'Daftar Donasi',
         'support' => 'Dukung Game Ini!',
@@ -42,6 +43,8 @@
             '2' => 'Transfer Bank',
             '3' => 'Paypal',
         ],
+        'donation_input' => 'Masukkan jumlah donasi anda',
+        'donation_textarea' => 'Tulis pesan anda disini',
         'no_donation' => 'Belum Ada Donasi..',
         'buy_game' => 'Beli Game:',
     ]

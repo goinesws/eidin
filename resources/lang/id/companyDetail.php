@@ -2,8 +2,8 @@
 return [
     'update' => 'Ubah',
     'website' => 'Halaman Web',
-    'partner' => 'Sudah Menjadi Partner Sejak',
-    'game_uploaded' => 'Game Yang Terunggah',
+    'partner' => 'Partner Sejak',
+    'game_uploaded' => 'Game Diunggah',
     'all_games' => 'Semua Game',
     'ratings' => 'Penilaian',
 ];

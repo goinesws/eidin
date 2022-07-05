@@ -1,4 +1,4 @@
-<?php 
+<?php
     return[
         'downloaded' => 'Downloaded by',
         'users' => 'user(s)',
@@ -21,7 +21,7 @@
             'storage' => 'Storage:',
         ],
         'trailer' => 'Trailer Videos',
-        'review' => 'Reviews', 
+        'review' => 'Reviews',
         'review1' =>[
             '1' => 'How was your experience?',
             '2' => 'Select Star...',
@@ -33,6 +33,7 @@
         ],
         'submit' => 'Submit',
         'edit_review' => 'Edit Review',
+        'review_textarea' => 'Write your review here',
         'review_empty' => 'Review Empty...',
         'donation' => 'Donation List',
         'support' => 'Support this Game!',
@@ -42,6 +43,8 @@
             '2' => 'Bank Transfer',
             '3' => 'Paypal',
         ],
+        'donation_input' => 'Drop your donation',
+        'donation_textarea' => 'Write your message here',
         'no_donation' => 'No Donations Yet..',
         'buy_game' => 'Buy Game:',
     ]

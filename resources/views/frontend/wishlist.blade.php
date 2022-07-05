@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col-12">
             <div class="section-title">
-                <h2>Wishlists</h2>
+                <h2>@lang('wishlist.wishlist')</h2>
                 @empty($wishlists[0])
-                    <p>You have no wish? Really?<br>Take a look at our fantastic games and start wishing now!</p>
+                    <p>@lang(('wishlist.empty_message.1'))<br>@lang('wishlist.empty_message.2')</p>
                     <div style="width: 300px; opacity: .3; margin:auto">
                         <img src="{{ asset('/img/icon.png') }}" alt="" class="pt-5 mt-3">
                         <img src="{{ asset('/img/logo.png') }}" alt="" style="height: 135px; width:300px;object-fit: cover; object-position: 100% 0;">
@@ -47,12 +47,12 @@
                             <form action="/wishlist/remove" method="POST" style="width: 45%">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $item->game_id }}">
-                                <button type="submit" class="btn btn-danger" style="font-size: 13px;">Remove</button>
+                                <button type="submit" class="btn btn-danger" style="font-size: 13px;width: 83px">@lang('wishlist.btn.remove')</button>
                             </form>
                             <form action="/game/buy" method="POST" style="width: 45%">
                                 @csrf
                                 <input type="hidden" name="game_id" value="{{ $item->game_id }}">
-                                <button type="submit" class="btn btn-primary" style="font-size: 13px;">Purchase</button>
+                                <button type="submit" class="btn btn-primary" style="font-size: 13px; width: 83px">@lang('wishlist.btn.purchase')</button>
                             </form>
                         </div>
                     </div>

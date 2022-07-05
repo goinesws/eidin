@@ -6,10 +6,6 @@
     @endforeach --}}
     <!-- Start Hero Area -->
     <div class="container" style="margin-top:20px">
-        @auth
-            <h3>[debug]Hello, {{ Auth::user()->name }}</h3>
-            <h6>Role: {{ Auth::user()->role }}, <?= Auth::user()->developer != null ? 'Also dev' : 'Member only' ?></h6>
-        @endauth
     </div>
     <section class="hero-area">
         <div class="container">

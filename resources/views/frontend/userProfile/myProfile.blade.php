@@ -8,7 +8,7 @@
         </div>
         <div class="col-6">
             <div class="d-flex justify-content-between">
-                <div style="width: 60%">
+                <div style="width: 70%">
                     <h1>{{ $profile->username }}</h1>
                     <h3>{{ $profile->name }}</h3>
                 </div>

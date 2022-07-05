@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>Library</h2>
+                        <h2>@lang(('myLibrary.title'))</h2>
                         @empty($myGames[0])
                             <p>@lang('myLibrary.empty')</p>
                             <div style="width: 300px; opacity: .3; margin:auto">

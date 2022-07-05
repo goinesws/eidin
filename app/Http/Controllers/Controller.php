@@ -57,7 +57,7 @@ class Controller extends BaseController
     }
 
     public function dashboard()
-    {  
+    {
         $this->setLang();
         //discover games
         $new_game = Game::getGamebyTag('#new');
@@ -135,7 +135,7 @@ class Controller extends BaseController
     public function gameCategory(Request $request)
     {
         $this->setLang();
-        $games = Game::where('status', 'published')->get();
+        $games = Game::where('status', 'published')->where('genre_id', $request->id)->get();
         $sale_game = Game::getGamebyTag('#sale');
 
         return view('frontend.gameCategory', [

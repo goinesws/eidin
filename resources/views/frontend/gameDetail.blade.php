@@ -204,7 +204,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3">
-                                                    <textarea placeholder="Write your review here.." class="form-control" id="review-message" rows="8"
+                                                    <textarea placeholder="@lang('gameDetail.review_textarea')..." class="form-control" id="review-message" rows="8"
                                                         @error('comment') is-invalid @enderror" id="exampleInputText" name="comment" value={{ old('comment') }}></textarea>
                                                     @error('comment')
                                                         <div class="invalid-feedback" style="color: white">
@@ -315,7 +315,7 @@
                                                 @enderror
                                             </div>
                                             <div class="mb-3">
-                                                <input placeholder="Drop your donation..." type="number"
+                                                <input placeholder="@lang('gameDetail.donation_input')..." type="number"
                                                     class="form-control @error('amount') is-invalid @enderror"
                                                     id="exampleInputText" name="amount" value="{{ old('amount') }}">
                                                 @error('amount')
@@ -324,8 +324,8 @@
                                                 @enderror
                                             </div>
                                             <div class="mb-3">
-                                                <textarea placeholder="Write your message here.." class="form-control" id="review-message" rows="8"
-                                                    @error('message') is-invalid @enderror" id="exampleInputText" name="message" value={{ old('message') }}></textarea>
+                                                <textarea placeholder="@lang('gameDetail.donation_textarea')..." class="form-control" id="review-message" rows="8"
+                                                    @error('message') is-invalid @enderror id="exampleInputText" name="message" value={{ old('message') }}></textarea>
                                                 @error('message')
                                                     <div class="invalid-feedback" style="color: white">{{ $message }}
                                                     </div>

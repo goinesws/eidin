@@ -5,7 +5,7 @@
     <div class="row pt-3">
         <div class="col-12">
             <div class="section-title mb-1">
-                <h2>Purchase & Donations</h2>
+                <h2>@lang('purchaseDonation.title')</h2>
             </div>
         </div>
     </div>
@@ -37,9 +37,9 @@
         </div>
         <div class="row pt-4 pb-5">
             <div class="col-6">
-                <h3 class="text-center pb-3">Purchases</h3>
+                <h3 class="text-center pb-3">@lang('purchaseDonation.purchases')</h3>
                 @empty($game->gamePayments[0])
-                    <h5 class="text-center pb-4 pt-2">No Data!</h5>
+                    <h5 class="text-center pb-4 pt-2">@lang('purchaseDonation.noData')</h5>
                 @endempty
                 @foreach ($game->gamePayments as $payment)
                     <div class="container-fluid"
@@ -59,9 +59,9 @@
                 @endforeach
             </div>
             <div class="col-6">
-                <h3 class="text-center pb-3">Donations</h3>
+                <h3 class="text-center pb-3">@lang('purchaseDonation.donations')</h3>
                 @empty($game->gameDonations[0])
-                    <h5 class="text-center pb-4 pt-2">No Data!</h5>
+                    <h5 class="text-center pb-4 pt-2">@lang('purchaseDonation.noData')</h5>
                 @endempty
                 @foreach ($game->gameDonations as $donation)
                     <div class="container-fluid"

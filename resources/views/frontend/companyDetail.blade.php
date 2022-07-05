@@ -11,12 +11,12 @@
         </div>
         <div class="col-6">
             <div class="d-flex justify-content-between pb-3">
-                <div style="width: 60%">
+                <div style="width: 70%">
                     <h1>{{ $company->company_name }}</h1>
                     <h4>{{ $company->company_address }}, {{ $company->country }}</h4>
                 </div>
                 @if (Auth::check() && Auth::user()->developer != null && Auth::user()->developer->id == request()->id)
-                    
+
                 <a href="" class="btn btn-warning fs-5 m-auto" style="height: 45px"><i class="lni lni-pencil-alt"></i> @lang('companyDetail.update')</a>
                 @endif
             </div>

@@ -2,7 +2,7 @@
 return [
     'registration' => 'Regsitrasi',
     'country' => 'Negara',
-    'full_name' => 'Nama Panjang',
+    'full_name' => 'Nama Lengkap',
     'username' => 'Username',
     'email' => 'Alamat Email',
     'password' => 'Kata Sandi',

@@ -10,7 +10,7 @@
                     <div class="section-title">
                         <h2>{{ $genre->genre_name }} Games</h2>
                         @empty($games[0])
-                            <p>Oops, it seems that there are no developers working in this category yet<br>Check the other categories for more games!</p>
+                            <p>@lang('gameCategory.empty.1')<br>@lang("gameCategory.empty.2")</p>
                             <div style="width: 300px; opacity: .3; margin:auto">
                                 <img src="{{ asset('/img/icon.png') }}" alt="" class="pt-5 mt-3">
                                 <img src="{{ asset('/img/logo.png') }}" alt="" style="height: 135px; width:300px;object-fit: cover; object-position: 100% 0;">
@@ -68,7 +68,7 @@
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>
-                                    <li><span>{{ $game->gameReviews->avg('rating') }}/5 Ratings</span></li>
+                                    <li><span>{{ $game->gameReviews->avg('rating') }}/5 @lang('gameCategory.ratings')</span></li>
                                 </ul>
                                 <div class="price">
                                     <span>Rp{{number_format( $game->price,2,',','.') }}</span>
@@ -81,9 +81,6 @@
                         <!-- End Single Product -->
                     </div>
                 @endforeach
-                @if(count($games) == 0)
-                    <h4 class="text-center">No Games Found :(</h4>
-                @endif
             </div>
         </div>
     </section>

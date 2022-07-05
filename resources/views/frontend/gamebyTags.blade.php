@@ -55,9 +55,6 @@
                         <!-- End Single Product -->
                     </div>
                 @endforeach
-                @if(count($games) == 0)
-                    <h4 class="text-center">@lang('gamebyTags.error3')</h4>
-                @endif
             </div>
         </div>
     </section>
