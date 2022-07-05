@@ -12,6 +12,6 @@ return [
     'new' => 'Anyar',
     'view_details' => 'Tingali Komplit',
     'on_sale' => 'NUJU DISKON!!!',
-    'on_sale_text' => 'Hoyong main gim nu rame ngan teu boga acis? hayu urang tingali diskon musin ayeuna, atos eta langsung maenkeun gim nu anjeun resep.',
+    'on_sale_text' => 'Hoyong main gim nu rame ngan teu boga acis? hayu urang tingali diskon musim ayeuna, atos eta langsung maenkeun gim nu anjeun resep.',
     'ratings' => 'Panilaian',
 ];
