@@ -11,6 +11,8 @@ class Developer extends Model
 {
     use HasFactory;
 
+    public $timestamps = true;
+
     public function user () {
         return $this->hasOne(User::class);
     }
