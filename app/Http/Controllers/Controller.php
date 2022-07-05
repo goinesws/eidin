@@ -119,7 +119,7 @@ class Controller extends BaseController
             'isBought' => $isBought,
             'isOnWishlist' => $isOnWishlist,
             'myReview' => $myReview,
-            'donations' => GameDonation::where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),
+            'donations' => GameDonation::with('user')->where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),
             'reviews' => GameReview::where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),
             'game' => Game::where('status', 'published')->find($request->id), //Belum di fix N+1 problem , kasih with(['table_name'])
         ]);

@@ -30,14 +30,9 @@ class Game extends Model
         return $this->belongsTo(Developer::class, 'dev_id', 'id');
     }
 
-    public function gameVersionLogs()
-    {
-        return $this->hasMany(GameVersionLog::class);
-    }
-
-    // public function gameTags()
+    // public function gameVersionLogs()
     // {
-    //     return $this->belongsTo(GameTag::class);
+    //     return $this->hasMany(GameVersionLog::class);
     // }
 
     public function wishlists()

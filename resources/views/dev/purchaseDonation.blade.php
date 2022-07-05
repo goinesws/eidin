@@ -43,15 +43,16 @@
                 @endempty
                 @foreach ($game->gamePayments as $payment)
                     <div class="container-fluid"
+                        <?php
+                            $user = $payment->user;
+                        ?>
                         style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color: rgb(37, 43, 202);border-radius:5px;padding:20px;color:white;">
                         <div class="d-flex align-items-center">
-                            <?php
-                                $user = App\Models\User::find($payment->user_id);
-                            ?>
                             <img src="{{ $user->profile_url }}" alt="" class="rounded-circle"
                                 style="height: 50px; width:50px">
                             <div class="d-flex flex-column">
                                 <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->username }}</strong>
+                                <strong class="text-light" style="margin-left:15px;font-size:18px">Bought: {{$payment->game->game_name}}</strong>
                                 <strong style="margin-left:15px;font-size:20px">Rp{{ number_format($payment->amount, 2, ',', '.') }} ({{ str_replace('_', ' ',$payment->payment_method) }})</strong>
                             </div>
                         </div>
@@ -68,7 +69,7 @@
                         style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:{{ $donation->amount > 150000 ? 'rgb(246, 39, 39)' : 'rgb(37, 43, 202)' }};border-radius:5px;padding:20px;color:white;">
                         <div class="d-flex align-items-center">
                             <?php
-                                $user = App\Models\User::find($donation->user_id);
+                                $user = $donation->user;
                             ?>
                             <img src="{{ $user->profile_url }}" alt="" class="rounded-circle"
                                 style="height: 50px; width:50px">
