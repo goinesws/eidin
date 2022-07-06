@@ -12,9 +12,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DevPagesController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\UserPagesController;
+use App\Http\Controllers\AdminPagesController;
 use App\Http\Controllers\GameReviewController;
 use App\Http\Controllers\GamePaymentController;
 use App\Http\Controllers\GameDonationsController;
+use App\Http\Controllers\GameTagController;
 
 /*
 TODO
@@ -140,4 +142,12 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('/', function () {
         return dump(Auth::user());
     });
+    Route::get('/manage-tags', [AdminPagesController::class, 'manageTagsPage']);
+    Route::get('/add-tag', [AdminPagesController::class, 'addTagPage']);
+    Route::get('/update-tag/{id}', [AdminPagesController::class, 'updateTagPage']);
+    Route::get('/manage-categories', [AdminPagesController::class, 'manageCategoriesPage']);
+
+    Route::post('/add-tag/add', [GameTagController::class, 'addTag']);
+    Route::post('/update-tag/{id}/update', [GameTagController::class, 'updateTag']);
+    Route::post('/manage-tags/{id}/delete', [GameTagController::class, 'deleteTag']);
 });

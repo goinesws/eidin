@@ -200,6 +200,12 @@
                                                         class="">@lang('headerFooter.header.pending_games')</a></li>
                                                 {{-- <li class="nav-item"><a href="login.html">Reviews</a></li>
                                                 <li class="nav-item"><a href="register.html">Donations</a></li> --}}
+                                                <li class="nav-item"><a href="/admin/manage-tags"
+                                                        class="">Manage
+                                                        Tags</a></li>
+                                                <li class="nav-item"><a href="/admin/manage-categories"
+                                                        class="">Manage
+                                                        Categories</a></li>
                                             </ul>
                                         </li>
                                     @endif
