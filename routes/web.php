@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPagesController;
 use App\Models\Wishlist;
 use App\Models\GameDonation;
 use Illuminate\Support\Facades\App;
@@ -137,7 +138,12 @@ Route::middleware(['dev'])->prefix('dev')->group(function () {
 
 //admin only
 Route::middleware(['admin'])->prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return dump(Auth::user());
-    });
+    // Route::get('/', function () {
+    //     return dump(Auth::user());
+    // });
+    Route::get('/pending', [AdminPagesController::class, 'pendingGamePage']);
+    Route::get('/detail/{id}', [AdminPagesController::class, 'detailGamePage']);
+
+    Route::post('/detail/publish', [AdminPagesController::class, 'publishGame']);
+    Route::post('/detail/deny', [AdminPagesController::class, 'denyGame']);
 });
