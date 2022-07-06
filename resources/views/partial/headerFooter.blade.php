@@ -198,7 +198,6 @@
                                             <ul class="sub-menu collapse" id="submenu-1-2">
                                                 <li class="nav-item"><a href="about-us.html"
                                                         class="">@lang('headerFooter.header.pending_games')</a></li>
-                                                <li class="nav-item"><a href="faq.html">@lang('headerFooter.header.pending_update')</a></li>
                                                 {{-- <li class="nav-item"><a href="login.html">Reviews</a></li>
                                                 <li class="nav-item"><a href="register.html">Donations</a></li> --}}
                                             </ul>
