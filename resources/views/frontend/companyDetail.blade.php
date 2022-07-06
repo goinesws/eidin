@@ -22,7 +22,7 @@
                 </div>
                 @if (Auth::check() && Auth::user()->developer != null && Auth::user()->developer->id == request()->id)
 
-                <a href="" class="btn btn-warning fs-5 m-auto" style="height: 45px"><i class="lni lni-pencil-alt"></i> @lang('companyDetail.update')</a>
+                <a href="{{ route('editCompanyProfilePage') }}" class="btn btn-warning fs-5 m-auto" style="height: 45px"><i class="lni lni-pencil-alt"></i> @lang('companyDetail.update')</a>
                 @endif
             </div>
             <p>{{ $company->company_description }}</p>

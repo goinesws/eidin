@@ -45,7 +45,7 @@ class DevPagesController extends Controller
         $dev->company_name = $request->company_name;
         $dev->registration_date = date('Y-m-d H:i:s');
         $dev->bank_account = json_encode([
-            'bank_name' => $request->bank_name,
+            'bank_name' => $request->bankName,
             'bank_account_number' => $request->bankAccNumber,
         ]);
         $dev->company_address = $request->company_address;
@@ -106,6 +106,43 @@ class DevPagesController extends Controller
         Alert::success('Success!', 'Company Picture Changed!');
 
         //redirect to dev page id devid
+        return redirect('/developer/'.$devId);
+    }
+
+    public function editCompanyProfilePage(){
+        $this->setLang();
+        return view('dev.editCompanyProfile', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'Developer',
+            'developer' => Developer::find(Auth::user()->developer->id),
+        ]);
+    }
+
+    public function editCompanyProfile(Request $request){
+        $this->validate($request, [
+            'country' => 'required|max:255',
+            'company_name' => 'required|max:255',
+            'company_address' => 'required|max:255',
+            'bankAccNumber' => 'min:8|max:20',
+        ]);
+        $devId = Developer::where('user_id', Auth::user()->id)->first()->id;
+        $dev = Developer::find($devId);
+        $dev->country = $request->country;
+        $dev->company_name = $request->company_name;
+        $dev->company_address = $request->company_address;
+        $dev->bank_account = json_encode([
+            'bank_name' => $request->bankName,
+            'bank_account_number' => $request->bankAccNumber,
+        ]);
+        $dev->company_website = $request->company_website;
+        $dev->social_media = json_encode([
+            'facebook' => $request->fb,
+            'twitter' => $request->twt,
+            'instagram' => $request->ig,
+        ]);
+        $dev->company_description = $request->company_description;
+        $dev->update();
+        Alert::success('Success!', 'Company Profile Updated!');
         return redirect('/developer/'.$devId);
     }
 }

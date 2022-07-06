@@ -161,7 +161,7 @@ class Controller extends BaseController
         // dump($sale_game);
         return view('frontend.companyDetail', [
             'category_nav' => GameGenre::get(),
-            'active' => '',
+            'active' => 'Developer',
             'company' => Developer::find($request->id),
             'games' => Game::where('dev_id', $request->id)->where('status', 'published')->get(),
             'sale_game' => $sale_game,

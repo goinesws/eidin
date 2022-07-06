@@ -131,6 +131,8 @@ Route::middleware(['dev'])->prefix('dev')->group(function () {
     Route::get('/purchase-donation', [DevPagesController::class, 'purchaseDonation']);
     Route::get('/changePhoto-developer', [DevPagesController::class, 'changePhotoDevPage'])->name('changePhotoDev');
     Route::post('/updatePhoto-developer', [DevPagesController::class, 'updateDevPhoto'])->name('photoDevUpdate');
+    Route::get('/edit-company-profile', [DevPagesController::class, 'editCompanyProfilePage'])->name('editCompanyProfilePage');
+    Route::post('/edit-company-profile/edit', [DevPagesController::class, 'editCompanyProfile'])->name('editCompanyProfile');
 });
 
 //admin only
