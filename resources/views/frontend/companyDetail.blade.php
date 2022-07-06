@@ -10,8 +10,9 @@
     <div class="container d-flex justify-content-between">
         <div class="col-5 d-flex flex-column align-items-center justify-content-center">
             <img src="{{ url($company->company_pic_url) }}" alt="" class="rounded-circle" style="height: 350px; width:350px">
-            <a href="{{ route('changePhotoDev') }}" class="btn btn-warning d-flex align-items-center" style="margin-top:10px"><i class="lni lni-camera" style="margin-right:5px"></i><span>Edit Photo</span></a>
-
+            @if (Auth::check() && Auth::user()->developer != null && Auth::user()->developer->id == request()->id)
+                <a href="{{ route('changePhotoDev') }}" class="btn btn-warning d-flex align-items-center" style="margin-top:10px"><i class="lni lni-camera" style="margin-right:5px"></i><span>Edit Photo</span></a>
+            @endif
         </div>
         <div class="col-6">
             <div class="d-flex justify-content-between pb-3">
@@ -21,7 +22,7 @@
                 </div>
                 @if (Auth::check() && Auth::user()->developer != null && Auth::user()->developer->id == request()->id)
 
-                <a href="" class="btn btn-warning fs-5 m-auto" style="height: 45px"><i class="lni lni-pencil-alt"></i> @lang('companyDetail.update')</a>
+                <a href="{{ route('editCompanyProfilePage') }}" class="btn btn-warning fs-5 m-auto" style="height: 45px"><i class="lni lni-pencil-alt"></i> @lang('companyDetail.update')</a>
                 @endif
             </div>
             <p>{{ $company->company_description }}</p>

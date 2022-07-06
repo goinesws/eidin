@@ -31,7 +31,7 @@ class CreateGamesTable extends Migration
             $table->string('requirement_memory');
             $table->string('requirement_graphic');
             $table->string('requirement_storage');
-            $table->enum('status', ['pending', 'reviewed', 'published', 'denied'])->default('pending');
+            $table->enum('status', ['pending', 'published', 'denied'])->default('pending');
 
             $table->timestamps();
 

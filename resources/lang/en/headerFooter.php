@@ -20,7 +20,6 @@
             'purchases&donations' => 'Purchases & Donations',
             'admin' => 'Admin',
             'pending_games' => 'Pending Games',
-            'pending_update' => 'Pending Update',
             'logout' => 'Logout',
             'uploadGame' => 'Upload Game'
         ],

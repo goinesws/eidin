@@ -46,16 +46,16 @@
                         <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
                             <!-- Start Small Banner -->
                             <?php
-                            $promotional = json_decode($new_game[0]->promotional);
+                            $promotional = json_decode($new_game[1]->promotional);
                             ?>
                             <div class="hero-small-banner"
-                                style="background-image: url({{ $promotional->img[0] }});">
-                                <a href="/game/{{ $new_game[0]->id}}" class="content" style="background-color: rgba(255, 255, 255, 0.8)">
+                                style="background-image: url({{ $promotional->img[1] }});">
+                                <a href="/game/{{ $new_game[1]->id}}" class="content" style="background-color: rgba(255, 255, 255, 0.8)">
                                     <h2>
                                         <span>@lang('dashboard.free_games')</span>
-                                        {{ $new_game[0]->game_name }}
+                                        {{ $new_game[1]->game_name }}
                                     </h2>
-                                    <h3>Rp{{ number_format($new_game[0]->price,2,',','.')  }}</h3>
+                                    <h3>Rp{{ number_format($new_game[1]->price,2,',','.')  }}</h3>
                                 </a>
                             </div>
                             <!-- End Small Banner -->

@@ -60,10 +60,11 @@ class Controller extends BaseController
     {
         $this->setLang();
         //discover games
-        $new_game = Game::getGamebyTag('#new');
-        $promo_game = Game::getGamebyTag('#promotion');
-        $sale_game = Game::getGamebyTag('#sale');
+        $new_game = Game::getGamebyTag('#new')->where('status', 'published');
+        $promo_game = Game::getGamebyTag('#promotion')->where('status', 'published');
+        $sale_game = Game::getGamebyTag('#sale')->where('status', 'published');
         $genres = GameGenre::all();
+        // @dd($new_game);
 
         return view('frontend.dashboard', [
             'category_nav' => GameGenre::get(),
@@ -161,7 +162,7 @@ class Controller extends BaseController
         // dump($sale_game);
         return view('frontend.companyDetail', [
             'category_nav' => GameGenre::get(),
-            'active' => '',
+            'active' => 'Developer',
             'company' => Developer::find($request->id),
             'games' => Game::where('dev_id', $request->id)->where('status', 'published')->get(),
             'sale_game' => $sale_game,

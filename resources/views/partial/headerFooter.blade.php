@@ -199,11 +199,16 @@
                                                 aria-expanded="false"
                                                 aria-label="Toggle navigation">@lang('headerFooter.header.admin')</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
-                                                <li class="nav-item"><a href="about-us.html"
+                                                <li class="nav-item"><a href="/admin/pending"
                                                         class="">@lang('headerFooter.header.pending_games')</a></li>
-                                                <li class="nav-item"><a href="faq.html">@lang('headerFooter.header.pending_update')</a></li>
                                                 {{-- <li class="nav-item"><a href="login.html">Reviews</a></li>
                                                 <li class="nav-item"><a href="register.html">Donations</a></li> --}}
+                                                <li class="nav-item"><a href="/admin/manage-tags"
+                                                        class="">Manage
+                                                        Tags</a></li>
+                                                <li class="nav-item"><a href="/admin/manage-genres"
+                                                        class="">Manage
+                                                        Genres</a></li>
                                             </ul>
                                         </li>
                                     @endif
