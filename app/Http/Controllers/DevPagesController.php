@@ -79,6 +79,15 @@ class DevPagesController extends Controller
         ]);
     }
 
+    public function uploadGame(){
+        $this->setLang();
+        return view('dev.uploadGame', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'Developer',
+            'developer' => Developer::find(Auth::user()->developer->id),
+        ]);
+    }
+
     public function changePhotoDevPage(){
         $this->setLang();
         return view('frontend.changePhotoDev', [

@@ -22,6 +22,7 @@
             'pending_games' => 'Pending Games',
             'pending_update' => 'Pending Update',
             'logout' => 'Logout',
+            'uploadGame' => 'Upload Game'
         ],
         'footer' => [
             'footer_top' => [

@@ -22,6 +22,7 @@
             'pending_games' => 'Game Tertunda',
             'pending_update' => 'Update Tertunda',
             'logout' => 'Keluar',
+            'uploadGame' => 'Upload Game'
         ],
         'footer' => [
             'footer_top' => [

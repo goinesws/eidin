@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Game extends Model
 {
     use HasFactory;
+    protected $fillable = ['genre_id', 'dev_id', 'game_name', 'game_version', 'price', 'promotional', 'game_data_path',  'date_published', 'short_desc', 'content_rating', 'about_game', 'requirement_processor', 'requirement_os', 'requirement_memory', 'requirement_graphic', 'requirement_storage', 'status'];
 
     public function gameGenre()
     {

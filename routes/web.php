@@ -128,9 +128,13 @@ Route::middleware(['user'])->group(function () {
 
 //dev only
 Route::middleware(['dev'])->prefix('dev')->group(function () {
+    Route::get('/upload-game', [DevPagesController::class, 'uploadGame']);
     Route::get('/purchase-donation', [DevPagesController::class, 'purchaseDonation']);
     Route::get('/changePhoto-developer', [DevPagesController::class, 'changePhotoDevPage'])->name('changePhotoDev');
+
+    //post
     Route::post('/updatePhoto-developer', [DevPagesController::class, 'updateDevPhoto'])->name('photoDevUpdate');
+    Route::post('/createGameData', [GameController::class, 'createGameData']);
 });
 
 //admin only

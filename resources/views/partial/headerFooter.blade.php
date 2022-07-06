@@ -179,6 +179,9 @@
                                                 aria-label="Toggle navigation">@lang('headerFooter.header.developer')</a>
                                             <ul class="sub-menu collapse" id="submenu-1-2">
                                                 <li class="nav-item"><a
+                                                        href="/dev/upload-game">@lang('headerFooter.header.uploadGame')</a>
+                                                </li>
+                                                <li class="nav-item"><a
                                                         href="/developer/{{ Auth::user()->developer->id }}"
                                                         class="">@lang('headerFooter.header.company_profile')</a></li>
                                                 <li class="nav-item"><a

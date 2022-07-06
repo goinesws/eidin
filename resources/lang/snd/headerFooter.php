@@ -22,6 +22,7 @@
             'pending_games' => 'Gim katunda',
             'pending_update' => 'Update katunda',
             'logout' => 'Kaluar',
+            'uploadGame' => 'Upload Game'
         ],
         'footer' => [
             'footer_top' => [

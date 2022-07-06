@@ -13,12 +13,21 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="{{ $promotional->img[0] }}" id="current" alt="#" data-id='0'>
+                                    <?php
+                                    $str = 'https://';
+                                    $is_url = substr($promotional->img[0], 0, strlen($str)) === $str;
+                                    ?>
+                                    <img src="{{ $is_url ? '' : '/' }}{{ $promotional->img[0] }}" id="current"
+                                        alt="#" data-id='0'>
                                 </div>
                                 <div class="images">
                                     @for ($i = 1; $i < count($promotional->img); $i++)
-                                        <img class="images-list" src="{{ $promotional->img[$i] }}" alt="#"
-                                            data-id='{{ $i }}'>
+                                        <?php
+                                        $str = 'https://';
+                                        $is_url = substr($promotional->img[$i], 0, strlen($str)) === $str;
+                                        ?>
+                                        <img class="images-list" src="{{ $is_url ? '' : '/' }}{{ $promotional->img[$i] }}"
+                                            alt="#" data-id='{{ $i }}'>
                                     @endfor
                                 </div>
                             </main>
@@ -28,7 +37,11 @@
                         <div class="product-info">
                             <div class="d-flex align-items-center">
                                 <div style="margin-right:20px">
-                                    <img src="{{ $promotional->logo }}" alt=""
+                                    <?php
+                                    $str = 'https://';
+                                    $is_url = substr($promotional->logo, 0, strlen($str)) === $str;
+                                    ?>
+                                    <img src="{{$is_url ? '' : '/'}}{{ $promotional->logo }}" alt=""
                                         style="height: 100px; width:100px;border-radius:10px">
                                 </div>
                                 <div>
@@ -243,7 +256,7 @@
                                             </div>
                                             <div style="margin-top:-5px;margin-left:0px"
                                                 class="d-flex align-items-center">
-                                                @for ($i = 1; $i <=5; $i++)
+                                                @for ($i = 1; $i <= 5; $i++)
                                                     <em class="lni lni-star{{ floor($myReview->rating) < $i ? ' ' : '-filled' }} text-warning"
                                                         style="width: 20px"></em>
                                                 @endfor
@@ -426,63 +439,63 @@
     <!-- End Buy Game Modal -->
 
     @if ($myReview != null)
-        
-    <!-- Review Modal -->
-    <div class="modal fade review-modal" id="editReview" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Review: "{{ $game->game_name }}"</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- Review Modal -->
+        <div class="modal fade review-modal" id="editReview" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Review: "{{ $game->game_name }}"</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/review/edit" method="POST">
+                        <div class="modal-body">
+                            @csrf
+                            <input type="hidden" name="review_id" value="{{ $myReview->id }}">
+                            <div class="mb-3">
+                                <select name="rating" class="form-control @error('rating') is-invalid @enderror"
+                                    required>
+                                    <option selected disabled>@lang('gameDetail.review1.2')</option>
+                                    <option value="5" @if (floor($myReview->rating) == 5) selected @endif>
+                                        @lang('gameDetail.review1.3')
+                                    </option>
+                                    <option value="4" @if (floor($myReview->rating) == 4) selected @endif>
+                                        @lang('gameDetail.review1.4')
+                                    </option>
+                                    <option value="3" @if (floor($myReview->rating) == 3) selected @endif>
+                                        @lang('gameDetail.review1.5')
+                                    </option>
+                                    <option value="2" @if (floor($myReview->rating) == 2) selected @endif>
+                                        @lang('gameDetail.review1.6')
+                                    </option>
+                                    <option value="1" @if (floor($myReview->rating) == 1) selected @endif>
+                                        @lang('gameDetail.review1.7')
+                                    </option>
+                                </select>
+                                @error('rating')
+                                    <div class="invalid-feedback" style="color: white">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <textarea placeholder="@lang('gameDetail.review_textarea')..." class="form-control" id="review-message" rows="8"
+                                    @error('comment') is-invalid @enderror" id="exampleInputText" name="comment">{{ $myReview->comment }}</textarea>
+                                @error('comment')
+                                    <div class="invalid-feedback" style="color: white">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer button">
+                            <button class="btn" type="submit">@lang('gameDetail.buy_btn')</button>
+                        </div>
+                    </form>
                 </div>
-                <form action="/review/edit" method="POST">
-                    <div class="modal-body">
-                        @csrf
-                        <input type="hidden" name="review_id" value="{{ $myReview->id }}">
-                        <div class="mb-3">
-                            <select name="rating" class="form-control @error('rating') is-invalid @enderror" required>
-                                <option selected disabled>@lang('gameDetail.review1.2')</option>
-                                <option value="5" @if (floor($myReview->rating) == 5) selected @endif>
-                                    @lang('gameDetail.review1.3')
-                                </option>
-                                <option value="4" @if (floor($myReview->rating) == 4) selected @endif>
-                                    @lang('gameDetail.review1.4')
-                                </option>
-                                <option value="3" @if (floor($myReview->rating) == 3) selected @endif>
-                                    @lang('gameDetail.review1.5')
-                                </option>
-                                <option value="2" @if (floor($myReview->rating) == 2) selected @endif>
-                                    @lang('gameDetail.review1.6')
-                                </option>
-                                <option value="1" @if (floor($myReview->rating) == 1) selected @endif>
-                                    @lang('gameDetail.review1.7')
-                                </option>
-                            </select>
-                            @error('rating')
-                                <div class="invalid-feedback" style="color: white">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <textarea placeholder="@lang('gameDetail.review_textarea')..." class="form-control" id="review-message" rows="8"
-                                @error('comment') is-invalid @enderror" id="exampleInputText" name="comment">{{ $myReview->comment }}</textarea>
-                            @error('comment')
-                                <div class="invalid-feedback" style="color: white">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="modal-footer button">
-                        <button class="btn" type="submit">@lang('gameDetail.buy_btn')</button>
-                    </div>
-                </form>
             </div>
         </div>
-    </div>
-    <!-- End Review Modal -->
+        <!-- End Review Modal -->
     @endif
 
 @endsection
