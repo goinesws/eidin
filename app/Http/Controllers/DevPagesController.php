@@ -81,7 +81,7 @@ class DevPagesController extends Controller
 
     public function changePhotoDevPage(){
         $this->setLang();
-        return view('frontend.changePhotoDev', [
+        return view('dev.changePhotoDev', [
             'category_nav' => GameGenre::get(),
             'active' => 'Developer',
         ]);
