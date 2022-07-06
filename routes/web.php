@@ -9,14 +9,15 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GameTagController;
 use App\Http\Controllers\DevPagesController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\GameGenreController;
 use App\Http\Controllers\UserPagesController;
 use App\Http\Controllers\AdminPagesController;
 use App\Http\Controllers\GameReviewController;
 use App\Http\Controllers\GamePaymentController;
 use App\Http\Controllers\GameDonationsController;
-use App\Http\Controllers\GameTagController;
 
 /*
 TODO
@@ -145,9 +146,14 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('/manage-tags', [AdminPagesController::class, 'manageTagsPage']);
     Route::get('/add-tag', [AdminPagesController::class, 'addTagPage']);
     Route::get('/update-tag/{id}', [AdminPagesController::class, 'updateTagPage']);
-    Route::get('/manage-categories', [AdminPagesController::class, 'manageCategoriesPage']);
+    Route::get('/manage-genres', [AdminPagesController::class, 'manageGenresPage']);
+    Route::get('/add-genre', [AdminPagesController::class, 'addGenrePage']);
+    Route::get('/update-genre/{id}', [AdminPagesController::class, 'updateGenrePage']);
 
     Route::post('/add-tag/add', [GameTagController::class, 'addTag']);
     Route::post('/update-tag/{id}/update', [GameTagController::class, 'updateTag']);
     Route::post('/manage-tags/{id}/delete', [GameTagController::class, 'deleteTag']);
+    Route::post('/add-genre/add', [GameGenreController::class, 'create']);
+    Route::post('/update-genre/{id}/update', [GameGenreController::class, 'update']);
+    Route::Post('/manage-genres/{id}/delete', [GameGenreController::class, 'destroy']);
 });

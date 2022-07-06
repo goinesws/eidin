@@ -203,9 +203,9 @@
                                                 <li class="nav-item"><a href="/admin/manage-tags"
                                                         class="">Manage
                                                         Tags</a></li>
-                                                <li class="nav-item"><a href="/admin/manage-categories"
+                                                <li class="nav-item"><a href="/admin/manage-genres"
                                                         class="">Manage
-                                                        Categories</a></li>
+                                                        Genres</a></li>
                                             </ul>
                                         </li>
                                     @endif

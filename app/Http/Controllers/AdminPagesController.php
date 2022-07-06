@@ -51,13 +51,36 @@ class AdminPagesController extends Controller
         ]);
     }
 
-    public function manageCategoriesPage()
+    public function manageGenresPage()
     {
         $this->setlang();
-        return view('admin.manageCategory', [
+        return view('admin.manageGenre', [
             'category_nav' => GameGenre::get(),
             'active' => 'Admin',
             'User' => Auth::user(),
+            'Genres' => GameGenre::get(),
+        ]);
+    }
+
+    public function addGenrePage()
+    {
+        $this->setlang();
+        return view('admin.addGenre', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'Admin',
+            'User' => Auth::user(),
+            'Genres' => GameGenre::get(),
+        ]);
+    }
+
+    public function updateGenrePage(Request $request)
+    {
+        $this->setlang();
+        return view('admin.updateGenre', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'Admin',
+            'User' => Auth::user(),
+            'Genre' => GameGenre::find($request->id),
         ]);
     }
 }
