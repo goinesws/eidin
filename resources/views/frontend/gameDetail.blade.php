@@ -277,7 +277,7 @@
                                         <div class="container-fluid"
                                             style="margin-top:10px;margin-bottom:25px;padding-left:0px;">
                                             <div class="d-flex align-items-center">
-                                                <img src="{{ $user->profile_url }}" alt=""
+                                                <img src="{{ url($user->profile_url) }}" alt=""
                                                     class="rounded-circle" style="height: 40px; width:40px">
                                                 <strong style="margin-left:15px">{{ $user->name }}</strong>
                                             </div>
@@ -368,7 +368,7 @@
                                     <div class="container-fluid"
                                         style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:{{ $item->amount < 150000 ? 'rgb(37, 43, 202)' : 'rgb(246, 39, 39)' }};border-radius:5px;padding:20px;color:white">
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ $user->profile_url }}" alt="" class="rounded-circle"
+                                            <img src="{{ url($user->profile_url) }}" alt="" class="rounded-circle"
                                                 style="height: 50px; width:50px">
                                             <div class="d-flex flex-column">
                                                 <strong style="margin-left:15px">{{ $user->name }} - <span
