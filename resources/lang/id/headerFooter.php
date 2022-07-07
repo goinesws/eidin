@@ -21,6 +21,8 @@
             'purchases&donations' => 'Pembelian & Donasi',
             'admin' => 'Admin',
             'pending_games' => 'Game Tertunda',
+            'manage_tags' => 'Atur Tag',
+            'manage_genres' => 'Atur Kategori',
             'pending_update' => 'Update Tertunda',
             'logout' => 'Keluar',
             'uploadGame' => 'Upload Game'

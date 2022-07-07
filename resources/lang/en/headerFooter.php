@@ -21,6 +21,8 @@
             'purchases&donations' => 'Purchases & Donations',
             'admin' => 'Admin',
             'pending_games' => 'Pending Games',
+            'manage_tags' => 'Manage Tags',
+            'manage_genres' => 'Manage Genres',
             'logout' => 'Logout',
             'uploadGame' => 'Upload Game'
         ],
