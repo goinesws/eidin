@@ -63,6 +63,7 @@ class Controller extends BaseController
         $new_game = Game::getGamebyTag('#new')->where('status', 'published');
         $promo_game = Game::getGamebyTag('#promotion')->where('status', 'published');
         $sale_game = Game::getGamebyTag('#sale')->where('status', 'published');
+        $free_game = Game::where('price', 0)->where('status', 'published')->orderBy('updated_at', 'desc')->first();
         $genres = GameGenre::all();
         // @dd($new_game);
 
@@ -73,6 +74,8 @@ class Controller extends BaseController
             'promo_game' => $promo_game,
             'sale_game' => $sale_game,
             'genres' => $genres,
+            'free_game' => $free_game,
+            'games' => Game::all(),
         ]);
     }
 

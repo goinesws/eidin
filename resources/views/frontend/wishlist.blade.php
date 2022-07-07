@@ -25,7 +25,7 @@
                 <!-- Start Single Product -->
                 <div class="single-product" style="height: 370px">
                     <a href="/game/{{ $item->game_id }}" class="product-image">
-                        <img src="{{ $promotional->img[0] }}" alt="#" style="height: 170px;width:288px">
+                        <img src="{{ url($promotional->img[0]) }}" alt="#" style="height: 170px;width:288px">
                         @if ($sale_game->where('game_id', $item->game_id)->count() > 0)
                             <span class="sale-tag">-50%</span>
                         @endif
@@ -49,16 +49,60 @@
                                 <input type="hidden" name="id" value="{{ $item->game_id }}">
                                 <button type="submit" class="btn btn-danger" style="font-size: 13px;width: 83px">@lang('wishlist.btn.remove')</button>
                             </form>
-                            <form action="/game/buy" method="POST" style="width: 45%">
+                            {{-- <form action="/game/buy" method="POST" style="width: 45%">
                                 @csrf
                                 <input type="hidden" name="game_id" value="{{ $item->game_id }}">
                                 <button type="submit" class="btn btn-primary" style="font-size: 13px; width: 83px">@lang('wishlist.btn.purchase')</button>
-                            </form>
+                            </form> --}}
+                            <button class="btn btn-primary" style="width: 83px;font-size: 13px" data-toggle="modal" data-target="#exampleModal">@lang('wishlist.btn.purchase')</button>
                         </div>
                     </div>
                 </div>
                 <!-- End Single Product -->
             </div>
+            <!-- Buy Game Modal -->
+            <div class="modal fade review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">@lang('gameDetail.buy_game') "{{ $item->game->game_name }}"</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="/game/buy" method="POST">
+                            <div class="modal-body">
+                                @csrf
+                                <input type="hidden" name="game_id" value="{{ $item->game_id }}">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="price"
+                                        value="Rp {{ number_format($item->game->price, 2, ',', '.') }}" disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <select name="payment" id=""
+                                        class="form-control  @error('payment') is-invalid @enderror">
+                                        <option selected disabled>@lang('gameDetail.payment_method')</option>
+                                        <option value="credit_card" @if (old('payment') == 'credit_card') selected @endif>
+                                            @lang('gameDetail.pay.1')
+                                        </option>
+                                        <option value="bank_transfer" @if (old('payment') == 'bank_transfer') selected @endif>
+                                            @lang('gameDetail.pay.2')</option>
+                                        <option value="paypal" @if (old('payment') == 'paypal') selected @endif>
+                                            @lang('gameDetail.pay.3')</option>
+                                    </select>
+                                    @error('payment')
+                                        <div class="invalid-feedback" style="color: white">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+                            </div>
+                            <div class="modal-footer button">
+                                <button class="btn" type="submit">@lang('gameDetail.buy_btn')</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End Buy Game Modal -->
         @endforeach
     </div>
 </div>

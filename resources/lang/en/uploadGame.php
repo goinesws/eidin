@@ -1,7 +1,15 @@
 <?php
     return [
         'title' => 'Upload Your Game',
-        'explanation' => 'Publish your game and gather fans and donations!',
+        'explanation' => 'Publish your game to gather fans and donations!',
+        'part1' => 'Part 1. Game Info',
+        'part2' => 'Part 2. Promotional',
+        'part3' => 'Part 3. Game Data',
+        'part4' => 'Part 4. Set Minimum Spec',
+        'part1_desc' => 'Let the players know about your game by filling the basic information of your game in this sections.',
+        'part2_desc' => 'Fill this section to attract players by giving them some images and video about your game.',
+        'part3_desc' => 'Insert your game data in this section. You can upload your game in .zip or .rar format.',
+        'part4_desc' => 'Tell the players whether they devices are capable or not to play your game by filling the minimum spec of your game in this sections.',
 
         //field
         'category' => "Game Genre",
@@ -19,5 +27,22 @@
         'contentratingplaceholder' => 'Select Content Rating...',
         'content_rating' => 'Content Rating',
         'submit' => 'Submit Game!',
+        'game_name_placeholder' => 'Insert your cool game title here!',
+        'game_version_placeholder' => 'Example: 1.0',
+        'game_price_placeholder' => 'Define your price here!',
+        'short_desc_placeholder' => 'Give us a brief introduction to this game!',
+        'about_game_placeholder' => 'Tell us more about this game!',
+        'your_trailer' => 'your-trailer',
+        'optional' => 'Optional',
+        'minimum_processor' => 'Minimum Processor',
+        'minimum_processor_placeholder' => 'Example: Dual Core 2.4 GHz',
+        'minimum_os' => 'Minimum OS',
+        'minimum_os_placeholder' => 'Example: Windows 7, macOS Mojave',
+        'minimum_memory' => 'Minimum Memory',
+        'minimum_memory_placeholder' => 'Example: 2.5 GB RAM',
+        'minimum_graphics' => 'Minimum Graphics',
+        'minimum_graphics_placeholder' => 'Example: 256 MB Video Memory',
+        'minimum_storage' => 'Minimum Storage',
+        'minimum_storage_placeholder' => 'Example: 4 GB Storage',
     ];
 ?>

@@ -8,4 +8,5 @@ return [
     'games_owned' => 'Game dimiliki',
     'reviews_written' => 'Ulasan ditulis',
     'donations_given' => 'Donasi diberikan',
+    'edit_photo' => 'Ubah Foto',
 ];

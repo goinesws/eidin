@@ -24,7 +24,7 @@
                         <?php
                             $promotional = json_decode($donation->game->promotional);
                         ?>
-                        <a href="/game/{{ $donation->game->id }}"><img src="{{ $promotional->logo }}" alt="" class="rounded-circle"
+                        <a href="/game/{{ $donation->game->id }}"><img src="{{ url($promotional->logo) }}" alt="" class="rounded-circle"
                             style="height: 50px; width:50px"></a>
                         <div class="d-flex flex-column">
                             <strong style="margin-left:15px;font-size:18px">

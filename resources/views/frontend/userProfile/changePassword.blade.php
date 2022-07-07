@@ -3,16 +3,7 @@
 @section('content')
     <div class="pt-5 pb-5" style="background-color: #f9f9f9;">
         <div class="m-auto p-5 border shadow" style="width: 50%; border-radius:20px; background-color: #ffffff;">
-            <a href="/myProfile" type="button" class="btn btn-outline-dark mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-arrow-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                </svg>
-                &nbsp;
-                Go Back
-            </a>
-            <div class="d-flex flex-row mb-3 me-4">
+            <div class="d-flex flex-row mb-5 me-4">
                 <h4 class="pt-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-pencil-square" viewBox="0 0 24 24">
@@ -21,13 +12,13 @@
                         <path fill-rule="evenodd"
                             d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                     </svg>
-                    Change Password
+                    @lang('editUserProfile.change_password')
                 </h4> <br>
             </div>
             <form action="/changePassword/edit" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label"> Current Password </label>
+                    <label for="exampleInputPassword1" class="form-label">@lang('editUserProfile.current_password') </label>
                     <input type="password" class="form-control @error('password') is-invalid @enderror"
                         id="exampleInputPassword1" name="current_password">
                     @error('password')
@@ -35,7 +26,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label"> New Password </label>
+                    <label for="exampleInputPassword1" class="form-label">@lang('editUserProfile.new_password') </label>
                     <input type="password" class="form-control @error('password') is-invalid @enderror"
                         id="exampleInputPassword1" name="new_password">
                     @error('password')
@@ -43,7 +34,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label"> Confirm New Password </label>
+                    <label for="exampleInputPassword1" class="form-label">@lang('editUserProfile.confirm_new_password') </label>
                     <input type="password" class="form-control @error('password') is-invalid @enderror"
                         id="exampleInputPassword1" name="new_password_confirmation">
                     @error('password')
@@ -53,7 +44,7 @@
                 @if ($errors->any())
                     <div class="text-center text-danger mb-2">{{ $errors->first() }}</div>
                 @endif
-                <button type="submit" class="btn btn-primary" style="width: 100%">Change Password</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%">@lang('editUserProfile.change_password')</button>
             </form>
         </div>
     </div>

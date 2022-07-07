@@ -1,4 +1,4 @@
-<?php 
+<?php
     return[
         'update' => 'Update',
         'email' => 'Email',
@@ -8,5 +8,6 @@
         'games_owned' => 'Games Owned',
         'reviews_written' => 'Reviews Written',
         'donations_given' => 'Donations Given',
+        'edit_photo' => 'Edit Photo',
     ]
 ?>

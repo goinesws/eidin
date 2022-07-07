@@ -8,16 +8,16 @@
 @section('content')
     <div class="pt-5 pb-5" style="background-color: #f9f9f9;">
         <div class="m-auto p-5 border shadow" style="width: 50%; border-radius:20px; background-color: #ffffff;">
-            <button onclick="history.back()" class="btn btn-outline-dark mb-3">
+            <a href="/developer/{{ Auth::user()->developer->id }}" type="button" class="btn btn-outline-dark mb-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                         d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                 </svg>
                 &nbsp;
-                Go Back
-            </button>
-            <div class="d-flex flex-row mb-3 me-4">
+                @lang('editUserProfile.go_back')
+            </a>
+            <div class="d-flex flex-row mb-5 me-4">
                 <h4 class="pt-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-pencil-square" viewBox="0 0 24 24">
@@ -29,8 +29,6 @@
                     @lang('editUserProfile.edit_profile') {{-- change this --}}
                 </h4> <br>
             </div>
-                <h4>@lang('devRegistration.registration')</h4> <br>
-                <p class="mb-5">@lang('devRegistration.explanation')</p>
                 <form action="{{ route('editCompanyProfile') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
@@ -61,7 +59,7 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-5">
                         <label for="exampleInputText" class="form-label">@lang('devRegistration.desc')</label>
                         <input type="text" class="form-control @error('company-description') is-invalid @enderror" id="exampleInputText" name="company_description" value="{{ $developer->company_description }}">
                         @error('company-description')
@@ -109,7 +107,7 @@
                     @if ($errors->any())
                         <div class="text-center text-danger mb-2">{{ $errors->first() }}</div>
                     @endif
-                    <button type="submit" class="btn btn-primary" style="width: 100%">Update</button> {{-- change this --}}
+                    <button type="submit" class="btn btn-primary" style="width: 100%">@lang('editUserProfile.update')</button> {{-- change this --}}
                 </form>
             </div>
     </div>

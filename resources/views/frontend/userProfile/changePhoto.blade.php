@@ -10,15 +10,11 @@
                         d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                 </svg>
                 &nbsp;
-                Go Back
+                @lang('editUserProfile.go_back')
             </a>
             <div class="container d-flex flex-column align-items-center">
-                <h4 style="margin-bottom:20px">Change Photo</h4>
-                <?php
-                $str = 'https://';
-                $is_url = (substr(Auth::user()->profile_url, 0, strlen($str)) === $str)
-                ?>
-                <img src="{{$is_url ? '' : '/'}}{{ Auth::user()->profile_url }}" alt="" id="editProfileShow" class="rounded-circle"
+                <h4 style="margin-bottom:20px">@lang('editUserProfile.change_photo')</h4>
+                <img src="{{ url(Auth::user()->profile_url) }}" alt="" id="editProfileShow" class="rounded-circle"
                     style="height: 300px; width:300px">
                 <form action="/profile/update-photo" method="post" enctype="multipart/form-data">
                     @csrf
@@ -32,7 +28,7 @@
                     </div>
                     <div class="d-flex justify-content-center" style="margin-top: 20px">
                         <button type="submit" class="btn btn-primary d-flex align-items-center"
-                            style="margin-top:10px"><span>Change Photo!</span></button>
+                            style="margin-top:10px"><span>@lang('editUserProfile.change_photo')!</span></button>
                     </div>
                 </form>
             </div>

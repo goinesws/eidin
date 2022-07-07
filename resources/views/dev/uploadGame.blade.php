@@ -3,13 +3,14 @@
 @section('content')
     <div class="pt-5 pb-5" style="background-color: #f9f9f9;">
         <div class="m-auto p-5 border shadow" style="width: 50%; border-radius:20px; background-color: #ffffff;">
-            <h4>@lang('uploadGame.title')</h4> <br>
-            <p class="mb-5">@lang('uploadGame.explanation')</p>
+            <h4>@lang('uploadGame.title')</h4>
+            <p class="mb-5 mt-1">@lang('uploadGame.explanation')</p>
             <form action="/dev/createGameData" method="POST" enctype="multipart/form-data">
                 @csrf
-                <h5>Part 1. Game info
+                <h5>@lang('uploadGame.part1')
                     <hr>
                 </h5>
+                <p>@lang('uploadGame.part1_desc')</p>
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">@lang('uploadGame.category') *</label>
                     <select name="genre_id" class="form-select @error('genre_id') is-invalid @enderror">
@@ -25,7 +26,7 @@
 
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">@lang('uploadGame.name') *</label>
-                    <input placeholder="Insert your cool game title!" type="text" value="{{@old('game_name')}}"
+                    <input placeholder="@lang('uploadGame.game_name_placeholder')" type="text" value="{{@old('game_name')}}"
                         class="form-control @error('game_name') is-invalid @enderror" name="game_name">
                     @error('game_name')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -34,7 +35,7 @@
 
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">@lang('uploadGame.game_version') *</label>
-                    <input placeholder="Example: 1.0" type="text"  value="{{@old('game_version')}}"
+                    <input placeholder="@lang('uploadGame.game_version_placeholder')" type="text"  value="{{@old('game_version')}}"
                         class="form-control @error('game_version') is-invalid @enderror" name="game_version">
                     @error('game_version')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -43,7 +44,7 @@
 
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">@lang('uploadGame.game_price') *</label>
-                    <input placeholder="Define Your Price!" type="number" value="{{@old('game_price')}}"
+                    <input placeholder="@lang('uploadGame.game_price_placeholder')" type="number" value="{{@old('game_price')}}"
                         class="form-control @error('game_price') is-invalid @enderror" name="game_price">
                     @error('game_price')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -52,7 +53,7 @@
 
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">@lang('uploadGame.short_desc') *</label>
-                    <textarea placeholder="Tell us about this game!" name="short_desc" id="" cols="30" rows="5"
+                    <textarea placeholder="@lang('uploadGame.short_desc_placeholder')" name="short_desc" id="" cols="30" rows="5"
                         class="form-control @error('short_desc') is-invalid @enderror">{{@old('short_desc')}}</textarea>
                     @error('short_desc')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -61,7 +62,7 @@
 
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">@lang('uploadGame.about_game') *</label>
-                    <textarea placeholder="Tell us about this game more detail!" name="about_game" id="" cols="30"
+                    <textarea placeholder="@lang('uploadGame.about_game_placeholder')" name="about_game" id="" cols="30"
                         rows="10" class="form-control @error('about_game') is-invalid @enderror">{{@old('about_game')}}</textarea>
                     @error('about_game')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -83,13 +84,11 @@
                     @enderror
                 </div>
 
-                <h5 style="margin-top:40px">Part 2. Promotional
+                <h5 style="margin-top:40px">@lang('uploadGame.part2')
                     <hr>
                 </h5>
 
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci optio praesentium consectetur autem
-                    facere perspiciatis maiores temporibus quidem incidunt aspernatur doloremque expedita velit odit
-                    commodi, blanditiis enim iusto, doloribus reiciendis!</p>
+                <p>@lang('uploadGame.part2_desc')</p>
 
                 <div class="custom-file mb-3" style="margin-top:20px">
                     <label for="exampleInputText" class="form-label">@lang('uploadGame.logo') *</label>
@@ -103,7 +102,7 @@
 
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">@lang('uploadGame.trailer') *</label>
-                    <input placeholder="https://www.youtube.com/embed/your-trailer" type="text" value="{{@old('trailer')}}"
+                    <input placeholder="https://www.youtube.com/embed/@lang('uploadGame.your_trailer')" type="text" value="{{@old('trailer')}}"
                         class="form-control @error('trailer') is-invalid @enderror" name="trailer">
                     @error('trailer')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -121,7 +120,7 @@
                 </div>
 
                 <div class="custom-file mb-3" style="margin-top:20px">
-                    <label for="exampleInputText" class="form-label">@lang('uploadGame.promo_image') 2 (optional)</label>
+                    <label for="exampleInputText" class="form-label">@lang('uploadGame.promo_image') 2 (@lang('uploadGame.optional'))</label>
                     <input id="profileChange" type="file" name='img2'
                         class="custom-file-input form-control @error('img2') is-invalid @enderror" id="customFile"
                         accept="image/png, image/jpeg">
@@ -131,7 +130,7 @@
                 </div>
 
                 <div class="custom-file mb-3" style="margin-top:20px">
-                    <label for="exampleInputText" class="form-label">@lang('uploadGame.promo_image') 3 (optional)</label>
+                    <label for="exampleInputText" class="form-label">@lang('uploadGame.promo_image') 3 (@lang('uploadGame.optional'))</label>
                     <input id="profileChange" type="file" name='img3'
                         class="custom-file-input form-control @error('img3') is-invalid @enderror" id="customFile"
                         accept="image/png, image/jpeg">
@@ -140,13 +139,11 @@
                     @enderror
                 </div>
 
-                <h5 style="margin-top:40px">Part 3. Game Data
+                <h5 style="margin-top:40px">@lang('uploadGame.part3')
                     <hr>
                 </h5>
 
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci optio praesentium consectetur autem
-                    facere perspiciatis maiores temporibus quidem incidunt aspernatur doloremque expedita velit odit
-                    commodi, blanditiis enim iusto, doloribus reiciendis!</p>
+                <p>@lang('uploadGame.part3_desc')</p>
 
                 <div class="custom-file mb-3" style="margin-top:20px">
                     <label for="exampleInputText" class="form-label">@lang('uploadGame.game_data')*</label>
@@ -158,16 +155,14 @@
                     @enderror
                 </div>
 
-                <h5 style="margin-top:40px">Part 4. Set Minimum Spec
+                <h5 style="margin-top:40px">@lang('uploadGame.part4')
                     <hr>
                 </h5>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci optio praesentium consectetur autem
-                    facere perspiciatis maiores temporibus quidem incidunt aspernatur doloremque expedita velit odit
-                    commodi, blanditiis enim iusto, doloribus reiciendis!</p>
+                <p>@lang('uploadGame.part4_desc')</p>
 
                 <div class="mb-3" style="margin-top:20px">
-                    <label for="exampleInputText" class="form-label">Minimum Processor*</label>
-                    <input placeholder="Example: Dual Core 2.4 GHz" type="text"
+                    <label for="exampleInputText" class="form-label">@lang('uploadGame.minimum_processor')*</label>
+                    <input placeholder="@lang('uploadGame.minimum_processor_placeholder')" type="text"
                         class="form-control @error('processor') is-invalid @enderror" value="{{@old('processor')}}" name="processor">
                     @error('processor')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -175,8 +170,8 @@
                 </div>
 
                 <div class="mb-3" style="margin-top:20px">
-                    <label for="exampleInputText" class="form-label">Minimum OS*</label>
-                    <input placeholder="Example: Windows 7, macOS Mojave" type="text" value="{{@old('os')}}"
+                    <label for="exampleInputText" class="form-label">@lang('uploadGame.minimum_os')*</label>
+                    <input placeholder="@lang('uploadGame.minimum_os_placeholder')" type="text" value="{{@old('os')}}"
                         class="form-control @error('os') is-invalid @enderror" name="os">
                     @error('os')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -184,8 +179,8 @@
                 </div>
 
                 <div class="mb-3" style="margin-top:20px">
-                    <label for="exampleInputText" class="form-label">Minimum Memory*</label>
-                    <input placeholder="Example: 2.5 GB RAM" type="text" value="{{@old('memory')}}"
+                    <label for="exampleInputText" class="form-label">@lang('uploadGame.minimum_memory')*</label>
+                    <input placeholder="@lang('uploadGame.minimum_memory_placeholder')" type="text" value="{{@old('memory')}}"
                         class="form-control @error('memory') is-invalid @enderror" name="memory">
                     @error('memory')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -193,8 +188,8 @@
                 </div>
 
                 <div class="mb-3" style="margin-top:20px">
-                    <label for="exampleInputText" class="form-label">Minimum Graphic*</label>
-                    <input placeholder="Example: 256 MB Video Memory" type="text" value="{{@old('graphic')}}"
+                    <label for="exampleInputText" class="form-label">@lang('uploadGame.minimum_graphics')*</label>
+                    <input placeholder="@lang('uploadGame.minimum_graphics_placeholder')" type="text" value="{{@old('graphic')}}"
                         class="form-control @error('graphic') is-invalid @enderror" name="graphic">
                     @error('graphic')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -202,8 +197,8 @@
                 </div>
 
                 <div class="mb-3" style="margin-top:20px">
-                    <label for="exampleInputText" class="form-label">Minimum Storage*</label>
-                    <input placeholder="Example: 4 GB" type="text"
+                    <label for="exampleInputText" class="form-label">@lang('uploadGame.minimum_storage')*</label>
+                    <input placeholder="@lang('uploadGame.minimum_storage_placeholder')" type="text"
                         class="form-control @error('storage') is-invalid @enderror" value="{{@old('storage')}}" name="storage">
                     @error('storage')
                         <div class="invalid-feedback">{{ $message }}</div>

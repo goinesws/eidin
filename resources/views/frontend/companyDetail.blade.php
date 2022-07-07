@@ -11,7 +11,7 @@
         <div class="col-5 d-flex flex-column align-items-center justify-content-center">
             <img src="{{ url($company->company_pic_url) }}" alt="" class="rounded-circle" style="height: 350px; width:350px">
             @if (Auth::check() && Auth::user()->developer != null && Auth::user()->developer->id == request()->id)
-                <a href="{{ route('changePhotoDev') }}" class="btn btn-warning d-flex align-items-center" style="margin-top:10px"><i class="lni lni-camera" style="margin-right:5px"></i><span>Edit Photo</span></a>
+                <a href="{{ route('changePhotoDev') }}" class="btn btn-warning d-flex align-items-center" style="margin-top:10px"><i class="lni lni-camera" style="margin-right:5px"></i><span>@lang('companyDetail.edit_photo')</span></a>
             @endif
         </div>
         <div class="col-6">
@@ -83,7 +83,7 @@
                         <!-- Start Single Product -->
                         <div class="single-product" style="height: 370px;">
                             <a href="/game/{{ $game->id }}" class="product-image">
-                                <img src="{{ $promotional->img[0] }}" alt="#" style="height: 170px;width:288px">
+                                <img src="{{ url($promotional->img[0]) }}" alt="#" style="height: 170px;width:288px">
                                 @if ($sale_game->where('id', $game->id)->count() > 0)
                                     <span class="sale-tag">-50%</span>
                                 @endif

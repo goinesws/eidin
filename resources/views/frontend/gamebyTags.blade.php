@@ -28,7 +28,7 @@
                         <!-- Start Single Product -->
                         <div class="single-product" style="height: 370px">
                             <a href="/game/{{ $game->id }}" class="product-image">
-                                <img src="{{ $promotional->img[0] }}" alt="#" style="height: 170px;width:288px">
+                                <img src="{{ url($promotional->img[0]) }}" alt="#" style="height: 170px;width:288px">
                                 @if ($sale_game->where('game_id', $game->id)->count() > 0)
                                     <span class="sale-tag">-50%</span>
                                 @endif
@@ -42,7 +42,7 @@
                                 </h4>
                                 <ul class="review">
                                     <li><i class="lni lni-star-filled"></i></li>
-                                    <li><span>{{$game->gameReviews->avg('rating')}}/5 Ratings</span></li>
+                                    <li><span>{{$game->gameReviews->avg('rating')}}/5 @lang('gamebyTags.ratings')</span></li>
                                 </ul>
                                 <div class="price">
                                     <span>Rp{{number_format( $game->price,2,',','.') }}</span>

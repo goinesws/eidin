@@ -14,7 +14,7 @@
                         &nbsp;
                         Go Back
                     </a>
-                    <div class="d-flex flex-row mb-3 me-4">
+                    <div class="d-flex flex-row mb-5 me-4">
                         <h4 class="pt-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 class="bi bi-pencil-square" viewBox="0 0 24 24">
@@ -33,7 +33,7 @@
                             <input type="text" class="form-control" id="newGenreName" name="new_genre_name" disabled
                                 value={{ $Genre->genre_name }}>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-5">
                             <label for="newGenreName" class="form-label"> New Genre Name</label>
                             <input type="text" class="form-control @error('new_genre_name') is-invalid @enderror"
                                 id="newGenreName" name="new_genre_name">

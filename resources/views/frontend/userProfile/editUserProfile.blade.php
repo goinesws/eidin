@@ -10,9 +10,9 @@
                         d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                 </svg>
                 &nbsp;
-                Go Back
+                @lang('editUserProfile.go_back')
             </a>
-            <div class="d-flex flex-row mb-3 me-4">
+            <div class="d-flex flex-row mb-5 me-4">
                 <h4 class="pt-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-pencil-square" viewBox="0 0 24 24">
@@ -51,7 +51,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="mb-3">
+                <div class="mb-5">
                     <label for="exampleInputText" class="form-label">@lang('editUserProfile.country')</label>
                     <input type="text" class="form-control @error('country') is-invalid @enderror" id="exampleInputText"
                         name="country" placeholder="Country" value="{{ $User->country }}">

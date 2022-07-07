@@ -154,7 +154,7 @@
                                             <ul class="sub-menu collapse" id="submenu-1-2">
                                                 <li class="nav-item"><a href="/myProfile"
                                                         class="">@lang('headerFooter.header.my_profile')</a></li>
-                                                <li class="nav-item"><a href="/changePassword">Change Password</a>
+                                                <li class="nav-item"><a href="/changePassword">@lang('headerFooter.header.change_password')</a>
                                                 </li>
                                                 <li class="nav-item"><a href="/myDonation">@lang('headerFooter.header.donation_history')</a></li>
                                             </ul>

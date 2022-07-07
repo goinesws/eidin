@@ -1,4 +1,4 @@
-<?php 
+<?php
     return[
         'update' => 'Update',
         'website' => 'Website',
@@ -6,5 +6,6 @@
         'game_uploaded' => 'Game Uploaded',
         'all_games' => 'All Games',
         'ratings' => 'Ratings',
+        'edit_photo' => 'Edit Photo',
     ]
 ?>

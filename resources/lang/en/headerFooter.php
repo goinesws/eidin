@@ -11,6 +11,7 @@
             'wishlist' => 'Wishlist',
             'profile' => 'Profile',
             'my_profile' => 'My Profile',
+            'change_password' => 'Change Password',
             'donation_history' => 'Donation History',
             'developer_registration' => 'Developer Registration',
             'developer' => 'Developer',

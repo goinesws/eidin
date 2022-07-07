@@ -6,4 +6,5 @@ return [
     'game_uploaded' => 'Game Diunggah',
     'all_games' => 'Semua Game',
     'ratings' => 'Penilaian',
+    'edit_photo' => 'Ubah Foto',
 ];

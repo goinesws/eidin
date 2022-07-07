@@ -26,7 +26,7 @@
         <div class="row shadow pt-2 pb-2" style="background-color: #f9f9f9">
             <div class="d-flex align-items-center">
                 <div style="margin-right:20px">
-                    <img src="{{ $promotional->logo }}" alt=""
+                    <img src="{{ url($promotional->logo) }}" alt=""
                         style="height: 50px; width:50px;border-radius:30px">
                 </div>
                 <div>
@@ -48,7 +48,7 @@
                         ?>
                         style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color: rgb(37, 43, 202);border-radius:5px;padding:20px;color:white;">
                         <div class="d-flex align-items-center">
-                            <img src="{{ $user->profile_url }}" alt="" class="rounded-circle"
+                            <img src="{{ url($user->profile_url) }}" alt="" class="rounded-circle"
                                 style="height: 50px; width:50px">
                             <div class="d-flex flex-column">
                                 <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->username }}</strong>
@@ -71,7 +71,7 @@
                             <?php
                                 $user = $donation->user;
                             ?>
-                            <img src="{{ $user->profile_url }}" alt="" class="rounded-circle"
+                            <img src="{{ url($user->profile_url) }}" alt="" class="rounded-circle"
                                 style="height: 50px; width:50px">
                             <div class="d-flex flex-column">
                                 <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->username }}</strong>

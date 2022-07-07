@@ -14,5 +14,7 @@
         'on_sale' => 'ON SALE!!!',
         'on_sale_text' => 'Want to play cool games but not have enough money? check this season sale and go play your dream game',
         'ratings' => 'Ratings',
+        'coming_soon' => 'Coming Soon',
+        'free_game_text' => 'Stay tuned and wait for the new free games in Eidin!',
     ]
 ?>

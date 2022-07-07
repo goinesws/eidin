@@ -11,6 +11,7 @@
             'wishlist' => 'Wishlist',
             'profile' => 'Profil',
             'my_profile' => 'Profil Saya',
+            'change_password' => 'Ubah Password',
             'donation_history' => 'Riwayat Donasi',
             'developer_registration' => 'Daftar Sebagai Developer',
             'developer' => 'Developer',
