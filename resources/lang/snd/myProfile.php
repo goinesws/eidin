@@ -8,4 +8,8 @@ return [
     'games_owned' => 'Gim nu abdi boga',
     'reviews_written' => 'Komentar diseratkeun',
     'donations_given' => 'Donasi dipasihan',
+
+    //indo
+    'edit_photo' => 'Ubah Foto',
+
 ];
