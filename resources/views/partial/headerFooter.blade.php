@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/frontend/css/tiny-slider.css" />
     <link rel="stylesheet" href="/frontend/css/glightbox.min.css" />
     <link rel="stylesheet" href="/frontend/css/main.css" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
