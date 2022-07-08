@@ -33,9 +33,9 @@
                                         class="btn btn-primary btn-sm ms-3 me-3 {{ $tag->id == 1 ? 'disabled' : '' }} {{ $tag->id == 2 ? 'disabled' : '' }} {{ $tag->id == 3 ? 'disabled' : '' }}">@lang('manageTagGenre.update')</a>
                                     <form action="/admin/manage-tags/{{ $tag->id }}/delete" method="POST">
                                         @csrf
-                                        <button type="submit" {{ $tag->id == 1 ? 'disabled' : '' }}
+                                        <button value="{{ $tag->tag_name }}" {{ $tag->id == 1 ? 'disabled' : '' }}
                                             {{ $tag->id == 2 ? 'disabled' : '' }} {{ $tag->id == 3 ? 'disabled' : '' }}
-                                            class="btn btn-danger btn-sm ms-3 me-3">
+                                            class="btn btn-danger btn-sm ms-3 me-3 formBtn">
                                             @lang('manageTagGenre.delete')
                                         </button>
                                     </form>
