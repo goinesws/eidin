@@ -12,7 +12,7 @@
                                 d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                         </svg>
                         &nbsp;
-                        Go Back
+                        @lang('updateTagGenre.back')
                     </a>
                     <div class="d-flex flex-row mb-5 me-4">
                         <h4 class="pt-1">
@@ -23,25 +23,25 @@
                                 <path fill-rule="evenodd"
                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                             </svg>
-                            Update Tag
+                            @lang('updateTagGenre.updateTag')
                         </h4> <br>
                     </div>
                     <form action="/admin/update-tag/{{ $Tag->id }}/update" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="newTagName" class="form-label"> Previous Tag Name</label>
+                            <label for="newTagName" class="form-label"> @lang('updateTagGenre.previousTag')</label>
                             <input type="text" class="form-control" id="newTagName" name="new_tag_name" disabled
                                 value={{ $Tag->tag_name }}>
                         </div>
                         <div class="mb-5">
-                            <label for="newTagName" class="form-label"> New Tag Name</label>
+                            <label for="newTagName" class="form-label"> @lang('updateTagGenre.newTag')</label>
                             <input type="text" class="form-control @error('new_tag_name') is-invalid @enderror"
                                 id="newTagName" name="new_tag_name">
                         </div>
                         @if ($errors->any())
                             <div class="text-center text-danger mb-2">{{ $errors->first() }}</div>
                         @endif
-                        <button type="submit" class="btn btn-primary" style="width: 100%">Update Tag</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%">@lang('updateTagGenre.updateTag')</button>
                     </form>
                 </div>
             </div>
