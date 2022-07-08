@@ -79,6 +79,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin'),
         ]);
 
+        User::create([
+            'country' => $faker->country,
+            'name' => $faker->name,
+            'role' => "user",
+            'profile_url' => $faker->imageUrl,
+            'username' => 'user42069',
+            'email' => "user@gmail.com",
+            'password' => bcrypt('password'),
+        ]);
+
         for ($i = 1; $i <= 10; $i++) {
             GameGenre::create([
                 'genre_name' => $genres[$i - 1],
