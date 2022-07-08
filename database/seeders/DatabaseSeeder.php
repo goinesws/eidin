@@ -454,7 +454,35 @@ class DatabaseSeeder extends Seeder
             '9 GB'
         ];
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
+            Game::create([
+                'genre_id' => $game_genre_id[$i - 1],
+                'dev_id' => $i,
+                'game_name' => $game_name[$i - 1],
+                'game_version' => '1.0',
+                'price' => $game_price[$i - 1],
+                'promotional' => json_encode([
+                    'logo' => $game_logo_url[$i - 1],
+                    'trailer' => $game_trailer_url[$i - 1], //video url
+                    'img' => [
+                        $game_pic_url[3 * ($i - 1)], $game_pic_url[3 * ($i - 1) + 1], $game_pic_url[3 * ($i - 1)  + 2],
+                    ]
+                ]),
+                'game_data_path' => $faker->url,
+                'date_published' => $faker->dateTimeThisYear,
+                'short_desc' => $game_short_desc[$i - 1],
+                'content_rating' => $game_content_rating[$i - 1],
+                'about_game' => $game_about[$i - 1],
+                'requirement_processor' => $game_processor[$i - 1],
+                'requirement_os' => $game_os[$i - 1],
+                'requirement_memory' => $game_memory[$i - 1],
+                'requirement_graphic' => $game_graphics[$i - 1],
+                'requirement_storage' => $game_storage[$i - 1],
+                'status' => 'published'
+            ]);
+        }
+        
+        for ($i = 6; $i <= 10; $i++) {
             Game::create([
                 'genre_id' => $game_genre_id[$i - 1],
                 'dev_id' => $i,
