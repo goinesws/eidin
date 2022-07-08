@@ -25,11 +25,11 @@ class GameController extends Controller
             'img3' => 'image',
             'trailer' => 'required|url|starts_with:https://www.youtube.com/embed/',
             'game_data' => 'required',
-            'processor' => 'required|max:64',
-            'os' => 'required|max:64',
-            'memory' => 'required|max:32',
-            'graphic' => 'required|max:64',
-            'storage' => 'required|max:16'
+            'processor' => 'required|max:128',
+            'os' => 'required|max:128',
+            'memory' => 'required|max:128',
+            'graphic' => 'required|max:128',
+            'storage' => 'required|max:128'
         ]);
 
         //logo
@@ -93,5 +93,38 @@ class GameController extends Controller
 
         Alert::success('Submit Game Success!', 'Wait until admin approve your game!');
         return redirect('/developer/'.Auth::user()->developer->id);
+    }
+
+    public function updateGameData(Request $request){
+        $this->validate($request, [
+            'game_name' => 'required|min:1|max:128',
+            'game_version' => 'required|min:2|max:32',
+            'game_price' => 'required|integer|between:0,999999999',
+            'short_desc' => 'required|min:8|max:255',
+            'about_game' => 'required|min:16|max:4096',
+            'content_rating' => 'required',
+            'processor' => 'required|max:128',
+            'os' => 'required|max:128',
+            'memory' => 'required|max:128',
+            'graphic' => 'required|max:128',
+            'storage' => 'required|max:128'
+        ]);
+
+        Game::where('id', $request->id)->update([
+            'game_name' => $request->game_name,
+            'game_version' => $request->game_version,
+            'price' => $request->game_price,
+            'short_desc' => $request->short_desc,
+            'content_rating' => $request->content_rating,
+            'about_game' => $request->about_game,
+            'requirement_processor' => $request->processor,
+            'requirement_os' => $request->os,
+            'requirement_memory' => $request->memory,
+            'requirement_graphic' => $request->graphic,
+            'requirement_storage' => $request->storage,
+        ]);
+
+        Alert::success('Uodate Game Success!', 'Your Game now updated to the new version!');
+        return redirect('/dev/game/'.$request->id);
     }
 }

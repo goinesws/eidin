@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Wishlist;
 use App\Models\Developer;
 use App\Models\GameGenre;
+use App\Models\GameReview;
+use App\Models\GameLibrary;
+use App\Models\GamePayment;
+use App\Models\GameDonation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DevPagesController extends Controller
@@ -25,6 +30,16 @@ class DevPagesController extends Controller
         return view('dev.devRegistration', [
             'category_nav' => GameGenre::get(),
             'active' => 'Developer Registration',
+        ]);
+    }
+
+    public function updateGameInfo(Request $request){
+        $this->setLang();
+        return view('dev.updateGameInfo', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'Developer',
+            'developer' => Developer::find(Auth::user()->developer->id),
+            'game' => Game::find($request->id),
         ]);
     }
 
@@ -124,6 +139,19 @@ class DevPagesController extends Controller
             'category_nav' => GameGenre::get(),
             'active' => 'Developer',
             'developer' => Developer::find(Auth::user()->developer->id),
+        ]);
+    }
+
+    public function gameDetail(Request $request){
+        $this->setLang();
+
+        return view('dev.devGameDetail', [
+            'category_nav' => GameGenre::get(),
+            'active' => '',
+            'total_download' => GamePayment::where('game_id', $request->id)->count(),
+            'donations' => GameDonation::with('user')->where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),
+            'reviews' => GameReview::where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),
+            'game' => Game::find($request->id),
         ]);
     }
 

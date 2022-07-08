@@ -15,7 +15,7 @@
             'donation_history' => 'Riwayat Donasi',
             'developer_registration' => 'Daftar Sebagai Developer',
             'developer' => 'Developer',
-            'company_profile' => 'Profil Perusahaan',
+            'company_profile' => 'Profil & Games',
             'uploaded_games' => 'Game Diunggah',
             'reviews' => 'Ulasan',
             'purchases&donations' => 'Pembelian & Donasi',

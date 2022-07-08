@@ -4,7 +4,7 @@
         'website' => 'Website',
         'partner' => 'Partner since',
         'game_uploaded' => 'Game Uploaded',
-        'all_games' => 'All Games',
+        'all_games' => 'My Uploaded Games',
         'ratings' => 'Ratings',
         'edit_photo' => 'Edit Photo',
     ]

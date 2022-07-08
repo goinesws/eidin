@@ -15,7 +15,7 @@
             'donation_history' => 'Donation History',
             'developer_registration' => 'Developer Registration',
             'developer' => 'Developer',
-            'company_profile' => 'Company Profile',
+            'company_profile' => 'Profile & Games',
             'uploaded_games' => 'Uploaded Games',
             'reviews' => 'Reviews',
             'purchases&donations' => 'Purchases & Donations',

@@ -163,11 +163,23 @@ class Controller extends BaseController
         $this->setLang();
         $sale_game = Game::getGamebyTag('#sale');
         // dump($sale_game);
+
+        $game =  Game::where('dev_id', $request->id);
+        $isDev = Auth::check() && Auth::user()->developer != null && Auth::user()->developer->id == $request->id;
+        if($isDev){
+            //show unpublish
+            $game = $game->get();
+        }
+        else{
+            $game = $game->where('status', 'published')->get();
+        }
+
         return view('frontend.companyDetail', [
             'category_nav' => GameGenre::get(),
             'active' => 'Developer',
             'company' => Developer::find($request->id),
-            'games' => Game::where('dev_id', $request->id)->where('status', 'published')->get(),
+            'games' =>$game,
+            'isDev' => $isDev,
             'sale_game' => $sale_game,
             'genres' => GameGenre::all(),
         ]);

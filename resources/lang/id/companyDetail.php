@@ -4,7 +4,7 @@ return [
     'website' => 'Halaman Web',
     'partner' => 'Partner Sejak',
     'game_uploaded' => 'Game Diunggah',
-    'all_games' => 'Semua Game',
+    'all_games' => 'Semua Gameku yang Diupload',
     'ratings' => 'Penilaian',
     'edit_photo' => 'Ubah Foto',
 ];

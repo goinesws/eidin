@@ -134,12 +134,15 @@ Route::middleware(['dev'])->prefix('dev')->group(function () {
     Route::get('/upload-game', [DevPagesController::class, 'uploadGame']);
     Route::get('/purchase-donation', [DevPagesController::class, 'purchaseDonation']);
     Route::get('/changePhoto-developer', [DevPagesController::class, 'changePhotoDevPage'])->name('changePhotoDev');
+    Route::get('/game/{id}', [DevPagesController::class, 'gameDetail']);
+    Route::get('/game/updateInfo/{id}', [DevPagesController::class, 'updateGameInfo']);
 
     //post
     Route::post('/updatePhoto-developer', [DevPagesController::class, 'updateDevPhoto'])->name('photoDevUpdate');
     Route::post('/createGameData', [GameController::class, 'createGameData']);
     Route::get('/edit-company-profile', [DevPagesController::class, 'editCompanyProfilePage'])->name('editCompanyProfilePage');
     Route::post('/edit-company-profile/edit', [DevPagesController::class, 'editCompanyProfile'])->name('editCompanyProfile');
+    Route::post('/updateGame/{id}', [GameController::class, 'updateGameData']);
 });
 
 //admin only
