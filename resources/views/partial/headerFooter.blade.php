@@ -240,7 +240,7 @@
     </div>
 
     <!-- Start Footer Area -->
-    <footer class="footer d-flex flex-column min-vh-100">
+    <footer class="footer d-flex flex-column">
         <!-- Start Footer Top -->
         <div class="footer-top">
             <div class="container">
