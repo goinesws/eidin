@@ -76,7 +76,7 @@ $("#profileChange").on("change", function () {
     }
 });
 
-$(".formBtn").on("click", function (e) {
+$(".deleteBtn").on("click", function (e) {
     e.preventDefault();
     var form = $(this).parents("form");
     Swal.fire({
@@ -84,7 +84,49 @@ $(".formBtn").on("click", function (e) {
         text: "This action can't be undone!",
         icon: "question",
         showDenyButton: true,
-        confirmButtonText: "yes",
+        confirmButtonText: "Delete",
+        denyButtonText: "Cancel",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.submit();
+            return true;
+        } else if (result.isDenied) {
+            Swal.fire("Action Canceled!", "", "info");
+            return false;
+        }
+    });
+});
+
+$(".denyBtn").on("click", function (e) {
+    e.preventDefault();
+    var form = $(this).parents("form");
+    Swal.fire({
+        title: "Deny Game : " + $(this).attr("value") + " ?",
+        text: "This action can't be undone!",
+        icon: "question",
+        showDenyButton: true,
+        confirmButtonText: "Deny",
+        denyButtonText: "Cancel",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.submit();
+            return true;
+        } else if (result.isDenied) {
+            Swal.fire("Action Canceled!", "", "info");
+            return false;
+        }
+    });
+});
+
+$(".removeBtn").on("click", function (e) {
+    e.preventDefault();
+    var form = $(this).parents("form");
+    Swal.fire({
+        title: "Remove : " + $(this).attr("value") + " ?",
+        text: "This action will remove this game from your wishlist!",
+        icon: "question",
+        showDenyButton: true,
+        confirmButtonText: "Remove",
         denyButtonText: "Cancel",
     }).then((result) => {
         if (result.isConfirmed) {

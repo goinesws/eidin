@@ -35,7 +35,7 @@
                                         @csrf
                                         <button value="{{ $tag->tag_name }}" {{ $tag->id == 1 ? 'disabled' : '' }}
                                             {{ $tag->id == 2 ? 'disabled' : '' }} {{ $tag->id == 3 ? 'disabled' : '' }}
-                                            class="btn btn-danger btn-sm ms-3 me-3 formBtn">
+                                            class="btn btn-danger btn-sm ms-3 me-3 deleteBtn">
                                             @lang('manageTagGenre.delete')
                                         </button>
                                     </form>

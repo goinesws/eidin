@@ -34,7 +34,7 @@
                                         class="btn btn-primary btn-sm ms-3 me-3">@lang('manageTagGenre.update')</a>
                                     <form action="/admin/manage-genres/{{ $genre->id }}/delete" method="POST">
                                         @csrf
-                                        <button value="{{ $genre->genre_name }}" class="btn btn-danger btn-sm ms-3 me-3 formBtn">
+                                        <button value="{{ $genre->genre_name }}" class="btn btn-danger btn-sm ms-3 me-3 deleteBtn">
                                             @lang('manageTagGenre.delete')
                                         </button>
                                     </form>

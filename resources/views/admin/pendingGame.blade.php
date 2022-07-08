@@ -41,7 +41,7 @@
                             <form action="/admin/detail/deny" method="POST" style="width: 45%">
                                 @csrf
                                 <input type="hidden" name="game_id" value="{{ $game->id }}">
-                                <button type="submit" class="btn btn-danger" style="font-size: 13px;width: 83px">@lang('pendingGame.deny')</button>
+                                <button value="{{ $game->game_name }}" class="btn btn-danger denyBtn" style="font-size: 13px;width: 83px">@lang('pendingGame.deny')</button>
                             </form>
                             <form action="/admin/detail/publish" method="POST" style="width: 45%">
                                 @csrf

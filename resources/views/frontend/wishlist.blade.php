@@ -47,7 +47,7 @@
                             <form action="/wishlist/remove" method="POST" style="width: 45%">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $item->game_id }}">
-                                <button type="submit" class="btn btn-danger" style="font-size: 13px;width: 83px">@lang('wishlist.btn.remove')</button>
+                                <button value="{{ $item->game->game_name }}" class="btn btn-danger removeBtn" style="font-size: 13px;width: 83px">@lang('wishlist.btn.remove')</button>
                             </form>
                             {{-- <form action="/game/buy" method="POST" style="width: 45%">
                                 @csrf

@@ -112,7 +112,7 @@
                                                 @if (!$isOnWishlist)
                                                     <div class="col-lg-4 col-md-4 col-12">
                                                         <div class="wish-button">
-                                                            <form action="/wishlist/add" method="post">
+                                                            <form action="/wishlist/add" method="post" style="width: 300px">
                                                                 @csrf
                                                                 <input type="hidden" name="id"
                                                                     value="{{ $game->id }}">
@@ -125,11 +125,11 @@
                                                 @else
                                                     <div class="col-lg-4 col-md-4 col-12">
                                                         <div class="wish-button">
-                                                            <form action="/wishlist/remove" method="post">
+                                                            <form action="/wishlist/remove" method="post" style="width: 300px">
                                                                 @csrf
                                                                 <input type="hidden" name="id"
                                                                     value="{{ $game->id }}">
-                                                                <button class="btn" type="submit"><i
+                                                                <button class="btn removeBtn" value="{{ $game->game_name }}"><i
                                                                         class="lni lni-heart"></i>
                                                                     @lang('gameDetail.remove_wishlist')</button>
                                                             </form>

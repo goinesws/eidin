@@ -48,12 +48,7 @@ class AdminPagesController extends Controller
         $game->save();
         Alert::success('Success', 'Game has been published');
 
-        return view('admin.pendingGame', [
-            'active' => 'Admin',
-            'category_nav' => GameGenre::get(),
-            'games' => Game::where('status', 'pending')->get(),
-            'genres' => GameGenre::all(),
-        ]);
+        return redirect('/admin/pending');
     }
 
     public function denyGame(Request $request){
@@ -64,14 +59,9 @@ class AdminPagesController extends Controller
         $game->save();
         Alert::success('Success', 'Game has been denied');
 
-        return view('admin.pendingGame', [
-            'active' => 'Admin',
-            'category_nav' => GameGenre::get(),
-            'games' => Game::where('status', 'pending')->get(),
-            'genres' => GameGenre::all(),
-        ]);
+        return redirect('/admin/pending');
     }
-    
+
     public function manageTagsPage()
     {
         $this->setLang();

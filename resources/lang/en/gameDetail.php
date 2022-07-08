@@ -8,7 +8,7 @@
         'login' => 'Please login first to add the game to the wishlist',
         'buy_btn' => 'Buy Game',
         'add_wishlist' => 'Add to Wishlist',
-        'remove_wishlist' => 'Remove wishlist',
+        'remove_wishlist' => 'Remove From Wishlist',
         'download' => 'Download Game',
         'details' => 'Details',
         'version' => 'Version:',
