@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/frontend/css/tiny-slider.css" />
     <link rel="stylesheet" href="/frontend/css/glightbox.min.css" />
     <link rel="stylesheet" href="/frontend/css/main.css" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -239,42 +240,56 @@
     </div>
 
     <!-- Start Footer Area -->
-    <footer class="footer">
+    <footer class="footer d-flex flex-column min-vh-100">
         <!-- Start Footer Top -->
         <div class="footer-top">
             <div class="container">
                 <div class="inner-content">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-12">
+                        <div class="col-lg-4 col-12" >
                             <div class="footer-logo">
-                                <a href="index.html">
-                                    <img src="/frontend/images/logo/white-logo.svg" alt="#">
+                                <a href="/">
+                                    <img src="/frontend/images/logo/logo.png" alt="/">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-9 col-md-8 col-12">
+                        <div class="col-lg-4 col-12 d-flex justify-content-center">
                             <div class="footer-newsletter">
-                                <h4 class="title">
-                                    @lang('headerFooter.footer.footer_top.1')
-                                    <span>@lang('headerFooter.footer.footer_top.2')</span>
+                                <h4 class="title mt-4">
+                                    Copyright &copy; <?php echo date ('Y'); ?> Eidin, inc.
+                                    <span>All rights reserved.</span>
                                 </h4>
-                                <div class="newsletter-form-head">
-                                    <form action="#" method="get" target="_blank" class="newsletter-form">
-                                        <input name="EMAIL" placeholder="@lang('headerFooter.footer.footer_top.3')..." type="email">
-                                        <div class="button">
-                                            <button class="btn">@lang('headerFooter.footer.footer_top.btn')<span
-                                                    class="dir-part"></span></button>
-                                        </div>
-                                    </form>
-                                </div>
                             </div>
                         </div>
+                        <div class="col-lg-4 col-12 d-flex justify-content-center">
+                            <div class="footer-newsletter">
+                                <h4 class="title mt-3 ">
+                                    <a href="#" class="fw-normal fs-6 lh-lg">@lang('headerFooter.footer.footer_top.privacy')</a></br>
+                                    <a href="#" class="fw-normal fs-6 lh-lg">@lang('headerFooter.footer.footer_top.terms')</a></br>
+                                    <a href="#" class="fw-normal fs-6 lh-lg">@lang('headerFooter.footer.footer_top.legal')</a>
+                                </h4>
+
+                            </div>
+                        </div>
+                        {{-- <!-- Single Widget -->
+                        <div class="single-footer f-contact col-lg-4">
+                            <h3>@lang('headerFooter.footer.footer_middle.1')</h3>
+                            <p class="phone">@lang('headerFooter.footer.footer_middle.2')</p>
+                            <ul>
+                                <li><span>@lang('headerFooter.footer.footer_middle.3') </span> 9.00 am - 8.00 pm</li>
+                                <li><span>@lang('headerFooter.footer.footer_middle.4') </span> 10.00 am - 6.00 pm</li>
+                            </ul>
+                            <p class="mail">
+                                <a href="mailto:support@eidin.com">@lang('headerFooter.footer.footer_middle.5')</a>
+                            </p>
+                        </div>
+                        <!-- End Single Widget --> --}}
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Footer Top -->
-        <!-- Start Footer Middle -->
+        {{-- <!-- Start Footer Middle -->
         <div class="footer-middle">
             <div class="container">
                 <div class="bottom-inner">
@@ -296,23 +311,12 @@
                         </div>
                         <div class="col-lg-3 col-md-6 col-12">
                             <!-- Single Widget -->
-                            <div class="single-footer our-app">
+                            <div class="single-footer f-link">
                                 <h3>@lang('headerFooter.footer.footer_middle.6')</h3>
-                                <ul class="app-btn">
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i class="lni lni-apple"></i>
-                                            <span class="small-title">@lang('headerFooter.footer.footer_middle.7')</span>
-                                            <span class="big-title">@lang('headerFooter.footer.footer_middle.8')</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i class="lni lni-play-store"></i>
-                                            <span class="small-title">@lang('headerFooter.footer.footer_middle.9')</span>
-                                            <span class="big-title">@lang('headerFooter.footer.footer_middle.10')</span>
-                                        </a>
-                                    </li>
+                                <ul>
+                                    @foreach ($category_nav as $item)
+                                        <li><a href="/category/{{ $item->id }}">{{ $item->genre_name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <!-- End Single Widget -->
@@ -335,7 +339,7 @@
                 </div>
             </div>
         </div>
-        <!-- End Footer Middle -->
+        <!-- End Footer Middle --> --}}
         <!-- Start Footer Bottom -->
         <div class="footer-bottom">
             <div class="container">
@@ -349,7 +353,7 @@
                         </div>
                         <div class="col-lg-4 col-12">
                             <div class="copyright">
-                                <p>@lang('headerFooter.footer.footer_bottom.2')<a href="https://graygrids.com/" rel="nofollow"
+                                <p>@lang('headerFooter.footer.footer_bottom.2')<a href="/" rel="nofollow"
                                         target="_blank">@lang('headerFooter.footer.footer_bottom.3')</a></p>
                             </div>
                         </div>

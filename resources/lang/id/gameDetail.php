@@ -48,7 +48,7 @@
         'no_donation' => 'Belum Ada Donasi..',
         'buy_game' => 'Beli Game:',
         'go_back' => 'Kembali',
-        'publish' => 'Publikasi Game',
+        'publish' => 'Terbitkan Game',
         'deny' => 'Tolak Game',
     ]
 ?>
