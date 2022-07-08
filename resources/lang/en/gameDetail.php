@@ -47,5 +47,8 @@
         'donation_textarea' => 'Write your message here',
         'no_donation' => 'No Donations Yet..',
         'buy_game' => 'Buy Game:',
+        'go_back' => 'Go Back',
+        'publish' => 'Publish Game',
+        'deny' => 'Deny Game',
     ]
 ?>

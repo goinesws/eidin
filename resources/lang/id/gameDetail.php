@@ -47,5 +47,8 @@
         'donation_textarea' => 'Tulis pesan anda disini',
         'no_donation' => 'Belum Ada Donasi..',
         'buy_game' => 'Beli Game:',
+        'go_back' => 'Kembali',
+        'publish' => 'Publikasi Game',
+        'deny' => 'Tolak Game',
     ]
 ?>

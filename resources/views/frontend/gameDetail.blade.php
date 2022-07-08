@@ -7,6 +7,15 @@
     <!-- Start Item Details -->
     <section class="item-details section" style="padding-top:30px">
         <div class="container">
+            <button onclick="history.back()" class="btn btn-outline-dark mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                </svg>
+                &nbsp;
+                @lang('gameDetail.go_back')
+            </button>
             <div class="top-area">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12 col-12">
@@ -83,9 +92,9 @@
                             <div class="bottom-content">
                                 <h3 class="price">
                                     @if ($game->price == 0)
-                                        Rp: 0,00 (@lang('gameDetail.free'))
+                                        Rp0,00 (@lang('gameDetail.free'))
                                     @else
-                                        Rp: {{ number_format($game->price, 2, ',', '.') }}
+                                        Rp{{ number_format($game->price, 2, ',', '.') }}
                                     @endif
                                 </h3>
                                 @if (!Auth::check())
