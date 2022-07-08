@@ -12,7 +12,7 @@
                                 d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                         </svg>
                         &nbsp;
-                        Go Back
+                        @lang('addTagGenre.back')
                     </a>
                     <div class="d-flex flex-row mb-5 me-4">
                         <h4 class="pt-1">
@@ -21,20 +21,20 @@
                                 <path fill-rule="evenodd"
                                     d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
                             </svg>
-                            Add Genre
+                            @lang('addTagGenre.add_genre')
                         </h4> <br>
                     </div>
                     <form action="/admin/add-genre/add" method="POST">
                         @csrf
                         <div class="mb-5">
-                            <label for="newGenreName" class="form-label"> Genre Name</label>
+                            <label for="newGenreName" class="form-label"> @lang('addTagGenre.genre_name')</label>
                             <input type="text" class="form-control @error('new_genre_name') is-invalid @enderror"
                                 id="newGenreName" name="new_genre_name">
                         </div>
                         @if ($errors->any())
                             <div class="text-center text-danger mb-2">{{ $errors->first() }}</div>
                         @endif
-                        <button type="submit" class="btn btn-primary" style="width: 100%">Add Genre</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%">@lang('addTagGenre.add_genre')</button>
                     </form>
                 </div>
             </div>
