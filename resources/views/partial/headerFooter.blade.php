@@ -235,7 +235,7 @@
     </header>
     <!-- End Header Area -->
 
-    <div>
+    <div class="mb-5">
         @yield('content')
     </div>
 
@@ -341,7 +341,7 @@
         </div>
         <!-- End Footer Middle --> --}}
         <!-- Start Footer Bottom -->
-        <div class="footer-bottom">
+        <div class="footer-bottom mb-5">
             <div class="container">
                 <div class="inner-content">
                     <div class="row align-items-center">
