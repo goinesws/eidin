@@ -30,13 +30,18 @@
                 '2' => 'Meunangkeun kabéh informasi anyar, penjualan, jeung panawaran.',
                 '3' => 'Lebetken email anjeun didieu...',
                 'btn' => 'Subscribe',
+
+                //indo
+                'privacy' => 'Kebijakan Privasi',
+                'terms' => 'Syarat & Ketentuan',
+                'legal' => 'Perkara Legal',
             ],
             'footer_middle' => [
                 '1' => 'Hubungi Urang',
                 '2' => 'Telepon: +1 (900) 33 169 7720',
                 '3' => 'Senin-Jumaah:',
                 '4' => 'Sabtu::',
-                '5' => 'support@shopgrids.com',
+                '5' => 'support@eidin.com',
                 '6' => 'Aplikasi Seluler Urang',
                 '7' => 'Unduh di',
                 '8' => 'App Store',

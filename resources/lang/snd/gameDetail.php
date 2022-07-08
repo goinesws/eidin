@@ -47,5 +47,10 @@
         'donation_textarea' => 'Serat koméntar anjeun didieu...',
         'no_donation' => 'Teu acan aya donasi..',
         'buy_game' => 'Pésér gim:',
+
+
+        'go_back' => 'Kembali',
+        'publish' => 'Terbitkan Game',
+        'deny' => 'Tolak Game',
     ]
 ?>
