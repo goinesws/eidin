@@ -4409,7 +4409,7 @@ top: 2px;
 }
 
 .footer .footer-top .inner-content {
-  padding: 60px 0;
+  padding: 65px 0;
   border-bottom: 1px solid #ffffff26;
 }
 
@@ -4620,7 +4620,7 @@ top: 2px;
 }
 
 .footer .single-footer {
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 @media (max-width: 767px) {
