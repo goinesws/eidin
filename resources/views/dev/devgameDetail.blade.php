@@ -35,8 +35,12 @@
                         <div class="col-6">
                             <h6>Manage</h6>
                             <div class="d-flex" style="margin-top:10px">
-                                <a href="/dev/game/updateInfo/{{request()->id}}" class="btn btn-primary" style="margin-right:20px">Update Game</a>
-                                <a href="/dev/game/manageTrailerImage/{{request()->id}}" class="btn btn-primary">Manage Image & Trailer</a>
+                                <a href="/dev/game/updateInfo/{{ request()->id }}" class="btn btn-primary"
+                                    style="margin-right:20px">Update Game</a>
+                                <a href="/dev/game/manageTrailerImage/{{ request()->id }}" class="btn btn-primary"
+                                    style="margin-right:20px">Manage Image & Trailer</a>
+                                <button data-toggle="modal" data-target="#manageTag" class="btn btn-primary">Manage
+                                    Tags</button>
                             </div>
                         </div>
                     </div>
@@ -209,4 +213,82 @@
                 </div>
     </section>
     <!-- End Item Details -->
+    <!-- Buy Game Modal -->
+    <div class="modal fade review-modal" id="manageTag" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Manage Tag: "{{ $game->game_name }}"</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <h6 style="margin-bottom:15px">Tag Used:</h6>
+                        <table class="table table-striped text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Tag Name</th>
+                                    <th scope="col">Option</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($game->tagDetail as $item)
+                                    <tr>
+                                        <th scope="row">{{ $loop->index + 1 }}</th>
+                                        <td>{{ $item->tag->tag_name }}</td>
+                                        <td>
+                                            <form action="/dev/game/removeTag/{{ $item->id }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-danger">Remove Tag</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                @if ($game->tagDetail->count() == 0)
+                                    <tr>
+                                        <td colspan="3">This Game has no tags!</td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                        <hr>
+                        <h6 style="margin-bottom:15px">Add New Tag:</h6>
+                        <form action="/dev/game/addTag/{{ $game->id }}" method="POST">
+                            @csrf
+                            <div class="d-flex">
+                                <div style="width:80%">
+                                    <select name="tag" class="form-select @error('tag') is-invalid @enderror">
+                                        <option selected disabled>Select New Tag:</option>
+                                        <?php $tagDetail = $game->tagDetail; ?>
+                                        @foreach ($all_tags as $item)
+                                            @foreach ($tagDetail as $item2)
+                                                @if ($item->id != $item2->tag_id)
+                                                    <option value="{{ $item->id }}">
+                                                        {{ $item->tag_name }}</option>
+                                                @endif
+                                            @endforeach
+                                            @if ($tagDetail->count() == 0)
+                                                <option value="{{ $item->id }}">
+                                                    {{ $item->tag_name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    @error('tag')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <button style="margin-left:20px" type="submit" class="btn btn-primary">Add Tag</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer button">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Buy Game Modal -->
 @endsection

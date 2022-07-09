@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\TagDetail;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -266,5 +267,25 @@ class GameController extends Controller
 
         Alert::success('Logo Updated Successfully!');
         return redirect('/dev/game/manageTrailerImage/'.$request->id);
+    }
+
+    public function addGameTag(Request $request){
+        $this->validate($request, [
+            'tag' => 'required',
+        ]);
+
+        TagDetail::create([
+            'tag_id' => $request->tag,
+            'game_id' => $request->id
+        ]);
+
+        Alert::success('Tag Added Successfully!');
+        return redirect('/dev/game/'.$request->id);
+    }
+
+    public function removeGameTag(Request $request){
+        TagDetail::where('id', $request->id)->delete();
+        Alert::success('Tag Removed Successfully!');
+        return redirect()->back();
     }
 }

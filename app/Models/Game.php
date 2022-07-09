@@ -14,6 +14,7 @@ use App\Models\GameVersionLog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\DocBlock\Tag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Game extends Model
@@ -109,6 +110,7 @@ class Game extends Model
             ->join('developers', 'developers.id', '=', 'games.dev_id')
 
             ->where('games.game_name', 'like', '%' . $query . '%')
+            ->where('games.status' , '=', 'published')
             ->orWhere('developers.company_name', 'like', '%' . $query . '%')
             ->orWhere('game_genres.genre_name', $query)
             ->orWhere('game_tags.tag_name', $query)

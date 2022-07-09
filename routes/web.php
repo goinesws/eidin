@@ -149,6 +149,8 @@ Route::middleware(['dev'])->prefix('dev')->group(function () {
     Route::post('/updateGameImage/{game_id}/{imgIdx}', [GameController::class, 'updateGameImg']);
     Route::post('/updateTrailerLink/{id}', [GameController::class, 'updateGameTrailer']);
     Route::post('/updateGameLogo/{id}', [GameController::class, 'updateGameLogo']);
+    Route::post('/game/addTag/{id}', [GameController::class, 'addGameTag']);
+    Route::post('/game/removeTag/{id}', [GameController::class, 'removeGameTag']);
 });
 
 //admin only

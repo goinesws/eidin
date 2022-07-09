@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
+use App\Models\GameTag;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -158,6 +159,7 @@ class DevPagesController extends Controller
         return view('dev.devGameDetail', [
             'category_nav' => GameGenre::get(),
             'active' => '',
+            'all_tags' => GameTag::all(),
             'total_download' => GamePayment::where('game_id', $request->id)->count(),
             'donations' => GameDonation::with('user')->where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),
             'reviews' => GameReview::where('game_id', $request->id)->orderBy('created_at', 'desc')->get(),

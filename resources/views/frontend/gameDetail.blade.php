@@ -410,7 +410,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">@lang('gameDetail.buy_game') "{{ $game->game_name }}"</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/game/buy" method="POST">
                     <div class="modal-body">
@@ -455,7 +455,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Edit Review: "{{ $game->game_name }}"</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="/review/edit" method="POST">
                         <div class="modal-body">

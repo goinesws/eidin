@@ -11,6 +11,8 @@ class TagDetail extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['tag_id', 'game_id'];
+
     public function game () {
         return $this->belongsTo(Game::class);
     }
