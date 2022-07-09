@@ -136,6 +136,7 @@ Route::middleware(['dev'])->prefix('dev')->group(function () {
     Route::get('/changePhoto-developer', [DevPagesController::class, 'changePhotoDevPage'])->name('changePhotoDev');
     Route::get('/game/{id}', [DevPagesController::class, 'gameDetail']);
     Route::get('/game/updateInfo/{id}', [DevPagesController::class, 'updateGameInfo']);
+    Route::get('/game/manageTrailerImage/{id}', [DevPagesController::class, 'manageTrailerImage']);
 
     //post
     Route::post('/updatePhoto-developer', [DevPagesController::class, 'updateDevPhoto'])->name('photoDevUpdate');
@@ -143,6 +144,11 @@ Route::middleware(['dev'])->prefix('dev')->group(function () {
     Route::get('/edit-company-profile', [DevPagesController::class, 'editCompanyProfilePage'])->name('editCompanyProfilePage');
     Route::post('/edit-company-profile/edit', [DevPagesController::class, 'editCompanyProfile'])->name('editCompanyProfile');
     Route::post('/updateGame/{id}', [GameController::class, 'updateGameData']);
+    Route::post('/deleteGameImg/{game_id}/{imgIdx}', [GameController::class, 'deleteGameImg']);
+    Route::post('/AddNewImg/{id}', [GameController::class, 'addGameImg']);
+    Route::post('/updateGameImage/{game_id}/{imgIdx}', [GameController::class, 'updateGameImg']);
+    Route::post('/updateTrailerLink/{id}', [GameController::class, 'updateGameTrailer']);
+    Route::post('/updateGameLogo/{id}', [GameController::class, 'updateGameLogo']);
 });
 
 //admin only

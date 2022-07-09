@@ -43,6 +43,16 @@ class DevPagesController extends Controller
         ]);
     }
 
+    public function manageTrailerImage(Request $request){
+        $this->setLang();
+        return view('dev.manageTrailerImage', [
+            'category_nav' => GameGenre::get(),
+            'active' => 'Developer',
+            'developer' => Developer::find(Auth::user()->developer->id),
+            'game' => Game::find($request->id),
+        ]);
+    }
+
     //devRegist
     public function devRegist(Request $request){
 

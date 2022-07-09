@@ -36,7 +36,7 @@
                             <h6>Manage</h6>
                             <div class="d-flex" style="margin-top:10px">
                                 <a href="/dev/game/updateInfo/{{request()->id}}" class="btn btn-primary" style="margin-right:20px">Update Game</a>
-                                <a href="#" class="btn btn-primary">Manage Image & Trailer</a>
+                                <a href="/dev/game/manageTrailerImage/{{request()->id}}" class="btn btn-primary">Manage Image & Trailer</a>
                             </div>
                         </div>
                     </div>

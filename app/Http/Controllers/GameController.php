@@ -36,7 +36,7 @@ class GameController extends Controller
         $file = $request->file('logo');
         $logo_path = 'img/gameLogo/';
         $file->move($logo_path,$file->getClientOriginalName());
-        $logo_path = $logo_path.$file->getClientOriginalName();
+        $logo_path = '/'.$logo_path.$file->getClientOriginalName();
 
 
         $img = array();
@@ -45,27 +45,27 @@ class GameController extends Controller
         $file = $request->file('img1');
         $file->move($img_path,$file->getClientOriginalName());
         $img1_path = $img_path.$file->getClientOriginalName();
-        array_push($img, $img1_path);
+        array_push($img, '/'.$img1_path);
 
         if($request->img2 != null){
             $file = $request->file('img2');
             $file->move($img_path,$file->getClientOriginalName());
             $img2_path = $img_path.$file->getClientOriginalName();
-            array_push($img, $img2_path);
+            array_push($img, '/'.$img2_path);
         }
 
         if($request->img3 != null){
             $file = $request->file('img3');
             $file->move($img_path,$file->getClientOriginalName());
             $img3_path = $img_path.$file->getClientOriginalName();
-            array_push($img, $img3_path);
+            array_push($img, '/'.$img3_path);
         }
 
         //gameData
         $file = $request->file('game_data');
         $game_data_path = 'data/game_data/';
         $file->move($game_data_path,$file->getClientOriginalName());
-        $game_data_path = $game_data_path.$file->getClientOriginalName();
+        $game_data_path = '/'.$game_data_path.$file->getClientOriginalName();
 
         Game::create([
             'genre_id' => $request->genre_id,
@@ -96,6 +96,7 @@ class GameController extends Controller
     }
 
     public function updateGameData(Request $request){
+        $game = Game::find($request->id);
         $this->validate($request, [
             'game_name' => 'required|min:1|max:128',
             'game_version' => 'required|min:2|max:32',
@@ -122,9 +123,148 @@ class GameController extends Controller
             'requirement_memory' => $request->memory,
             'requirement_graphic' => $request->graphic,
             'requirement_storage' => $request->storage,
+            'status' => ($game->status == 'denied') ? 'pending' : $game->status
         ]);
 
-        Alert::success('Uodate Game Success!', 'Your Game now updated to the new version!');
+        Alert::success('Update Game Success!', 'Your Game now updated to the new version!');
         return redirect('/dev/game/'.$request->id);
+    }
+
+    public function deleteGameImg(Request $request){
+        $game = Game::find($request->game_id);
+        $promotional = json_decode($game->promotional);
+
+        $img = array();
+        for($i=0;$i<count($promotional->img);$i++){
+            if($i != $request->imgIdx){
+                array_push($img, $promotional->img[$i]);
+            }
+        }
+        
+        Game::where('id', $request->game_id)->update([
+            'promotional' => json_encode([
+                'logo' => $promotional->logo,
+                'trailer' => $promotional->trailer,
+                'img' => $img
+            ]),
+            'status' => ($game->status == 'denied') ? 'pending' : $game->status
+        ]);
+
+        Alert::success('Delete Image Success!');
+        return redirect('/dev/game/manageTrailerImage/'.$request->game_id);
+    }
+
+    public function addGameImg(Request $request){
+        $this->validate($request, [
+            'addImg' => 'required|image',
+        ]);
+        $game = Game::find($request->id);
+        
+        $img_path = 'img/gameImage/';
+        //img
+        $file = $request->file('addImg');
+        $file->move($img_path,$file->getClientOriginalName());
+        $img_path = $img_path.$file->getClientOriginalName();
+
+        $promotional = json_decode($game->promotional);
+
+        $img = $promotional->img;
+        array_push($img, '/'.$img_path);
+        // dump($img);
+
+        Game::where('id', $request->id)->update([
+            'promotional' => json_encode([
+                'logo' => $promotional->logo,
+                'trailer' => $promotional->trailer,
+                'img' => $img
+            ]),
+            'status' => ($game->status == 'denied') ? 'pending' : $game->status
+        ]);
+
+        Alert::success('New Image Added Successfully!');
+        return redirect('/dev/game/manageTrailerImage/'.$request->id);
+    }
+
+    public function updateGameImg(Request $request){
+        $this->validate($request, [
+            'updateImg' => 'required|image',
+        ]);
+        $game = Game::find($request->game_id);
+        
+        $img_path = 'img/gameImage/';
+        //img
+        $file = $request->file('updateImg');
+        $file->move($img_path,$file->getClientOriginalName());
+        $img_path = $img_path.$file->getClientOriginalName();
+        $promotional = json_decode($game->promotional);
+
+        $img = array();
+        for($i=0;$i<count($promotional->img);$i++){
+            if($i != $request->imgIdx){
+                array_push($img, $promotional->img[$i]);
+            }
+            else{
+                array_push($img, '/'.$img_path);
+            }
+        }
+
+        Game::where('id', $request->game_id)->update([
+            'promotional' => json_encode([
+                'logo' => $promotional->logo,
+                'trailer' => $promotional->trailer,
+                'img' => $img
+            ]),
+            'status' => ($game->status == 'denied') ? 'pending' : $game->status
+        ]);
+
+        Alert::success('Image '.$request->imgIdx.' Changed Succesfully!');
+        return redirect('/dev/game/manageTrailerImage/'.$request->game_id);
+    }
+
+    public function updateGameTrailer(Request $request){
+        $this->validate($request, [
+            'trailer' => 'required|url|starts_with:https://www.youtube.com/embed/',
+        ]);
+        $game = Game::find($request->id);
+        $promotional = json_decode($game->promotional);
+
+        Game::where('id', $request->id)->update([
+            'promotional' => json_encode([
+                'logo' => $promotional->logo,
+                'trailer' => $request->trailer,
+                'img' => $promotional->img
+            ]),
+            'status' => ($game->status == 'denied') ? 'pending' : $game->status
+        ]);
+
+        Alert::success('Trailer Link Changed Successfully!');
+        return redirect('/dev/game/manageTrailerImage/'.$request->id);
+    }
+
+    public function updateGameLogo(Request $request){
+        $this->validate($request, [
+            'logo' => 'required|image',
+        ]);
+        $game = Game::find($request->id);
+        
+        $file = $request->file('logo');
+        $logo_path = 'img/gameLogo/';
+        $file->move($logo_path,$file->getClientOriginalName());
+        $logo_path = '/'.$logo_path.$file->getClientOriginalName();
+
+        $promotional = json_decode($game->promotional);
+        // dump($img);
+
+        Game::where('id', $request->id)->update([
+            'promotional' => json_encode([
+                'logo' => $logo_path,
+                'trailer' => $promotional->trailer,
+                'img' => $promotional->img
+            ]),
+            'status' => ($game->status == 'denied') ? 'pending' : $game->status
+        ]);
+
+        Alert::success('Logo Updated Successfully!');
+        return redirect('/dev/game/manageTrailerImage/'.$request->id);
     }
 }

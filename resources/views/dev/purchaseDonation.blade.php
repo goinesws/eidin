@@ -67,6 +67,7 @@
                 @foreach ($game->gameDonations as $donation)
                     <div class="container-fluid"
                         style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:{{ $donation->amount > 150000 ? 'rgb(246, 39, 39)' : 'rgb(37, 43, 202)' }};border-radius:5px;padding:20px;color:white;">
+                        <h6 class="text-white" style="margin-bottom:20px">{{$donation->game->game_name}}</h6>
                         <div class="d-flex align-items-center">
                             <?php
                                 $user = $donation->user;
@@ -74,7 +75,7 @@
                             <img src="{{ url($user->profile_url) }}" alt="" class="rounded-circle"
                                 style="height: 50px; width:50px">
                             <div class="d-flex flex-column">
-                                <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->username }}</strong>
+                                <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->name }}</strong>
                                 <strong style="margin-left:15px;font-size:20px">Rp{{ number_format($donation->amount, 2, ',', '.') }} ({{ str_replace('_', ' ',$donation->payment_method) }})</strong>
                             </div>
                         </div>
