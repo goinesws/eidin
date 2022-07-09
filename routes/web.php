@@ -19,61 +19,6 @@ use App\Http\Controllers\GameReviewController;
 use App\Http\Controllers\GamePaymentController;
 use App\Http\Controllers\GameDonationsController;
 
-/*
-TODO
-
-login - done ( + design)
-register - done ( + design)
-
-dashboard : (design done)
-1. select * from new tag (done)
-2. select * from promotion tag (done)
-3. select * from sale tag (done)
-
-search by category (done di navbar)
-search by game name/ dev / tag/ genre (done)
-
-click game detail:
-1 all game data (done)
-2 select * from review (done, langsung dari laravel)
-3. select * from donation (done, langsung dari laravel)
-4. my review + my donation pisahin (harus udah ada di library)
-5. button tambah donasi + button tambah review (harus udah ada di library)
-
-add wishlist
-delete from wishlist
-check all wishlist (done)
-
-buy / checkout game
-payment
-
-profile:
-show profile (done + design)
-
-donation:
-show list donasi(done)
-
-library
-1. select * from library (done)
-2. download game
-
--dev-
-register developer
-
-dashboard:
-1. select * from game where dev
-2. upload game
-
-game detail:
-1. show all data
-2. show donation
-3. show review
-4. update game (insert update log)
-5. archive game
-
-admin:
-- approve game (game status udh dibikin di tabel game + game update log)
-*/
 
 Route::get('/products', function () {
     return view('/templet_ori/product-details');
