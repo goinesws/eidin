@@ -512,17 +512,27 @@ class DatabaseSeeder extends Seeder
             // deadcells
             2,
             // hollow knight
-            2
+            2,
             // Stray
+            6,
             // teardown
+            1,
             // overcooked 2
+            6,
             // wartales
+            1,
             // raft
+            2,
             // muse dash
+            3,
             // TMNT
+            1,
             // Pummel Party
+            3,
             // Beat Saber
+            7,
             // Escape Simulator
+            4,
         ];
 
         $game_name = [
@@ -545,17 +555,27 @@ class DatabaseSeeder extends Seeder
             // dead cells
             'Dead Cells',
             // holloe knight
-            'Hollow Knight'
+            'Hollow Knight',
             // Stray
+            'Stray',
             // teardown
+            'Teardown',
             // overcooked 2
+            'Overcooked 2',
             // wartales
+            'Wartales',
             // raft
+            'Raft',
             // muse dash
+            'Muse Dash',
             // TMNT
+            'Teenage Mutants Ninja Turtle',
             // Pummel Party
+            'Pummel Party',
             // Beat Saber
+            'Beat Saber',
             // Escape Simulator
+            'Escape Simulator',
         ];
 
         $game_price = [
@@ -578,17 +598,27 @@ class DatabaseSeeder extends Seeder
             // dead cells
             74999,
             // hollow knight
-            57999
+            57999,
             // Stray
+            134999,
             // teardown
+            119000,
             // overcooked 2
+            199999,
             // wartales
+            379999,
             // raft
+            135999,
             // muse dash
+            37000,
             // TMNT
+            119999,
             // Pummel Party
+            95999,
             // Beat Saber
+            139999,
             // Escape Simulator
+            95999,
         ];
 
         $game_logo_url = [
@@ -611,17 +641,27 @@ class DatabaseSeeder extends Seeder
             // dead cells
             'https://images.igdb.com/igdb/image/upload/t_cover_big/co1rgj.png',
             // hollow knight
-            'https://images.igdb.com/igdb/image/upload/t_cover_big/co1rgi.png'
+            'https://images.igdb.com/igdb/image/upload/t_cover_big/co1rgi.png',
             // Stray
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg?t=1657307370',
             // teardown
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1167630/header.jpg?t=1656046119',
             // overcooked 2
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/728880/header.jpg?t=1643298085',
             // wartales
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1527950/header.jpg?t=1657115597',
             // raft
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/648800/header.jpg?t=1655744208',
             // muse dash
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/774171/header.jpg?t=1655707604',
             // TMNT
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1361510/header.jpg?t=1657541506',
             // Pummel Party
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/880940/header.jpg?t=1585242250',
             // Beat Saber
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/620980/header.jpg?t=1622461922',
             // Escape Simulator
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1435790/header.jpg?t=1654600937',
         ];
 
         $game_trailer_url = [
@@ -644,17 +684,27 @@ class DatabaseSeeder extends Seeder
             // dead cells
             'https://www.youtube.com/embed/Q1ZGq1mk1KM',
             // hollow knight
-            'https://www.youtube.com/embed/0GXyV9EvB_g'
+            'https://www.youtube.com/embed/0GXyV9EvB_g',
             // Stray
+            'https://www.youtube.com/embed/hrdf44z4VWo',
             // teardown
+            'https://www.youtube.com/embed/ttwBelIlLv8',
             // overcooked 2
+            'https://www.youtube.com/embed/0JG5Y7ZWvWU',
             // wartales
+            'https://www.youtube.com/embed/8lLyziem3KA',
             // raft
+            'https://www.youtube.com/embed/__w615A5lC4',
             // muse dash
+            'https://www.youtube.com/embed/K_3LiLv8ya4',
             // TMNT
+            'https://www.youtube.com/embed/gHMYwrC7oAo',
             // Pummel Party
+            'https://www.youtube.com/embed/oiYG0Ov5jKE',
             // Beat Saber
+            'https://www.youtube.com/embed/vL39Sg2AqWg',
             // Escape Simulator
+            'https://www.youtube.com/embed/2VT7_tfRYV8',
         ];
 
         $game_pic_url = [
@@ -699,15 +749,45 @@ class DatabaseSeeder extends Seeder
             'https://images.igdb.com/igdb/image/upload/t_original/p3svrq6ewzxnn7p1a3v9.jpg',
             'https://images.igdb.com/igdb/image/upload/t_original/ityinxmtkakwbokpcwws.jpg',
             // Stray
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/ss_3fdd04a5418293864bf82d33c75f833121e63804.1920x1080.jpg?t=1657307370',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/ss_f6f6ba009971ff21867d5d8f96a3feb503f787b8.1920x1080.jpg?t=1657307370',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/ss_95ead64e0d31147f47f27ce828e8d5f52939dcf6.1920x1080.jpg?t=1657307370',
             // teardown
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1167630/ss_1456883f851965d17acc0fd466a53d17bab3ef8f.1920x1080.jpg?t=1656046119',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1167630/ss_b27b34be4df67359cda370e9a9372ea229ef2932.1920x1080.jpg?t=1656046119',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1167630/ss_4e43fc5c0302825007c35f51e03964726a06e984.1920x1080.jpg?t=1656046119',
             // overcooked 2
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/728880/ss_88214b3459727a759728dc9c6f4e07ad8b66f383.1920x1080.jpg?t=1643298085',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/728880/ss_a78767be5e9f3fb714721f0ab16c173cf9d78f2f.1920x1080.jpg?t=1643298085',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/728880/ss_bec2afe4b53d2dbb08119be5a7fbf1b0df3d705f.1920x1080.jpg?t=1643298085',
             // wartales
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1527950/ss_3bac295fb230013171ba85f498a3dd3d70b9dc71.1920x1080.jpg?t=1657115597',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1527950/ss_252a441da37f65590544d717b24bcacf00a780b6.1920x1080.jpg?t=1657115597',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1527950/ss_3701171b25ae40d2ffacd7d06c1a0b205d78e5d9.1920x1080.jpg?t=1657115597',
             // raft
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/648800/ss_fdf998ea2eca1e79c0141b83ef32c5fadecd9a0e.1920x1080.jpg?t=1655744208',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/648800/ss_d1ab60ade693c7ce90bcd0ba5400f8ea39e73edb.1920x1080.jpg?t=1655744208',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/648800/ss_363d79b1d6da0ec6dbccdff1c1f07e189664965a.1920x1080.jpg?t=1655744208',
             // muse dash
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/774171/ss_08637a7ac0fb40479d0ad69c78e49805641644e3.1920x1080.jpg?t=1655707604',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/774171/ss_2c2433413895c9d90ce5e7e31d81e963a2238bc3.1920x1080.jpg?t=1655707604',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/774171/ss_ab029483f2e7341ac621540794e4d372acd02213.1920x1080.jpg?t=1655707604',
             // TMNT
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1361510/ss_9137378c986b3474a5e96fe2ed2defc24e98912b.1920x1080.jpg?t=1657541506',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1361510/ss_f34d50082d66f661a0751e96a4813818d910e3a7.1920x1080.jpg?t=1657541506',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1361510/ss_3aa6503f711ddcde356e81077aa1b14092281a96.1920x1080.jpg?t=1657541506',
             // Pummel Party
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/880940/ss_b51e213e314bdbd953d190b18b119c679ba64922.1920x1080.jpg?t=1585242250',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/880940/ss_9d352c6fd1d3dec079127a5dd2108b31d57ee072.1920x1080.jpg?t=1585242250',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/880940/ss_790b659aa31131822d0eae36e5c446b31342fd69.1920x1080.jpg?t=1585242250',
             // Beat Saber
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/620980/ss_910fb7ad48bfdd918b0396b14f3dd45fc7f2e847.1920x1080.jpg?t=1622461922',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/620980/ss_542d092f42c779c866167bec05c1da488bcd91f8.1920x1080.jpg?t=1622461922',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/620980/ss_114dc9a9f27666b2d56801ba49a1db8fa202b6ee.1920x1080.jpg?t=1622461922',
             // Escape Simulator
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1435790/ss_97ac8646b5229e55008c6d0d1df9b0ec8e4062b5.1920x1080.jpg?t=1654600937',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1435790/ss_451181f4ed93a55f303a0bd03053fb2690f13bfe.1920x1080.jpg?t=1654600937',
+            'https://cdn.cloudflare.steamstatic.com/steam/apps/1435790/ss_0edded8a5eee1fe06254b8011666ba3e33cda285.1920x1080.jpg?t=1654600937',
         ];
 
         $game_short_desc = [
@@ -732,15 +812,26 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             'A 2D metroidvania with an emphasis on close combat and exploration.',
             // Stray
+            'Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.',
             // teardown
+            'Plan the perfect heist using creative problem solving, brute force, and everything around you.',
             // overcooked 2
+            'Overcooked returns with a brand-new helping of chaotic cooking action!',
             // wartales
+            'It has been a hundred years since the world saw the fall of the once great Edoran Empire at the hands of an unprecedented plague that swept the nation.',
             // raft
+            'By yourself or with friends, your mission is to survive an epic oceanic adventure across
+            a perilous sea!',
             // muse dash
+            '"Hitting while listening to music."',
             // TMNT
+            'Teenage Mutant Ninja Turtles: Shredder’s Revenge features groundbreaking gameplay rooted in timeless classic brawling mechanics.',
             // Pummel Party
+            'Pummel Party is a 4-8 player online and local-multiplayer party game.',
             // Beat Saber
+            'Beat Saber is an immersive rhythm experience you have never seen before!',
             // Escape Simulator
+            'Escape Simulator is a first-person puzzler you can play solo or in an online co-op.',
         ];
 
         $game_content_rating = [
@@ -765,15 +856,25 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             'PEGI 7',
             // Stray
+            'ESRB EVERYONE 10+',
             // teardown
+            'PEGI 7',
             // overcooked 2
+            'ESRB EVERYONE',
             // wartales
+            'ESRB MATURE 17+',
             // raft
+            'ESRB EVERYONE 10+',
             // muse dash
+            'ESRB TEEN',
             // TMNT
+            'ESRB EVERYONE 10+',
             // Pummel Party
+            'ESRB EVERYONE 10+',
             // Beat Saber
+            'ESRB EVERYONE',
             // Escape Simulator
+            'PEGI 12',
         ];
 
         $game_about = [
@@ -798,15 +899,29 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             'A 2D metroidvania with an emphasis on close combat and exploration in which the player enters the once-prosperous now-bleak insect kingdom of Hallownest, travels through its various districts, meets friendly inhabitants, fights hostile ones and uncovers the kingdom\'s history while improving their combat abilities and movement arsenal by fighting bosses and accessing out-of-the-way areas.',
             // Stray
+            'Stray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.',
             // teardown
+            'Plan the perfect heist using creative problem solving, brute force, and everything around you. Teardown features a fully destructible and truly interactive environment where player freedom and emergent gameplay are the driving mechanics.',
             // overcooked 2
+            'Overcooked returns with a brand-new helping of chaotic cooking action! Journey back to the Onion Kingdom and assemble your team of chefs in classic couch co-op or online play for up to four players. Hold onto your aprons … it\'s time to save the world (again!)',
             // wartales
+            'It has been a hundred years since the world saw the fall of the once great Edoran Empire at the hands of an unprecedented plague that swept the nation. In the turmoil and uncertainty that has followed, mercenary work, banditry and thievery across the land is abundant, as honor has long since become an almost entirely forgotten virtue.
+            ',
             // raft
+            'By yourself or with friends, your mission is to survive an epic oceanic adventure across
+            a perilous sea! Gather debris to survive, expand your raft and set sail towards forgotten and dangerous islands!',
             // muse dash
+            '"Hitting while listening to music."
+            "Is that the call from another world?"
+            [Game Starts Now—!!]',
             // TMNT
+            'Teenage Mutant Ninja Turtles: Shredder\'s Revenge features groundbreaking gameplay rooted in timeless classic brawling mechanics, brought to you by the beat \'em up experts at Dotemu (Streets of Rage 4) and Tribute Games. Bash your way through gorgeous pixel art environments and slay tons of hellacious enemies with your favorite Turtle, each with his own skills and moves - making each run unique! Choose a fighter, use radical combos to defeat your opponents and experience intense combats loaded with breathtaking action and outrageous ninja abilities. Stay sharp as you face off against Shredder and his faithful Foot Clan alone, or grab your best buds and play with up to 6 players simultaneously!',
             // Pummel Party
+            'Pummel Party is a 4-8 player online and local-multiplayer party game. Pummel friends or AI using a wide array of absurd items in the board mode and compete to destroy friendships in the entertaining collection of minigames',
             // Beat Saber
+            'Beat Saber is an immersive rhythm experience you have never seen before! Enjoy tons of handcrafted levels and swing your way through the pulsing music beats, surrounded by a futuristic world. Use your sabers to slash the beats as they come flying at you  every beat indicates which saber you need to use and the direction you need to match. With Beat Saber you become a dancing superhero!',
             // Escape Simulator
+            'Escape Simulator is a first-person puzzler you can play solo or in an online co-op. Explore a growing set of highly interactive escape rooms. Move furniture, pick up and examine everything, smash pots and break locks! Supports community-made rooms through the level editor.',
         ];
 
         $game_processor = [
@@ -831,15 +946,25 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             'Intel Core 2 Duo E5200',
             // Stray
+            'Intel Core i5-8400 | AMD Ryzen 5 2600',
             // teardown
+            'Intel Core i7 or better',
             // overcooked 2
+            'Intel i5-650 / AMD A10-5800K',
             // wartales
+            'Intel i5 3.1 Ghz Quad core',
             // raft
+            'Intel Core i5-6600 3.3GHz or similar',
             // muse dash
+            'Intel Core™ Duo or faster',
             // TMNT
+            'Intel Core i5-2400 or AMD FX-6300',
             // Pummel Party
+            'Dual Core 2.4Ghz',
             // Beat Saber
+            'Intel Core i7 Skylake or equivalent',
             // Escape Simulator
+            'X64 architecture with SSE2 instruction set support',
         ];
 
         $game_os = [
@@ -864,15 +989,25 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             'Windows 7 (64bit), Mac OS 10.13 (64bit), Ubuntu 16.04 LTS (64bit)',
             // Stray
+            'Windows 10',
             // teardown
+            'Windows 10',
             // overcooked 2
+            'Win7 -64 bit, MacOS High Sierra - 10.13.1, Mint 18 / Ubuntu 16.04.01',
             // wartales
+            'Windows 10 64bit',
             // raft
+            'Windows 7 or later',
             // muse dash
+            'Windows 7 64bit or later, OS X Lion 10.7, or later.',
             // TMNT
+            'Windows 10, 64-bit, glibc 2.17+, 64-bit only',
             // Pummel Party
+            'Windows 7',
             // Beat Saber
+            'Windows 7/8.1/10 (64bit)',
             // Escape Simulator
+            'Windows 7 (SP1+), macOS High Sierra 10.13+, Linux <3'
         ];
 
         $game_memory = [
@@ -897,15 +1032,25 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             '4 GB RAM',
             // Stray
+            '8 GB RAM',
             // teardown
+            '4 GB RAM',
             // overcooked 2
+            '4 GB RAM',
             // wartales
+            '4 GB RAM',
             // raft
+            '8 GB RAM',
             // muse dash
+            '4 GB RAM',
             // TMNT
+            '4 GB RAM',
             // Pummel Party
+            '3 GB RAM',
             // Beat Saber
+            '8 GB RAM',
             // Escape Simulator
+            '2 GB RAM',
         ];
 
         $game_graphics = [
@@ -930,15 +1075,25 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             'GeForce 9800GTX+ (1GB)',
             // Stray
+            'NVIDIA GeForce GTX 780, 3 GB | AMD Radeon R9 290X, 4 GB',
             // teardown
+            'NVIDIA GeForce GTX 1080 or similar. 8 Gb VRAM.',
             // overcooked 2
+            'Nvidia GeForce GTX 650 / Radeon HD 7510',
             // wartales
+            'GeForce GTX 950',
             // raft
+            'GeForce GTX 1050 series or similar',
             // muse dash
+            'Intel® HD Graphics or better',
             // TMNT
+            'Vulkan support, 2GB VRAM',
             // Pummel Party
+            'GeForce 8800 GT / AMD HD 6850 / Intel HD Graphics 4400 or above',
             // Beat Saber
+            'Nvidia GTX 1060 or equivalent',
             // Escape Simulator
+            'OpenGL 3.2+ or Vulkan-capable GPU',
         ];
 
         $game_storage = [
@@ -963,18 +1118,28 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             '9 GB',
             // Stray
+            '10 GB',
             // teardown
+            '4 GB',
             // overcooked 2
+            '3 GB',
             // wartales
+            '10 GB',
             // raft
+            '10 GB',
             // muse dash
+            '1 GB',
             // TMNT
+            '2 GB',
             // Pummel Party
+            '1 GB',
             // Beat Saber
+            '200 MB',
             // Escape Simulator
+            '14 GB',
         ];
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             Game::create([
                 'genre_id' => $game_genre_id[$i - 1],
                 'dev_id' => $i,
@@ -1002,7 +1167,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i = 6; $i <= 10; $i++) {
+        for ($i = 11; $i <= 20; $i++) {
             Game::create([
                 'genre_id' => $game_genre_id[$i - 1],
                 'dev_id' => $i,
@@ -1052,6 +1217,16 @@ class DatabaseSeeder extends Seeder
             5,
             // hollow knight
             5
+            // Stray
+            // teardown
+            // overcooked 2
+            // wartales
+            // raft
+            // muse dash
+            // TMNT
+            // Pummel Party
+            // Beat Saber
+            // Escape Simulator
         ];
 
         $game_comment = [
@@ -1075,6 +1250,16 @@ class DatabaseSeeder extends Seeder
             'Dead cells is really fund to play, I had a blast and I would recommend this game to all of you reading this comment. At first  I was skeptical, but I decided to download this game nonetheless and it turned out to be one of the best decisions that I have ever made.',
             // hollow knight
             'Hollow knight is a really fun game, the game itself is visually pleasing and rich in story, making it one of my favorite games right away. Personally, I like the design and backstory of the main character and its depth, making him a really intriguing but confusing character. The twist and the turns of the story is just perfect, no over dramatization or over-the-top stuff.',
+            // Stray
+            // teardown
+            // overcooked 2
+            // wartales
+            // raft
+            // muse dash
+            // TMNT
+            // Pummel Party
+            // Beat Saber
+            // Escape Simulator
         ];
 
         // Array buat game donos
@@ -1099,6 +1284,16 @@ class DatabaseSeeder extends Seeder
             'Paypal',
             // hollow knight
             'Credit Card',
+            // Stray
+            // teardown
+            // overcooked 2
+            // wartales
+            // raft
+            // muse dash
+            // TMNT
+            // Pummel Party
+            // Beat Saber
+            // Escape Simulator
         ];
 
         $dono_amount = [
@@ -1122,6 +1317,16 @@ class DatabaseSeeder extends Seeder
             90000,
             // hollow knight
             654321
+            // Stray
+            // teardown
+            // overcooked 2
+            // wartales
+            // raft
+            // muse dash
+            // TMNT
+            // Pummel Party
+            // Beat Saber
+            // Escape Simulator
         ];
 
         $dono_msg = [
@@ -1145,6 +1350,16 @@ class DatabaseSeeder extends Seeder
             'VERY NICE GAME MAKE MORE PLS',
             // hollow knight
             'BING CHILLING',
+            // Stray
+            // teardown
+            // overcooked 2
+            // wartales
+            // raft
+            // muse dash
+            // TMNT
+            // Pummel Party
+            // Beat Saber
+            // Escape Simulator
         ];
 
         for ($i = 1; $i <= 10; $i++) {
