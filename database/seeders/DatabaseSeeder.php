@@ -1216,17 +1216,27 @@ class DatabaseSeeder extends Seeder
             // dead cells
             5,
             // hollow knight
-            5
+            5,
             // Stray
+            5,
             // teardown
+            5,
             // overcooked 2
+            5,
             // wartales
+            5,
             // raft
+            5,
             // muse dash
+            5,
             // TMNT
+            5,
             // Pummel Party
+            5,
             // Beat Saber
+            5,
             // Escape Simulator
+            5,
         ];
 
         $game_comment = [
@@ -1251,15 +1261,27 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             'Hollow knight is a really fun game, the game itself is visually pleasing and rich in story, making it one of my favorite games right away. Personally, I like the design and backstory of the main character and its depth, making him a really intriguing but confusing character. The twist and the turns of the story is just perfect, no over dramatization or over-the-top stuff.',
             // Stray
+            'Stray is a really fun game, the game itself is visually pleasing and rich in story, making it one of my favorite games right away. Personally, I like the design and backstory of the main character and its depth, making him a really intriguing but confusing character. The twist and the turns of the story is just perfect, no over dramatization or over-the-top stuff.',
             // teardown
+            'If you enjoy and crave dynamic destructible environments, fire and exquisite physics, awesome driving and shooting, then you\'ll put 100\'s of hours into Teardown and enjoy every moment. What this actually is, is the worlds most elaborate puzzle game, and I\'m here for it, but, if your not feeling a challenge, enjoying the levels youve unlocked in sandbox or seeing what wizardry the modding community has come up with this week, will keep you coming back!',
             // overcooked 2
+            'It\'s one of those games where you have to play with at least one other person as you will be yelling/crying to "throw the dang meat" or to "get out of the way" to get to the rice that is about to burn. This game is one like monopoly, a relationship tester. This game is really fun with more people because of the anxiety-producing chaos.',
             // wartales
+            'What to say for a game that has sucked me in like the days of the original X-Com, Jagged Alliance, and Panzer General... there is so much to this game that it unwinds like a good book with unexpected turns around every corner. The different skills that players acquire as they advance in rank complement each other tremendously (for example my two war ponies have become more of a logistics troop as I use them to enhance surrounding players\' movement...or the spearman who positions himself next to three allies in a crowded scrum and counterstrikes LIKE A BOSS!) I love everything about this game...the developers clearly listen to feedback, regularly post updates, and have a deep passion and love for the project they created. I have never "followed" a publisher on steam...I do now. Congratulations to the designers and publishers on a job very well done.',
             // raft
+            'This game captures a lot of great parts for what it\'s trying to be and It\'s an early access done right. They had a vision for what they wanted the game to become, we got content, a story and best of all a fun experience. There is both chill building and tense diving moments with exploration in-between. My only negative factor would be a single small glitch and an annoying enemy but otherwise a really great game.',
             // muse dash
+            'I absolutely love rhythm games! I played a lot of Guitar Hero, Rocksmith, Melody\'s Escape, etc. My first one and the most favorite is probably Guitar Hero III: Legends of Rock. I used to play it every evening when I was a teen and spent tons of hours playing it. When I stumbled across Muse Dash, I didn\'t expect a lot. In fact, I didn\'t even check out which kind of music is in the game. I really liked the colorful art style, so I just bought it. The price was cheep anyway.',
             // TMNT
+            'Having grown up watching the TMNT cartoon in the late 1980s and early 1990s, and played the arcade game and its console version on the NES, I\'m definitely the target audience of Shredder\'s Revenge. Thankfully, the game does a good job in stirring up happy childhood memories, and features quality of life improvements that befit gamers my age.',
             // Pummel Party
+            'Never in my life, have I harboured deeper hatred and anger towards my friends than in this game.
+            Never in my life, have I experienced the "gamer rage" as fierce and raw, than in this game.
+            Never in my life, have I wanted to scream at the top of my lungs towards my friends, how much of an annoying **** they are while playing this game.',
             // Beat Saber
+            'this game is really cool. you can slice and dodge to your hearts content because there is no end to this game. when you beat every song, you can mod the game too! Last week I stole a katana from a museum and sliced my boss in half and it was just like beat saber! then i chopped him to little bits (like the boxes in beatsaber) and stored him in my freezer!',
             // Escape Simulator
+            'this game never fails to remind me how incredibly dumb I am. It\'s a lot of fun but if you have **** for brains these rooms will definitely take you a while. either I didn\'t win the lottery when it came to the intelligent side of the gene pool or Pine studios went a little overboard making these rooms...spoiler alert probably a bit of both. It\'s a fun game nonetheless, but I\'d definitely recommend playing the core game with friends. personally I have more fun playing community made rooms. They\'re still a challenge, but there\'s just so much packed in the core levels I don\'t know how anyone beats those levels in 15 minutes. The tutorial is literally NOTHING compared to the rest of the game which was rather disappointing because I was really looking forward to the levels and seeing what they had to offer, BUT if it was that easy the whole way through the game I suppose nobody would be buying the game now would they? Just beware every single level is pretty challenging IMO. Not gonna stop me from having fun though : D',
         ];
 
         // Array buat game donos
@@ -1285,15 +1307,25 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             'Credit Card',
             // Stray
+            'Credit Card',
             // teardown
+            'Credit Card',
             // overcooked 2
+            'Credit Card',
             // wartales
+            'Bank Transfer',
             // raft
+            'Credit Card',
             // muse dash
+            'Credit Card',
             // TMNT
+            'Paypal',
             // Pummel Party
+            'Credit Card',
             // Beat Saber
+            'Credit Card',
             // Escape Simulator
+            'Paypal',
         ];
 
         $dono_amount = [
@@ -1316,17 +1348,27 @@ class DatabaseSeeder extends Seeder
             // dead cells
             90000,
             // hollow knight
-            654321
+            654321,
             // Stray
+            400000,
             // teardown
+            140000,
             // overcooked 2
+            500000,
             // wartales
+            350000,
             // raft
+            240000,
             // muse dash
+            250000,
             // TMNT
+            450000,
             // Pummel Party
+            300000,
             // Beat Saber
+            550000,
             // Escape Simulator
+            700000,
         ];
 
         $dono_msg = [
@@ -1351,18 +1393,28 @@ class DatabaseSeeder extends Seeder
             // hollow knight
             'BING CHILLING',
             // Stray
+            'MEOW MEOW',
             // teardown
+            'COOL COOL COOL',
             // overcooked 2
+            'I LIKE IT',
             // wartales
+            'I LIKE IT',
             // raft
+            'CHILL CHILL',
             // muse dash
+            'WATASHI VERY LIKE IT',
             // TMNT
+            'NOSTALGIA',
             // Pummel Party
+            'HAHAHAHA :DDDD',
             // Beat Saber
+            'COOL GAME VERY GOOD',
             // Escape Simulator
+            'MY BRAIN IS FRIED',
         ];
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             TagDetail::create([
                 'tag_id' => $faker->numberBetween(1, 3), //ini diganti tadinya 1-10
                 'game_id' => $i,
