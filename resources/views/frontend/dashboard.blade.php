@@ -17,7 +17,7 @@
                             @if ($promo_game->isEmpty())
                                 <!-- Start Single Slider -->
                                 <div class="single-slider"
-                                    style="background-image: url(frontend/images/hero/slider-bg2.jpg);">
+                                    style="background-image: url(frontend/images/hero/bg.jpg);">
                                     <div class="content" style="padding-right:50%">
                                         <h2><span>@lang('dashboard.sponsored')</span>
                                             {{ $games[0]->game_name }}
@@ -39,7 +39,7 @@
                                 @foreach ($promo_game as $pgame)
                                     <!-- Start Single Slider -->
                                     <div class="single-slider"
-                                        style="background-image: url(frontend/images/hero/slider-bg2.jpg);">
+                                        style="background-image: url(frontend/images/hero/bg.jpg);">
                                         <div class="content" style="padding-right:50%">
                                             <h2><span>@lang('dashboard.sponsored')</span>
                                                 {{ $pgame->game_name }}
@@ -138,7 +138,7 @@
                         {{-- @dump($ngame) --}}
                         <div class="col-lg-6 col-md-6 col-12 mb-4">
                             <div class="single-banner position-relative"
-                                style="background-image:url('frontend/images/banner/banner-1-bg.jpg'); height:300px">
+                                style="background-image:url('frontend/images/banner/bg.jpg'); height:300px">
                                 <span class="position-absolute text-light bg-danger pt-2 pb-2 ps-4 pe-4">@lang('dashboard.new')</span>
                                 <div class="content pt-5" style="padding-right:55%">
                                     <h2 class="d-flex align-items-center" style="height: 50px">{{ $ngame->game_name }}</h2>
