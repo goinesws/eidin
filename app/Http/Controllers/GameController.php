@@ -89,7 +89,8 @@ class GameController extends Controller
             'requirement_memory' => $request->memory,
             'requirement_graphic' => $request->graphic,
             'requirement_storage' => $request->storage,
-            'status' => 'pending'
+            'status' => 'pending',
+            'admin_note' => null
         ]);
 
         Alert::success('Submit Game Success!', 'Wait until admin approve your game!');
@@ -287,5 +288,32 @@ class GameController extends Controller
         TagDetail::where('id', $request->id)->delete();
         Alert::success('Tag Removed Successfully!');
         return redirect()->back();
+    }
+
+    public function publishGame(Request $request){
+        // $this->setLang();
+
+        $game = Game::find($request->game_id);
+        $game->status = 'published';
+        $game->admin_note = null;
+        $game->save();
+        Alert::success('Success', 'Game has been published');
+
+        return redirect('/admin/pending');
+    }
+
+    public function denyGame(Request $request){
+        // $this->setLang();
+        $this->validate($request, [
+            'admin_note' => 'required|min:8|max:2000',
+        ]);
+
+        $game = Game::find($request->game_id);
+        $game->status = 'denied';
+        $game->admin_note = $request->admin_note;
+        $game->save();
+        Alert::success('Success', 'Game has been denied');
+
+        return redirect('/admin/pending');
     }
 }

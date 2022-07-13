@@ -34,6 +34,21 @@
                         </div>
                         <div class="col-6">
                             <h6>Manage</h6>
+                            @if ($game->admin_note != null)
+                                <div class="alert alert-danger" role="alert" style="margin-top:10px">
+                                    @if ($game->status == 'pending')
+                                        Your Game is <strong>Denied</strong> by admin before, but now is being reviewed.
+                                        Stay tuned!
+                                    @else
+                                        Your Game is <strong>Denied</strong> by admin! Please update your game until it
+                                        match
+                                        the requirement.
+                                    @endif
+                                    <br> <br>
+                                    <strong>Message From Admin:</strong> <br>
+                                    {{ $game->admin_note }}
+                                </div>
+                            @endif
                             <div class="d-flex" style="margin-top:10px">
                                 <a href="/dev/game/updateInfo/{{ request()->id }}" class="btn btn-primary"
                                     style="margin-right:20px">Update Game</a>

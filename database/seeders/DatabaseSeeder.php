@@ -1163,7 +1163,8 @@ class DatabaseSeeder extends Seeder
                 'requirement_memory' => $game_memory[$i - 1],
                 'requirement_graphic' => $game_graphics[$i - 1],
                 'requirement_storage' => $game_storage[$i - 1],
-                'status' => 'published'
+                'status' => 'published',
+                'admin_note' => null,
             ]);
         }
 
@@ -1191,7 +1192,8 @@ class DatabaseSeeder extends Seeder
                 'requirement_memory' => $game_memory[$i - 1],
                 'requirement_graphic' => $game_graphics[$i - 1],
                 'requirement_storage' => $game_storage[$i - 1],
-                'status' => 'pending'
+                'status' => 'pending',
+                'admin_note' => null,
             ]);
         }
 

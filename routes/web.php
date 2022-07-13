@@ -112,8 +112,8 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('/add-genre', [AdminPagesController::class, 'addGenrePage']);
     Route::get('/update-genre/{id}', [AdminPagesController::class, 'updateGenrePage']);
     
-    Route::post('/detail/publish', [AdminPagesController::class, 'publishGame']);
-    Route::post('/detail/deny', [AdminPagesController::class, 'denyGame']);
+    Route::post('/detail/publish', [GameController::class, 'publishGame']);
+    Route::post('/detail/deny', [GameController::class, 'denyGame']);
     Route::post('/add-tag/add', [GameTagController::class, 'addTag']);
     Route::post('/update-tag/{id}/update', [GameTagController::class, 'updateTag']);
     Route::post('/manage-tags/{id}/delete', [GameTagController::class, 'deleteTag']);

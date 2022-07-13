@@ -16,6 +16,35 @@
                 &nbsp;
                 @lang('gameDetail.go_back')
             </button>
+            <div class="product-details-info" style="margin-bottom:30px">
+                <div class="single-block">
+                    <h4>Developer Info Section</h4>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <h6>Info</h6>
+                            <p style="margin-top:10px">
+                                Date Published : {{ date_format(new DateTime($game->date_published), 'Y-m-d') }} <br>
+                                Status : <span style="font-weight: bold"
+                                    class="{{ ($game->status == 'pending' ? 'text-primary' : $game->status == 'published') ? 'text-success' : 'text-danger' }}">{{ ucwords($game->status) }}</span>
+                                <br>
+                                Last Version : {{ $game->game_version }} <br>
+                                Last Update : {{ $game->updated_at->format('Y-m-d') }}
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            @if ($game->admin_note != null)
+                                <div class="alert alert-danger" role="alert" style="margin-top:10px">
+                                        This game is already denied before, please review again the mistakes
+                                    <br> <br>
+                                    <strong>Message From Admin:</strong> <br>
+                                    {{ $game->admin_note }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="top-area">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12 col-12">
@@ -78,15 +107,14 @@
                                         <form action="/admin/detail/publish" method="post">
                                             @csrf
                                             <input type="hidden" name="game_id" value="{{ $game->id }}">
-                                            <button type="submit" class="btn btn-success" style="width: 100%; background-color:#06ca3a">@lang('gameDetail.publish')</button>
+                                            <button type="submit" class="btn btn-success publishBtn" value="{{ $game->game_name }}"
+                                                style="width: 100%; background-color:#06ca3a">@lang('gameDetail.publish')</button>
                                         </form>
                                     </div>
                                     <div class="button me-4">
-                                        <form action="/admin/detail/deny" method="post">
-                                            @csrf
-                                            <input type="hidden" name="game_id" value="{{ $game->id }}">
-                                            <button value="{{ $game->game_name }}" class="btn btn-danger denyBtn" style="width: 100%; background-color:#ce1919">@lang('gameDetail.deny')</button>
-                                        </form>
+                                        <button data-toggle="modal" data-target="#denyGame"
+                                             class="btn btn-danger"
+                                            style="width: 100%; background-color:#ce1919">@lang('gameDetail.deny')</button>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-12">
@@ -132,42 +160,28 @@
     <!-- End Item Details -->
 
     <!-- Buy Game Modal -->
-    <div class="modal fade review-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal fade review-modal" id="denyGame" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">@lang('gameDetail.buy_game') "{{ $game->game_name }}"</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Deny Game "{{ $game->game_name }}"</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/game/buy" method="POST">
+                <form action="/admin/detail/deny" method="POST">
                     <div class="modal-body">
                         @csrf
                         <input type="hidden" name="game_id" value="{{ $game->id }}">
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="price"
-                                value="Rp {{ number_format($game->price, 2, ',', '.') }}" disabled>
-                        </div>
-                        <div class="mb-3">
-                            <select name="payment" id=""
-                                class="form-control  @error('payment') is-invalid @enderror">
-                                <option selected disabled>@lang('gameDetail.payment_method')</option>
-                                <option value="credit_card" @if (old('payment') == 'credit_card') selected @endif>
-                                    @lang('gameDetail.pay.1')
-                                </option>
-                                <option value="bank_transfer" @if (old('payment') == 'bank_transfer') selected @endif>
-                                    @lang('gameDetail.pay.2')</option>
-                                <option value="paypal" @if (old('payment') == 'paypal') selected @endif>
-                                    @lang('gameDetail.pay.3')</option>
-                            </select>
-                            @error('payment')
-                                <div class="invalid-feedback" style="color: white">{{ $message }}</div>
+                            <label for="exampleInputText" class="form-label">Please Provide an information to the developer:</label>
+                            <textarea placeholder="Insert Message Here..." name="admin_note" id="" cols="30" rows="10" class="form-control @error('admin_note') is-invalid @enderror"></textarea>
+                            @error('admin_note')
+                            <div class="invalid-feedback">{{$message}}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     <div class="modal-footer button">
-                        <button class="btn" type="submit">@lang('gameDetail.buy_btn')</button>
+                        <button class="btn" type="submit">Deny Game</button>
                     </div>
                 </form>
             </div>

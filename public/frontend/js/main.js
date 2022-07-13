@@ -97,15 +97,15 @@ $(".deleteBtn").on("click", function (e) {
     });
 });
 
-$(".denyBtn").on("click", function (e) {
+$(".publishBtn").on("click", function (e) {
     e.preventDefault();
     var form = $(this).parents("form");
     Swal.fire({
-        title: "Deny Game : " + $(this).attr("value") + " ?",
+        title: "Publish Game : " + $(this).attr("value") + " ?",
         text: "This action can't be undone!",
         icon: "question",
         showDenyButton: true,
-        confirmButtonText: "Deny",
+        confirmButtonText: "Publish",
         denyButtonText: "Cancel",
     }).then((result) => {
         if (result.isConfirmed) {

@@ -25,7 +25,7 @@ class AdminPagesController extends Controller
         return view('admin.pendingGame', [
             'active' => 'Admin',
             'category_nav' => GameGenre::get(),
-            'games' => Game::where('status', 'pending')->get(),
+            'games' => Game::where('status', 'pending')->orderBy('updated_at', 'desc')->get(),
             'genres' => GameGenre::all(),
         ]);
     }
@@ -38,28 +38,6 @@ class AdminPagesController extends Controller
             'game' => Game::find($request->id),
             'genres' => GameGenre::all(),
         ]);
-    }
-
-    public function publishGame(Request $request){
-        $this->setLang();
-
-        $game = Game::find($request->game_id);
-        $game->status = 'published';
-        $game->save();
-        Alert::success('Success', 'Game has been published');
-
-        return redirect('/admin/pending');
-    }
-
-    public function denyGame(Request $request){
-        $this->setLang();
-
-        $game = Game::find($request->game_id);
-        $game->status = 'denied';
-        $game->save();
-        Alert::success('Success', 'Game has been denied');
-
-        return redirect('/admin/pending');
     }
 
     public function manageTagsPage()
