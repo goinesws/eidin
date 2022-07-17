@@ -23,7 +23,7 @@
                     @foreach ($search_result as $sgame)
                         <div class="col-lg-6 col-md-6 col-12 mb-4">
                             <div class="single-banner position-relative"
-                                style="background-image:url('frontend/images/banner/banner-1-bg.jpg'); height:270px">
+                                style="background-image:url('frontend/images/banner/bg.jpg'); height:270px">
                                 <div class="content pt-4" style="padding-right:55%">
                                     <h2  class="d-flex align-items-center" style="height: 50px">{{ $sgame->game_name }}</h2>
                                     <p style="height: 70px;overflow:hidden">{{ $sgame->short_desc }}</p>
