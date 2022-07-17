@@ -497,7 +497,7 @@
                             </div>
                         </div>
                         <div class="modal-footer button">
-                            <button class="btn" type="submit">@lang('gameDetail.buy_btn')</button>
+                            <button class="btn" type="submit">@lang('gameDetail.edit_review')</button>
                         </div>
                     </form>
                 </div>

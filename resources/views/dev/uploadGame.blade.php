@@ -10,7 +10,7 @@
                 <h5>@lang('uploadGame.part1')
                     <hr>
                 </h5>
-                <p>@lang('uploadGame.part1_desc')</p>
+                <p>@lang('uploadGame.part1_desc')</p> <br>
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">@lang('uploadGame.category') *</label>
                     <select name="genre_id" class="form-select @error('genre_id') is-invalid @enderror">
