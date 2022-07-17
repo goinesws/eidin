@@ -159,7 +159,7 @@
     </section>
     <!-- End Item Details -->
 
-    <!-- Buy Game Modal -->
+    <!-- Deny Game Modal -->
     <div class="modal fade review-modal" id="denyGame" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
