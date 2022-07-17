@@ -12,7 +12,7 @@
                 &nbsp;
                 @lang('gameDetail.go_back')
             </button>
-            <h4 style="margin-top:20px">Update Game: {{$game->game_name}}</h4>
+            <h4 style="margin-top:20px">@lang('gameDetail.update_game') : {{$game->game_name}}</h4>
             <p class="mb-5 mt-1">@lang('uploadGame.explanation')</p>
             <form action="/dev/updateGame/{{$game->id}}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -141,7 +141,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary"
-                    style="width: 100%;margin-top:20px">Update Game!</button>
+                    style="width: 100%;margin-top:20px">@lang('gameDetail.update_game')!</button>
             </form>
         </div>
     </div>

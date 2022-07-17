@@ -39,7 +39,7 @@
                         <h5 class="text-secondary">@lang('companyDetail.game_uploaded')</h5>
                     </div>
                     <div style="width: 70%">
-                        <h5>: <a class="text-primary"
+                        <h5 style="overflow: hidden;" class="d-flex">:&nbsp;<a class="text-primary"
                                 href="{{ $company->company_website }}">{{ $company->company_website }}</a></h5> <br>
                         @if ($company->approval_date != null)
                             <h5>: {{ $company->approval_date }}</h5> <br>

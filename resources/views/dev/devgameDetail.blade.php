@@ -18,44 +18,40 @@
             </button>
             <div class="product-details-info" style="margin-bottom:30px">
                 <div class="single-block">
-                    <h4>Developer Section</h4>
+                    <h4>@lang('gameDetail.dev_section')</h4>
                     <hr>
                     <div class="row">
                         <div class="col-6">
-                            <h6>Info</h6>
+                            <h6>@lang('gameDetail.info')</h6>
                             <p style="margin-top:10px">
-                                Date Published : {{ date_format(new DateTime($game->date_published), 'Y-m-d') }} <br>
+                                @lang('gameDetail.date_published'){{ date_format(new DateTime($game->date_published), 'Y-m-d') }} <br>
                                 Status : <span style="font-weight: bold"
                                     class="{{ ($game->status == 'pending' ? 'text-primary' : $game->status == 'published') ? 'text-success' : 'text-danger' }}">{{ ucwords($game->status) }}</span>
                                 <br>
-                                Last Version : {{ $game->game_version }} <br>
-                                Last Update : {{ $game->updated_at->format('Y-m-d') }}
+                                @lang('gameDetail.last_version'){{ $game->game_version }} <br>
+                                @lang('gameDetail.last_update'){{ $game->updated_at->format('Y-m-d') }}
                             </p>
                         </div>
                         <div class="col-6">
-                            <h6>Manage</h6>
+                            <h6>@lang('gameDetail.manage')</h6>
                             @if ($game->admin_note != null)
                                 <div class="alert alert-danger" role="alert" style="margin-top:10px">
                                     @if ($game->status == 'pending')
-                                        Your Game is <strong>Denied</strong> by admin before, but now is being reviewed.
-                                        Stay tuned!
+                                        @lang('gameDetail.manage_denied1')
                                     @else
-                                        Your Game is <strong>Denied</strong> by admin! Please update your game until it
-                                        match
-                                        the requirement.
+                                        @lang('gameDetail.manage_denied2')
                                     @endif
                                     <br> <br>
-                                    <strong>Message From Admin:</strong> <br>
+                                    <strong>@lang('gameDetail.message_from_admin')</strong> <br>
                                     {{ $game->admin_note }}
                                 </div>
                             @endif
                             <div class="d-flex" style="margin-top:10px">
                                 <a href="/dev/game/updateInfo/{{ request()->id }}" class="btn btn-primary"
-                                    style="margin-right:20px">Update Game</a>
+                                    style="margin-right:20px">@lang('gameDetail.update_game')</a>
                                 <a href="/dev/game/manageTrailerImage/{{ request()->id }}" class="btn btn-primary"
-                                    style="margin-right:20px">Manage Image & Trailer</a>
-                                <button data-toggle="modal" data-target="#manageTag" class="btn btn-primary">Manage
-                                    Tags</button>
+                                    style="margin-right:20px">@lang('gameDetail.image_trailer')</a>
+                                <button data-toggle="modal" data-target="#manageTag" class="btn btn-primary">@lang('gamedetail.manage_tags')</button>
                             </div>
                         </div>
                     </div>
@@ -209,8 +205,7 @@
                                                 <strong style="margin-left:15px">{{ $user->name }} - <span
                                                         style="font-size:11px">{{ $item->created_at->format('d/m/Y') }}</span>
                                                 </strong>
-                                                <strong style="margin-left:15px;font-size:20px">Rp:
-                                                    {{ number_format($item->amount, 2, ',', '.') }}</strong>
+                                                <strong style="margin-left:15px;font-size:20px">Rp{{ number_format($item->amount, 2, ',', '.') }}</strong>
                                             </div>
                                         </div>
                                         <div class="div" style="margin-top:10px">
@@ -234,18 +229,18 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Manage Tag: "{{ $game->game_name }}"</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">@lang('gameDetail.manage_tags') : "{{ $game->game_name }}"</h5>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <h6 style="margin-bottom:15px">Tag Used:</h6>
+                        <h6 style="margin-bottom:15px">@lang('gameDetail.tag_used')</h6>
                         <table class="table table-striped text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Tag Name</th>
-                                    <th scope="col">Option</th>
+                                    <th scope="col">@lang('gameDetail.tag_name')</th>
+                                    <th scope="col">@lang('gameDetail.option')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -256,26 +251,26 @@
                                         <td>
                                             <form action="/dev/game/removeTag/{{ $item->id }}" method="post">
                                                 @csrf
-                                                <button type="submit" class="btn btn-sm btn-danger">Remove Tag</button>
+                                                <button type="submit" class="btn btn-sm btn-danger">@lang('gameDetail.remove_tag')</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @endforeach
                                 @if ($game->tagDetail->count() == 0)
                                     <tr>
-                                        <td colspan="3">This Game has no tags!</td>
+                                        <td colspan="3">@lang('gameDetail.no_tag')</td>
                                     </tr>
                                 @endif
                             </tbody>
                         </table>
                         <hr>
-                        <h6 style="margin-bottom:15px">Add New Tag:</h6>
+                        <h6 style="margin-bottom:15px">@lang('gameDetail.add_new_tag')</h6>
                         <form action="/dev/game/addTag/{{ $game->id }}" method="POST">
                             @csrf
-                            <div class="d-flex">
-                                <div style="width:80%">
+                            <div class="d-flex justify-content-between">
+                                <div style="width:75%">
                                     <select name="tag" class="form-select @error('tag') is-invalid @enderror">
-                                        <option selected disabled>Select New Tag:</option>
+                                        <option selected disabled>@lang('gameDetail.select_tag')</option>
                                         <?php $tagDetail = $game->tagDetail; ?>
                                         @foreach ($all_tags as $item)
                                             @foreach ($tagDetail as $item2)
@@ -294,7 +289,7 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <button style="margin-left:20px" type="submit" class="btn btn-primary">Add Tag</button>
+                                <button style="margin-left:20px" type="submit" class="btn btn-primary">@lang('gameDetail.add_tag')</button>
                             </div>
                         </form>
                     </div>

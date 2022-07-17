@@ -24,13 +24,13 @@
                 ?>
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Start Single Product -->
-                    <div class="single-product" style="height: 370px">
+                    <div class="single-product" style="height: 390px">
                         <a href="/admin/detail/{{ $game->id }}" class="product-image">
                             <img src="{{ $promotional->img[0] }}" alt="#" style="height: 170px;width:288px">
                         </a>
                         <div class="product-info">
                             <span class="category">
-                                Date Submit: <strong>{{$game->updated_at->format('Y:m:d H:i')}}</strong>
+                                @lang('pendingGame.date_submit')<br><strong>{{$game->updated_at->format('Y:m:d H:i')}}</strong>
                             </span>
                             <h4 class="title">
                                 <a href="/admin/detail/{{ $game->id }}">{{ $game->game_name }}</a>
@@ -39,7 +39,7 @@
                                 <span>Rp{{ number_format($game->price, 2, ',', '.') }}</span>
                             </div>
                             <div class="pt-3 d-flex justify-content-between">
-                                <a href="/admin/detail/{{ $game->id }}" class="btn btn-primary">Check Game</a>
+                                <a href="/admin/detail/{{ $game->id }}" class="btn btn-primary">@lang('pendingGame.check_game')</a>
                                 {{-- <form action="/admin/detail/deny" method="POST" style="width: 45%">
                                 @csrf
                                 <input type="hidden" name="game_id" value="{{ $game->id }}">

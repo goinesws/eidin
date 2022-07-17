@@ -13,15 +13,14 @@
                         d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                 </svg>
                 &nbsp;
-                @lang('gameDetail.go_back')
+                @lang('manageTrailerImage.go_back')
             </a>
-            <h4 style="margin-top:20px">Update Game: {{ $game->game_name }}</h4>
-            <h6>(Manage Trailers, Images and Logo)</h6>
-            <p class="mb-5 mt-1">@lang('uploadGame.explanation')</p>
+            <h4 style="margin-top:20px">@lang('manageTrailerImage.update_game'){{ $game->game_name }}</h4>
+            <h6>@lang('manageTrailerImage.subtitle')</h6> <br>
 
 
             {{-- logo --}}
-            <h5>1. Logo
+            <h5>@lang('manageTrailerImage.1')
                 <hr>
             </h5>
             <div class="d-flex justify-content-center">
@@ -30,7 +29,7 @@
             <form action="/dev/updateGameLogo/{{ $game->id }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="custom-file mb-3" style="margin-top:20px">
-                    <label for="exampleInputText" class="form-label">Change Logo</label>
+                    <label for="exampleInputText" class="form-label">@lang('manageTrailerImage.change_logo')</label>
                     <input id="profileChange" type="file" name='logo'
                         class="custom-file-input form-control @error('logo') is-invalid @enderror" id="customFile"
                         accept="image/png, image/jpeg">
@@ -38,16 +37,16 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;margin-top:5px">Change Logo!</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;margin-top:5px">@lang('manageTrailerImage.change_logo')!</button>
             </form>
 
             {{-- trailer --}}
             {{-- logo --}}
-            <h5 style="margin-top:50px">2. Trailer
+            <h5 style="margin-top:50px">@lang('manageTrailerImage.2')
                 <hr>
             </h5>
             <div class="info-body" style="margin-bottom:20px">
-                <h4>@lang('gameDetail.trailer')</h4>
+                <h5 class="pb-2">@lang('gameDetail.trailer')</h5>
                 <iframe width="100%" height="300" src="{{ $promotional->trailer }}">
                 </iframe>
             </div>
@@ -62,10 +61,10 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;margin-top:5px">Update Link!</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;margin-top:5px">@lang('manageTrailerImage.update_link')!</button>
             </form>
 
-            <h5 style="margin-top:50px">3. In Game Images
+            <h5 style="margin-top:50px">@lang('manageTrailerImage.3')
                 <hr>
             </h5>
             <?php
@@ -74,7 +73,7 @@
             @foreach ($promotional->img as $item)
                 <div style="margin-bottom:30px">
                     <div class="d-flex flex-column align-items-center">
-                        <h5 style="text-center">Image - {{ $i+1 }} </h5>
+                        <h5 style="text-center">@lang('manageTrailerImage.image') - {{ $i+1 }} </h5>
                         <img src="{{ $item }}" id="current" alt="#" style="width:30vw;margin-top:10px">
                     </div>
                     <form action="/dev/updateGameImage/{{ $game->id }}/{{ $i }}" method="post"
@@ -83,13 +82,13 @@
                         <div class="custom-file mb-3" style="margin-top:20px">
                             <label for="exampleInputText" class="form-label">@lang('uploadGame.promo_image') {{ $i + 1 }}</label>
                             <div class="row">
-                                <div class="col-9">
+                                <div class="col-8">
                                     <input id="profileChange" type="file" name='updateImg'
                                         class="custom-file-input form-control @error('updateImg') is-invalid @enderror"
                                         id="customFile" accept="image/png, image/jpeg">
                                 </div>
-                                <div class="col-3">
-                                    <button class="btn btn-primary" type="submit">Change Image</button>
+                                <div class="col-4">
+                                    <button class="btn btn-primary" type="submit">@lang('manageTrailerImage.change_image')</button>
                                 </div>
                             </div>
                             @error('updateImg')
@@ -101,7 +100,7 @@
                         <form action="/dev/deleteGameImg/{{ $game->id }}/{{ $i }}" method="POST"
                             style="margin-top:15px">
                             @csrf
-                            <button class="btn btn-danger" type="submit">Delete Image</button>
+                            <button class="btn btn-danger" type="submit">@lang('manageTrailerImage.delete_image')</button>
                         </form>
                     @endif
                 </div>
@@ -112,7 +111,7 @@
                 <form action="/dev/AddNewImg/{{ $game->id }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="custom-file mb-3" style="margin-top:20px">
-                        <label for="exampleInputText" class="form-label">ADD NEW IMAGE</label>
+                        <label for="exampleInputText" class="form-label">@lang('manageTrailerImage.add_new_image')</label>
                         <div class="row">
                             <div class="col-9">
                                 <input id="profileChange" type="file" name='addImg'
@@ -123,7 +122,7 @@
                                 @enderror
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-primary" type="submit" style="width: 100%">Add Image!</button>
+                                <button class="btn btn-primary" type="submit" style="width: 100%">@lang('manageTrailerImage.add_image')!</button>
                             </div>
                         </div>
 

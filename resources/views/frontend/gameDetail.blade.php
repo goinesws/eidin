@@ -383,8 +383,7 @@
                                                 <strong style="margin-left:15px">{{ $user->name }} - <span
                                                         style="font-size:11px">{{ $item->created_at->format('d/m/Y') }}</span>
                                                 </strong>
-                                                <strong style="margin-left:15px;font-size:20px">Rp:
-                                                    {{ number_format($item->amount, 2, ',', '.') }}</strong>
+                                                <strong style="margin-left:15px;font-size:20px">Rp{{ number_format($item->amount, 2, ',', '.') }}</strong>
                                             </div>
                                         </div>
                                         <div class="div" style="margin-top:10px">
@@ -454,7 +453,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Review: "{{ $game->game_name }}"</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">@lang('gameDetail.edit_review') : "{{ $game->game_name }}"</h5>
                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="/review/edit" method="POST">

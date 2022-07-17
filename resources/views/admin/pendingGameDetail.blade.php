@@ -18,26 +18,26 @@
             </button>
             <div class="product-details-info" style="margin-bottom:30px">
                 <div class="single-block">
-                    <h4>Developer Info Section</h4>
+                    <h4>@lang('gameDetail.dev_section')</h4>
                     <hr>
                     <div class="row">
                         <div class="col-6">
-                            <h6>Info</h6>
+                            <h6>@lang('gameDetail.info')</h6>
                             <p style="margin-top:10px">
-                                Date Published : {{ date_format(new DateTime($game->date_published), 'Y-m-d') }} <br>
+                                @lang('gameDetail.date_published'){{ date_format(new DateTime($game->date_published), 'Y-m-d') }} <br>
                                 Status : <span style="font-weight: bold"
                                     class="{{ ($game->status == 'pending' ? 'text-primary' : $game->status == 'published') ? 'text-success' : 'text-danger' }}">{{ ucwords($game->status) }}</span>
                                 <br>
-                                Last Version : {{ $game->game_version }} <br>
-                                Last Update : {{ $game->updated_at->format('Y-m-d') }}
+                                @lang('gameDetail.last_version'){{ $game->game_version }} <br>
+                                @lang('gameDetail.last_update'){{ $game->updated_at->format('Y-m-d') }}
                             </p>
                         </div>
                         <div class="col-6">
                             @if ($game->admin_note != null)
                                 <div class="alert alert-danger" role="alert" style="margin-top:10px">
-                                        This game is already denied before, please review again the mistakes
+                                        @lang('gameDetail.denied_before')
                                     <br> <br>
-                                    <strong>Message From Admin:</strong> <br>
+                                    <strong>@lang('gameDetail.message_from_admin')</strong> <br>
                                     {{ $game->admin_note }}
                                 </div>
                             @endif
@@ -165,7 +165,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deny Game "{{ $game->game_name }}"</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">@lang('gameDetail.deny') "{{ $game->game_name }}"</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/admin/detail/deny" method="POST">
@@ -173,15 +173,15 @@
                         @csrf
                         <input type="hidden" name="game_id" value="{{ $game->id }}">
                         <div class="mb-3">
-                            <label for="exampleInputText" class="form-label">Please Provide an information to the developer:</label>
-                            <textarea placeholder="Insert Message Here..." name="admin_note" id="" cols="30" rows="10" class="form-control @error('admin_note') is-invalid @enderror"></textarea>
+                            <label for="exampleInputText" class="form-label">@lang('gameDetail.admin_message')</label>
+                            <textarea placeholder="@lang('gameDetail.review_textarea')..." name="admin_note" id="" cols="30" rows="10" class="form-control @error('admin_note') is-invalid @enderror"></textarea>
                             @error('admin_note')
                             <div class="invalid-feedback">{{$message}}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="modal-footer button">
-                        <button class="btn" type="submit">Deny Game</button>
+                        <button class="btn" type="submit">@lang('gameDetail.deny')</button>
                     </div>
                 </form>
             </div>
