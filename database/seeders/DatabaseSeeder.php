@@ -57,6 +57,16 @@ class DatabaseSeeder extends Seeder
 
         $faker = Factory::create();
 
+        User::create([
+            'country' => $faker->country,
+            'name' => "Renhan Tolentino",
+            'role' => "user",
+            'profile_url' => $faker->imageUrl,
+            'username' => 'rentino',
+            'email' => "dev@gmail.com",
+            'password' => bcrypt('password'),
+        ]);
+
         for ($i = 1; $i <= 21; $i++) {
             User::create([
                 'country' => $faker->country,
@@ -71,20 +81,20 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'country' => $faker->country,
-            'name' => $faker->name,
+            'name' => "Aza Van Dimenang",
             'role' => "admin",
             'profile_url' => $faker->imageUrl,
-            'username' => 'admin12345',
+            'username' => 'avd80',
             'email' => "admin@gmail.com",
             'password' => bcrypt('admin'),
         ]);
 
         User::create([
             'country' => $faker->country,
-            'name' => $faker->name,
+            'name' => "Zulya Anomysity",
             'role' => "user",
             'profile_url' => $faker->imageUrl,
-            'username' => 'user42069',
+            'username' => 'zulanty42',
             'email' => "user@gmail.com",
             'password' => bcrypt('password'),
         ]);
