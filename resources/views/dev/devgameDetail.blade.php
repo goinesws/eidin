@@ -35,16 +35,26 @@
                         <div class="col-6">
                             <h6>@lang('gameDetail.manage')</h6>
                             @if ($game->admin_note != null)
-                                <div class="alert alert-danger" role="alert" style="margin-top:10px">
+                                {{-- <div class="alert alert-danger" role="alert" style="margin-top:10px"> --}}
                                     @if ($game->status == 'pending')
+                                    <div class="alert alert-warning" role="alert" style="margin-top:10px">
                                         @lang('gameDetail.manage_denied1')
+                                        <br> <br>
+                                        <strong>@lang('gameDetail.message_from_admin')</strong> <br>
+                                        {{ $game->admin_note }}
+                                    </div>
                                     @else
+                                    <div class="alert alert-danger" role="alert" style="margin-top:10px">
                                         @lang('gameDetail.manage_denied2')
+                                        <br> <br>
+                                        <strong>@lang('gameDetail.message_from_admin')</strong> <br>
+                                        {{ $game->admin_note }}
+                                    </div>
                                     @endif
-                                    <br> <br>
+                                    {{-- <br> <br>
                                     <strong>@lang('gameDetail.message_from_admin')</strong> <br>
-                                    {{ $game->admin_note }}
-                                </div>
+                                    {{ $game->admin_note }} --}}
+                                {{-- </div> --}}
                             @endif
                             <div class="d-flex" style="margin-top:10px">
                                 <a href="/dev/game/updateInfo/{{ request()->id }}" class="btn btn-primary"

@@ -67,6 +67,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
+        User::create([
+            'country' => $faker->country,
+            'name' => "Aza Van Dimenang",
+            'role' => "user",
+            'profile_url' => $faker->imageUrl,
+            'username' => 'avd69',
+            'email' => "avdabv@gmail.com",
+            'password' => bcrypt('asdfg'),
+        ]);
+
         for ($i = 1; $i <= 21; $i++) {
             User::create([
                 'country' => $faker->country,
@@ -81,11 +91,11 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'country' => $faker->country,
-            'name' => "Aza Van Dimenang",
+            'name' => "Admin",
             'role' => "admin",
             'profile_url' => $faker->imageUrl,
             'username' => 'avd80',
-            'email' => "admin@gmail.com",
+            'email' => "avd@gmail.com",
             'password' => bcrypt('admin'),
         ]);
 
@@ -1426,20 +1436,17 @@ class DatabaseSeeder extends Seeder
             'MY BRAIN IS FRIED',
         ];
 
-        for ($i = 1; $i <= 20; $i++) {
-            TagDetail::create([
-                'tag_id' => $faker->numberBetween(1, 3), //ini diganti tadinya 1-10
-                'game_id' => $i,
-            ]);
-
+        for($i=1; $i<=10; $i++){
             Wishlist::create([
                 'game_id' => $i,
-                'user_id' => $faker->numberBetween(1, 10),
+                'user_id' => $i
+                //$faker->numberBetween(1, 10),
             ]);
 
             GameLibrary::create([
                 'game_id' => $i,
-                'user_id' => $faker->numberBetween(1, 10),
+                'user_id' => $i
+                //$faker->numberBetween(1, 10),
             ]);
 
             GameReview::create([
@@ -1448,20 +1455,27 @@ class DatabaseSeeder extends Seeder
                 'rating' => $game_rating[$i - 1],
                 'comment' => $game_comment[$i - 1],
             ]);
-
+    
             GamePayment::create([
                 'game_id' => $faker->numberBetween(1, 10),
                 'user_id' => $faker->numberBetween(1, 10),
                 'payment_method' => $faker->randomElement(['paypal', 'credit_card', 'bank_transfer']),
                 'amount' => $faker->numberBetween(10000, 1000000),
             ]);
-
+    
             GameDonation::create([
                 'game_id' => $i,
                 'user_id' => $i,
                 'payment_method' => $dono_payment_method[$i - 1],
                 'amount' => $dono_amount[$i - 1],
                 'message' => $dono_msg[$i - 1]
+            ]);
+        }
+
+        for ($i = 1; $i <= 20; $i++) {
+            TagDetail::create([
+                'tag_id' => $faker->numberBetween(1, 3), //ini diganti tadinya 1-10
+                'game_id' => $i,
             ]);
         }
     }
