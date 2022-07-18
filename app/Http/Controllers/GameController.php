@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\TagDetail;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -315,5 +316,15 @@ class GameController extends Controller
         Alert::success('Success', 'Game has been denied');
 
         return redirect('/admin/pending');
+    }
+
+    public function downloadGame(Request $request){
+        $file= public_path(). "/data/game_data/".$request->fileName;
+
+        $headers = array(
+            'Content-Type: zip',
+        );
+
+        return response()->download($file,$request->fileName , $headers);
     }
 }

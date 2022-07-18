@@ -36,6 +36,7 @@ Route::get('/category/{id}', [Controller::class, 'gameCategory']);
 Route::get('/tag/{id}', [Controller::class, 'gamebyTag']);
 Route::get('/all-games', [Controller::class, 'allGame']);
 Route::get('/developer/{id}', [Controller::class, 'companyDetail']);
+Route::get('/downloadGame/{fileName}', [GameController::class, 'downloadGame']);
 
 
 Route::middleware(['guest'])->group(function () {

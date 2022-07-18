@@ -1173,7 +1173,7 @@ class DatabaseSeeder extends Seeder
                         $game_pic_url[3 * ($i - 1)], $game_pic_url[3 * ($i - 1) + 1], $game_pic_url[3 * ($i - 1)  + 2],
                     ]
                 ]),
-                'game_data_path' => $faker->url,
+                'game_data_path' => 'dummy.zip',
                 'date_published' => $faker->dateTimeThisYear,
                 'short_desc' => $game_short_desc[$i - 1],
                 'content_rating' => $game_content_rating[$i - 1],
