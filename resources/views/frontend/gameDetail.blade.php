@@ -2,7 +2,7 @@
 
 @section('content')
     <?php
-    $promotional = json_decode($game->promotional);
+    // $promotional = json_decode($game->promotional);
     ?>
     <!-- Start Item Details -->
     <section class="item-details section" style="padding-top:30px">
@@ -139,8 +139,8 @@
                                             @else
                                                 <div class="col-lg-4 col-md-4 col-12">
                                                     <div class="button cart-button">
-                                                        <button class="btn"
-                                                            style="width: 100%;">@lang('gameDetail.download')</button>
+                                                        <a class="btn"
+                                                            style="width: 100%;">@lang('gameDetail.download')</a>
                                                     </div>
                                                 </div>
                                             @endif
