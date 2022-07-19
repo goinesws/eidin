@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
             'role' => "admin",
             'profile_url' => $faker->imageUrl,
             'username' => 'avd80',
-            'email' => "avd@gmail.com",
+            'email' => "admin@gmail.com",
             'password' => bcrypt('admin'),
         ]);
 
@@ -1455,14 +1455,14 @@ class DatabaseSeeder extends Seeder
                 'rating' => $game_rating[$i - 1],
                 'comment' => $game_comment[$i - 1],
             ]);
-    
+
             GamePayment::create([
                 'game_id' => $faker->numberBetween(1, 10),
                 'user_id' => $faker->numberBetween(1, 10),
                 'payment_method' => $faker->randomElement(['paypal', 'credit_card', 'bank_transfer']),
                 'amount' => $faker->numberBetween(10000, 1000000),
             ]);
-    
+
             GameDonation::create([
                 'game_id' => $i,
                 'user_id' => $i,
