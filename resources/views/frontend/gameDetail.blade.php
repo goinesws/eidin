@@ -139,8 +139,7 @@
                                             @else
                                                 <div class="col-lg-4 col-md-4 col-12">
                                                     <div class="button cart-button">
-                                                        <button class="btn"
-                                                            style="width: 100%;">@lang('gameDetail.download')</button>
+                                                        <a class="btn" href="/downloadGame/{{$game->game_data_path}}" style="padding-top:10px">@lang('gameDetail.download')</a>
                                                     </div>
                                                 </div>
                                             @endif
@@ -421,7 +420,7 @@
                         </div>
                         <div class="mb-3">
                             <select name="payment" id=""
-                                class="form-control  @error('payment') is-invalid @enderror">
+                                class="form-select  @error('payment') is-invalid @enderror">
                                 <option selected disabled>@lang('gameDetail.payment_method')</option>
                                 <option value="credit_card" @if (old('payment') == 'credit_card') selected @endif>
                                     @lang('gameDetail.pay.1')
