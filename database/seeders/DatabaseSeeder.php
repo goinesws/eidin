@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
             'role' => "admin",
             'profile_url' => $faker->imageUrl,
             'username' => 'avd80',
-            'email' => "avd@gmail.com",
+            'email' => "admin@gmail.com",
             'password' => bcrypt('admin'),
         ]);
 
