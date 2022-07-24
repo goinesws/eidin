@@ -49,11 +49,6 @@
                                 <input type="hidden" name="id" value="{{ $item->game_id }}">
                                 <button value="{{ $item->game->game_name }}" class="btn btn-danger removeBtn" style="font-size: 13px;width: 83px">@lang('wishlist.btn.remove')</button>
                             </form>
-                            {{-- <form action="/game/buy" method="POST" style="width: 45%">
-                                @csrf
-                                <input type="hidden" name="game_id" value="{{ $item->game_id }}">
-                                <button type="submit" class="btn btn-primary" style="font-size: 13px; width: 83px">@lang('wishlist.btn.purchase')</button>
-                            </form> --}}
                             <button class="btn btn-primary" style="width: 83px;font-size: 13px" data-toggle="modal" data-target="#exampleModal">@lang('wishlist.btn.purchase')</button>
                         </div>
                     </div>
@@ -93,7 +88,6 @@
                                         <div class="invalid-feedback" style="color: white">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
                             </div>
                             <div class="modal-footer button">
                                 <button class="btn" type="submit">@lang('gameDetail.buy_btn')</button>

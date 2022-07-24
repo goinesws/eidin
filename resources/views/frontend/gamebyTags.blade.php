@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container" style="margin-top: 20px;margin-bottom:20px">
-    <!-- Start Banner Area -->
     <section class="banner section pb-5 pt-3">
         <div class="container">
             <div class="row">
@@ -25,7 +24,6 @@
                     $promotional = json_decode($game->promotional);
                     ?>
                     <div class="col-lg-3 col-md-6 col-12">
-                        <!-- Start Single Product -->
                         <div class="single-product" style="height: 370px">
                             <a href="/game/{{ $game->id }}" class="product-image">
                                 <img src="{{ url($promotional->img[0]) }}" alt="#" style="height: 170px;width:288px">
@@ -52,12 +50,10 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Product -->
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
-    <!-- End Banner Area -->
 </div>
 @endsection

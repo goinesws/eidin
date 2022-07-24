@@ -2,8 +2,6 @@
 
 @section('content')
 <div class="container" style="margin-top: 20px;margin-bottom:20px">
-    {{-- <h3 class="mb-5">Library</h3> --}}
-    {{-- <p>@dump($item)</p> --}}
     <section class="pt-3" style="margin-top: 12px;" id="onsale">
         <div class="container">
             <div class="row">

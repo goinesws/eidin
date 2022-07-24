@@ -2,9 +2,7 @@
 
 @section('content')
     <?php
-    //dd($company->social_media);
     $social_media = json_decode($company->social_media);
-    //dump($social_media);
     ?>
     <div style="margin-top: 50px;margin-bottom:50px">
         <div class="container d-flex justify-content-between">

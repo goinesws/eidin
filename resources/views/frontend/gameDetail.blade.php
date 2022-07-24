@@ -434,7 +434,6 @@
                                 <div class="invalid-feedback" style="color: white">{{ $message }}</div>
                             @enderror
                         </div>
-                        {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
                     </div>
                     <div class="modal-footer button">
                         <button class="btn" type="submit">@lang('gameDetail.buy_btn')</button>

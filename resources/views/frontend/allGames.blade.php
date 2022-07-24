@@ -25,7 +25,6 @@
                     $promotional = json_decode($game->promotional);
                     ?>
                     <div class="col-lg-3 col-md-6 col-12">
-                        <!-- Start Single Product -->
                         <div class="single-product" style="height: 370px">
                             <a href="/game/{{ $game->id }}" class="product-image">
                                 <img src="{{ url($promotional->img[0]) }}" alt="#" style="height: 170px;width:288px">
@@ -52,7 +51,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Product -->
                     </div>
                 @endforeach
             </div>
