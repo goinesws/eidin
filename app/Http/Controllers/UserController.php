@@ -66,6 +66,8 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
         $user->role = 'user';
+        $user->profile_url = 'img/defaultpic.png';
+
         $user->save();
 
         return redirect()->route('login');

@@ -4,7 +4,6 @@
     <?php
     $promotional = json_decode($game->promotional);
     ?>
-    <!-- Start Item Details -->
     <section class="item-details section" style="padding-top:30px">
         <div class="container">
             <button onclick="history.back()" class="btn btn-outline-dark mb-3">
@@ -35,7 +34,6 @@
                         <div class="col-6">
                             <h6>@lang('gameDetail.manage')</h6>
                             @if ($game->admin_note != null)
-                                {{-- <div class="alert alert-danger" role="alert" style="margin-top:10px"> --}}
                                     @if ($game->status == 'pending')
                                     <div class="alert alert-warning" role="alert" style="margin-top:10px">
                                         @lang('gameDetail.manage_denied1')
@@ -51,10 +49,6 @@
                                         {{ $game->admin_note }}
                                     </div>
                                     @endif
-                                    {{-- <br> <br>
-                                    <strong>@lang('gameDetail.message_from_admin')</strong> <br>
-                                    {{ $game->admin_note }} --}}
-                                {{-- </div> --}}
                             @endif
                             <div class="d-flex" style="margin-top:10px">
                                 <a href="/dev/game/updateInfo/{{ request()->id }}" class="btn btn-primary"
@@ -162,7 +156,6 @@
                         <div class="single-block">
                             <div class="info-body custom-responsive-margin">
                                 <h4>@lang('gameDetail.review')</h4>
-                                {{-- @dump($myReview) --}}
                                 <hr>
 
                                 @foreach ($reviews as $item)
@@ -172,7 +165,7 @@
                                     <div class="container-fluid"
                                         style="margin-top:10px;margin-bottom:25px;padding-left:0px;">
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ url($user->profile_url) }}" alt=""
+                                            <img src="{{ $user->profile_url }}" alt=""
                                                 class="rounded-circle" style="height: 40px; width:40px">
                                             <strong style="margin-left:15px">{{ $user->name }}</strong>
                                         </div>
@@ -209,7 +202,7 @@
                                     <div class="container-fluid"
                                         style="margin-top:10px;margin-bottom:25px;padding-left:0px;background-color:{{ $item->amount < 150000 ? 'rgb(37, 43, 202)' : 'rgb(246, 39, 39)' }};border-radius:5px;padding:20px;color:white">
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ url($user->profile_url) }}" alt=""
+                                            <img src="{{ $user->profile_url }}" alt=""
                                                 class="rounded-circle" style="height: 50px; width:50px">
                                             <div class="d-flex flex-column">
                                                 <strong style="margin-left:15px">{{ $user->name }} - <span
@@ -232,8 +225,6 @@
                     </div>
                 </div>
     </section>
-    <!-- End Item Details -->
-    <!-- Buy Game Modal -->
     <div class="modal fade review-modal" id="manageTag" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -310,5 +301,4 @@
             </div>
         </div>
     </div>
-    <!-- End Buy Game Modal -->
 @endsection

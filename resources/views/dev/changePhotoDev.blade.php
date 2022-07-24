@@ -20,9 +20,7 @@
                 $str = 'https://';
                 $is_url = (substr(Auth::user()->profile_url, 0, strlen($str)) === $str)
                 ?>
-                {{-- <img src="{{$is_url ? '' : '/'}}{{ $dev->company_pic_url }}" alt="" id="editProfileShow" class="rounded-circle"
-                    style="height: 300px; width:300px"> --}}
-                <img src="{{ url($dev->company_pic_url) }}" alt="" id="editProfileShow" class="rounded-circle"
+                <img src="{{ $dev->company_pic_url }}" alt="" id="editProfileShow" class="rounded-circle"
                     style="height: 300px; width:300px">
                 <form action="{{ route('photoDevUpdate') }}" method="post" enctype="multipart/form-data">
                     @csrf

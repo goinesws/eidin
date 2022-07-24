@@ -2,8 +2,6 @@
 
 @section('content')
 <div class="container" style="margin-top: 20px;margin-bottom:20px">
-    {{-- <h3 class="mb-5">Library</h3> --}}
-    {{-- <p>@dump($item)</p> --}}
     <section class="pt-3" style="margin-top: 12px;" id="onsale">
         <div class="container">
             <div class="row">
@@ -30,7 +28,7 @@
                         <!-- Start Single Product -->
                         <div class="single-product" style="height: 270px;">
                             <a href="/game/{{ $item->id }}" class="product-image">
-                                <img src="{{ url($promotional->img[0]) }}" alt="#" style="height: 170px;width:288px">
+                                <img src="{{ $promotional->img[0] }}" alt="#" style="height: 170px;width:288px">
                             </a>
                             <div class="product-info" style="display:flex; justify-content:center; align-items:center; text-align:center">
                                 <h4 class="title">

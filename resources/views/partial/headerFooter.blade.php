@@ -95,7 +95,6 @@
                                 </form>
                                 <!-- navbar search Ends -->
                             </div>
-                            {{-- @dump(request()->session()->get('locale')) --}}
                         </div>
                     </div>
                 </div>
@@ -271,75 +270,11 @@
 
                             </div>
                         </div>
-                        {{-- <!-- Single Widget -->
-                        <div class="single-footer f-contact col-lg-4">
-                            <h3>@lang('headerFooter.footer.footer_middle.1')</h3>
-                            <p class="phone">@lang('headerFooter.footer.footer_middle.2')</p>
-                            <ul>
-                                <li><span>@lang('headerFooter.footer.footer_middle.3') </span> 9.00 am - 8.00 pm</li>
-                                <li><span>@lang('headerFooter.footer.footer_middle.4') </span> 10.00 am - 6.00 pm</li>
-                            </ul>
-                            <p class="mail">
-                                <a href="mailto:support@eidin.com">@lang('headerFooter.footer.footer_middle.5')</a>
-                            </p>
-                        </div>
-                        <!-- End Single Widget --> --}}
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Footer Top -->
-        {{-- <!-- Start Footer Middle -->
-        <div class="footer-middle">
-            <div class="container">
-                <div class="bottom-inner">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer f-contact">
-                                <h3>@lang('headerFooter.footer.footer_middle.1')</h3>
-                                <p class="phone">@lang('headerFooter.footer.footer_middle.2')</p>
-                                <ul>
-                                    <li><span>@lang('headerFooter.footer.footer_middle.3') </span> 9.00 am - 8.00 pm</li>
-                                    <li><span>@lang('headerFooter.footer.footer_middle.4') </span> 10.00 am - 6.00 pm</li>
-                                </ul>
-                                <p class="mail">
-                                    <a href="mailto:support@shopgrids.com">@lang('headerFooter.footer.footer_middle.5')</a>
-                                </p>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer f-link">
-                                <h3>@lang('headerFooter.footer.footer_middle.6')</h3>
-                                <ul>
-                                    @foreach ($category_nav as $item)
-                                        <li><a href="/category/{{ $item->id }}">{{ $item->genre_name }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer f-link">
-                                <h3>@lang('headerFooter.footer.footer_middle.11')</h3>
-                                <ul>
-                                    <li><a href="javascript:void(0)">@lang('headerFooter.footer.footer_middle.information.1')</a></li>
-                                    <li><a href="javascript:void(0)">@lang('headerFooter.footer.footer_middle.information.2')</a></li>
-                                    <li><a href="javascript:void(0)">@lang('headerFooter.footer.footer_middle.information.3')</a></li>
-                                    <li><a href="javascript:void(0)">@lang('headerFooter.footer.footer_middle.information.4')</a></li>
-                                    <li><a href="javascript:void(0)">@lang('headerFooter.footer.footer_middle.information.5')</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Footer Middle --> --}}
+        
         <!-- Start Footer Bottom -->
         <div class="footer-bottom mb-5">
             <div class="container">

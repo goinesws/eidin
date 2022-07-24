@@ -4,7 +4,7 @@
     <div style="margin-top: 50px;margin-bottom:50px">
         <div class="container d-flex justify-content-between">
             <div class="col-5 d-flex flex-column align-items-center">
-                <img src="{{ url($profile->profile_url) }}" alt="" class="rounded-circle"
+                <img src="{{ $profile->profile_url }}" alt="" class="rounded-circle"
                 style="height: 350px; width:350px">
                 <div class="d-flex justify-content-end">
                     <a href="/myProfile/changePhoto" class="btn btn-warning d-flex align-items-center" style="margin-top:10px"><i class="lni lni-camera" style="margin-right:5px"></i><span>@lang('myProfile.edit_photo')</span></a>

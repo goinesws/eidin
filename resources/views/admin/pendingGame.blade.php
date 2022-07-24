@@ -40,16 +40,6 @@
                             </div>
                             <div class="pt-3 d-flex justify-content-between">
                                 <a href="/admin/detail/{{ $game->id }}" class="btn btn-primary">@lang('pendingGame.check_game')</a>
-                                {{-- <form action="/admin/detail/deny" method="POST" style="width: 45%">
-                                @csrf
-                                <input type="hidden" name="game_id" value="{{ $game->id }}">
-                                <button value="{{ $game->game_name }}" class="btn btn-danger denyBtn" style="font-size: 13px;width: 83px">@lang('pendingGame.deny')</button>
-                            </form>
-                            <form action="/admin/detail/publish" method="POST" style="width: 45%">
-                                @csrf
-                                <input type="hidden" name="game_id" value="{{ $game->id }}">
-                                <button type="submit" class="btn btn-primary" style="font-size: 13px; width: 83px">@lang('pendingGame.publish')</button>
-                            </form> --}}
                             </div>
                         </div>
                     </div>
