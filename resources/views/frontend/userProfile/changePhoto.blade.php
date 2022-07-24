@@ -14,7 +14,7 @@
             </a>
             <div class="container d-flex flex-column align-items-center">
                 <h4 style="margin-bottom:20px">@lang('editUserProfile.change_photo')</h4>
-                <img src="{{ url(Auth::user()->profile_url) }}" alt="" id="editProfileShow" class="rounded-circle"
+                <img src="{{ Auth::user()->profile_url }}" alt="" id="editProfileShow" class="rounded-circle"
                     style="height: 300px; width:300px">
                 <form action="/profile/update-photo" method="post" enctype="multipart/form-data">
                     @csrf
