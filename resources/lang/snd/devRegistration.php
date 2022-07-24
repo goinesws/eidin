@@ -7,10 +7,10 @@
         'country' => 'Negara',
         'website' => 'Website Perusahaan (Opsional)',
         'desc' => 'Deskripsi Perusahaan (Opsional)',
-        'bank' => 'Informasi Bank (Opsional)',
+        'bank' => 'Informasi Bank',
         'bank-name' => 'Nama Bank',
         'bank-number' => 'Nomor Rekening Bank',
         'sns' => 'Media Sosial (Opsional)',
-        'photo' => 'Logo Perusahaan (Opsional)',
+        'photo' => 'Logo Perusahaan',
     ];
 ?>
