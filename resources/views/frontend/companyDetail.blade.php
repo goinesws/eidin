@@ -7,7 +7,7 @@
     <div style="margin-top: 50px;margin-bottom:50px">
         <div class="container d-flex justify-content-between">
             <div class="col-5 d-flex flex-column align-items-center justify-content-center">
-                <img src="{{ url($company->company_pic_url) }}" alt="" class="rounded-circle"
+                <img src="{{ $company->company_pic_url }}" alt="" class="rounded-circle"
                     style="height: 350px; width:350px">
                 @if ($isDev)
                     <a href="{{ route('changePhotoDev') }}" class="btn btn-warning d-flex align-items-center"
@@ -97,7 +97,7 @@
                                     <a href="/game/{{ $game->id }}" class="product-image">
                                 @endif
 
-                                <img src="{{ url($promotional->img[0]) }}" alt="#"
+                                <img src="{{ $promotional->img[0] }}" alt="#"
                                     style="height: 170px;width:288px">
                                 @if ($isDev)
                                     <span class="sale-tag">{{ $game->status }}</span>

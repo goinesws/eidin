@@ -25,7 +25,7 @@
                                             <a href="/game/{{ $games[0]->id }}" class="btn">@lang('dashboard.buy_btn')</a>
                                         </div>
                                     </div>
-                                    <img src="{{ url($promotional->img[0]) }}" alt=""
+                                    <img src="{{ $promotional->img[0] }}" alt=""
                                         style="width: 50%; height:60%; position:absolute; right:0; top:20%">
                                 </div>
                             @else
@@ -45,7 +45,7 @@
                                                 <a href="/game/{{ $pgame->id }}" class="btn">@lang('dashboard.buy_btn')</a>
                                             </div>
                                         </div>
-                                        <img src="{{ url($promotional->img[0]) }}" alt=""
+                                        <img src="{{$promotional->img[0] }}" alt=""
                                             style="width: 50%; height:60%; position:absolute; right:0; top:20%">
                                     </div>
                                 @endforeach
@@ -61,7 +61,7 @@
                                 $promotional = json_decode($free_game->promotional);
                                 ?>
                                 <div class="hero-small-banner"
-                                    style="background-image: url({{ url($promotional->img[0]) }});">
+                                    style="background-image: url({{ $promotional->img[0] }});">
                                     <a href="/game/{{ $free_game->id}}" class="content" style="background-color: rgba(255, 255, 255, 0.8)">
                                         <h2>
                                             <span>@lang('dashboard.free_games')</span>
@@ -129,7 +129,7 @@
                                     <?php
                                     $promotional = json_decode($ngame->promotional);
                                     ?>
-                                    <img src="{{ url($promotional->img[0]) }}" alt=""
+                                    <img src="{{ $promotional->img[0] }}" alt=""
                                         class="position-absolute top-0 end-0" style="width: 45%; height:100%;">
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                         <div class="col-lg-3 col-md-6 col-12">
                             <div class="single-product"  style="height: 370px">
                                 <a href="/game/{{ $sgame->id }}" class="product-image">
-                                    <img src="{{ url($promotional->img[0]) }}" alt="#" style="height: 170px;width:288px">
+                                    <img src="{{ $promotional->img[0] }}" alt="#" style="height: 170px;width:288px">
                                     <span class="sale-tag">-50%</span>
                                 </a>
                                 <div class="product-info">

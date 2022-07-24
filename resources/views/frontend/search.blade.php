@@ -33,7 +33,7 @@
                                     <?php
                                     $promotional = json_decode($sgame->promotional);
                                     ?>
-                                    <img src="{{ url($promotional->img[0]) }}" alt=""
+                                    <img src="{{ $promotional->img[0] }}" alt=""
                                         class="position-absolute top-0 end-0" style="width: 45%; height:100%;">
                                 </div>
                             </div>
