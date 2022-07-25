@@ -7,10 +7,10 @@
         'country' => 'Country',
         'website' => 'Company Website (Optional)',
         'desc' => 'Company Description (Optional)',
-        'bank' => 'Bank Information (Optional)',
+        'bank' => 'Bank Information',
         'bank-name' => 'Bank Name',
         'bank-number' => 'Bank Account Number',
         'sns' => 'Social Media (Optional)',
-        'photo' => 'Company Logo (Optional)',
+        'photo' => 'Company Logo',
     ];
 ?>

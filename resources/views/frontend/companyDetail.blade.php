@@ -7,7 +7,7 @@
     <div style="margin-top: 50px;margin-bottom:50px">
         <div class="container d-flex justify-content-between">
             <div class="col-5 d-flex flex-column align-items-center justify-content-center">
-                <img src="{{ $company->company_pic_url }}" alt="" class="rounded-circle"
+                <img src="{{ url($company->company_pic_url) }}" alt="" class="rounded-circle"
                     style="height: 350px; width:350px">
                 @if ($isDev)
                     <a href="{{ route('changePhotoDev') }}" class="btn btn-warning d-flex align-items-center"

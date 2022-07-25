@@ -84,11 +84,16 @@ class DevPagesController extends Controller
         $dev->company_description = $request->company_description;
 
         $file = $request->file('photo');
-        $path = 'img/companyPic/';
-        $file->move($path,$file->getClientOriginalName());
+        if($file != null){
+            $path = 'img/companyPic/';
+            $file->move($path,$file->getClientOriginalName());
 
-        $path = $path.$file->getClientOriginalName();
-        $dev->company_pic_url = $path;
+            $path = $path.$file->getClientOriginalName();
+            $dev->company_pic_url = $path;
+        }
+        else{
+            $dev->company_pic_url = 'img/defaultpic.png';
+        }
         $dev->save();
 
         Alert::success('Success!', 'You Applied To Be A Developer!');
